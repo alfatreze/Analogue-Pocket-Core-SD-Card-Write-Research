@@ -40,3 +40,5 @@ The first attempted repeat showed LAB 01 and left CARDWRITE02's file untouched. 
 
 
 FSM-002-R1 passed: the physical file matches every expected byte, and the supplied LAB 02 screenshot shows READ MATCH. The next physical step is the B-only cold-reload gate above, collected as FSM-002-COLD.
+
+FSM-002-COLD collected: screenshot `20261005_003824.png` shows READ MATCH generation 1 with completion 1; physical bytes remain correct and all pre-existing files are unchanged from FSM-002-R1. Exact cold power-off actions are not independently confirmed. Next build is the automatic batch described in BATCH_TEST_PLAN.md; no additional manual CARDWRITE02 write is needed now.

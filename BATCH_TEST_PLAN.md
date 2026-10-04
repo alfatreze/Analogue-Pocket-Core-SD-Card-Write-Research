@@ -6,7 +6,7 @@ A fixed, independently verified transport baseline makes it possible to compare 
 
 ## First automatic batch core
 
-Use a separate core ID and a dedicated preallocated 256 KiB scratch file, with 32 independent 8 KiB regions. Every case owns its own region; surrounding guard bytes remain known. All source buffers stay in the core's own BRAM. One command owner runs cases serially. A timeout stops the batch and retains outstanding ownership; it must not advance into a new case.
+Use the stable active core ID `alfatreze.CARDWRITE02`, with a unique B003 build banner/version, and a new dedicated preallocated 256 KiB scratch file, with 32 independent 8 KiB regions. Archive the qualified minimal02 package before a verified update; retain its existing write64.bin untouched. Every case owns its own region; surrounding guard bytes remain known. All source buffers stay in the core's own BRAM. One command owner runs cases serially. A timeout stops the batch and retains outstanding ownership; it must not advance into a new case.
 
 Each case records build ID, run generation, case ID, file offset, requested length, overwrite ordinal, command result, immediate comparison result and elapsed cycles. A summary screen shows passed/failed/completed counts. With the confirmed JTAG link, add a small ISSP control/status block and a stable per-case result window so the host can start a batch and read retained results; use a coherent snapshot/index handshake rather than polling transient bus signals. This instrumentation needs a separately qualified build. The raw file and screenshots are retained on the computer; the host independently reconstructs all expected bytes and guards and compares the whole file. A case's error is retained even if a later retry works.
 

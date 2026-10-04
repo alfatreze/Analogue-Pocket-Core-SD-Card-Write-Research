@@ -57,3 +57,12 @@ New screenshots `20261005_002904.png` and `20261005_002910.png` show CARD WRITIN
 - Local immutable evidence: `work/evidence/runs/FSM-002-R1/`, including raw output, screenshots, snapshots, original collector result and review.
 - Verdict: one correct physical existing-file update and immediate readback on firmware 2.7/designated card. Cold reload, repeatability and interrupted-write safety remain pending; exact Quit/shutdown actions not separately confirmed.
 - Next gate: cold-launch CARDWRITE02 and press B only; expect READ MATCH generation 1. Batch implementation can now use the repaired transport, while cold persistence still needs its separate observation.
+
+## FSM-002-COLD — reload readback PASS
+
+- Screenshot `20261005_003824.png` shows LAB 02, READ MATCH, expected/read generation 1, completion 1, error 0, cycles 0x00073399. This is consistent with the requested fresh-launch B-only read.
+- Remounted physical output still matches all 64 expected bytes; SHA-256 `b7b05ccadcfa2eb7ed53aee6b5b12db57a06217da1351728a82810ad757f393c`.
+- Compared with the prior FSM-002-R1 snapshot, no existing protected file changed or disappeared. The sole added file is the new screenshot. The conservative original collector still reports the previously reviewed core-selection metadata changes against its older installation baseline; its output is retained unchanged.
+- Immutable local evidence is under `work/evidence/runs/FSM-002-COLD/`, with screenshot, physical output, inventory, original collector result and separate review.
+- Verdict: reload readback and physical bytes PASS. Exact cold power-off sequence is not separately confirmed; one observation does not establish repeatability or interrupted-write safety.
+- Next implementation: uniquely numbered B003 automatic multi-case batch, updating the stable active core entry with verified backups. Preserve the successful minimal02 artifacts and output.

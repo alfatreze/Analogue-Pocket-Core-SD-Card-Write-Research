@@ -1,6 +1,6 @@
 # FSM-002 — CARDWRITE02 hardware run
 
-Status: corrected source passes direct-command and serial-bridge simulation and all reported internal Quartus timing corners. CARDWRITE02 installation and protected-file verification are recorded in CURRENT_STATUS.md. Pocket result pending.
+Status: corrected source passes direct-command and serial-bridge simulation and all reported internal Quartus timing corners. CARDWRITE02 installation and protected-file verification are recorded in CURRENT_STATUS.md. FSM-002-R1 physical-byte and immediate-readback checks PASS; cold reload pending.
 
 ## What changed
 
@@ -37,3 +37,6 @@ Build identity: minimal02 seed 1; installed RBF_R SHA-256 `d0d17448b5347e7916f81
 
 
 The first attempted repeat showed LAB 01 and left CARDWRITE02's file untouched. It is retained as a wrong-build observation under FSM-002. Use FSM-002-R1 for the corrected-core repeat.
+
+
+FSM-002-R1 passed: the physical file matches every expected byte, and the supplied LAB 02 screenshot shows READ MATCH. The next physical step is the B-only cold-reload gate above, collected as FSM-002-COLD.

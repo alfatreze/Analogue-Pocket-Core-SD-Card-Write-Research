@@ -78,3 +78,8 @@ Collected the successful 17:25 full compile, complete reports, RBF and SOF. All 
 ## NCW-010 — confirm the active core before interpreting a repeat
 
 The next supplied screenshots still show LAB 01; lastcore.bin names CARDWRITE01. CARDWRITE02's installed code/metadata hashes match its package and its dedicated output remains all zeros. The collector was initially invoked for minimal02 based on the intended procedure; its immutable output is retained, and observations.json records why it is not a valid corrected-build trial. Explicit Developer > Builds selection and the LAB 02/generation-1 startup gate are required for the repeat. Do not change the corrected RTL based on this wrong-build observation.
+
+
+## NCW-011 — repaired transport passes its first physical byte oracle
+
+FSM-002-R1 produces the exact generation-1 record on the remounted physical card and screenshots show LAB 02 with READ MATCH. Retain the strict collector's inconclusive flag and append explicit review: its only protected differences are lastcore/recent runtime records identifying the deliberately selected CARDWRITE02. Other protected bytes are unchanged. This is a single existing-file success, not robust/repeatable qualification. Advance to cold B-only reload and batch transport work; keep fault-boundary and cross-card tests separate.

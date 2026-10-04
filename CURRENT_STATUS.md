@@ -47,3 +47,13 @@ Next experiment: correct and qualify the probe's APF read-response timing, inves
 ## FSM-002 attempt — original core resumed/selected
 
 New screenshots `20261005_002904.png` and `20261005_002910.png` show CARD WRITING LAB 01, WRITE CMD OK then READ DIFF, generation 0. Pocket's System/lastcore.bin names CARDWRITE01. CARDWRITE02's output remains the installed 64-byte zero fixture, and all its installed package hashes match the qualified package. No protected baseline file changed. This attempt supplies no CARDWRITE02 hardware verdict; preserve it as wrong-build evidence rather than interpreting it as failure of the corrected transport. Screenshots and collector output preserved locally under `work/evidence/runs/FSM-002/`. Next run is FSM-002-R1, explicitly selecting CARDWRITE02 through Tools > Developer > Builds and checking the LAB 02 banner before pressing buttons.
+
+
+## FSM-002-R1 — first correct physical record PASS
+
+- Screenshots `20261005_003514.png` and `20261005_003518.png` show LAB 02, WRITE CMD OK then READ MATCH, expected/read generation 1, completion counts 1/2, error 0. Startup-only screenshot was not supplied.
+- Remounted physical `write64.bin` is exactly the expected 64-byte generation-1 record. SHA-256 `b7b05ccadcfa2eb7ed53aee6b5b12db57a06217da1351728a82810ad757f393c`. Independent full-byte verifier PASS.
+- The conservative collector returned overall inconclusive because System/lastcore.bin and System/recent.bin changed. Both now identify CARDWRITE02, consistent with the deliberate core selection. Their raw changes remain retained and explicitly reviewed in local review.json; no other protected baseline files changed. Do not silently discard metadata differences.
+- Local immutable evidence: `work/evidence/runs/FSM-002-R1/`, including raw output, screenshots, snapshots, original collector result and review.
+- Verdict: one correct physical existing-file update and immediate readback on firmware 2.7/designated card. Cold reload, repeatability and interrupted-write safety remain pending; exact Quit/shutdown actions not separately confirmed.
+- Next gate: cold-launch CARDWRITE02 and press B only; expect READ MATCH generation 1. Batch implementation can now use the repaired transport, while cold persistence still needs its separate observation.

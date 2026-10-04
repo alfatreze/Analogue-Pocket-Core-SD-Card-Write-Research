@@ -19,6 +19,10 @@ class OracleTests(unittest.TestCase):
             transferred = b''.join(bytes.fromhex(line) for line in lines)
             self.assertEqual(transferred, lab.record(generation))
 
+    def test_real_serial_dump_against_independent_byte_oracle(self):
+        lines=(ROOT/"work/sim/spi-generation-1.hex").read_text().splitlines()
+        self.assertEqual(b"".join(bytes.fromhex(line) for line in lines),lab.record(1))
+
     def test_format_distinguishes_corruption_truncation_and_endianness(self):
         expected = lab.record(1)
         samples = [expected, expected[:-1], expected+b'\0', lab.record(2),

@@ -1,0 +1,7 @@
+Card write research probe 02
+A writes generation 1, then 2, etc.
+B reads and compares against expected.
+WRITE CMD OK is not a durability claim.
+Verify write64.bin on the host after Quit.
+Disposable test card only.
+Timeout: quit and relaunch the core.

@@ -56,10 +56,12 @@ def prepare_reference(pins):
                        'commit': pins['official-targetdata']['commit']})
 
 
-def prepare_custom(pins):
+def prepare_custom(pins, build="minimal01"):
+    suffix = build[-2:]
+    core_id = "alfatreze.CARDWRITE" + suffix
     source = ROOT / 'vendor/core-template'
-    stage = ROOT / 'work/build/minimal01'
-    if (stage / 'src/fpga/output_files').exists():
+    stage = ROOT / 'work/build' / build
+    if stage.exists():
         raise SystemExit('Build output exists; use a new immutable build stage instead of overwriting it.')
     shutil.copytree(source / 'src', stage / 'src', dirs_exist_ok=True,
                     ignore=shutil.ignore_patterns('output_files','db','incremental_db'))
@@ -76,6 +78,8 @@ def prepare_custom(pins):
                   'set_global_assignment -name SEARCH_PATH core',
                   'set_global_assignment -name NUM_PARALLEL_PROCESSORS 2',
                   'set_global_assignment -name SEED 1'])
+    if build == 'minimal02':
+        lines.append('set_global_assignment -name ALLOW_POWER_UP_DONT_CARE OFF')
     qsf.write_text('\n'.join(lines) + '\n')
     # Keep real related PLL outputs grouped together; no false cut between them.
     (core / 'core_constraints.sdc').write_text('''set_clock_groups -asynchronous \\
@@ -85,16 +89,17 @@ def prepare_custom(pins):
  -group [get_clocks {*mp1*}]
 ''')
     manifest(stage, {'template_commit': pins['core-template']['commit'], 'seed': 1,
-                     'kind': 'minimal01 staged sources; no CPU/external RAM'})
-    package = ROOT / 'work/packages/minimal01'
-    dest = package / 'Cores/alfatreze.CARDWRITE01'
+                     'kind': build+' staged sources; no CPU/external RAM'})
+    package = ROOT / 'work/packages' / build
+    dest = package / 'Cores' / core_id
     dest.mkdir(parents=True, exist_ok=True)
     for name in JSON_NAMES:
         value = json.loads((source / (name + '.json')).read_text())
         if name == 'core':
-            value['core']['metadata'].update(platform_ids=['cardwrite'], shortname='CARDWRITE01',
-                author='alfatreze', description='Card write probe 01 - 64 byte BRAM FSM',
-                version='0.1.0', date_release='2026-10-04')
+            value['core']['metadata'].update(platform_ids=['cardwrite'], shortname='CARDWRITE'+suffix,
+                author='alfatreze', description='Card write probe '+suffix+' - 64 byte BRAM FSM',
+                version='0.2.0' if build=='minimal02' else '0.1.0', date_release='2026-10-05' if build=='minimal02' else '2026-10-04',
+                url='https://github.com/alfatreze')
         elif name == 'data':
             value['data']['data_slots'] = [dict(name='Probe output', id='0x22', required=False,
                 parameters=2, deferload=True, filename='write64.bin')]
@@ -106,22 +111,23 @@ def prepare_custom(pins):
     platform = json.loads((source / 'dist/platforms/ex_platform.json').read_text())
     platform['platform'].update(name='Card Writing Lab', category='Research', manufacturer='Tau', year=2026)
     json_write(package / 'Platforms/cardwrite.json', platform)
-    (dest / 'info.txt').write_text('Card write research probe 01\nA writes generation 1, then 2, etc.\nB reads and compares against expected.\nWRITE CMD OK is not a durability claim.\nVerify write64.bin on the host after Quit.\nDisposable test card only.\nTimeout: quit and relaunch the core.\n')
-    output = package / 'Assets/cardwrite/alfatreze.CARDWRITE01/write64.bin'
+    (dest / 'info.txt').write_text('Card write research probe '+suffix+'\nA writes generation 1, then 2, etc.\nB reads and compares against expected.\nWRITE CMD OK is not a durability claim.\nVerify write64.bin on the host after Quit.\nDisposable test card only.\nTimeout: quit and relaunch the core.\n')
+    output = package / 'Assets/cardwrite' / core_id / 'write64.bin'
     output.parent.mkdir(parents=True, exist_ok=True)
     # Existing-file baseline. First write must visibly replace zero bytes.
     output.write_bytes(bytes(64))
-    manifest(package, {'kind': 'minimal01; not installable until audited bitstream exists',
+    manifest(package, {'kind': build+'; not installable until audited bitstream exists',
                        'template_commit': pins['core-template']['commit'], 'seed': 1})
     print(f'Staged {stage}; prepared {package}')
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.parse_args()
+    parser.add_argument("--build", choices=["minimal01","minimal02"], default="minimal01")
+    args = parser.parse_args()
     pins = validate_vendor()
-    prepare_reference(pins)
-    prepare_custom(pins)
+    if args.build == "minimal01": prepare_reference(pins)
+    prepare_custom(pins, args.build)
 
 
 if __name__ == '__main__':

@@ -47,3 +47,29 @@ FSM-001 changed the physical 64-byte file, but it is exactly a generation-zero r
 The payload port currently continuously reads RAM from the current bridge address. In the pinned actual SPI peripheral, outgoing read data is captured before `pmp_rd` is asserted; the official command/framebuffer implementations update responses after a read strobe for a later transaction. The observed one-word shift is consistent with that response-pipeline mismatch. A strobe-driven address/response adaptation is a candidate, not yet reproduced or hardware-qualified. Initial generation 0 is a separate unresolved discrepancy; simulation initializes it to 1 and has no real FPGA startup model.
 
 Do not escalate to CPU integration or infer universal firmware failure. First capture actual SPI transaction timing and deterministic startup in the measurement core, qualify a separately identified build, and repeat physical byte verification. Metadata identifies firmware 2.7; exact shutdown actions and cold reload remain pending.
+
+
+## NCW-006 — CARDWRITE02 fixes and stronger transfer evidence
+
+The pinned serial bridge explicitly buffers reads by one word. Serial regression using its actual state machines reproduces minimal01's omitted-header shift, while CARDWRITE02's strobe-latched response passes every word against the unchanged independent byte oracle. The serial test also writes all 16 RX words and obtains READ MATCH with the received mask complete. A syntax-only Icarus adaptation is generated outside vendor; its priming response is discarded as required by the pipeline. Direct-command integration and six host checks pass.
+
+Added clocked one-time boot initialization and boot payload construction, and disabled power-up don't-care optimization. This removes reliance on a nonzero declaration initializer for the expected generation; it is not a confirmed explanation for the prior generation-zero hardware result. Intel documents that declared initial values normally synthesize to power-up settings and that don't-care optimization applies to undefined states: https://docs.altera.com/r/docs/683283/18.1/quartus-prime-standard-edition-user-guide/power-up-don-t-care .
+
+Build/package/installer/collector now accept minimal02 explicitly and keep original default identities for historical workflows. The second build has an exclusive frozen stage and separate core/output path. No compiled source is edited after launch. The old build and output remain preserved. NEXT_HARDWARE_RUN.md defines startup, one-write/read, physical-file and separate cold-reload gates.
+
+
+## NCW-007 — batch the valid transport tests
+
+User requested a more efficient series of write tests. Keep CARDWRITE02 as the already-frozen transport repair gate, then use one automatic batch core with independently addressed records, guard regions and a complete host oracle. Repeated overwrites retain immediate per-operation results but only the final version can be checked on the remounted file. Cold restart and interrupted-write boundaries remain distinct physical runs. BATCH_TEST_PLAN.md specifies the case families and avoids one compile per parameter combination.
+
+
+## NCW-008 — confirmed JTAG setup and read-only Tau reuse
+
+User identified a Terasic Blaster, confirmed connection to Pocket/computer, and enabled USB passthrough into the existing VM. A read-only scan changed from no hardware to USB-Blaster [5-3], ID 02B050DD, 5CE(BA4|FA4). No FPGA was programmed. Read Tau Alpha's JTAG procedure and historical audits without changing its files or invoking its build tools.
+
+Reuse the proven ISSP service/instance selection procedure for stable batch results; retain per-event history rather than polling transient bus signals. SignalTap was not a fully proven Tau capture workflow, and its cached configuration/RAM-type issues need fresh qualification. Matching core metadata/assets must be installed before a JTAG reload, which resets volatile FPGA state. JTAG_WORKFLOW.md records the exact lessons and official reference links.
+
+
+## NCW-009 — CARDWRITE02 qualified for its physical trial
+
+Collected the successful 17:25 full compile, complete reports, RBF and SOF. All reported internal timing corners pass (setup +4.169 ns, hold +0.150 ns); report confirms power-up don't-care disabled. Same inherited external I/O constraints limitations remain. Installed the separate qualified package with hash verification, protected-file comparison and backed-up catalogue-cache refresh. Original failed output and screenshots unchanged. Next action is the user-operated startup/A/B/normal-Quit run in NEXT_HARDWARE_RUN.md. No physical success is claimed for CARDWRITE02 yet.

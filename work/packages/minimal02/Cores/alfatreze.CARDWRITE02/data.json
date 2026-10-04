@@ -1,0 +1,15 @@
+{
+  "data": {
+    "magic": "APF_VER_1",
+    "data_slots": [
+      {
+        "name": "Probe output",
+        "id": "0x22",
+        "required": false,
+        "parameters": 2,
+        "deferload": true,
+        "filename": "write64.bin"
+      }
+    ]
+  }
+}

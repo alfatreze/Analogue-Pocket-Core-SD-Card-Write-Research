@@ -29,6 +29,9 @@ The first experiments should use a disposable test card and small deterministic 
 - [Decisions](DECISIONS.md) — rationale and corrections to the initial evidence summary.
 - [Build audit](BUILD_AUDIT.md) — source and bitstream identities, timing scope and remaining interface limitations.
 - [Current status](CURRENT_STATUS.md) — actual implementation/build/card evidence and next gate.
+- [JTAG workflow](JTAG_WORKFLOW.md) — cable compatibility, debug captures, reload and USB card access.
+- [Batch test plan](BATCH_TEST_PLAN.md) — automatic case batches after transport repair, with independent file records and guard checks.
+- [Next hardware run](NEXT_HARDWARE_RUN.md) — corrected CARDWRITE02, physical byte verification and cold reload.
 - [First hardware run](FIRST_HARDWARE_RUN.md) — official control and minimal-probe instructions.
 
 ## Evidence rules

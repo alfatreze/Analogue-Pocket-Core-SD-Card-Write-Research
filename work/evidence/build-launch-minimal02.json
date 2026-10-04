@@ -1,0 +1,7 @@
+{
+  "remote": "card-writing-lab/minimal02-s1",
+  "archive_sha256": "6c4f6632330697737aca03396b177af4342da8ff412d016067836adf78589164",
+  "source_manifest": "work/build/minimal02-manifest.json",
+  "seed": 1,
+  "quartus": "/home/taualpha/intelFPGA_lite/25.1std/quartus/bin/quartus_sh"
+}

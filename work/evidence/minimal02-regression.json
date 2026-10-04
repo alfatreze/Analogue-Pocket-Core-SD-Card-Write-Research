@@ -1,0 +1,5 @@
+{
+  "old_probe_expected_failure": "FATAL: sim/tb_spi.sv:62: SPI shifted word           0: 00000001 expected 4e435731\n       Time: 4306000  Scope: tb_spi\n",
+  "returncode": 1,
+  "meaning": "Actual pinned SPI state machine (syntax-adapted for Icarus) reproduces old word shift; new probe passes the unchanged byte oracle. Startup generation-zero cause remains unresolved."
+}

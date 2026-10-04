@@ -14,7 +14,7 @@ installer=importlib.util.module_from_spec(spec);spec.loader.exec_module(installe
 
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('package',choices=['official-control','minimal01'])
+    parser.add_argument('package',choices=['official-control','minimal01','minimal02'])
     parser.add_argument('--test-id',required=True)
     parser.add_argument('--firmware',required=True)
     parser.add_argument('--generation',type=int,default=1)
@@ -26,7 +26,7 @@ def main():
     if evidence.exists():raise SystemExit('Test ID already collected; keep earlier results immutable')
     evidence.mkdir(parents=True)
     relative=('Assets/ex_platform/Example Author.Keyboard Mouse Target Data/saved.bin'
-              if args.package=='official-control' else 'Assets/cardwrite/alfatreze.CARDWRITE01/write64.bin')
+              if args.package=='official-control' else 'Assets/cardwrite/alfatreze.CARDWRITE'+args.package[-2:]+'/write64.bin')
     output=installer.CARD/relative
     installer.safe(output,installer.CARD)
     baseline=json.loads((ROOT/'work/evidence'/('install-'+args.package)/'after.json').read_text())

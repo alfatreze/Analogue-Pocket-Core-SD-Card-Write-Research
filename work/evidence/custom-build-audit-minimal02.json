@@ -1,0 +1,19 @@
+{
+  "kind": "custom minimal02, full compile and internal timing qualified; Pocket pending",
+  "seed": 1,
+  "raw_sha256": "7fa74e63a0dd2dee4f7a002d7da8626beecc77350b3a1aacc60acb24bc091fda",
+  "rbf_r_sha256": "d0d17448b5347e7916f8171fe20aa75c411b43fa6166eadcc501fa14a115bff5",
+  "minimum_reported_slack_ns": 0.15,
+  "compile_source_manifest_sha256": "cc96e104f584718021a7abd73d07ebfe79b8cf4e27fd099add7eab8169132662",
+  "reports": {
+    "quartus-fit.log": "996d4a5301fee3cb4f54bcf1125c5f11482e27cd3c887a880c413d843ee47dc0",
+    "ap_core.rbf": "7fa74e63a0dd2dee4f7a002d7da8626beecc77350b3a1aacc60acb24bc091fda",
+    "ap_core.fit.summary": "10d2cfe48e312813490f1eebe74be6c8420348111cf1b1a749e2a7ccd1a25c38",
+    "ap_core.sta.rpt": "69cba1518349fdfc590d9a1af2edd71810ebd4cc65027116db52051890d527ce",
+    "ap_core.asm.rpt": "b0527396591eadf0cf47ebd180cf059f67d6c9bdf08ae6c942df0a9655071429",
+    "ap_core.sof": "c09d8e97784e5126950c770f8c88069a249513fa56206369e42af0093dbaa234",
+    "ap_core.sta.summary": "89976deb725bf301c874c654c8ed9541b03c9411714fee4131785df9f9c4a6b8",
+    "ap_core.map.rpt": "834bf3da318c946113bf489db567598d6b0070854c79d32f4a86833489d647b9",
+    "ap_core.fit.rpt": "c2ecf6ed0caa4fd7f977db33ceda24a00e0430f82cc2e6e76b8a82fd67c890cc"
+  }
+}

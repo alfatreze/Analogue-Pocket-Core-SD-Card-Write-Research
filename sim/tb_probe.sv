@@ -95,7 +95,12 @@ initial begin
  cmd.hstate=0;cmd.tstate=0;cmd.host_cmd_start=0;
  cmd.status_setup_done_1=0;cmd.target_dataslot_read_1=0;cmd.target_dataslot_write_1=0;
  cmd.target_dataslot_getfile_1=0;cmd.target_dataslot_openfile_1=0;
+ tick(1);
+ // Boot reconstructs comparison payload even if the initial RAM is unusable.
+ for(i=0;i<16;i=i+1)probe.tx_mem[i]=32'hbad00000+i;
  tick(12);setup=1;await_command(16'h0140);put(32'hf8001000,32'h6f6b0000);tick(8);
+ if(generation!==1)$fatal(1,"runtime generation initialization");
+ for(i=0;i<16;i=i+1)if(probe.tx_mem[i]===32'hbad00000+i)$fatal(1,"boot payload not rebuilt");
  request(0);transfer_write(1);
  handle=$fopen("generation-1.hex","w");for(i=0;i<16;i=i+1)$fdisplay(handle,"%08x",file_words[i]);$fclose(handle);
  if(completed!==1)$fatal(1,"completion count");

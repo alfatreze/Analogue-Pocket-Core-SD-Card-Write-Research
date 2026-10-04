@@ -11,6 +11,7 @@ import tarfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+BUILD_ID = 'minimal01'
 REMOTE = 'card-writing-lab/minimal01-s1'
 KEY = Path.home() / '.ssh/taualpha_vm_ed25519'
 SSH = ['ssh', '-i', str(KEY), '-p', '2222', '-o', 'ConnectTimeout=8',
@@ -26,8 +27,8 @@ def launch():
     busy = remote('pgrep -a quartus_sh || pgrep -a quartus_map || pgrep -a quartus_fit || true').decode().strip()
     if busy:
         raise SystemExit('Existing Quartus process: refusing to compete.\n' + busy)
-    stage = ROOT / 'work/build/minimal01'
-    expected = json.loads((stage.parent / 'minimal01-manifest.json').read_text())['files']
+    stage = ROOT / 'work/build' / BUILD_ID
+    expected = json.loads((stage.parent / (BUILD_ID+'-manifest.json')).read_text())['files']
     for relative, checksum in expected.items():
         path = stage / relative
         if hashlib.sha256(path.read_bytes()).hexdigest() != checksum:
@@ -41,9 +42,9 @@ def launch():
                '< /dev/null > ../../quartus-fit.log 2>&1 &) ; echo started')
     remote(command)
     (ROOT / 'work/evidence').mkdir(parents=True, exist_ok=True)
-    (ROOT / 'work/evidence/build-launch.json').write_text(json.dumps({
+    (ROOT / 'work/evidence' / ('build-launch-'+BUILD_ID+'.json')).write_text(json.dumps({
         'remote': REMOTE, 'archive_sha256': hashlib.sha256(archive.getvalue()).hexdigest(),
-        'source_manifest': 'work/build/minimal01-manifest.json', 'seed': 1,
+        'source_manifest': 'work/build/'+BUILD_ID+'-manifest.json', 'seed': 1,
         'quartus': QUARTUS}, indent=2) + '\n')
     print('Launched isolated build ' + REMOTE)
 
@@ -62,9 +63,9 @@ def collect():
     log = remote(f'cat {REMOTE}/quartus-fit.log').decode()
     if not re.search(r'Full Compilation was successful\. 0 errors', log):
         raise SystemExit('Successful zero-error compilation is not established.')
-    out = ROOT / 'work/fpga/minimal01-s1'
+    out = ROOT / 'work/fpga' / (BUILD_ID+'-s1')
     out.mkdir(parents=True, exist_ok=True)
-    for name in ('ap_core.rbf', 'ap_core.fit.summary', 'ap_core.fit.rpt',
+    for name in ('ap_core.rbf', 'ap_core.sof', 'ap_core.fit.summary', 'ap_core.fit.rpt',
                  'ap_core.sta.summary', 'ap_core.sta.rpt', 'ap_core.map.rpt', 'ap_core.asm.rpt'):
         data = remote(f'cat {REMOTE}/src/fpga/output_files/{name}')
         (out / name).write_bytes(data)
@@ -84,5 +85,8 @@ def collect():
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('command', choices=['launch', 'status', 'collect'])
+    parser.add_argument("--build", choices=["minimal01","minimal02"], default="minimal01")
     args = parser.parse_args()
+    BUILD_ID = args.build
+    REMOTE = "card-writing-lab/"+BUILD_ID+"-s1"
     globals()[args.command]()

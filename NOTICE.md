@@ -17,3 +17,6 @@ The custom lab probe, readout, testbenches and host tools are in this project. N
 The root MIT LICENSE applies to original project code, documentation and original modifications, copyright 2026 alfatreze. It does not grant rights to third-party material or override its terms.
 
 The pinned upstream submodules, copied Analogue framework/template portions in `rtl/core_top.v` and `rtl/core_bridge_cmd.v`, copied template/IP files in the frozen `work/build/` stage, and upstream control assets/bitstreams in `work/packages/official-control/` retain their original notices and applicable upstream/tool terms. Generated bitstreams may incorporate third-party framework/IP and are not represented as exclusively MIT-licensed. Hash manifests and build reports document provenance rather than granting rights to their referenced material.
+
+
+`sim/adapt_spi.py` creates an Icarus-compatible copy of the pinned serial peripheral in ignored `work/sim/`: forward declarations are moved and procedural inout drivers are expressed as registers with continuous wire assignments. The APF state machines and source notices are retained; hardware compilation uses unchanged upstream serial code.

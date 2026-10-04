@@ -28,3 +28,16 @@ Next gate: perform CONTROL-001 / FSM-001 on Pocket, preserve physical output fil
 - Verdict: intended-record write/read test FAILED. Changed bytes reached the remounted card; no repeatability, cold reload, crash safety or Tau suitability demonstrated. Exact Quit/shutdown sequence awaits user confirmation.
 
 Next experiment: correct and qualify the probe's APF read-response timing, investigate deterministic generation initialization, then repeat with a fresh build ID. Preserve minimal01 and its failure evidence unchanged. Existing direct-bus simulation did not exercise the real SPI peripheral or hardware power-up behavior.
+
+
+## CARDWRITE02 preparation
+
+- Old one-word shift reproduced with actual pinned APF serial state machines (Icarus syntax adaptation). Corrected response and 16-word serial RX/readback pass; direct command/error/timeout tests and six host tests pass.
+- Clocked startup establishes generation 1; underlying minimal01 power-up discrepancy remains unproven.
+- Eight new native 320x240 RTL status captures inspected under `work/sim/minimal02/`.
+- Separate minimal02 seed-1 Quartus full compile PASSED: 0 errors, 162 warnings; worst setup +4.169 ns, hold +0.150 ns, 15% ALMs. Artifacts collected and package qualified for Pocket trial; external interface margins remain unqualified. See BUILD_AUDIT.md.
+- Next physical run: NEXT_HARDWARE_RUN.md, core CARDWRITE02 and new output file.
+
+- CARDWRITE02 installed on designated CARDWRITE: all 11 package files hash-verified; protected pre-existing contents unchanged, including CARDWRITE01's failed output and the supplied screenshots. Five known catalogue caches backed up then cleared. Installation journal completed.
+- Terasic JTAG chain verified after user enabled passthrough: USB-Blaster [5-3], 02B050DD. No programming performed; Tau Alpha consulted read-only.
+- Automatic multi-case batch and stable JTAG result access planned in BATCH_TEST_PLAN.md/JTAG_WORKFLOW.md; not implemented in CARDWRITE02.

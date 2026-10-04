@@ -28,3 +28,17 @@ Qualification is limited to this source/seed/tool/device build, simulation check
 - `work/packages/minimal01-manifest.json`: installed package hashes and identical build provenance.
 
 The local simulation copy moves datatable declarations ahead of first use for Icarus. The frozen Quartus stage retains the original declaration ordering, with identical behavior intended. No vendor source was changed.
+
+
+# Minimal02 build audit — 2026-10-05
+
+- Quartus 25.1std.0 Build 1129 Lite; device 5CEBA4F23C8; seed 1. Full compile: 0 errors, 162 warnings; 17 minutes 25 seconds.
+- 2,757/18,480 ALMs (15%), 2,123 registers, 6/308 RAM blocks, 8,597 memory bits, no DSPs, one PLL.
+- All reported timing corners pass with zero total negative slack. Worst setup +4.169 ns; worst hold +0.150 ns. No unconstrained clocks. Four bridge input and 22 bridge/scaler output ports still lack external I/O delay constraints; physical interface margins are not established by this timing pass.
+- Report confirms Power-Up Don't Care **Off**. Reviewed warning categories match the template/interface and deliberate display/word-index narrowing described above. No new unconstrained clocks.
+- Frozen source manifest SHA-256: `cc96e104f584718021a7abd73d07ebfe79b8cf4e27fd099add7eab8169132662`. Its lab RTL equals current lab RTL; vendor is untouched; stage contains no shipped old outputs.
+- Raw RBF SHA-256: `7fa74e63a0dd2dee4f7a002d7da8626beecc77350b3a1aacc60acb24bc091fda`.
+- RBF_R SHA-256: `d0d17448b5347e7916f8171fe20aa75c411b43fa6166eadcc501fa14a115bff5`.
+- SOF SHA-256: `c09d8e97784e5126950c770f8c88069a249513fa56206369e42af0093dbaa234`; retained for optional JTAG loading. SignalTap/ISSP are absent in this build.
+- Complete reports: `work/fpga/minimal02-s1/`; machine-readable audit: `work/evidence/custom-build-audit-minimal02.json`.
+- Simulations pass, including the actual serial state machines with documented syntax adaptation. Physical bytes, startup generation and cold persistence remain pending on Pocket.

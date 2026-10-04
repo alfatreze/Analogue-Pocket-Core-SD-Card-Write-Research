@@ -1,0 +1,103 @@
+Assembler report for ap_core
+Mon Oct  5 00:06:01 2026
+Quartus Prime Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Assembler Summary
+  3. Assembler Settings
+  4. Assembler Generated Files
+  5. Assembler Device Options: ap_core.sof
+  6. Assembler Device Options: ap_core.rbf
+  7. Assembler Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2025  Altera Corporation. All rights reserved.
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, the Altera Quartus Prime License Agreement,
+the Altera IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Altera and sold by Altera or its authorized distributors.  Please
+refer to the Altera Software License Subscription Agreements 
+on the Quartus Prime software download page.
+
+
+
++---------------------------------------------------------------+
+; Assembler Summary                                             ;
++-----------------------+---------------------------------------+
+; Assembler Status      ; Successful - Mon Oct  5 00:06:01 2026 ;
+; Revision Name         ; ap_core                               ;
+; Top-level Entity Name ; apf_top                               ;
+; Family                ; Cyclone V                             ;
+; Device                ; 5CEBA4F23C8                           ;
++-----------------------+---------------------------------------+
+
+
++----------------------------------+
+; Assembler Settings               ;
++--------+---------+---------------+
+; Option ; Setting ; Default Value ;
++--------+---------+---------------+
+
+
++--------------------------------------------------------------------------------+
+; Assembler Generated Files                                                      ;
++--------------------------------------------------------------------------------+
+; File Name                                                                      ;
++--------------------------------------------------------------------------------+
+; /home/taualpha/card-writing-lab/minimal02-s1/src/fpga/output_files/ap_core.sof ;
+; /home/taualpha/card-writing-lab/minimal02-s1/src/fpga/output_files/ap_core.rbf ;
++--------------------------------------------------------------------------------+
+
+
++---------------------------------------+
+; Assembler Device Options: ap_core.sof ;
++----------------+----------------------+
+; Option         ; Setting              ;
++----------------+----------------------+
+; JTAG usercode  ; 0x00C862FF           ;
+; Checksum       ; 0x00C862FF           ;
++----------------+----------------------+
+
+
++---------------------------------------+
+; Assembler Device Options: ap_core.rbf ;
++---------------------+-----------------+
+; Option              ; Setting         ;
++---------------------+-----------------+
+; Raw Binary File     ;                 ;
+;  Compression Ratio  ; 3               ;
++---------------------+-----------------+
+
+
++--------------------+
+; Assembler Messages ;
++--------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Assembler
+    Info: Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
+    Info: Processing started: Mon Oct  5 00:05:23 2026
+Info: Command: quartus_asm --read_settings_files=off --write_settings_files=off ap_core -c ap_core
+Info (115030): Assembler is generating device programming files
+Warning (12914): The file, /home/taualpha/card-writing-lab/minimal02-s1/src/fpga/db/stp1_auto_stripped.stp, is not embedded into sof file as expected.  Some tools, such as System Console, may not function fully.
+Info: Quartus Prime Assembler was successful. 0 errors, 1 warning
+    Info: Peak virtual memory: 535 megabytes
+    Info: Processing ended: Mon Oct  5 00:06:02 2026
+    Info: Elapsed time: 00:00:39
+    Info: Total CPU time (on all processors): 00:00:39
+
+

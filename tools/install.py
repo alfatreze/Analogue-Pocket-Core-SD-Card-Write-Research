@@ -60,19 +60,19 @@ def snapshot():
 
 def plan(package):
     mapping = {'official-control':'Example Author.Keyboard Mouse Target Data',
-               'minimal01':'alfatreze.CARDWRITE01'}
+               'minimal01':'alfatreze.CARDWRITE01', 'minimal02':'alfatreze.CARDWRITE02'}
     if package not in mapping:
         raise ValueError('Unknown package')
     source = ROOT/'work/packages'/package
     manifest = json.loads((source.parent/(package+'-manifest.json')).read_text())
-    if package=='minimal01':
-        audit=ROOT/'work/evidence/custom-build-audit.json'
+    if package in ('minimal01','minimal02'):
+        audit=ROOT/'work/evidence'/('custom-build-audit.json' if package=='minimal01' else 'custom-build-audit-'+package+'.json')
         if not audit.is_file() or json.loads(audit.read_text())!=manifest['provenance']:
             raise ValueError('Custom build qualification evidence missing or mismatched')
     core = source/'Cores'/mapping[package]
     for name in ('core','data','interact','input','video','audio','variants'):
         json.loads((core/(name+'.json')).read_text())
-    if package=='minimal01':
+    if package in ('minimal01','minimal02'):
         metadata=json.loads((core/'core.json').read_text())['core']['metadata']
         for key,limit in {'author':31,'shortname':31,'description':63,'version':31,'url':63}.items():
             if len(metadata.get(key,''))>limit:
@@ -112,7 +112,7 @@ def plan(package):
 
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('package',choices=['official-control','minimal01'])
+    parser.add_argument('package',choices=['official-control','minimal01','minimal02'])
     parser.add_argument('--yes',action='store_true')
     parser.add_argument('--token')
     args=parser.parse_args()

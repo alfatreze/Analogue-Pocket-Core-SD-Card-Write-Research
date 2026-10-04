@@ -8,3 +8,8 @@ work/fixtures/
 work/evidence/install-*/
 work/evidence/runs/
 work/evidence/card-*.json
+work/sim/io_bridge_peripheral_icarus.v
+work/sim/**/*.vvp
+work/sim/**/*.ppm
+work/sim/**/*.hex
+work/evidence/jtag/

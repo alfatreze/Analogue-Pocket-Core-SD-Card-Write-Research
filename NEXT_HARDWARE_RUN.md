@@ -11,7 +11,7 @@ Status: corrected source passes direct-command and serial-bridge simulation and 
 
 ## First run: exactly one write and one read
 
-1. Insert CARDWRITE and open **CARDWRITE02**, authored by **alfatreze**. Banner must say **CARD WRITING LAB 02**.
+1. Insert CARDWRITE and go to **Tools > Developer > Builds** and explicitly select **CARDWRITE02**, authored by **alfatreze**. Avoid resuming the previous core. Banner must say **CARD WRITING LAB 02**.
 2. Before pressing anything, expect **IDLE**, **EXPECT GEN 00000001**, **COMPLETE 00000000**. Take a screenshot. If generation differs, stop and capture it.
 3. Press **A** once and release. Wait for **WRITE CMD OK**, generation 1, completion 1, error 0. Take a screenshot.
 4. Press **B** once and release. Expect **READ MATCH**, expected/read generation 1, completion 2, error 0. Take a screenshot. Preserve any different result.
@@ -21,7 +21,7 @@ Status: corrected source passes direct-command and serial-bridge simulation and 
 Expected output: `/Volumes/CARDWRITE/Assets/cardwrite/alfatreze.CARDWRITE02/write64.bin`, exactly 64 bytes. Generation-1 SHA-256: `b7b05ccadcfa2eb7ed53aee6b5b12db57a06217da1351728a82810ad757f393c`.
 
 ```sh
-python3 tools/read_results.py minimal02 --test-id FSM-002 --firmware 2.7 --generation 1
+python3 tools/read_results.py minimal02 --test-id FSM-002-R1 --firmware 2.7 --generation 1
 ```
 
 The card-generated runtime metadata reports firmware 2.7; record Settings > About if it differs. Do not run CARDWRITE01 or the official control during FSM-002.
@@ -34,3 +34,6 @@ Further generations, repeatability, power interruption, different cards and CPU 
 
 
 Build identity: minimal02 seed 1; installed RBF_R SHA-256 `d0d17448b5347e7916f8171fe20aa75c411b43fa6166eadcc501fa14a115bff5`. The JTAG cable/chain is verified, but no JTAG programming was performed. A plain SD boot of CARDWRITE02 is the next baseline observation; a separately instrumented batch build follows.
+
+
+The first attempted repeat showed LAB 01 and left CARDWRITE02's file untouched. It is retained as a wrong-build observation under FSM-002. Use FSM-002-R1 for the corrected-core repeat.

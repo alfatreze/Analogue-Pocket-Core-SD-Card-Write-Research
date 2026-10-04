@@ -1,6 +1,6 @@
 # Analogue Pocket Core - SD Card Write Research
 
-Local project folder: `Name Card Writing`.
+Local project folder: `APC - Card Write Research`.
 
 ## Purpose
 

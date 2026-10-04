@@ -1,0 +1,33 @@
+{
+  "provenance": {
+    "kind": "custom minimal01, full compile and timing qualified; Pocket pending",
+    "seed": 1,
+    "raw_sha256": "c057d353e490b76d6ac167af6e687e489a9c1d23b75b91c8b95f5f1f1b83fe6b",
+    "rbf_r_sha256": "1d1ab747086c0c057af4c05f4c0763243c9a5e6f8e0eb4731afd047f5a292860",
+    "minimum_reported_slack_ns": 0.126,
+    "compile_source_manifest_sha256": "a171d77028594d4e5498f0f30300fc01e3fe5b0c803c90d4469b464d903614ae",
+    "reports": {
+      "quartus-fit.log": "7b180fe7bfeb859bd9117197be7324c132bbf5acb59666f812d2c5e09a4ba6f3",
+      "ap_core.rbf": "c057d353e490b76d6ac167af6e687e489a9c1d23b75b91c8b95f5f1f1b83fe6b",
+      "ap_core.fit.summary": "f65d42173105dea62391f852b13d9bc1fcb93a4cf85a058de6c0c3b9de15e283",
+      "ap_core.sta.rpt": "71c8f59c137b371a918272c6b5eb0c27c9774ebd84dde400c2b056fef186fdfd",
+      "ap_core.asm.rpt": "c7f612a61828a0aca9ffcf12801b158649ba63da7820f79511591ca1c309103e",
+      "ap_core.sta.summary": "4c03f7642345a793ded50f54ea86c93cae2777f9122d82988e7af9f3722bb4fa",
+      "ap_core.map.rpt": "0ca722942f992cef80e855827c3f022b0f34afc7c7e78677d32b061fc6379614",
+      "ap_core.fit.rpt": "1274de535c5d9d8b83b03e01ac8f04fd49aad8074bff2b44643b09068cd72dbe"
+    }
+  },
+  "files": {
+    "Assets/cardwrite/alfatreze.CARDWRITE01/write64.bin": "f5a5fd42d16a20302798ef6ed309979b43003d2320d9f0e8ea9831a92759fb4b",
+    "Cores/alfatreze.CARDWRITE01/audio.json": "32ecc527ee672b4f478b86e35bd0ee5eff474c73183b1b46d5169f09f224e182",
+    "Cores/alfatreze.CARDWRITE01/bitstream.rbf_r": "1d1ab747086c0c057af4c05f4c0763243c9a5e6f8e0eb4731afd047f5a292860",
+    "Cores/alfatreze.CARDWRITE01/core.json": "44e28f7bf183fe36fea9ca0f642fa00d4494fe044222441fcafc420bb33f6ca7",
+    "Cores/alfatreze.CARDWRITE01/data.json": "dbbd172a0dbe785c43be6fff8a1e53f6fc44490cea4b9ad48d5fd24741444a4d",
+    "Cores/alfatreze.CARDWRITE01/info.txt": "e52e4e92167fcbe8a7c7e38ff9fedbaa48081281d74f244387299ff248d63094",
+    "Cores/alfatreze.CARDWRITE01/input.json": "7cc08fea4bcba2249b3caebc4fc72e543e4fb39f6d77b32e4670acc9f241222d",
+    "Cores/alfatreze.CARDWRITE01/interact.json": "ec6df9dd48158b2ffbe22958dde4378c24b99e1f856e90e2297aa1280ca37f51",
+    "Cores/alfatreze.CARDWRITE01/variants.json": "2c69bdff29586e2e6e32a9dfc1efb7b77b18ba367187713de5c655b843b716ea",
+    "Cores/alfatreze.CARDWRITE01/video.json": "4da1bd060190c1c543fd40b0cc98989df25429e98038632a44e5fd37ea42dbe9",
+    "Platforms/cardwrite.json": "ee53a491638a2d1960b36e9552a08c9f01dc55627be4e64a9ee7932060f183a3"
+  }
+}

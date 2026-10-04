@@ -1,0 +1,6 @@
+[submodule "vendor/core-template"]
+	path = vendor/core-template
+	url = https://github.com/open-fpga/core-template.git
+[submodule "vendor/official-targetdata"]
+	path = vendor/official-targetdata
+	url = https://github.com/open-fpga/core-example-kbmouse-targetdata.git

@@ -1,0 +1,10 @@
+.DS_Store
+__pycache__/
+*.py[cod]
+work/sim/*.vvp
+work/sim/*.ppm
+work/sim/*.hex
+work/fixtures/
+work/evidence/install-*/
+work/evidence/runs/
+work/evidence/card-*.json

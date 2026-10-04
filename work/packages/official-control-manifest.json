@@ -1,0 +1,21 @@
+{
+  "provenance": {
+    "kind": "official upstream prebuilt control; RTL-to-bitstream correspondence not independently verified",
+    "commit": "acedd4530600aa3a79bc6c8df7462ceae5373c34"
+  },
+  "files": {
+    "Assets/ex_platform/Example Author.Keyboard Mouse Target Data/ex_image_all.bin": "3fac45bb39343701c3fa414641877c728bd4d2535101e9cbdb370b3e59bdf7d2",
+    "Cores/Example Author.Keyboard Mouse Target Data/audio.json": "61d2263613a47f29f19bc0d19c32a19c2dbd0872bccc29f833c3de44f4830add",
+    "Cores/Example Author.Keyboard Mouse Target Data/bitstream.rbf_r": "8fd68f229b9951ad67f111876ca182044e6b2dd73df13da5ebfe561bc6a7172f",
+    "Cores/Example Author.Keyboard Mouse Target Data/core.json": "440ab42f46cc0e502c9a67745e2858cba81ad8e438c9c84df9985b7e73846cbb",
+    "Cores/Example Author.Keyboard Mouse Target Data/data.json": "3ced6a2f5da5ff60c4ae9253d31a08c7a3b7fb6b7949325105fe4db0c762fca5",
+    "Cores/Example Author.Keyboard Mouse Target Data/icon.bin": "e835b1abdff89dc8896b1cf9fd53ac402191c0ea15cbe45b54155a024397efa9",
+    "Cores/Example Author.Keyboard Mouse Target Data/info.txt": "cefed4f312a92503ba848b28dd365bb584027774d06855b3233ce5a519ff98d0",
+    "Cores/Example Author.Keyboard Mouse Target Data/input.json": "36faddff197615200a21db031454f65ad1d961723c3d8c19f01cb82780be13ae",
+    "Cores/Example Author.Keyboard Mouse Target Data/interact.json": "4319e12a78ded47ed37191bf7ad45d4ca43ead52fc036e1e9d7a116ea56c5992",
+    "Cores/Example Author.Keyboard Mouse Target Data/variants.json": "20435a5a696085a01110c617f93f25a7cc9c403ea5fa71050fe2d687f2f86162",
+    "Cores/Example Author.Keyboard Mouse Target Data/video.json": "6f56ba250e2955122f6c63aa1ade1c58cc8bed94ed94feada31946f2a713cc2a",
+    "Platforms/_images/ex_platform.bin": "ee1817ea237d81175f42929f7009111173c36ce8470bf610711096123f85fa70",
+    "Platforms/ex_platform.json": "964e1709d1bb99f76d098b4c2c56eaeee8999c844a29acb7cda97eb61c965f5e"
+  }
+}

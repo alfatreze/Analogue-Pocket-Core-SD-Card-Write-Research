@@ -56,3 +56,8 @@ Requirements for simulation: Python 3 and Icarus Verilog. `make test` runs the h
 The first build stage is frozen evidence. `make prepare` refuses to replace it; use a new build stage for subsequent experiments. VM connection defaults in `tools/vm_build.py` describe the original local setup and must be adapted before building elsewhere. Card installation is deliberately bound to the original designated CARDWRITE volume UUID; configure a separate disposable card explicitly before using these tools on another setup.
 
 Pocket hardware results remain pending. See CURRENT_STATUS.md and FIRST_HARDWARE_RUN.md.
+
+
+## License
+
+Original project work is licensed under the [MIT License](LICENSE). Third-party framework code, IP, assets and generated artifacts retain their applicable terms; see [NOTICE.md](NOTICE.md) for the scope and provenance.

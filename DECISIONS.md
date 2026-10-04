@@ -83,3 +83,8 @@ The next supplied screenshots still show LAB 01; lastcore.bin names CARDWRITE01.
 ## NCW-011 — repaired transport passes its first physical byte oracle
 
 FSM-002-R1 produces the exact generation-1 record on the remounted physical card and screenshots show LAB 02 with READ MATCH. Retain the strict collector's inconclusive flag and append explicit review: its only protected differences are lastcore/recent runtime records identifying the deliberately selected CARDWRITE02. Other protected bytes are unchanged. This is a single existing-file success, not robust/repeatable qualification. Advance to cold B-only reload and batch transport work; keep fault-boundary and cross-card tests separate.
+
+
+## NCW-012 — stable launcher, distinct build identity
+
+Owner requested distinct build naming without repeatedly selecting a new core. Future delivery uses one persistent active card core (currently CARDWRITE02), updated in place with backed-up prior artifacts, and uniquely numbered versions/descriptions/screen banners. This avoids the old-core resumption problem caused by adding a separate menu entry for each compile. Existing first-install tooling must gain an audited update path before this convention is used; no card change is made during the pending cold-reload observation.

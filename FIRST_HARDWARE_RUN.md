@@ -1,6 +1,6 @@
 # First Pocket hardware run
 
-Status: both the official control and CARDWRITE01 custom probe are installed on CARDWRITE and host hashes verified. Custom simulation and internal timing checks pass. No Pocket write result is known yet.
+Status: both the official control and CARDWRITE01 custom probe are installed on CARDWRITE and host hashes verified. Custom simulation and internal timing checks pass. FSM-001 has now failed intended-record verification; see CURRENT_STATUS.md. The original minimal01 probe should be retained as failure evidence.
 
 CARDWRITE was identified as a removable exFAT card, 127,832,031,232-byte volume, 131,072-byte allocation blocks, UUID `0C5F72C5-8851-3E82-94F5-5902CF4180FE`. Existing `Test Album`, recovered-file and other non-OS files were retained and hash-checked during install. macOS indexing/trash/event directories and Windows System Volume Information are excluded from protected-content comparisons because the OS updates them.
 
@@ -29,7 +29,7 @@ Then eject, cold-boot the core and press Start without Select; record the reload
 
 `tools/read_results.py official-control --test-id CONTROL-001 --firmware <installed-version>` preserves the output file on the computer, verifies it and compares every existing protected file with the post-install baseline. It lists new APF files for review. It cannot infer which button actions or cold reloads occurred; those observations must be recorded separately.
 
-## Run FSM-001 after CONTROL-001
+## Original FSM-001 procedure (completed with failure; do not treat minimal01 as qualified)
 
 The custom **CARDWRITE01** core uses BRAM, one command owner and a 64-byte dedicated existing output file. It makes no runtime flush request.
 
@@ -47,10 +47,10 @@ The first custom build tests existing-file updates only. Missing-file creation, 
 
 | Field | CONTROL-001 | FSM-001 |
 |---|---|---|
-| Installed firmware | pending | pending |
+| Installed firmware | pending | device metadata reports 2.7; About confirmation pending |
 | Build identity | official commit acedd4530600aa3a79bc6c8df7462ceae5373c34, upstream prebuilt RBF hash in install manifest | Quartus 25.1std, seed 1; RBF_R SHA-256 `1d1ab747086c0c057af4c05f4c0763243c9a5e6f8e0eb4731afd047f5a292860` |
-| Immediate reload | pending | pending |
-| Post-Quit host file verification | pending | pending |
+| Immediate reload | pending | READ DIFF; error 0, completion 2 |
+| Post-Quit host file verification | pending | FAIL, malformed 64-byte physical file; exact shutdown actions pending |
 | Cold reload | pending | pending |
-| Protected contents unchanged after Pocket run | pending | pending |
-| Verdict | pending | pending |
+| Protected contents unchanged after Pocket run | pending | PASS for pre-existing protected files |
+| Verdict | pending | FAILED intended-record test; probe timing/startup investigation required |

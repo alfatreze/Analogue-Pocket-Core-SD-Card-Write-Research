@@ -15,3 +15,16 @@
 Next gate: perform CONTROL-001 / FSM-001 on Pocket, preserve physical output files, and test cold persistence. Follow FIRST_HARDWARE_RUN.md. No new Pocket-originated SD-write success has been claimed.
 
 - Custom CARDWRITE01 installed: all 11 package files hash-verified; every pre-existing protected file unchanged. Installation journal completed. CARDWRITE safely ejected after both installs.
+
+
+## FSM-001 — first Pocket observation
+
+- Pocket-generated device metadata reports runtime firmware 2.7, byte 39, build date 2026-09-04. Settings > About confirmation pending.
+- User supplied screenshots `20261004_234302.png` and `20261004_234310.png`: WRITE CMD OK then READ DIFF; completion counts 1 then 2, error 0. Both show expected generation 0 rather than the source's initial 1. Read generation is 0x00010001 (the record test ID, shifted into the generation position).
+- Remounted physical `write64.bin` is 64 bytes and changed from its installed zero fixture. SHA-256: `40e733d070f38a15467d752210fa4a84ca83d31e1d85e465362c68630276879c`. Independent generation-1 verifier FAILS.
+- Exact diagnostic match: generation-zero record with its first 4 bytes removed and a zero word appended. This is a diagnostic classification, not an accepted format or revised oracle.
+- All pre-existing protected files hash-identical. New Pocket settings/catalog files and the two screenshots listed for review.
+- Evidence preserved locally under `work/evidence/runs/FSM-001/`; raw inventories and screenshots remain excluded from Git.
+- Verdict: intended-record write/read test FAILED. Changed bytes reached the remounted card; no repeatability, cold reload, crash safety or Tau suitability demonstrated. Exact Quit/shutdown sequence awaits user confirmation.
+
+Next experiment: correct and qualify the probe's APF read-response timing, investigate deterministic generation initialization, then repeat with a fresh build ID. Preserve minimal01 and its failure evidence unchanged. Existing direct-bus simulation did not exercise the real SPI peripheral or hardware power-up behavior.

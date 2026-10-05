@@ -29,6 +29,10 @@ class CollectorTests(unittest.TestCase):
   (self.card/'protected.bin').write_bytes(b'changed');self.assertEqual(self.run_collector(),1)
  def test_guard_corruption(self):
   p=self.card/collector.ASSETS[0];data=bytearray(p.read_bytes());data[0]=0;p.write_bytes(data);self.assertEqual(self.run_collector(),1)
+ def test_clean_requires_both_generations(self):
+  p=self.card/collector.ASSETS[0];data=bytearray(p.read_bytes());data[512:1024]=bytes([165])*512;p.write_bytes(data)
+  self.assertEqual(self.run_collector('--generation-a','63','--generation-b','64'),1)
+ def test_expected_pair(self):self.assertEqual(self.run_collector('--generation-a','63','--generation-b','64'),0)
  def test_existing_evidence_refused(self):
   self.run_collector()
   with self.assertRaises(ValueError):self.run_collector()

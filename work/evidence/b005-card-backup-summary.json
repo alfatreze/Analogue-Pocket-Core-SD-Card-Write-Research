@@ -1,0 +1,9 @@
+{
+  "build": "B005",
+  "scope": "Pre-update read-only backup; no B005 physical result",
+  "card_file_count": 98,
+  "card_non_os_bytes": 103448123,
+  "all_backup_hashes_verified": true,
+  "card_unchanged_during_backup": true,
+  "private_backup": "work/archives/card-before-b005"
+}

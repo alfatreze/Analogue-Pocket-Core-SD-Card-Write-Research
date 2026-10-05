@@ -1,6 +1,6 @@
 .......
 ----------------------------------------------------------------------
-Ran 7 tests in 0.098s
+Ran 7 tests in 0.088s
 
 OK
 PASS B005 mode=          0 injection=          0 hold=         -1 command=          0 spi=          0 saves=        64 cmds=       322 generation=0000000000000040

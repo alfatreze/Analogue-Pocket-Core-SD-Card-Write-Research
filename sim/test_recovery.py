@@ -63,12 +63,12 @@ def campaign():
  if not unittest.TextTestRunner().run(suite).wasSuccessful():raise SystemExit(1)
  subprocess.run([sys.executable,str(ROOT/'sim/adapt_spi.py')],check=True)
  trials=[]
- blank=files();warm=rtl_run('warm64',blank);assert recovery.verify_files(*warm,64,expect_generated=True)['pass'];trials.append('warm64')
+ blank=files();warm=rtl_run('warm64',blank);assert recovery.verify_files(*warm,64,expect_generated=True)['pass'];assert warm==files(recovery.record(63),recovery.record(64));trials.append('warm64')
  cold=rtl_run('cold64',warm,MODE=1,EXPECT_GEN=64);assert cold==warm;trials.append('cold64')
  initial=files(recovery.record(1),recovery.record(2))
  for label,params,g in [('command',{'COMMAND':1,'COMMITS':64,'EXPECT_GEN':66},66),('spi',{'SPI':1,'COMMITS':64,'EXPECT_GEN':66},66),('single',{'MODE':2,'EXPECT_GEN':3},3),('high-generation',{'MODE':2,'EXPECT_GEN':"64'h100000000"},0x100000000)]:
   seed=files(recovery.record(0xffffffff),None) if label=='high-generation' else initial
-  out=rtl_run(label,seed,**params);assert recovery.verify_files(*out,g,expect_generated=True)['pass'];trials.append(label)
+  out=rtl_run(label,seed,**params);assert recovery.verify_files(*out,g,expect_generated=True)['pass'];assert out==files(recovery.record(g-1),recovery.record(g)) if label in ('command','spi') else out==files(recovery.record(g),recovery.record(2)) if label=='single' else out==files(recovery.record(0xffffffff),recovery.record(g));trials.append(label)
  for point in range(4):
   torn=rtl_run('cut'+str(point),initial,MODE=2,HOLD=point,KILL=1)
   assert torn[1]==initial[1] and recovery.verify_files(*torn,2)['pass']

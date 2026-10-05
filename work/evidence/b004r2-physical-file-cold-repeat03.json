@@ -1,0 +1,28 @@
+{
+  "test_id": "STRESS-004-COLD-REPEAT03",
+  "build": "B004R2",
+  "firmware_reported": "2.7",
+  "file_verification": {
+    "pass": true,
+    "pairs": 10000,
+    "expected_size": 262144,
+    "actual_size": 262144,
+    "failed_regions": [],
+    "first_mismatch": null,
+    "expected_sha256": "0ef80e007254ccc6d63874e2aac6e0082e360de00843b82b36836807ff433e56",
+    "actual_sha256": "0ef80e007254ccc6d63874e2aac6e0082e360de00843b82b36836807ff433e56"
+  },
+  "changed_or_missing_since_previous_cold": [],
+  "only_added_file": "new result screenshot",
+  "screenshot": {
+    "name": "20261005_141827.png",
+    "sha256": "39ec72741fac62d928797b06a6f38245b6cd6ae98ccb311d1d2088edf33590e7",
+    "observed": "B004R2 STRESS PASS; OPERATION 0x2700; PASSED/FINISHED 0x20; ERROR 0; CYCLES 0x00019FB3",
+    "cycles_match": "LCD exactly one greater than last retained completed read timing"
+  },
+  "jtag_records": "b004r2-physical-jtag-cold-repeat03.json",
+  "verdict": "Fourth fresh-launch read-only session and complete-file/guard/protected-content verification after remount PASS",
+  "physical_actions": "Normal Quit/shutdown/remount requested; owner reported mounted. Exact power sequence not separately confirmed.",
+  "confirmed_power_cycle": false,
+  "scope": "One 10000-pair warm session plus four separate 32-region fresh-launch read sessions and subsequent complete-file checks pass. Repeated confirmed power cycles and interruption recovery remain pending."
+}

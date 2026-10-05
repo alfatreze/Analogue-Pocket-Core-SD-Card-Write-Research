@@ -191,3 +191,9 @@ New screenshots `20261005_002904.png` and `20261005_002910.png` show CARD WRITIN
 - Designated card identity revalidated; whole 262,144-byte file/guards match the expected 0ef80e007254ccc6d63874e2aac6e0082e360de00843b82b36836807ff433e56 SHA-256.
 - Independent comparison against STRESS-004-COLD: every prior file unchanged, none missing; only new result screenshot 20261005_134021.png. Native screenshot inspected, copied and hash-verified: B004R2 STRESS PASS, OPERATION 0x2700, PASSED/FINISHED 0x20, ERROR 0, CYCLES 0x00019FDD (last retained read timing + 1).
 - Separate public summary work/evidence/b004r2-physical-file-cold-repeat01.json; full private snapshot/output/screenshot retained immutably. Two separate fresh-launch read-only sessions now pass with subsequent whole-file/protected-content verification. Owner reported mounted without separately confirming full power-off; do not count these as confirmed power-cycle qualification.
+
+## B004R2 third fresh-launch read-only session — PASS
+
+- Cold repeat02: owner reported loaded after requested full power-off/insertion/fresh launch. Live READY/zero counters independently verified before one cold start. Exact power-off action remains unconfirmed; no FPGA programming or writes.
+- All 32 final-generation regions pass, 32 reads/zero failures. Every indexed record, clean flag, byte range and timing extrema verified. Read cycles 57,509–513,000 (0.775–6.909 ms at 74.25 MHz).
+- Separate complete public history work/evidence/b004r2-physical-jtag-cold-repeat02.json; original raw/decoded captures preserved privately. Post-read screenshot/remount and whole-file/protected-content comparison against STRESS-004-COLD-REPEAT01 remain pending. Three fresh-launch read sessions pass; broader power-cycle/interruption qualification remains pending.

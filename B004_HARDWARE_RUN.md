@@ -44,3 +44,7 @@ Source width 32, probe width 511, no FPGA programming. The 16-word logical packe
 Fresh launch alone does not prove a particular power-off sequence: record owner actions separately. Runtime firmware 2.7 is known from prior runtime metadata; verify About if changing firmware.
 
 The LCD CYCLES field is the held inclusive FSM counter. Completed JTAG command timings are captured at DONE before the final counter increment; the LCD final value is one clock greater than the final retained read timing. Compare extrema against retained records, as the regression does.
+
+## Repeat02 current result
+
+Third fresh-launch read-only session passes all 32 regions, zero writes/failures; full history is `work/evidence/b004r2-physical-jtag-cold-repeat02.json`. Post-read remount/whole-file comparison pending. Exact full power-off actions have not been separately confirmed.

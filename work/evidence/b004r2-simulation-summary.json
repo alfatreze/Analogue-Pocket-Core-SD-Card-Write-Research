@@ -1,0 +1,29 @@
+{
+  "build": "B004R2",
+  "source_manifest_sha256": "20b40c60f9a11e3df62c73b4c70d41e9d735bb03d9f2a3b22c598cb51bbd2fce",
+  "configuration_sha256": "a6304609af4208a5b7c0f298d4ed0ddff354bc204be7b3dcddf4bc082c7e1571",
+  "pass": true,
+  "scope": "RTL simulation and host tooling only; physical hardware pending",
+  "full_rtl_pairs": 10000,
+  "full_rtl_commands": 20000,
+  "all_record_timings_and_extrema": "PASS",
+  "cold_reads": 32,
+  "actual_pinned_APF_SPI_pairs": 64,
+  "actual_core_bridge_cmd_pairs": 64,
+  "fault_modes": [
+    "corruption retained after later successful overwrite",
+    "missing requested word",
+    "read command error",
+    "write command error",
+    "timeout latched against late completion/reset/buttons",
+    "unwritten file cold read rejects all cases"
+  ],
+  "jtag_toggle_and_invalid_index": "PASS",
+  "oracle_tests": 6,
+  "fake_card_updater_tests": 8,
+  "mocked_tcl_tests": 5,
+  "screen_capture": "work/sim/stress04r2/video/review-all.png",
+  "expected_final_sha256": "0ef80e007254ccc6d63874e2aac6e0082e360de00843b82b36836807ff433e56",
+  "r1_timing_failure_reproduced_against_frozen_sources": true,
+  "failed_session_record_scope": "One bad operation remains failed while later operation on same region decodes cleanly; global session stays failed."
+}

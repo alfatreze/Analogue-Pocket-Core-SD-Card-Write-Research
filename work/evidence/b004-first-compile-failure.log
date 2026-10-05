@@ -1,0 +1,191 @@
+Info: *******************************************************************
+Info: Running Quartus Prime Shell
+    Info: Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
+    Info: Copyright (C) 2025  Altera Corporation. All rights reserved.
+    Info: Your use of Altera Corporation's design tools, logic functions 
+    Info: and other software and tools, and any partner logic 
+    Info: functions, and any output files from any of the foregoing 
+    Info: (including device programming or simulation files), and any 
+    Info: associated documentation or information are expressly subject 
+    Info: to the terms and conditions of the Altera Program License 
+    Info: Subscription Agreement, the Altera Quartus Prime License Agreement,
+    Info: the Altera IP License Agreement, or other applicable license
+    Info: agreement, including, without limitation, that your use is for
+    Info: the sole purpose of programming logic devices manufactured by
+    Info: Altera and sold by Altera or its authorized distributors.  Please
+    Info: refer to the Altera Software License Subscription Agreements 
+    Info: on the Quartus Prime software download page.
+    Info: Processing started: Mon Oct  5 11:57:05 2026
+Info: Command: quartus_sh --flow compile ap_core.qpf
+Info: Quartus(args): compile ap_core.qpf
+Info: Project Name = /home/taualpha/card-writing-lab/stress04-s1/src/fpga/ap_core
+Info: Revision Name = ap_core
+Info (125068): Revision "ap_core" was previously opened in Quartus Prime software version 18.1.1 Lite Edition. Created Quartus Prime Default Settings File /home/taualpha/card-writing-lab/stress04-s1/src/fpga/ap_core_assignment_defaults.qdf, which contains the default assignment setting information from Quartus Prime software version 18.1.1 Lite Edition.
+Info (125069): Default assignment values were changed in the current version of the Quartus Prime software -- changes to default assignments values are contained in file /home/taualpha/intelFPGA_lite/25.1std/quartus/linux64/assignment_defaults.qdf
+Info: *******************************************************************
+Info: Running Quartus Prime Shell
+    Info: Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
+    Info: Processing started: Mon Oct  5 11:57:11 2026
+Info: Command: quartus_sh -t apf/build_id_gen.tcl compile ap_core ap_core
+Info: Quartus(args): compile ap_core ap_core
+Info: APF core build date/time generated: /home/taualpha/card-writing-lab/stress04-s1/src/fpga/apf/build_id.mif
+Info (23030): Evaluation of Tcl script apf/build_id_gen.tcl was successful
+Info: Quartus Prime Shell was successful. 0 errors, 0 warnings
+    Info: Peak virtual memory: 442 megabytes
+    Info: Processing ended: Mon Oct  5 11:57:12 2026
+    Info: Elapsed time: 00:00:01
+    Info: Total CPU time (on all processors): 00:00:01
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
+    Info: Processing started: Mon Oct  5 11:57:18 2026
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off ap_core -c ap_core
+Info (16303): High Performance Effort optimization mode selected -- timing performance will be prioritized at the potential cost of increased compilation time
+    Info (16304): Mode behavior is affected by advanced setting Fitter Effort (default for this mode is Standard Fit)
+Info (20032): Parallel compilation is enabled and will use up to 2 processors
+Info (12021): Found 1 design units, including 1 entities, in source file apf/apf_top.v
+    Info (12023): Found entity 1: apf_top File: /home/taualpha/card-writing-lab/stress04-s1/src/fpga/apf/apf_top.v Line: 44
+Info (12021): Found 4 design units, including 4 entities, in source file apf/common.v
+    Info (12023): Found entity 1: synch_2 File: /home/taualpha/card-writing-lab/stress04-s1/src/fpga/apf/common.v Line: 39
+    Info (12023): Found entity 2: synch_3 File: /home/taualpha/card-writing-lab/stress04-s1/src/fpga/apf/common.v Line: 62
+    Info (12023): Found entity 3: bram_block_dp File: /home/taualpha/card-writing-lab/stress04-s1/src/fpga/apf/common.v Line: 82
+    Info (12023): Found entity 4: bram_block_dp_nonstd File: /home/taualpha/card-writing-lab/stress04-s1/src/fpga/apf/common.v Line: 120
+Info (12021): Found 1 design units, including 1 entities, in source file apf/io_bridge_peripheral.v
+    Info (12023): Found entity 1: io_bridge_peripheral File: /home/taualpha/card-writing-lab/stress04-s1/src/fpga/apf/io_bridge_peripheral.v Line: 52
+Info (12021): Found 1 design units, including 1 entities, in source file apf/io_pad_controller.v
+    Info (12023): Found entity 1: io_pad_controller File: /home/taualpha/card-writing-lab/stress04-s1/src/fpga/apf/io_pad_controller.v Line: 41
+Info (12021): Found 1 design units, including 1 entities, in source file apf/mf_ddio_bidir_12.v
+    Info (12023): Found entity 1: mf_ddio_bidir_12 File: /home/taualpha/card-writing-lab/stress04-s1/src/fpga/apf/mf_ddio_bidir_12.v Line: 40
+Info (12021): Found 1 design units, including 1 entities, in source file apf/mf_datatable.v
+    Info (12023): Found entity 1: mf_datatable File: /home/taualpha/card-writing-lab/stress04-s1/src/fpga/apf/mf_datatable.v Line: 40
+Info (12021): Found 1 design units, including 1 entities, in source file core/core_top.v
+    Info (12023): Found entity 1: core_top File: /home/taualpha/card-writing-lab/stress04-s1/src/fpga/core/core_top.v Line: 9
+Info (12021): Found 1 design units, including 1 entities, in source file core/core_bridge_cmd.v
+    Info (12023): Found entity 1: core_bridge_cmd File: /home/taualpha/card-writing-lab/stress04-s1/src/fpga/core/core_bridge_cmd.v Line: 18
+Info (12021): Found 1 design units, including 1 entities, in source file core/mf_pllbase.v
+    Info (12023): Found entity 1: mf_pllbase File: /home/taualpha/card-writing-lab/stress04-s1/src/fpga/core/mf_pllbase.v Line: 8
+Info (12021): Found 1 design units, including 1 entities, in source file core/mf_pllbase/mf_pllbase_0002.v
+    Info (12023): Found entity 1: mf_pllbase_0002 File: /home/taualpha/card-writing-lab/stress04-s1/src/fpga/core/mf_pllbase/mf_pllbase_0002.v Line: 2
+Info (12021): Found 1 design units, including 1 entities, in source file core/lab_probe.sv
+    Info (12023): Found entity 1: lab_probe File: /home/taualpha/card-writing-lab/stress04-s1/src/fpga/core/lab_probe.sv Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file core/lab_video.sv
+    Info (12023): Found entity 1: lab_video File: /home/taualpha/card-writing-lab/stress04-s1/src/fpga/core/lab_video.sv Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file core/lab_stress.sv
+    Info (12023): Found entity 1: lab_stress File: /home/taualpha/card-writing-lab/stress04-s1/src/fpga/core/lab_stress.sv Line: 4
+Info (12127): Elaborating entity "apf_top" for the top level hierarchy
+Info (12128): Elaborating entity "mf_ddio_bidir_12" for hierarchy "mf_ddio_bidir_12:isco" File: /home/taualpha/card-writing-lab/stress04-s1/src/fpga/apf/apf_top.v Line: 253
+Info (12128): Elaborating entity "altddio_bidir" for hierarchy "mf_ddio_bidir_12:isco|altddio_bidir:ALTDDIO_BIDIR_component" File: /home/taualpha/card-writing-lab/stress04-s1/src/fpga/apf/mf_ddio_bidir_12.v Line: 81
+Info (12130): Elaborated megafunction instantiation "mf_ddio_bidir_12:isco|altddio_bidir:ALTDDIO_BIDIR_component" File: /home/taualpha/card-writing-lab/stress04-s1/src/fpga/apf/mf_ddio_bidir_12.v Line: 81
+Info (12133): Instantiated megafunction "mf_ddio_bidir_12:isco|altddio_bidir:ALTDDIO_BIDIR_component" with the following parameter: File: /home/taualpha/card-writing-lab/stress04-s1/src/fpga/apf/mf_ddio_bidir_12.v Line: 81
+    Info (12134): Parameter "extend_oe_disable" = "OFF"
+    Info (12134): Parameter "implement_input_in_lcell" = "OFF"
+    Info (12134): Parameter "intended_device_family" = "Cyclone V"
+    Info (12134): Parameter "invert_output" = "OFF"
+    Info (12134): Parameter "lpm_hint" = "UNUSED"
+    Info (12134): Parameter "lpm_type" = "altddio_bidir"
+    Info (12134): Parameter "oe_reg" = "UNREGISTERED"
+    Info (12134): Parameter "power_up_high" = "OFF"
+    Info (12134): Parameter "width" = "12"
+Info (12021): Found 1 design units, including 1 entities, in source file db/ddio_bidir_euo.tdf
+    Info (12023): Found entity 1: ddio_bidir_euo File: /home/taualpha/card-writing-lab/stress04-s1/src/fpga/db/ddio_bidir_euo.tdf Line: 33
+Info (12128): Elaborating entity "ddio_bidir_euo" for hierarchy "mf_ddio_bidir_12:isco|altddio_bidir:ALTDDIO_BIDIR_component|ddio_bidir_euo:auto_generated" File: /home/taualpha/intelFPGA_lite/25.1std/quartus/libraries/megafunctions/altddio_bidir.tdf Line: 116
+Info (12128): Elaborating entity "io_pad_controller" for hierarchy "io_pad_controller:ipm" File: /home/taualpha/card-writing-lab/stress04-s1/src/fpga/apf/apf_top.v Line: 314
+Info (12128): Elaborating entity "synch_3" for hierarchy "io_pad_controller:ipm|synch_3:s00" File: /home/taualpha/card-writing-lab/stress04-s1/src/fpga/apf/io_pad_controller.v Line: 65
+Info (12128): Elaborating entity "io_bridge_peripheral" for hierarchy "io_bridge_peripheral:ibs" File: /home/taualpha/card-writing-lab/stress04-s1/src/fpga/apf/apf_top.v Line: 343
+Info (12128): Elaborating entity "core_top" for hierarchy "core_top:ic" File: /home/taualpha/card-writing-lab/stress04-s1/src/fpga/apf/apf_top.v Line: 472
+Info (12128): Elaborating entity "mf_pllbase" for hierarchy "core_top:ic|mf_pllbase:mp1" File: /home/taualpha/card-writing-lab/stress04-s1/src/fpga/core/core_top.v Line: 315
+Info (12128): Elaborating entity "mf_pllbase_0002" for hierarchy "core_top:ic|mf_pllbase:mp1|mf_pllbase_0002:mf_pllbase_inst" File: /home/taualpha/card-writing-lab/stress04-s1/src/fpga/core/mf_pllbase.v Line: 28
+Info (12128): Elaborating entity "altera_pll" for hierarchy "core_top:ic|mf_pllbase:mp1|mf_pllbase_0002:mf_pllbase_inst|altera_pll:altera_pll_i" File: /home/taualpha/card-writing-lab/stress04-s1/src/fpga/core/mf_pllbase/mf_pllbase_0002.v Line: 97
+Info (10008): Verilog HDL or VHDL information: EDA Netlist Writer cannot regroup multidimensional array "wire_to_nowhere_64" into its bus
+Info (12130): Elaborated megafunction instantiation "core_top:ic|mf_pllbase:mp1|mf_pllbase_0002:mf_pllbase_inst|altera_pll:altera_pll_i" File: /home/taualpha/card-writing-lab/stress04-s1/src/fpga/core/mf_pllbase/mf_pllbase_0002.v Line: 97
+Info (12133): Instantiated megafunction "core_top:ic|mf_pllbase:mp1|mf_pllbase_0002:mf_pllbase_inst|altera_pll:altera_pll_i" with the following parameter: File: /home/taualpha/card-writing-lab/stress04-s1/src/fpga/core/mf_pllbase/mf_pllbase_0002.v Line: 97
+    Info (12134): Parameter "fractional_vco_multiplier" = "true"
+    Info (12134): Parameter "reference_clock_frequency" = "74.25 MHz"
+    Info (12134): Parameter "operation_mode" = "normal"
+    Info (12134): Parameter "number_of_clocks" = "5"
+    Info (12134): Parameter "output_clock_frequency0" = "12.287999 MHz"
+    Info (12134): Parameter "phase_shift0" = "0 ps"
+    Info (12134): Parameter "duty_cycle0" = "50"
+    Info (12134): Parameter "output_clock_frequency1" = "12.287999 MHz"
+    Info (12134): Parameter "phase_shift1" = "20345 ps"
+    Info (12134): Parameter "duty_cycle1" = "50"
+    Info (12134): Parameter "output_clock_frequency2" = "133.119993 MHz"
+    Info (12134): Parameter "phase_shift2" = "0 ps"
+    Info (12134): Parameter "duty_cycle2" = "50"
+    Info (12134): Parameter "output_clock_frequency3" = "133.119992 MHz"
+    Info (12134): Parameter "phase_shift3" = "6573 ps"
+    Info (12134): Parameter "duty_cycle3" = "50"
+    Info (12134): Parameter "output_clock_frequency4" = "133.119990 MHz"
+    Info (12134): Parameter "phase_shift4" = "5634 ps"
+    Info (12134): Parameter "duty_cycle4" = "50"
+    Info (12134): Parameter "output_clock_frequency5" = "0 MHz"
+    Info (12134): Parameter "phase_shift5" = "0 ps"
+    Info (12134): Parameter "duty_cycle5" = "50"
+    Info (12134): Parameter "output_clock_frequency6" = "0 MHz"
+    Info (12134): Parameter "phase_shift6" = "0 ps"
+    Info (12134): Parameter "duty_cycle6" = "50"
+    Info (12134): Parameter "output_clock_frequency7" = "0 MHz"
+    Info (12134): Parameter "phase_shift7" = "0 ps"
+    Info (12134): Parameter "duty_cycle7" = "50"
+    Info (12134): Parameter "output_clock_frequency8" = "0 MHz"
+    Info (12134): Parameter "phase_shift8" = "0 ps"
+    Info (12134): Parameter "duty_cycle8" = "50"
+    Info (12134): Parameter "output_clock_frequency9" = "0 MHz"
+    Info (12134): Parameter "phase_shift9" = "0 ps"
+    Info (12134): Parameter "duty_cycle9" = "50"
+    Info (12134): Parameter "output_clock_frequency10" = "0 MHz"
+    Info (12134): Parameter "phase_shift10" = "0 ps"
+    Info (12134): Parameter "duty_cycle10" = "50"
+    Info (12134): Parameter "output_clock_frequency11" = "0 MHz"
+    Info (12134): Parameter "phase_shift11" = "0 ps"
+    Info (12134): Parameter "duty_cycle11" = "50"
+    Info (12134): Parameter "output_clock_frequency12" = "0 MHz"
+    Info (12134): Parameter "phase_shift12" = "0 ps"
+    Info (12134): Parameter "duty_cycle12" = "50"
+    Info (12134): Parameter "output_clock_frequency13" = "0 MHz"
+    Info (12134): Parameter "phase_shift13" = "0 ps"
+    Info (12134): Parameter "duty_cycle13" = "50"
+    Info (12134): Parameter "output_clock_frequency14" = "0 MHz"
+    Info (12134): Parameter "phase_shift14" = "0 ps"
+    Info (12134): Parameter "duty_cycle14" = "50"
+    Info (12134): Parameter "output_clock_frequency15" = "0 MHz"
+    Info (12134): Parameter "phase_shift15" = "0 ps"
+    Info (12134): Parameter "duty_cycle15" = "50"
+    Info (12134): Parameter "output_clock_frequency16" = "0 MHz"
+    Info (12134): Parameter "phase_shift16" = "0 ps"
+    Info (12134): Parameter "duty_cycle16" = "50"
+    Info (12134): Parameter "output_clock_frequency17" = "0 MHz"
+    Info (12134): Parameter "phase_shift17" = "0 ps"
+    Info (12134): Parameter "duty_cycle17" = "50"
+    Info (12134): Parameter "pll_type" = "General"
+    Info (12134): Parameter "pll_subtype" = "General"
+Info (12128): Elaborating entity "altsource_probe" for hierarchy "core_top:ic|altsource_probe:stress_debug" File: /home/taualpha/card-writing-lab/stress04-s1/src/fpga/core/core_top.v Line: 337
+Info (12130): Elaborated megafunction instantiation "core_top:ic|altsource_probe:stress_debug" File: /home/taualpha/card-writing-lab/stress04-s1/src/fpga/core/core_top.v Line: 337
+Info (12133): Instantiated megafunction "core_top:ic|altsource_probe:stress_debug" with the following parameter: File: /home/taualpha/card-writing-lab/stress04-s1/src/fpga/core/core_top.v Line: 337
+    Info (12134): Parameter "sld_auto_instance_index" = "YES"
+    Info (12134): Parameter "sld_instance_index" = "0"
+    Info (12134): Parameter "instance_id" = "SDW4"
+    Info (12134): Parameter "probe_width" = "512"
+    Info (12134): Parameter "source_width" = "32"
+    Info (12134): Parameter "source_initial_value" = "0"
+    Info (12134): Parameter "enable_metastability" = "NO"
+Info (12128): Elaborating entity "sld_jtag_endpoint_adapter" for hierarchy "core_top:ic|altsource_probe:stress_debug|sld_jtag_endpoint_adapter:jtag_signal_adapter" File: /home/taualpha/intelFPGA_lite/25.1std/quartus/libraries/megafunctions/altsource_probe.v Line: 169
+Info (12128): Elaborating entity "sld_jtag_endpoint_adapter_impl" for hierarchy "core_top:ic|altsource_probe:stress_debug|sld_jtag_endpoint_adapter:jtag_signal_adapter|sld_jtag_endpoint_adapter_impl:sld_jtag_endpoint_adapter_impl_inst" File: /home/taualpha/intelFPGA_lite/25.1std/quartus/libraries/megafunctions/sld_jtag_endpoint_adapter.vhd Line: 232
+Info (12128): Elaborating entity "altsource_probe_body" for hierarchy "core_top:ic|altsource_probe:stress_debug|altsource_probe_body:altsource_probe_body_inst" File: /home/taualpha/intelFPGA_lite/25.1std/quartus/libraries/megafunctions/altsource_probe.v Line: 205
+Error (10652): VHDL Assertion Statement at altsource_probe_body.vhd(448): assertion is false - report "PROBE_WIDTH must be less than and equal to 511 and greater than equal to 0" (FAILURE or ERROR) File: /home/taualpha/intelFPGA_lite/25.1std/quartus/libraries/megafunctions/altsource_probe_body.vhd Line: 448
+Error (12152): Can't elaborate user hierarchy "core_top:ic|altsource_probe:stress_debug|altsource_probe_body:altsource_probe_body_inst" File: /home/taualpha/intelFPGA_lite/25.1std/quartus/libraries/megafunctions/altsource_probe.v Line: 205
+Error: Quartus Prime Analysis & Synthesis was unsuccessful. 2 errors, 0 warnings
+    Error: Peak virtual memory: 495 megabytes
+    Error: Processing ended: Mon Oct  5 11:59:47 2026
+    Error: Elapsed time: 00:02:29
+    Error: Total CPU time (on all processors): 00:02:29
+Error (293001): Quartus Prime Full Compilation was unsuccessful. 4 errors, 0 warnings
+Error: Flow compile (for project /home/taualpha/card-writing-lab/stress04-s1/src/fpga/ap_core) was not successful
+Error: ERROR: Error(s) found while running an executable. See report file(s) for error message(s). Message log indicates which executable was run last.
+
+Error (23031): Evaluation of Tcl script /home/taualpha/intelFPGA_lite/25.1std/quartus/common/tcl/internal/qsh_flow.tcl unsuccessful
+Error: Quartus Prime Shell was unsuccessful. 11 errors, 0 warnings
+    Error: Peak virtual memory: 459 megabytes
+    Error: Processing ended: Mon Oct  5 11:59:48 2026
+    Error: Elapsed time: 00:02:43
+    Error: Total CPU time (on all processors): 00:02:41

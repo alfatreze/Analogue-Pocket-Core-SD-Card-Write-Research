@@ -1,0 +1,8 @@
+{
+  "remote": "card-writing-lab/stress04r1-s1",
+  "archive_sha256": "6fbbb12868a3f40b80be66073bc1a7efcc809ce1616be34bfbfb7b83abfafeeb",
+  "source_manifest": "work/build/stress04r1-manifest.json",
+  "seed": 1,
+  "quartus": "/home/taualpha/intelFPGA_lite/25.1std/quartus/bin/quartus_sh",
+  "java_options": "-Xint (avoid JIT SIGILL under VM emulation)"
+}

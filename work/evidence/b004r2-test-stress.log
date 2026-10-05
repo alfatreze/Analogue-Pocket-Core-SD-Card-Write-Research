@@ -1,0 +1,101 @@
+mkdir -p work/sim/stress/full work/sim/stress/command work/sim/stress/faults work/sim/stress/spi
+iverilog -g2012 -I rtl -s tb_stress -o work/sim/stress/full/write.vvp sim/tb_stress.sv rtl/lab_stress.sv rtl/core_bridge_cmd.v sim/vendor_models.v vendor/core-template/src/fpga/apf/common.v
+rtl/core_bridge_cmd.v:567: warning: Port 1 (address_a) of module mf_datatable expects 8 bit(s), given 10.
+rtl/core_bridge_cmd.v:567:        : Pruning 2 high bits of the expression.
+rtl/core_bridge_cmd.v:567: warning: Port 2 (address_b) of module mf_datatable expects 8 bit(s), given 10.
+rtl/core_bridge_cmd.v:567:        : Pruning 2 high bits of the expression.
+cd work/sim/stress/full && vvp write.vvp
+PASS B004 cold=          0 inject=          0 commands=      20000
+sim/tb_stress.sv:153: $finish called at 275741326000 (1ps)
+iverilog -g2012 -I rtl -s tb_stress -Ptb_stress.COLD=1 -o work/sim/stress/full/cold.vvp sim/tb_stress.sv rtl/lab_stress.sv rtl/core_bridge_cmd.v sim/vendor_models.v vendor/core-template/src/fpga/apf/common.v
+rtl/core_bridge_cmd.v:567: warning: Port 1 (address_a) of module mf_datatable expects 8 bit(s), given 10.
+rtl/core_bridge_cmd.v:567:        : Pruning 2 high bits of the expression.
+rtl/core_bridge_cmd.v:567: warning: Port 2 (address_b) of module mf_datatable expects 8 bit(s), given 10.
+rtl/core_bridge_cmd.v:567:        : Pruning 2 high bits of the expression.
+cd work/sim/stress/full && vvp cold.vvp
+PASS B004 cold=          1 inject=          0 commands=         32
+sim/tb_stress.sv:153: $finish called at 618556000 (1ps)
+iverilog -g2012 -I rtl -s tb_stress -Ptb_stress.TOTAL_PAIRS=64 -Ptb_stress.COMMAND=1 -o work/sim/stress/command/command.vvp sim/tb_stress.sv rtl/lab_stress.sv rtl/core_bridge_cmd.v sim/vendor_models.v vendor/core-template/src/fpga/apf/common.v
+rtl/core_bridge_cmd.v:567: warning: Port 1 (address_a) of module mf_datatable expects 8 bit(s), given 10.
+rtl/core_bridge_cmd.v:567:        : Pruning 2 high bits of the expression.
+rtl/core_bridge_cmd.v:567: warning: Port 2 (address_b) of module mf_datatable expects 8 bit(s), given 10.
+rtl/core_bridge_cmd.v:567:        : Pruning 2 high bits of the expression.
+cd work/sim/stress/command && vvp command.vvp
+PASS B004 cold=          0 inject=          0 commands=        128
+sim/tb_stress.sv:153: $finish called at 1804766000 (1ps)
+for mode in 1 2 3 4 6; do iverilog -g2012 -I rtl -s tb_stress -Ptb_stress.TOTAL_PAIRS=64 -Ptb_stress.INJECT=$mode -o work/sim/stress/faults/fault.vvp sim/tb_stress.sv rtl/lab_stress.sv rtl/core_bridge_cmd.v sim/vendor_models.v vendor/core-template/src/fpga/apf/common.v && (cd work/sim/stress/faults && vvp fault.vvp) || exit 1; done
+rtl/core_bridge_cmd.v:567: warning: Port 1 (address_a) of module mf_datatable expects 8 bit(s), given 10.
+rtl/core_bridge_cmd.v:567:        : Pruning 2 high bits of the expression.
+rtl/core_bridge_cmd.v:567: warning: Port 2 (address_b) of module mf_datatable expects 8 bit(s), given 10.
+rtl/core_bridge_cmd.v:567:        : Pruning 2 high bits of the expression.
+PASS B004 cold=          0 inject=          1 commands=        128
+sim/tb_stress.sv:153: $finish called at 1757286000 (1ps)
+rtl/core_bridge_cmd.v:567: warning: Port 1 (address_a) of module mf_datatable expects 8 bit(s), given 10.
+rtl/core_bridge_cmd.v:567:        : Pruning 2 high bits of the expression.
+rtl/core_bridge_cmd.v:567: warning: Port 2 (address_b) of module mf_datatable expects 8 bit(s), given 10.
+rtl/core_bridge_cmd.v:567:        : Pruning 2 high bits of the expression.
+PASS B004 cold=          0 inject=          2 commands=        128
+sim/tb_stress.sv:153: $finish called at 1757246000 (1ps)
+rtl/core_bridge_cmd.v:567: warning: Port 1 (address_a) of module mf_datatable expects 8 bit(s), given 10.
+rtl/core_bridge_cmd.v:567:        : Pruning 2 high bits of the expression.
+rtl/core_bridge_cmd.v:567: warning: Port 2 (address_b) of module mf_datatable expects 8 bit(s), given 10.
+rtl/core_bridge_cmd.v:567:        : Pruning 2 high bits of the expression.
+PASS B004 cold=          0 inject=          3 commands=        128
+sim/tb_stress.sv:153: $finish called at 1754726000 (1ps)
+rtl/core_bridge_cmd.v:567: warning: Port 1 (address_a) of module mf_datatable expects 8 bit(s), given 10.
+rtl/core_bridge_cmd.v:567:        : Pruning 2 high bits of the expression.
+rtl/core_bridge_cmd.v:567: warning: Port 2 (address_b) of module mf_datatable expects 8 bit(s), given 10.
+rtl/core_bridge_cmd.v:567:        : Pruning 2 high bits of the expression.
+PASS B004 cold=          0 inject=          4 commands=         15
+sim/tb_stress.sv:153: $finish called at 216346000 (1ps)
+rtl/core_bridge_cmd.v:567: warning: Port 1 (address_a) of module mf_datatable expects 8 bit(s), given 10.
+rtl/core_bridge_cmd.v:567:        : Pruning 2 high bits of the expression.
+rtl/core_bridge_cmd.v:567: warning: Port 2 (address_b) of module mf_datatable expects 8 bit(s), given 10.
+rtl/core_bridge_cmd.v:567:        : Pruning 2 high bits of the expression.
+PASS B004 cold=          0 inject=          6 commands=        127
+sim/tb_stress.sv:153: $finish called at 1749556000 (1ps)
+iverilog -g2012 -I rtl -s tb_stress -Ptb_stress.TOTAL_PAIRS=64 -Ptb_stress.JTAG=1 -o work/sim/stress/command/jtag.vvp sim/tb_stress.sv rtl/lab_stress.sv rtl/core_bridge_cmd.v sim/vendor_models.v vendor/core-template/src/fpga/apf/common.v
+rtl/core_bridge_cmd.v:567: warning: Port 1 (address_a) of module mf_datatable expects 8 bit(s), given 10.
+rtl/core_bridge_cmd.v:567:        : Pruning 2 high bits of the expression.
+rtl/core_bridge_cmd.v:567: warning: Port 2 (address_b) of module mf_datatable expects 8 bit(s), given 10.
+rtl/core_bridge_cmd.v:567:        : Pruning 2 high bits of the expression.
+cd work/sim/stress/command && vvp jtag.vvp
+PASS B004 cold=          0 inject=          0 commands=        128
+sim/tb_stress.sv:153: $finish called at 1767556000 (1ps)
+iverilog -g2012 -I rtl -s tb_stress -Ptb_stress.TOTAL_PAIRS=64 -Ptb_stress.COLD=1 -Ptb_stress.INJECT=5 -o work/sim/stress/faults/empty.vvp sim/tb_stress.sv rtl/lab_stress.sv rtl/core_bridge_cmd.v sim/vendor_models.v vendor/core-template/src/fpga/apf/common.v
+rtl/core_bridge_cmd.v:567: warning: Port 1 (address_a) of module mf_datatable expects 8 bit(s), given 10.
+rtl/core_bridge_cmd.v:567:        : Pruning 2 high bits of the expression.
+rtl/core_bridge_cmd.v:567: warning: Port 2 (address_b) of module mf_datatable expects 8 bit(s), given 10.
+rtl/core_bridge_cmd.v:567:        : Pruning 2 high bits of the expression.
+cd work/sim/stress/faults && vvp empty.vvp
+PASS B004 cold=          1 inject=          5 commands=         32
+sim/tb_stress.sv:153: $finish called at 514076000 (1ps)
+python3 sim/adapt_spi.py
+iverilog -g2012 -I rtl -s tb_stress_spi -o work/sim/stress/spi/spi.vvp sim/tb_stress_spi.sv rtl/lab_stress.sv vendor/core-template/src/fpga/apf/common.v work/sim/io_bridge_peripheral_icarus.v
+cd work/sim/stress/spi && vvp spi.vvp
+PASS B004 actual APF SPI:          64 pairs,         128 commands, all payload words
+sim/tb_stress_spi.sv:102: $finish called at 72072096000 (1ps)
+python3 sim/test_stress.py
+......
+----------------------------------------------------------------------
+Ran 6 tests in 0.204s
+
+OK
+python3 sim/test_update_stress.py
+........
+----------------------------------------------------------------------
+Ran 8 tests in 0.278s
+
+OK
+B004R2 installed in the same core entry; all hashes verified, prior results preserved.
+python3 sim/test_jtag_stress.py
+....
+----------------------------------------------------------------------
+Ran 4 tests in 0.422s
+
+OK
+iverilog -g2012 -I rtl -DLAB_STRESS -DLAB_STRESS_REV=2 -s core_top -o work/sim/stress/top.vvp rtl/core_top.v rtl/lab_stress.sv rtl/lab_probe.sv rtl/lab_video.sv rtl/core_bridge_cmd.v vendor/core-template/src/fpga/apf/common.v sim/vendor_models.v
+rtl/core_bridge_cmd.v:567: warning: Port 1 (address_a) of module mf_datatable expects 8 bit(s), given 10.
+rtl/core_bridge_cmd.v:567:        : Pruning 2 high bits of the expression.
+rtl/core_bridge_cmd.v:567: warning: Port 2 (address_b) of module mf_datatable expects 8 bit(s), given 10.
+rtl/core_bridge_cmd.v:567:        : Pruning 2 high bits of the expression.

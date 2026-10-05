@@ -40,3 +40,25 @@ test-batch:
 	cd work/sim/batch && $(VVP) empty-cold.vvp
 	$(PYTHON) sim/test_update.py
 	$(PYTHON) sim/test_jtag.py
+
+.PHONY: test-stress
+test-stress:
+	mkdir -p work/sim/stress/full work/sim/stress/command work/sim/stress/faults work/sim/stress/spi
+	$(IVERILOG) -g2012 -I rtl -s tb_stress -o work/sim/stress/full/write.vvp sim/tb_stress.sv rtl/lab_stress.sv rtl/core_bridge_cmd.v sim/vendor_models.v $(TEMPLATE)/apf/common.v
+	cd work/sim/stress/full && $(VVP) write.vvp
+	$(IVERILOG) -g2012 -I rtl -s tb_stress -Ptb_stress.COLD=1 -o work/sim/stress/full/cold.vvp sim/tb_stress.sv rtl/lab_stress.sv rtl/core_bridge_cmd.v sim/vendor_models.v $(TEMPLATE)/apf/common.v
+	cd work/sim/stress/full && $(VVP) cold.vvp
+	$(IVERILOG) -g2012 -I rtl -s tb_stress -Ptb_stress.TOTAL_PAIRS=64 -Ptb_stress.COMMAND=1 -o work/sim/stress/command/command.vvp sim/tb_stress.sv rtl/lab_stress.sv rtl/core_bridge_cmd.v sim/vendor_models.v $(TEMPLATE)/apf/common.v
+	cd work/sim/stress/command && $(VVP) command.vvp
+	for mode in 1 2 3 4 6; do $(IVERILOG) -g2012 -I rtl -s tb_stress -Ptb_stress.TOTAL_PAIRS=64 -Ptb_stress.INJECT=$$mode -o work/sim/stress/faults/fault.vvp sim/tb_stress.sv rtl/lab_stress.sv rtl/core_bridge_cmd.v sim/vendor_models.v $(TEMPLATE)/apf/common.v && (cd work/sim/stress/faults && $(VVP) fault.vvp) || exit 1; done
+	$(IVERILOG) -g2012 -I rtl -s tb_stress -Ptb_stress.TOTAL_PAIRS=64 -Ptb_stress.JTAG=1 -o work/sim/stress/command/jtag.vvp sim/tb_stress.sv rtl/lab_stress.sv rtl/core_bridge_cmd.v sim/vendor_models.v $(TEMPLATE)/apf/common.v
+	cd work/sim/stress/command && $(VVP) jtag.vvp
+	$(IVERILOG) -g2012 -I rtl -s tb_stress -Ptb_stress.TOTAL_PAIRS=64 -Ptb_stress.COLD=1 -Ptb_stress.INJECT=5 -o work/sim/stress/faults/empty.vvp sim/tb_stress.sv rtl/lab_stress.sv rtl/core_bridge_cmd.v sim/vendor_models.v $(TEMPLATE)/apf/common.v
+	cd work/sim/stress/faults && $(VVP) empty.vvp
+	$(PYTHON) sim/adapt_spi.py
+	$(IVERILOG) -g2012 -I rtl -s tb_stress_spi -o work/sim/stress/spi/spi.vvp sim/tb_stress_spi.sv rtl/lab_stress.sv $(TEMPLATE)/apf/common.v work/sim/io_bridge_peripheral_icarus.v
+	cd work/sim/stress/spi && $(VVP) spi.vvp
+	$(PYTHON) sim/test_stress.py
+	$(PYTHON) sim/test_update_stress.py
+	$(PYTHON) sim/test_jtag_stress.py
+	$(IVERILOG) -g2012 -I rtl -DLAB_STRESS -DLAB_STRESS_REV=2 -s core_top -o work/sim/stress/top.vvp rtl/core_top.v rtl/lab_stress.sv rtl/lab_probe.sv rtl/lab_video.sv rtl/core_bridge_cmd.v $(TEMPLATE)/apf/common.v sim/vendor_models.v

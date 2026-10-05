@@ -1,0 +1,15 @@
+{
+  "data": {
+    "magic": "APF_VER_1",
+    "data_slots": [
+      {
+        "name": "Stress B004",
+        "id": "0x24",
+        "required": false,
+        "parameters": 2,
+        "deferload": true,
+        "filename": "stress-b004.bin"
+      }
+    ]
+  }
+}

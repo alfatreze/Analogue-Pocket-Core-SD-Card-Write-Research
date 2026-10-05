@@ -57,8 +57,8 @@ def prepare_reference(pins):
 
 
 def prepare_custom(pins, build="minimal01"):
-    suffix = "02" if build.startswith("batch03") else build[-2:]
-    label = {"batch03":"B003", "batch03r1":"B003R1", "batch03r2":"B003R2"}.get(build,suffix)
+    suffix = "02" if build.startswith(("batch03","stress04")) else build[-2:]
+    label = {"batch03":"B003", "batch03r1":"B003R1", "batch03r2":"B003R2", "stress04":"B004", "stress04r1":"B004R1", "stress04r2":"B004R2"}.get(build,suffix)
     core_id = "alfatreze.CARDWRITE" + suffix
     source = ROOT / 'vendor/core-template'
     stage = ROOT / 'work/build' / build
@@ -79,13 +79,17 @@ def prepare_custom(pins, build="minimal01"):
                   'set_global_assignment -name SEARCH_PATH core',
                   'set_global_assignment -name NUM_PARALLEL_PROCESSORS 2',
                   'set_global_assignment -name SEED 1'])
-    if build in ('minimal02', 'batch03', 'batch03r1', 'batch03r2'):
+    if build in ('minimal02', 'batch03', 'batch03r1', 'batch03r2','stress04','stress04r1','stress04r2'):
         lines.append('set_global_assignment -name ALLOW_POWER_UP_DONT_CARE OFF')
     if build.startswith('batch03'):
         lines.extend(['set_global_assignment -name VERILOG_MACRO LAB_BATCH=1',
                       'set_global_assignment -name SYSTEMVERILOG_FILE core/lab_batch.sv'])
     if build in ('batch03r1','batch03r2'):
         lines.append('set_global_assignment -name VERILOG_MACRO LAB_BATCH_REV='+build[-1])
+    if build.startswith('stress04'):
+        lines.extend(['set_global_assignment -name VERILOG_MACRO LAB_STRESS=1',
+                      'set_global_assignment -name SYSTEMVERILOG_FILE core/lab_stress.sv'])
+    if build in ('stress04r1','stress04r2'):lines.append('set_global_assignment -name VERILOG_MACRO LAB_STRESS_REV='+build[-1])
     qsf.write_text('\n'.join(lines) + '\n')
     # Keep real related PLL outputs grouped together; no false cut between them.
     (core / 'core_constraints.sdc').write_text('''set_clock_groups -asynchronous \\
@@ -113,6 +117,10 @@ def prepare_custom(pins, build="minimal01"):
             value['input']['controllers'] = [dict(type='default', mappings=[
                 dict(id=0,name='Run 32 write tests' if build.startswith('batch03') else 'Write generation',key='pad_btn_a'),
                 dict(id=1,name='Cold read 32 tests' if build.startswith('batch03') else 'Read and compare',key='pad_btn_b')])]
+        if build.startswith('stress04'):
+            if name=='core':value['core']['metadata'].update(description='SD Write Research '+label+' - 10000 pairs',version='0.4.'+build[-1] if build in ('stress04r1','stress04r2') else '0.4.0',date_release='2026-10-05')
+            elif name=='data':value['data']['data_slots']=[dict(name='Stress B004',id='0x24',required=False,parameters=2,deferload=True,filename='stress-b004.bin')]
+            elif name=='input':value['input']['controllers']=[dict(type='default',mappings=[dict(id=0,name='Run 10000 pairs',key='pad_btn_a'),dict(id=1,name='Cold read 32 finals',key='pad_btn_b')])]
         json_write(dest / (name + '.json'), value)
     platform = json.loads((source / 'dist/platforms/ex_platform.json').read_text())
     platform['platform'].update(name='Card Writing Lab', category='Research', manufacturer='Tau', year=2026)
@@ -124,6 +132,11 @@ def prepare_custom(pins, build="minimal01"):
     output.parent.mkdir(parents=True, exist_ok=True)
     # Existing-file baseline. First write must visibly replace zero bytes.
     output.write_bytes(bytes([0xa5])*262144 if build.startswith('batch03') else bytes(64))
+    if build.startswith('stress04'):
+        (dest/'info.txt').write_text('SD Write Research '+label+' - 10000 pairs\nA runs one changing-data stress batch.\nB after fresh boot reads 32 final records.\nWait for STRESS PASS or FAIL, screenshot.\nCollect JTAG before Quit.\nQuit, shutdown, verify file on computer.\nRetained JTAG endpoint: SDW4.\nTimeout: reconfigure, never retry live.\n')
+        old=package/'Assets/cardwrite'/core_id/'write64.bin'
+        old.unlink()
+        (old.parent/'stress-b004.bin').write_bytes(bytes([165])*262144)
     manifest(package, {'kind': build+'; not installable until audited bitstream exists',
                        'template_commit': pins['core-template']['commit'], 'seed': 1})
     print(f'Staged {stage}; prepared {package}')
@@ -131,7 +144,7 @@ def prepare_custom(pins, build="minimal01"):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--build", choices=["minimal01","minimal02","batch03","batch03r1","batch03r2"], default="minimal01")
+    parser.add_argument("--build", choices=["minimal01","minimal02","batch03","batch03r1","batch03r2","stress04","stress04r1","stress04r2"], default="minimal01")
     args = parser.parse_args()
     pins = validate_vendor()
     if args.build == "minimal01": prepare_reference(pins)

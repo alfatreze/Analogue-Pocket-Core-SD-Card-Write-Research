@@ -1,0 +1,8 @@
+SD Write Research B004R2 - 10000 pairs
+A runs one changing-data stress batch.
+B after fresh boot reads 32 final records.
+Wait for STRESS PASS or FAIL, screenshot.
+Collect JTAG before Quit.
+Quit, shutdown, verify file on computer.
+Retained JTAG endpoint: SDW4.
+Timeout: reconfigure, never retry live.

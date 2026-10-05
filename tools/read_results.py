@@ -14,7 +14,7 @@ installer=importlib.util.module_from_spec(spec);spec.loader.exec_module(installe
 
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('package',choices=['official-control','minimal01','minimal02','batch03r1','batch03r2'])
+    parser.add_argument('package',choices=['official-control','minimal01','minimal02','batch03r1','batch03r2','stress04','stress04r1','stress04r2'])
     parser.add_argument('--test-id',required=True)
     parser.add_argument('--firmware',required=True)
     parser.add_argument('--generation',type=int,default=1)
@@ -27,11 +27,12 @@ def main():
     evidence.mkdir(parents=True)
     relative=('Assets/ex_platform/Example Author.Keyboard Mouse Target Data/saved.bin'
               if args.package=='official-control' else
+              'Assets/cardwrite/alfatreze.CARDWRITE02/stress-b004.bin' if args.package.startswith('stress04') else
               'Assets/cardwrite/alfatreze.CARDWRITE02/batch-b003.bin' if args.package.startswith('batch03') else
               'Assets/cardwrite/alfatreze.CARDWRITE'+args.package[-2:]+'/write64.bin')
     output=installer.CARD/relative
     installer.safe(output,installer.CARD)
-    baseline_dir='update-batch03' if args.package.startswith('batch03') else 'install-'+args.package
+    baseline_dir='update-stress04r2' if args.package.startswith('stress04') else 'update-batch03' if args.package.startswith('batch03') else 'install-'+args.package
     baseline=json.loads((ROOT/'work/evidence'/baseline_dir/'after.json').read_text())
     after=installer.snapshot()
     # New APF files may be legitimate; list all of them for review, not silently ignore them.
@@ -41,7 +42,9 @@ def main():
     if output.is_file():
         data=output.read_bytes();(evidence/'output.bin').write_bytes(data)
         command=[sys.executable,str(ROOT/'tools/lab.py')]
-        if args.package.startswith('batch03'):
+        if args.package.startswith('stress04'):
+            command=[sys.executable,str(ROOT/'tools/stress.py'),'verify',str(evidence/'output.bin')]
+        elif args.package.startswith('batch03'):
             command=[sys.executable,str(ROOT/'tools/batch.py'),'verify',str(evidence/'output.bin')]
         else:
             command+=['verify-control',str(evidence/'output.bin'),'--image','0'] if args.package=='official-control' else ['verify',str(evidence/'output.bin'),'--generation',str(args.generation)]

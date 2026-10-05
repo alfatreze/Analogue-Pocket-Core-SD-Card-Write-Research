@@ -1,0 +1,2 @@
+Captured 8 actual RTL video states at native 320x240
+sim/tb_video.sv:28: $finish called at 15335296000 (1ps)

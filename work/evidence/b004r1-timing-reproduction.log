@@ -1,0 +1,6 @@
+rtl/core_bridge_cmd.v:567: warning: Port 1 (address_a) of module mf_datatable expects 8 bit(s), given 10.
+rtl/core_bridge_cmd.v:567:        : Pruning 2 high bits of the expression.
+rtl/core_bridge_cmd.v:567: warning: Port 2 (address_b) of module mf_datatable expects 8 bit(s), given 10.
+rtl/core_bridge_cmd.v:567:        : Pruning 2 high bits of the expression.
+FATAL: sim/tb_stress.sv:145: timing extrema mismatch
+       Time: 1766266000  Scope: tb_stress

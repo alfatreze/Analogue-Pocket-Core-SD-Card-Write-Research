@@ -78,3 +78,7 @@ The installed Java JIT crashed during first JTAG-fabric generation under VM emul
 ### Physical console invocation correction
 
 The installed System Console can return banner/exit 0 without running --script when SSH stdin closes at launch. The wrapper now keeps stdin open, sends an absolute source command, captures stdout/stderr, waits for explicit completion, and then closes input. Its Tcl environment has no exit command. An actual revision-checked summary and request acknowledgement are required; a zero process exit alone is never success. The physical first warm batch is recorded in work/evidence/b003r2-physical-jtag-write.json.
+
+## B004R2 retained stress endpoint (physical qualification pending)
+
+SDW4 uses source 32 / probe 511, header revision 2. The constant-zero leading signature bit is omitted physically; decoding restores the 16-word logical packet. `tools/jtag_stress.py status|start|cold|results` follows the proven held-stdin console route, refuses host-mounted-card starts, validates coherent revision/index acknowledgements, and collects every operation before Quit. Result collection has a 15-minute tool deadline because 10,000 held-index snapshots need several minutes. Success requires exact operation ordering, counts, flags, offsets/lengths and extrema reconstructed from retained cycle records. In a failed session, individual clean records remain marked successful; the overall session remains failed. Full packet layout and physical run sequence are in B004_HARDWARE_RUN.md. No FPGA programming is performed.

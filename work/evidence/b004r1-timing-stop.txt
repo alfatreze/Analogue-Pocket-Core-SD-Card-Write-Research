@@ -1,0 +1,2 @@
+identified 435846 435846 /home/taualpha/card-writing-lab/stress04r1-s1/src/fpga quartus_sh --flow compile ap_core.qpf 
+Stopped only the unqualified stress04r1 stage

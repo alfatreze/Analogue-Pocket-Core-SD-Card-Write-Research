@@ -1,0 +1,31 @@
+mkdir -p work/sim
+iverilog -g2012 -I rtl -s tb_probe -o work/sim/probe.vvp sim/tb_probe.sv sim/vendor_models.v rtl/lab_probe.sv rtl/core_bridge_cmd.v vendor/core-template/src/fpga/apf/common.v
+rtl/core_bridge_cmd.v:567: warning: Port 1 (address_a) of module mf_datatable expects 8 bit(s), given 10.
+rtl/core_bridge_cmd.v:567:        : Pruning 2 high bits of the expression.
+rtl/core_bridge_cmd.v:567: warning: Port 2 (address_b) of module mf_datatable expects 8 bit(s), given 10.
+rtl/core_bridge_cmd.v:567:        : Pruning 2 high bits of the expression.
+cd work/sim && vvp probe.vvp
+PASS real-template integration: payloads, stale DONE, read corruption, missing bytes, errors, timeout ownership
+sim/tb_probe.sv:122: $finish called at 27636000 (1ps)
+python3 sim/adapt_spi.py
+iverilog -g2012 -I rtl -s tb_spi -o work/sim/spi.vvp sim/tb_spi.sv rtl/lab_probe.sv vendor/core-template/src/fpga/apf/common.v work/sim/io_bridge_peripheral_icarus.v
+cd work/sim && vvp spi.vvp
+PASS actual APF SPI: clocked startup and all 16 response words including first/last, RX mask and full readback
+sim/tb_spi.sv:84: $finish called at 81566000 (1ps)
+python3 sim/test_lab.py
+test_fixture_cannot_write_outside_project_work (__main__.OracleTests.test_fixture_cannot_write_outside_project_work) ... ok
+test_format_distinguishes_corruption_truncation_and_endianness (__main__.OracleTests.test_format_distinguishes_corruption_truncation_and_endianness) ... ok
+test_hardware_dump_against_independent_byte_oracle (__main__.OracleTests.test_hardware_dump_against_independent_byte_oracle) ... ok
+test_manifest_records_protected_bytes_and_rejects_symlink (__main__.OracleTests.test_manifest_records_protected_bytes_and_rejects_symlink) ... ok
+test_official_control_oracle_accepts_first_image_and_rejects_changed_file (__main__.OracleTests.test_official_control_oracle_accepts_first_image_and_rejects_changed_file) ... ok
+test_real_serial_dump_against_independent_byte_oracle (__main__.OracleTests.test_real_serial_dump_against_independent_byte_oracle) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.384s
+
+OK
+iverilog -g2012 -I rtl -s core_top -o work/sim/top.vvp rtl/core_top.v rtl/lab_probe.sv rtl/lab_video.sv rtl/core_bridge_cmd.v vendor/core-template/src/fpga/apf/common.v sim/vendor_models.v
+rtl/core_bridge_cmd.v:567: warning: Port 1 (address_a) of module mf_datatable expects 8 bit(s), given 10.
+rtl/core_bridge_cmd.v:567:        : Pruning 2 high bits of the expression.
+rtl/core_bridge_cmd.v:567: warning: Port 2 (address_b) of module mf_datatable expects 8 bit(s), given 10.
+rtl/core_bridge_cmd.v:567:        : Pruning 2 high bits of the expression.

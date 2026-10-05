@@ -1,0 +1,2 @@
+PASS B004 actual APF SPI:          64 pairs,         128 commands, all payload words
+sim/tb_stress_spi.sv:102: $finish called at 72072096000 (1ps)

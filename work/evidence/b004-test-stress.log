@@ -1,0 +1,10 @@
+mkdir -p work/sim/stress/full work/sim/stress/command work/sim/stress/faults work/sim/stress/spi
+iverilog -g2012 -I rtl -s tb_stress -o work/sim/stress/full/write.vvp sim/tb_stress.sv rtl/lab_stress.sv rtl/core_bridge_cmd.v sim/vendor_models.v vendor/core-template/src/fpga/apf/common.v
+rtl/core_bridge_cmd.v:567: warning: Port 1 (address_a) of module mf_datatable expects 8 bit(s), given 10.
+rtl/core_bridge_cmd.v:567:        : Pruning 2 high bits of the expression.
+rtl/core_bridge_cmd.v:567: warning: Port 2 (address_b) of module mf_datatable expects 8 bit(s), given 10.
+rtl/core_bridge_cmd.v:567:        : Pruning 2 high bits of the expression.
+cd work/sim/stress/full && vvp write.vvp
+FATAL: sim/tb_stress.sv:145: timing extrema mismatch
+       Time: 275740066000  Scope: tb_stress
+make: *** [test-stress] Error 1

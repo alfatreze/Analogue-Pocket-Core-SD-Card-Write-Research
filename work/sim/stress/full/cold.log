@@ -1,0 +1,2 @@
+PASS B004 cold=          1 inject=          0 commands=         32
+sim/tb_stress.sv:145: $finish called at 618556000 (1ps)

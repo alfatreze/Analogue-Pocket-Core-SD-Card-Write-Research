@@ -1,0 +1,36 @@
+{
+  "core": {
+    "magic": "APF_VER_1",
+    "metadata": {
+      "platform_ids": [
+        "cardwrite"
+      ],
+      "shortname": "CARDWRITE02",
+      "description": "SD Write Research B004R1 - 10000 pairs",
+      "author": "alfatreze",
+      "url": "https://github.com/alfatreze",
+      "version": "0.4.1",
+      "date_release": "2026-10-05"
+    },
+    "framework": {
+      "target_product": "Analogue Pocket",
+      "version_required": "1.1",
+      "sleep_supported": false,
+      "dock": {
+        "supported": true,
+        "analog_output": false
+      },
+      "hardware": {
+        "link_port": false,
+        "cartridge_adapter": -1
+      }
+    },
+    "cores": [
+      {
+        "name": "default",
+        "id": 0,
+        "filename": "bitstream.rbf_r"
+      }
+    ]
+  }
+}

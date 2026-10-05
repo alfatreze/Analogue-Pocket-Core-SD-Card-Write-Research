@@ -110,3 +110,19 @@ B003R1 did generate the JTAG fabric, but its synthesis report showed TX and reta
 ## NCW-017 — validate console output, not its process exit alone
 
 Physical System Console returned only its banner with exit 0 when --script ran with closed SSH stdin. Holding stdin open and sourcing the absolute script produced the live SDW3 endpoint and READY signature. Tcl exit is not available in this console. The host now sources the isolated script interactively, captures both output streams, waits for explicit completion, closes stdin normally, and requires a real summary plus start/cold acknowledgement. Any missing/error output fails. No reconfiguration, SOF programming or global VM changes are needed. The first physical 32-case batch then passed all 38 write/read pairs; durable card bytes remain a separate gate.
+
+## NCW-018 — retain the full stress history in bounded RAM
+
+B004 rounds through the proven 32 case regions 10,000 times in total, using each case's maximum B003 length and a visit-dependent XOR over its base pattern. Each adjacent visit changes that region's data, including the single-byte case; small payloads cannot have unlimited unique values. Every operation retains a separate 96-bit flags/write/read record, rather than a rolling summary that might hide an earlier failure. The design needs about 960,000 bits for history plus existing payload buffers; require real RAM inference/resource/timing evidence before installation. SDW4 supplies a coherent 512-bit indexed snapshot plus counts, first failure and extrema. Terminal records cannot be overwritten by button reruns; timeouts never relinquish ownership. The final physical file verifies only the last 32 payloads, with all guards; earlier overwritten payloads have immediate results only.
+
+## NCW-019 — preserve the demonstrated B003 baseline during the next update
+
+The B004 updater requires exact installed B003R2 core hashes and unchanged write64.bin/batch-b003.bin against the collected BATCH-003-COLD snapshot. Include their hashes in the reviewed plan and revalidate them after backups. Archive qualified B003 sources/metadata/SOF/RBF/reports, verify every local backup, create the new scratch exclusively, and compare all unrelated protected files. Do not modify frozen sources or install a prebuilt template if B004 compilation fails. B004 stress and later cold cycles are new evidence; the prior completed baseline remains independently recoverable.
+
+## NCW-020 — respect the actual ISSP width limit without losing result bits
+
+Quartus's local altsource_probe implementation rejects widths above 511. Preserve the first failed B004 stage. B004R1 uses the lower 511 bits of the 512-bit logical packet: only the constant-zero high bit of magic 0x53445704 is omitted, so all counters/flags/timings survive and host unsigned conversion reconstructs the same 16 words. Require physical service width 511 and header revision 1; increment visible banner/version and use a new frozen compile stage. Do not reinterpret mock success as IP qualification.
+
+## NCW-021 — compare global timings against every retained record
+
+The full-history test must reconstruct extrema from all retained operations, in addition to flags/counters. This exposed the original inherited one-clock read-time convention: global extrema used elapsed at DONE, but logs used elapsed one cycle afterward. B004R2 stores read_cycles at the completion edge and uses that value in both summary/history. Error completions receive the same treatment; outstanding timeouts retain elapsed without releasing ownership. Preserve R1's frozen stage and scoped stop evidence; compile a distinctly versioned R2. This is timing-accounting correction, not an observed payload fault or physical fit failure.

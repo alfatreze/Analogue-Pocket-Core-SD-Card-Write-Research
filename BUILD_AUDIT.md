@@ -42,3 +42,18 @@ The local simulation copy moves datatable declarations ahead of first use for Ic
 - SOF SHA-256: `c09d8e97784e5126950c770f8c88069a249513fa56206369e42af0093dbaa234`; retained for optional JTAG loading. SignalTap/ISSP are absent in this build.
 - Complete reports: `work/fpga/minimal02-s1/`; machine-readable audit: `work/evidence/custom-build-audit-minimal02.json`.
 - Simulations pass, including the actual serial state machines with documented syntax adaptation. Physical bytes, startup generation and cold persistence remain pending on Pocket.
+
+## B003R2 — automatic batch and retained ISSP history
+
+Exclusive stage `work/build/batch03r2`, remote `card-writing-lab/batch03r2-s1`, seed 1. Full Quartus 25.1std.0 Build 1129 Lite compile completed 2026-10-05 01:47:51 VM time, elapsed 25:38, **0 errors / 169 warnings**. Device 5CEBA4F23C8. Prior B003 generator crash and B003R1 agent-stopped resource attempt are retained separately and are not qualified images.
+
+- ALMs 2,829 / 18,480 (15%); registers 2,859; block memory 83,181 / 3,153,920 bits (3%); RAM blocks 15 / 308; DSP blocks 9 / 66; PLLs 1 / 4.
+- Report confirms TX, RX and all three log arrays infer RAM. Power-up don't-care is Off.
+- Worst reported setup **+2.545 ns**; hold **+0.075 ns** (JTAG clock); all corners have TNS 0. Recovery/removal and pulse-width checks also pass.
+- No illegal/unconstrained clocks. Generated JTAG SDC constrains altera_reserved_tck at 30 MHz and groups it asynchronously.
+- **External margins remain unqualified:** 6 input and 23 output ports lack I/O delays, including inherited bridge/scaler ports plus JTAG TDI/TMS/TDO. This qualifies reported internal timing; it does not prove cable/board/APF physical margins, JTAG service operation or SD persistence.
+- Frozen source-manifest SHA-256 `9ed9f7965ffe60ce357826151cded5e132d5cbb8736ab37483c9d5a2261595d8`.
+- Raw RBF SHA-256 `dcb7ed7585a1676e34869270cf371528abf4620466e8f0aa765640c0cdf6ae35`; SD RBF_R (byte bit reversal exactly once) `4944d570b7f97caf3b2d72b4c5c7f63532c5f819e1d675f567d1cbb14c7a552e`.
+- SOF SHA-256 `7b9d1e98f5d1e65e075c3199b9b9bdfb619c3c1c169c09b331ff893141c71303`.
+
+Complete reports/SOF/RBF: `work/fpga/batch03r2-s1`; audit and report hashes: `work/evidence/custom-build-audit-batch03r2.json`. Matching package: `work/packages/batch03r2`, fixed core identity CARDWRITE02, visible B003R2/version 0.3.2, new batch-b003.bin slot 0x23. Physical batch and new ISSP endpoint remain pending.

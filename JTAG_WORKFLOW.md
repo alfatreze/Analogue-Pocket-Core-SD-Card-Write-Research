@@ -2,7 +2,7 @@
 
 ## Current status
 
-User identified the programmer as a Terasic Blaster, a supported manufacturer in the official guide. User confirmed physical connection and enabled VM USB passthrough. Read-only chain scan succeeds: USB-Blaster [5-3], ID 02B050DD, 5CE(BA4|FA4). No FPGA programming has occurred in this project. Initial scan before passthrough reported no hardware; both observations are retained locally.
+User identified the programmer as a Terasic Blaster, a supported manufacturer in the official guide. User confirmed physical connection and enabled VM USB passthrough. Read-only chain scan succeeds: USB-Blaster [5-3], ID 02B050DD, 5CE(BA4|FA4). No JTAG programming has occurred in this project. Initial scan before passthrough reported no hardware; both observations are retained locally.
 
 CARDWRITE02 has SignalTap disabled. Its SOF can support JTAG reload after compatibility and chain identity are confirmed, but it cannot provide internal SignalTap captures without a separate instrumented build. JTAG does not shorten FPGA synthesis/fitting; it can shorten installation and inspection cycles.
 

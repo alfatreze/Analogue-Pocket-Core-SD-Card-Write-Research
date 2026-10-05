@@ -18,13 +18,15 @@
   ],
   "debug_control_and_snapshot_simulation": "PASS; source-toggle start, latched snapshots, invalid ordinal rejection",
   "host_oracle_tests": 5,
-  "temporary_card_update_tests": 6,
-  "mocked_Tcl_tests": 3,
+  "temporary_card_update_tests": 7,
+  "mocked_Tcl_tests": 4,
   "native_RTL_renderer": "8 states inspected; deterministic fixtures, not physical evidence",
   "hashes": {
     "experiments/b003.json": "3da6c7c910ad1e6d72c9a6537cda28d682101e1f51173878456aef9c0603f72f",
     "work/build/batch03r2-manifest.json": "9ed9f7965ffe60ce357826151cded5e132d5cbb8736ab37483c9d5a2261595d8",
     "work/evidence/b003r2-simulation.log": "c176968a28f70c0ffd1a2cc35b395dfa7b99594c32a4921dc7faafd433cab42f",
-    "work/evidence/b003r2-baseline-regression.log": "8b93af85079ae7dc85c8ca90c491d131fc3d779df9d9f4995074867539836dfc"
+    "work/evidence/b003r2-baseline-regression.log": "8b93af85079ae7dc85c8ca90c491d131fc3d779df9d9f4995074867539836dfc",
+    "tools/update.py": "92f97db322a05c8569aefb5cb8365a89106cfd7f2b47ded794ef4b4f47c34c5c",
+    "tools/jtag_batch.tcl": "b2f18726edaf453207da3df2fad33a7f74bafebc1c812b3be09c54c78555cb33"
   }
 }

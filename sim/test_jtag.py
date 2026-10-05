@@ -34,11 +34,12 @@ proc issp_read_probe_data {args} {
 
 
 class JtagTests(unittest.TestCase):
-    def run_script(self,mode,status):
+    def run_script(self,mode,status,revision=2):
         config=batch.configuration()['cases']
         prefix='set offsets {'+' '.join(str(c['region_offset']+c['offset_in_region']) for c in config)+'}\n'
         prefix+='set lengths {'+' '.join(str(max(c['write_lengths'])) for c in config)+'}\n'
-        code=prefix+MOCK+f'\nset test_status {status}\nset mode {mode}\nsource {{{ROOT/"tools/jtag_batch.tcl"}}}\n'
+        mock=MOCK.replace('0x20008000',hex(0x20000000|(revision<<14)))
+        code=prefix+mock+f'\nset test_status {status}\nset mode {mode}\nsource {{{ROOT/"tools/jtag_batch.tcl"}}}\n'
         return subprocess.run(['tclsh'],input=code,text=True,capture_output=True)
 
     def test_result_count(self):
@@ -58,6 +59,12 @@ class JtagTests(unittest.TestCase):
         run=self.run_script('start',2)
         self.assertIn('Batch is not READY',run.stderr)
         self.assertNotIn('requested start',run.stdout)
+
+    def test_wrong_revision_rejected(self):
+        for revision in (0,1,3,4):
+            run=self.run_script('start',0,revision)
+            self.assertIn('revision mismatch',run.stderr)
+            self.assertNotIn('requested start',run.stdout)
 
 
 if __name__=='__main__':unittest.main()

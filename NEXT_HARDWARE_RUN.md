@@ -1,4 +1,6 @@
-# FSM-002 — CARDWRITE02 hardware run
+# Historical FSM-002 — minimal02 hardware run
+
+**Current active build is B003R2. Use [B003_HARDWARE_RUN.md](B003_HARDWARE_RUN.md).** The minimal02 instructions below are retained as historical evidence; its package is archived and is no longer the active card image.
 
 Status: corrected source passes direct-command and serial-bridge simulation and all reported internal Quartus timing corners. CARDWRITE02 installation and protected-file verification are recorded in CURRENT_STATUS.md. FSM-002-R1 physical-byte and immediate-readback checks PASS; cold reload pending.
 

@@ -73,6 +73,13 @@ class UpdateTests(unittest.TestCase):
         self.put(self.root/'work/packages/batch03'/self.old,b'modified metadata')
         with self.assertRaises(ValueError):update.plan()
 
+    def test_path_traversal_rejected(self):
+        path=self.root/'work/packages/batch03-manifest.json'
+        value=json.loads(path.read_text())
+        value['files'][update.CORE+'/../../escape.bin']=digest(b'escape')
+        path.write_text(json.dumps(value))
+        with self.assertRaises(ValueError):update.plan()
+
     def test_symlink_rejected(self):
         target=self.card/self.old;content=target.read_bytes();target.unlink()
         outside=Path(self.temp.name)/'outside';outside.write_bytes(content);target.symlink_to(outside)

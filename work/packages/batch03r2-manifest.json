@@ -1,12 +1,27 @@
 {
   "provenance": {
-    "kind": "batch03r2; not installable until audited bitstream exists",
-    "template_commit": "da3a021b1eaf742604d86d8dc9b33a6666263e6a",
-    "seed": 1
+    "kind": "custom batch03r2, full compile and internal timing qualified; Pocket pending",
+    "seed": 1,
+    "raw_sha256": "dcb7ed7585a1676e34869270cf371528abf4620466e8f0aa765640c0cdf6ae35",
+    "rbf_r_sha256": "4944d570b7f97caf3b2d72b4c5c7f63532c5f819e1d675f567d1cbb14c7a552e",
+    "minimum_reported_slack_ns": 0.075,
+    "compile_source_manifest_sha256": "9ed9f7965ffe60ce357826151cded5e132d5cbb8736ab37483c9d5a2261595d8",
+    "reports": {
+      "quartus-fit.log": "e371e0ec782ad2a2c07980a676207be9fa94418337d502602864a43dbb1bad1d",
+      "ap_core.rbf": "dcb7ed7585a1676e34869270cf371528abf4620466e8f0aa765640c0cdf6ae35",
+      "ap_core.fit.summary": "aae19775e482226ba233f3b709b6c8739ff646a0306b05ff5ca20c6ee8bd2743",
+      "ap_core.sta.rpt": "467f3230c4914172f77ea1600d6a40e540e9d729e3d6d21648fe43723ae9fba9",
+      "ap_core.asm.rpt": "4b04007d3defff1656421e706ee8f0cb19841f08f2447f3614ee462c3641f5e2",
+      "ap_core.sof": "7b9d1e98f5d1e65e075c3199b9b9bdfb619c3c1c169c09b331ff893141c71303",
+      "ap_core.sta.summary": "9bf1cc6df383b8648ca51f43ba0a7379ff16610bca9acad8ac05f3080c421c87",
+      "ap_core.map.rpt": "120e23fc53064b7d81557535009a5450b31c22b6258eb8993dbeb21b8eb0d2ce",
+      "ap_core.fit.rpt": "d3e0312caad6b0bfe1ec27c76b8691b9e9dcef502b73a800bb268da07f0d27ca"
+    }
   },
   "files": {
     "Assets/cardwrite/alfatreze.CARDWRITE02/batch-b003.bin": "b9b8561490d31103a2783ddcbf67ffcb6aa02b1aa71a9800aad615aeb20c8c55",
     "Cores/alfatreze.CARDWRITE02/audio.json": "32ecc527ee672b4f478b86e35bd0ee5eff474c73183b1b46d5169f09f224e182",
+    "Cores/alfatreze.CARDWRITE02/bitstream.rbf_r": "4944d570b7f97caf3b2d72b4c5c7f63532c5f819e1d675f567d1cbb14c7a552e",
     "Cores/alfatreze.CARDWRITE02/core.json": "97bf58d011c6826fe5fc80a2a86d7c57ba1c6fe68c0f0e07c43eeda9c34e93f0",
     "Cores/alfatreze.CARDWRITE02/data.json": "64406e6e05ce9e9f6d11087130d722c3cd51749d87d66971f147cc9b0f8ecdeb",
     "Cores/alfatreze.CARDWRITE02/info.txt": "1156d0dabed2b1cead920b2e759a3590477a313989f19c100eca546a96d50d7c",

@@ -37,6 +37,7 @@ proc snapshot {c ordinal} {
                 lappend words [expr {($packet>>($i*32))&0xffffffff}]
             }
             if {[lindex $words 0]!=0x53445703} {error "B003 build signature mismatch"}
+            if {(([lindex $words 1]>>14)&255) != 2} {error "B003R2 revision mismatch"}
             return $words
         }
     }

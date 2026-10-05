@@ -39,6 +39,8 @@ def plan():
         raise ValueError('Active core differs from archived minimal02; review required')
     copies = []
     for relative, expected in sorted(new['files'].items()):
+        if Path(relative).is_absolute() or '..' in Path(relative).parts:
+            raise ValueError('Traversal refused in update path: '+relative)
         if not (relative.startswith(CORE+'/') or relative==ASSET or relative=='Platforms/cardwrite.json'):
             raise ValueError('Unexpected update path: '+relative)
         source = package/relative
@@ -125,6 +127,9 @@ def apply(current):
         if install.sha(CARD/cache['path'])!=cache['sha256']:raise ValueError('Cache changed')
         (CARD/cache['path']).unlink()
     os.sync()
+    for item in current['copies']:
+        if install.sha(CARD/item['path'])!=item['sha256']:
+            raise ValueError('Final package verification mismatch: '+item['path'])
     after=install.snapshot();write_json(EVIDENCE/'after.json',after)
     allowed={p['path'] for p in current['copies']}|{p['path'] for p in current['cache_backup_then_clear']}
     unexpected=[p for p in sorted(set(before)|set(after)) if before.get(p)!=after.get(p) and p not in allowed]
@@ -138,7 +143,9 @@ def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--yes',action='store_true');parser.add_argument('--token')
     args=parser.parse_args()
+    volume=install.identity()
     current=plan();write_json(EVIDENCE/'plan.json',current)
+    write_json(EVIDENCE/'volume.json',volume)
     if not args.yes:print(json.dumps(current,indent=2));return
     if args.token!=current['token']:raise ValueError('Plan token mismatch; review current plan first')
     apply(current)

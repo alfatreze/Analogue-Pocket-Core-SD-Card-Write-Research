@@ -66,6 +66,6 @@ Minimal02 has one verified physical 64-byte write and a successful reload readba
 
 Original project work is licensed under the [MIT License](LICENSE). Third-party framework code, IP, assets and generated artifacts retain their applicable terms; see [NOTICE.md](NOTICE.md) for the scope and provenance.
 
-## Next build: B004R2 stress
+## Current experiment: B004R2 stress
 
-[B004 procedure](B004_HARDWARE_RUN.md) describes the 10,000-pair changing-data stress profile, complete retained failure history and repeated cold-read checks. Simulation and full compilation/internal timing pass. B004R2 (version 0.4.2) is installed in the same CARDWRITE02 entry with verified B003 backups and preserved prior results. Physical stress qualification is pending fresh launch; earlier failed/stopped stages are retained.
+[B004 procedure](B004_HARDWARE_RUN.md) describes the 10,000-pair changing-data stress profile, complete retained failure history and repeated cold-read checks. Simulation and full compilation/internal timing pass. B004R2 (version 0.4.2) is installed in the same CARDWRITE02 entry with verified B003 backups and preserved prior results. The first physical 10,000-pair session passes: all 10,000 retained records validated, 20,000 commands, zero failures. Complete-file verification after Quit/shutdown and cold-read qualification remain pending. Full compressed history and its summary are preserved under work/evidence; earlier failed/stopped stages are retained.

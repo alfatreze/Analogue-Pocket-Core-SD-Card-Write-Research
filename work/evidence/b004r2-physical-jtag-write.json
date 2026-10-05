@@ -1,0 +1,42 @@
+{
+  "test_id": "STRESS-004-WRITE-JTAG",
+  "build": "B004R2",
+  "version": "0.4.2",
+  "evidence_kind": "physical Pocket retained SDW4 ISSP snapshots",
+  "pass": true,
+  "summary": {
+    "status": 4,
+    "cold": 0,
+    "terminal": 1,
+    "completed": 10000,
+    "passed": 10000,
+    "failed": 0,
+    "commands": 20000,
+    "first_failure": 16383
+  },
+  "record_count": 10000,
+  "record_indices": "every integer 0 through 9999, exactly once in order",
+  "clean_flags": "0x80000007",
+  "timings_cycles": {
+    "min_write": 838890,
+    "max_write": 9396051,
+    "min_read": 451106,
+    "max_read": 1625245
+  },
+  "core_clock_hz": 74250000,
+  "timings_ms": {
+    "min_write": 11.298182,
+    "max_write": 126.546141,
+    "min_read": 6.075502,
+    "max_read": 21.888822
+  },
+  "records_archive": "b004r2-physical-jtag-write-records.json.gz",
+  "records_archive_sha256": "16fdf7dca16584df7a391f68641ebc5579dbda24359dede2b4ecb4035b9a314e",
+  "decoded_records_sha256": "d4230191a7eb79352f671192bea2ab589d40415f3378676093b9ab1189908d4f",
+  "raw_jtag_sha256": "e28f0943bb811e2bae5feeff20b28f0d39d25957e43201e18bd8e246d8faed3d",
+  "core_rbf_r_sha256": "4f8ee21d60090aab672b7539541d75bf5e44b474428e08a64651e10e00f3ad91",
+  "expected_final_file_sha256": "0ef80e007254ccc6d63874e2aac6e0082e360de00843b82b36836807ff433e56",
+  "physical_file_verification": "pending normal Quit/shutdown/remount",
+  "scope": "One changing-data 10000-pair session on the designated card. Immediate comparisons and full retained history pass. Does not establish 10000 durable commits, interrupted-write atomicity, multi-card repeatability or Tau CPU integration.",
+  "launch_note": "Initial start found no ISSP endpoint because owner had not yet loaded the core; no start was issued. Owner then loaded it, fresh READY was validated and start succeeded. No JTAG FPGA programming."
+}

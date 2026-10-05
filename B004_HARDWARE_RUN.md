@@ -1,6 +1,8 @@
 # B004R2 — changing-data repeatability stress
 
-Status: **B004R2 is compiled/internal-timing qualified and installed** in the stable CARDWRITE02 entry, version 0.4.2. All 11 package hashes verified; verified B003R2 artifacts archived and both prior physical outputs preserved. CARDWRITE was safely ejected; physical 10,000-pair trial and live 511-bit endpoint qualification begin after fresh launch. The initial B004 stage exceeded the real ISSP probe limit, and R1's expanded timing test exposed a one-clock accounting discrepancy. Those stages/failure evidence are preserved; R2 corrects both and passes the complete simulation suite.
+Status: **B004R2's first physical 10,000-pair session passes**, with all 10,000 retained records independently validated: 20,000 commands, zero failures, correct indexed byte ranges/flags and matching timing extrema. The live SDW4 511-bit interface/revision 2 is verified. Full history is preserved in `work/evidence/b004r2-physical-jtag-write-records.json.gz`; summary/hashes are in `work/evidence/b004r2-physical-jtag-write.json`. Writes range 11.298–126.546 ms; reads 6.076–21.889 ms at 74.25 MHz. Normal Quit/shutdown/remount, complete-file/guard/protected-content verification and cold reads remain pending.
+
+B004R2 is compiled/internal-timing qualified and installed in the stable CARDWRITE02 entry, version 0.4.2. All 11 package hashes verified; qualified B003R2 artifacts and prior physical outputs preserved. Earlier failed/stopped stages remain archived.
 
 ## Scope
 
@@ -25,7 +27,7 @@ Expected final file SHA-256 after success:
 2. Host validates live SDW4 signature/revision and READY with zero counters, then requests start. Alternatively press A once. Do not reset/reconfigure/quit during the run.
 3. Wait for STRESS PASS / FAIL or TIMEOUT STOPPED. Successful screen PASSED/FINISHED is hex **00002710 = 10,000**. Capture a screenshot.
 4. **Collect retained JTAG records before Quit**. Reading all 10,000 snapshots can take several minutes. Keep Pocket powered on. `python3 tools/jtag_stress.py results` preserves raw and decoded records; success requires all 10,000 distinct indexed records, exact expected flags/bounds, 20,000 commands, no failures and consistent timing summaries.
-5. Normal Quit, shutdown, remount. `python3 tools/read_results.py stress04 --test-id STRESS-004-WRITE --firmware 2.7` verifies every byte/guard and protected files. Preserve the physical actions, screenshot and full result history.
+5. Normal Quit, shutdown, remount. `python3 tools/read_results.py stress04r2 --test-id STRESS-004-WRITE --firmware 2.7` verifies every byte/guard and protected files. Preserve the physical actions, screenshot and full result history.
 
 ## STRESS-004-COLD and repeated launch cycles
 

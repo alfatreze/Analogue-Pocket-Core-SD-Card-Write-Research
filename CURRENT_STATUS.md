@@ -150,3 +150,11 @@ New screenshots `20261005_002904.png` and `20261005_002910.png` show CARD WRITIN
 - Safe ejection pending normal disk ejection. Next owner action after successful ejection: insert, fresh-launch same CARDWRITE02 entry, confirm B004R2/version 0.4.2 and READY 10000 PAIRS, leave Blaster connected, report loaded without A. Host validates live SDW4 revision 2 and starts the bounded 10,000-pair session. Physical endpoint/stress results still pending.
 
 - Normal disk ejection succeeded after the independently verified update. CARDWRITE is safely ejected; owner may insert and fresh-launch B004R2 for the physical stress session.
+
+## B004R2 first physical stress session — retained history PASS
+
+- First JTAG start attempt found the FPGA device but no ISSP endpoint: owner had not loaded the core yet. No start/programming was issued. After owner loaded it, the exact SDW4 32/511 endpoint, magic/revision 2 and fresh READY/zero counters validated; one start request succeeded. No JTAG FPGA programming or result reset.
+- Progress snapshots: 1,938 / 3,893 / 5,636 / 7,353 / 9,137 successful pairs, no failures; final warm terminal PASS: completed 10,000, passed 10,000, failed 0, commands 20,000, first-failure sentinel 16,383.
+- Collected all 10,000 records before Quit. Decoder and independent assertions verify each index exactly once/in order, clean flags 0x80000007, revision 2, expected bounds and coherent counters; extrema reconstructed from every record match the globals. Write cycles 838,890–9,396,051 (11.298–126.546 ms); read cycles 451,106–1,625,245 (6.076–21.889 ms) at 74.25 MHz.
+- Public summary: work/evidence/b004r2-physical-jtag-write.json. Full decoded history: work/evidence/b004r2-physical-jtag-write-records.json.gz (164,216 bytes), decompression independently matches the original decoded evidence SHA-256 d4230191a7eb79352f671192bea2ab589d40415f3378676093b9ab1189908d4f. Original raw/decoded captures retained privately in work/evidence/jtag.
+- Owner may now screenshot, normal Quit, shutdown and remount CARDWRITE. Complete 256 KiB final-file verification (expected SHA-256 0ef80e007254ccc6d63874e2aac6e0082e360de00843b82b36836807ff433e56), guard/protected-content checks and cold reads pending. Immediate comparisons do not prove 10,000 individually durable commits, interruption recovery, other cards/firmware or Tau CPU integration.

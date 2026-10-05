@@ -126,3 +126,7 @@ Quartus's local altsource_probe implementation rejects widths above 511. Preserv
 ## NCW-021 — compare global timings against every retained record
 
 The full-history test must reconstruct extrema from all retained operations, in addition to flags/counters. This exposed the original inherited one-clock read-time convention: global extrema used elapsed at DONE, but logs used elapsed one cycle afterward. B004R2 stores read_cycles at the completion edge and uses that value in both summary/history. Error completions receive the same treatment; outstanding timeouts retain elapsed without releasing ownership. Preserve R1's frozen stage and scoped stop evidence; compile a distinctly versioned R2. This is timing-accounting correction, not an observed payload fault or physical fit failure.
+
+## NCW-022 — preserve and publish complete physical stress history
+
+For the first B004R2 physical session, collect all 10,000 retained records while the owner remains powered. Preserve raw and decoded originals privately, and publish the complete decoded history compressed losslessly with zero gzip timestamp alongside a readable summary and raw/decoded/archive hashes. Verify decompression byte for byte and independently reconstruct all global timing extrema. A passing immediate session remains separate from post-Quit whole-file durability, cold reads and interrupted-write recovery.

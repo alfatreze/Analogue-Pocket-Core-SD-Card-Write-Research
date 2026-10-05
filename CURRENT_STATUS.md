@@ -172,3 +172,10 @@ New screenshots `20261005_002904.png` and `20261005_002910.png` show CARD WRITIN
 - Terminal cold PASS: all 32 final-generation regions pass, 32 reads, zero writes/failures, first-failure sentinel 16,383. All 32 distinct expected final-operation indices, clean flags 0x80000006, zero write timing, byte ranges and consistent global timing extrema independently verified.
 - Read cycles 58,405–597,148 (0.787–8.042 ms at 74.25 MHz). Full public record history and original capture hashes: work/evidence/b004r2-physical-jtag-cold.json. Original raw/decoded captures retained privately.
 - Result collection finished before Quit. Next: screenshot, normal Quit/shutdown/remount, then whole-file and protected-content comparison against immutable STRESS-004-WRITE snapshot. Exact power sequence not separately confirmed; repeated power-cycle/interruption qualification still pending.
+
+## B004R2 first cold read after remount — full baseline PASS
+
+- STRESS-004-COLD collector revalidated card identity and all 262,144 bytes/guards: unchanged exact expected SHA-256 0ef80e007254ccc6d63874e2aac6e0082e360de00843b82b36836807ff433e56.
+- Independent comparison against STRESS-004-WRITE snapshot: every existing file unchanged, none missing; only new file is result screenshot 20261005_133008.png. Both prior successful output files remain preserved.
+- Native screenshot inspected and copied/hash-verified into immutable private run evidence: B004R2 STRESS PASS, OPERATION 0x2700 (9984, expected final case's index + 1), PASSED/FINISHED 0x20 (32), ERROR 0, CYCLES 0x00091C9D (exactly last retained read timing + 1).
+- Public summary work/evidence/b004r2-physical-file-cold.json. Complete first B004R2 baseline passes: 10,000 immediate pairs/full history, exact final file after remount, 32 fresh-launch reads/zero writes, unchanged complete file/protected contents after second remount. Exact power sequence not separately confirmed; repeated owner-confirmed shutdown cycles remain the next discovery step. No broader repeatability/interruption/Tau CPU qualification claim.

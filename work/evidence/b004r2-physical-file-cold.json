@@ -1,0 +1,27 @@
+{
+  "test_id": "STRESS-004-COLD",
+  "build": "B004R2",
+  "firmware_reported": "2.7",
+  "file_verification": {
+    "pass": true,
+    "pairs": 10000,
+    "expected_size": 262144,
+    "actual_size": 262144,
+    "failed_regions": [],
+    "first_mismatch": null,
+    "expected_sha256": "0ef80e007254ccc6d63874e2aac6e0082e360de00843b82b36836807ff433e56",
+    "actual_sha256": "0ef80e007254ccc6d63874e2aac6e0082e360de00843b82b36836807ff433e56"
+  },
+  "changed_or_missing_since_warm": [],
+  "only_added_file": "new result screenshot",
+  "screenshot": {
+    "name": "20261005_133008.png",
+    "sha256": "7bcb6e95f777906024f5bb6cfe044c304cf336819750b8648cb5ef928900b554",
+    "observed": "B004R2 STRESS PASS; OPERATION 0x2700 (9984); PASSED/FINISHED 0x20 (32); ERROR 0; CYCLES 0x00091C9D",
+    "cycles_match": "LCD timing exactly one greater than final retained completed read timing; last case maps to operation index 9983"
+  },
+  "jtag_records": "b004r2-physical-jtag-cold.json",
+  "verdict": "10000-pair warm session, exact whole-file after remount, 32-region fresh-launch read-only session, unchanged whole-file/protected contents after second remount PASS",
+  "physical_actions": "Normal Quit/shutdown/remount requested; owner reported mounted. Exact power sequence not separately confirmed.",
+  "qualification_limits": "One designated card and firmware-reported 2.7. Repeated owner-confirmed power cycles, interrupted-write atomicity/recovery, other cards/filesystems/firmware and Tau CPU integration remain pending."
+}

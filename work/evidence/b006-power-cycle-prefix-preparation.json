@@ -1,0 +1,24 @@
+{
+  "pass": true,
+  "test_id": "B006-POWER-CYCLE-PREFIX1-001",
+  "baseline_test_id": "B006-POSTINSTALL-64-REMOUNT01",
+  "baseline_generation": 1038,
+  "pause_point": 1,
+  "completed_128_byte_chunks_before_pause": 1,
+  "next_generation": 1039,
+  "partial_destination": "A",
+  "expected_valid_mask": [
+    false,
+    true
+  ],
+  "expected_recovered_generation": 1038,
+  "expected_files_sha256": [
+    "53e9757a53df7bfcbb92903008348001e41abc09c98bb34ed68b7547e0a9c6b6",
+    "a5d03367ba5cabbff739c229030bb28e0ebafe2e9f0c24b335f1334ac375a3dd"
+  ],
+  "initial_file_sha256": [
+    "c66e51605f7b1aaf1584925e61e046301fbd058695558527b9e7ea6e27547e55",
+    "a5d03367ba5cabbff739c229030bb28e0ebafe2e9f0c24b335f1334ac375a3dd"
+  ],
+  "scope": "Offline preparation only. Model predicts one completed 128-byte inactive-record prefix, followed by full Pocket power-off while no APF command is outstanding. It does not model power loss during an active SD command."
+}

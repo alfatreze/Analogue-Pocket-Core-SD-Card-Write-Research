@@ -407,3 +407,7 @@ After B006 was loaded from SD in a fresh session, one bounded 64-save batch comp
 After a full Pocket shutdown, the mounted CARDWRITE files matched both hashes exactly. Both 8,192-byte files had valid generated records and all guards intact; every unrelated existing file matched the installed-card baseline. Five Pocket menu caches were present. Sanitized evidence: work/evidence/b006-post-install-64-save-summary.json and b006-post-install-64-remount-summary.json. CARDWRITE was safely ejected after read-only verification.
 
 This confirms the tested 64-save session persisted across the observed Pocket shutdown/remount. It does not test abrupt SD power loss during a write.
+
+## Next prepared check — full Pocket power cycle after a torn prefix
+
+B006 already has a qualified hold after each 128-byte record chunk. A separate deterministic check is prepared to persist one prefix to inactive A, fully power off while paused with no APF command outstanding, then cold-recover generation 1038 from valid B and verify exact host bytes. The base files were remount-verified at A1037/B1038; independent preparation predicts A's partial generation-1039 file hash and unchanged B hash. Runbook: B006_POWER_CYCLE_PREFIX.md; preparation: work/evidence/b006-power-cycle-prefix-preparation.json. Hardware execution is pending. This does not test power loss during an active SD command.

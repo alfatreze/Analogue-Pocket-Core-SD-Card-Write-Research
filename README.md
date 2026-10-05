@@ -101,3 +101,5 @@ B005's separately resumed point-3/control/repair trial passed, reaching generati
 B006 completed 325 saves and four between-command FPGA interruption recoveries. Final host remount verified both complete guarded files at generations A973/B974, preserved unrelated contents, and the qualified B006 version 0.6.0 is installed in the stable CARDWRITE02 entry. See CURRENT_STATUS.md and work/evidence/b006-final-card-verification.json. Actual SD power-loss durability remains pending.
 
 A follow-up after SD installation ran 64 B006 saves; all records passed and the subsequent host remount matched both full files at generations A1037/B1038. See CURRENT_STATUS.md and work/evidence/b006-post-install-64-remount-summary.json.
+
+Next prepared checkpoint: full Pocket power-off with B006 held at a verified between-command pause after one 128-byte inactive-record prefix, followed by cold recovery and exact host remount. This is distinct from power loss during an active SD command. See B006_POWER_CYCLE_PREFIX.md.

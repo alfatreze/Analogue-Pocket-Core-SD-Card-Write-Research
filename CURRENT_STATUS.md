@@ -179,3 +179,9 @@ New screenshots `20261005_002904.png` and `20261005_002910.png` show CARD WRITIN
 - Independent comparison against STRESS-004-WRITE snapshot: every existing file unchanged, none missing; only new file is result screenshot 20261005_133008.png. Both prior successful output files remain preserved.
 - Native screenshot inspected and copied/hash-verified into immutable private run evidence: B004R2 STRESS PASS, OPERATION 0x2700 (9984, expected final case's index + 1), PASSED/FINISHED 0x20 (32), ERROR 0, CYCLES 0x00091C9D (exactly last retained read timing + 1).
 - Public summary work/evidence/b004r2-physical-file-cold.json. Complete first B004R2 baseline passes: 10,000 immediate pairs/full history, exact final file after remount, 32 fresh-launch reads/zero writes, unchanged complete file/protected contents after second remount. Exact power sequence not separately confirmed; repeated owner-confirmed shutdown cycles remain the next discovery step. No broader repeatability/interruption/Tau CPU qualification claim.
+
+## B004R2 second fresh-launch read-only session — PASS
+
+- Cold repeat01 begins from independently verified READY/zero counters after card ejection and owner reporting ready. Owner was asked to power fully off before insertion/launch; full power-off is not separately confirmed and this session is not yet counted as an owner-confirmed power cycle.
+- All 32 final-generation regions pass again, 32 reads/zero writes/failures. Every indexed record, clean flag/bounds and timing extrema validated independently. Read cycles 55,013–507,271 (0.741–6.832 ms).
+- Separate complete history: work/evidence/b004r2-physical-jtag-cold-repeat01.json; original raw/decoded captures retained privately. Prior results remain unchanged. Post-read screenshot/remount and whole-file/protected-content comparison against STRESS-004-COLD remain pending.

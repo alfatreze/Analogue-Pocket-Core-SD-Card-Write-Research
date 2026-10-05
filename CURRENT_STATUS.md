@@ -398,3 +398,12 @@ Owner quit/powered off and mounted CARDWRITE. GUARDED-006-RESUMED-FINAL01 passed
 These results establish recovery for the tested FPGA reload boundaries on one card. Actual loss of SD power, full Tau CPU/bridge integration, multiple-card coverage and authenticated storage remain pending.
 
 CARDWRITE was safely ejected after the verified B006 installation. The next Pocket launch from SD has not yet been observed.
+
+
+## Post-install SD-loaded B006 write and remount — 2026-10-05
+
+After B006 was loaded from SD in a fresh session, one bounded 64-save batch completed with 322 counted SD commands. All 64 retained operation records passed; generations advanced 975 through 1038, leaving valid A1037/B1038 records. Independent model hashes were c66e51605f7b1aaf1584925e61e046301fbd058695558527b9e7ea6e27547e55 and a5d03367ba5cabbff739c229030bb28e0ebafe2e9f0c24b335f1334ac375a3dd.
+
+After a full Pocket shutdown, the mounted CARDWRITE files matched both hashes exactly. Both 8,192-byte files had valid generated records and all guards intact; every unrelated existing file matched the installed-card baseline. Five Pocket menu caches were present. Sanitized evidence: work/evidence/b006-post-install-64-save-summary.json and b006-post-install-64-remount-summary.json. CARDWRITE was safely ejected after read-only verification.
+
+This confirms the tested 64-save session persisted across the observed Pocket shutdown/remount. It does not test abrupt SD power loss during a write.

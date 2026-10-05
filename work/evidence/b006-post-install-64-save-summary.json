@@ -1,0 +1,25 @@
+{
+  "pass": true,
+  "build": "B006",
+  "session": "post-install SD-loaded fresh session",
+  "start_generation": 974,
+  "committed_saves": 64,
+  "counted_sd_commands": 322,
+  "all_records_pass": true,
+  "generation_first_last": [
+    975,
+    1038
+  ],
+  "final_valid_mask": 3,
+  "final_generation_a": 1037,
+  "final_generation_b": 1038,
+  "selected_generation": 1038,
+  "independent_alternating_record_model_pass": true,
+  "predicted_final_file_sha256": [
+    "c66e51605f7b1aaf1584925e61e046301fbd058695558527b9e7ea6e27547e55",
+    "a5d03367ba5cabbff739c229030bb28e0ebafe2e9f0c24b335f1334ac375a3dd"
+  ],
+  "hardware_results_sha256": "855f3d5c30546022d21b67fcf5af165ed807f2eec1c5d3385cf2389c11aca675",
+  "hardware_capture_sha256": "313cc9bdee1160a5fc33f8bc25e096562155bf21897988d9acff017e15fb9721",
+  "scope": "Independent validation of all retained JTAG operation records and alternating generations after loading B006 from SD. Predicted whole files are not a substitute for host remount bytes/guards."
+}

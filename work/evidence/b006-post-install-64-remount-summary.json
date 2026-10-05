@@ -1,0 +1,58 @@
+{
+  "test_id": "B006-POSTINSTALL-64-REMOUNT01",
+  "build": "B006",
+  "volume_uuid": "0C5F72C5-8851-3E82-94F5-5902CF4180FE",
+  "experiment_generation": 1038,
+  "file_verification": {
+    "valid": [
+      true,
+      true
+    ],
+    "records": [
+      {
+        "valid": true,
+        "generation": 1037,
+        "crc": 3900055718
+      },
+      {
+        "valid": true,
+        "generation": 1038,
+        "crc": 3280595131
+      }
+    ],
+    "selected": 1,
+    "generation": 1038,
+    "reason": "valid-save",
+    "file_sizes": [
+      8192,
+      8192
+    ],
+    "guards_pass": true,
+    "sha256": [
+      "c66e51605f7b1aaf1584925e61e046301fbd058695558527b9e7ea6e27547e55",
+      "a5d03367ba5cabbff739c229030bb28e0ebafe2e9f0c24b335f1334ac375a3dd"
+    ],
+    "generated_payloads_pass": true,
+    "pass": true
+  },
+  "matches_64_save_campaign_hashes": true,
+  "expected_sha256": [
+    "c66e51605f7b1aaf1584925e61e046301fbd058695558527b9e7ea6e27547e55",
+    "a5d03367ba5cabbff739c229030bb28e0ebafe2e9f0c24b335f1334ac375a3dd"
+  ],
+  "actual_sha256": [
+    "c66e51605f7b1aaf1584925e61e046301fbd058695558527b9e7ea6e27547e55",
+    "a5d03367ba5cabbff739c229030bb28e0ebafe2e9f0c24b335f1334ac375a3dd"
+  ],
+  "changed_or_missing_unrelated_files": [],
+  "new_files_for_review": [
+    "System/core_viewby_platform.bin",
+    "System/corelist_cache.bin",
+    "System/cores_cache.bin",
+    "System/platform_viewby_category.bin",
+    "System/platforms_cache.bin"
+  ],
+  "stable_during_collection": true,
+  "pass": true,
+  "scope": "Host remount confirms exact full files, generated records and guards after the 64-save SD-loaded campaign; prior installed-card contents compared except Pocket menu caches."
+}

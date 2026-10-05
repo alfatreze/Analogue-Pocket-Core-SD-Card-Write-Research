@@ -103,3 +103,5 @@ B006 completed 325 saves and four between-command FPGA interruption recoveries. 
 A follow-up after SD installation ran 64 B006 saves; all records passed and the subsequent host remount matched both full files at generations A1037/B1038. See CURRENT_STATUS.md and work/evidence/b006-post-install-64-remount-summary.json.
 
 Next prepared checkpoint: full Pocket power-off with B006 held at a verified between-command pause after one 128-byte inactive-record prefix, followed by cold recovery and exact host remount. This is distinct from power loss during an active SD command. See B006_POWER_CYCLE_PREFIX.md.
+
+The B006 full Pocket power-cycle test after one incomplete 128-byte record prefix passed its reboot recovery and exact host-remount checks. The active-command power-loss test remains pending; details are in CURRENT_STATUS.md and `work/evidence/b006-power-cycle-prefix-host-summary.json`.

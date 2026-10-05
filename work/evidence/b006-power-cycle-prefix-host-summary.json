@@ -1,0 +1,52 @@
+{
+  "test_id": "B006-POWER-CYCLE-PREFIX1-001",
+  "volume_uuid": "0C5F72C5-8851-3E82-94F5-5902CF4180FE",
+  "jtag_recovery_proof_sha256": "bf38ed41942bf3854f753ccc1b105bc39b4304fa5b17b211e8d91bb87016023d",
+  "file_verification": {
+    "valid": [
+      false,
+      true
+    ],
+    "records": [
+      {
+        "valid": false,
+        "reason": "checksum",
+        "stored_crc": 1812746895,
+        "computed_crc": 284527777
+      },
+      {
+        "valid": true,
+        "generation": 1038,
+        "crc": 3280595131
+      }
+    ],
+    "selected": 1,
+    "generation": 1038,
+    "reason": "valid-save",
+    "file_sizes": [
+      8192,
+      8192
+    ],
+    "guards_pass": true,
+    "sha256": [
+      "53e9757a53df7bfcbb92903008348001e41abc09c98bb34ed68b7547e0a9c6b6",
+      "a5d03367ba5cabbff739c229030bb28e0ebafe2e9f0c24b335f1334ac375a3dd"
+    ],
+    "generated_payloads_pass": true,
+    "pass": true
+  },
+  "expected_sha256": [
+    "53e9757a53df7bfcbb92903008348001e41abc09c98bb34ed68b7547e0a9c6b6",
+    "a5d03367ba5cabbff739c229030bb28e0ebafe2e9f0c24b335f1334ac375a3dd"
+  ],
+  "actual_sha256": [
+    "53e9757a53df7bfcbb92903008348001e41abc09c98bb34ed68b7547e0a9c6b6",
+    "a5d03367ba5cabbff739c229030bb28e0ebafe2e9f0c24b335f1334ac375a3dd"
+  ],
+  "matches_expected_partial_record_files": true,
+  "changed_or_missing_unrelated_files": [],
+  "new_files_for_review": [],
+  "stable_during_collection": true,
+  "pass": true,
+  "scope": "Exact whole-file/guard/CRC check against the independently prepared one-chunk prefix model after full Pocket power cycle; unrelated existing files compared with the pre-test snapshot, apart from Pocket menu caches."
+}

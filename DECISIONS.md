@@ -221,3 +221,10 @@ After B006 was loaded from SD in a fresh session, one bounded 64-save batch comp
 After a full Pocket shutdown, the mounted CARDWRITE files matched both hashes exactly. Both 8,192-byte files had valid generated records and all guards intact; every unrelated existing file matched the installed-card baseline. Five Pocket menu caches were present. Sanitized evidence: work/evidence/b006-post-install-64-save-summary.json and b006-post-install-64-remount-summary.json. CARDWRITE was safely ejected after read-only verification.
 
 This confirms the tested 64-save session persisted across the observed Pocket shutdown/remount. It does not test abrupt SD power loss during a write.
+
+
+## B006 power-cycle after a partial-record prefix — PASS — 2026-10-05
+
+At a verified fresh session, B006 pause point 1 completed one 128-byte write command into inactive A for generation 1039, then held in state 14/status 8 with no command outstanding. The owner fully powered off the Pocket at that boundary, restarted it and loaded B006 from SD. The cold recovery passed with valid mask A=0/B=1, selected generation 1038 and no command error. Host remount then matched the exact independently prepared full-file hashes: partial A `53e9757a53df7bfcbb92903008348001e41abc09c98bb34ed68b7547e0a9c6b6`, valid B `a5d03367ba5cabbff739c229030bb28e0ebafe2e9f0c24b335f1334ac375a3dd`. Both files are exactly 8,192 bytes, guards pass, protected files are unchanged and no new files appeared. Evidence: `work/evidence/b006-power-cycle-prefix-jtag-summary.json`, `work/evidence/b006-power-cycle-prefix-host-summary.json` and `work/evidence/b006-power-cycle-prefix-preparation.json`. CARDWRITE was safely ejected after collection.
+
+This demonstrates recovery after full Pocket power-off with a completed partial-record prefix between SD commands. It does not test removal of SD power while a write command is active; that remains pending.

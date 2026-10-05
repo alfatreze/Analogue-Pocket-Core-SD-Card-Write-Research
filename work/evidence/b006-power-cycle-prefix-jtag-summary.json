@@ -1,0 +1,31 @@
+{
+  "pass": true,
+  "test_id": "B006-POWER-CYCLE-PREFIX1-001",
+  "preparation_report_sha256": "b86e290fcec25007a9d8305d9eaafabe71c58026da3e52737d730c8bf19993c3",
+  "pause_capture_sha256": "c07c13c48cc37feace80218bc2d0a1d7a87a87e178bb6a3f1e67f6ce585c0918",
+  "post_reboot_read_capture_sha256": "224fb64e6a10e76f59486823120d99c5258febcf0d23f6532749f670aaddb0b6",
+  "post_reboot_decoded_sha256": "a73f8c95f5921b6520c79d44d67b9e2ae878eeb9ca006360e90bb3c02b269fdc",
+  "full_pocket_power_cycle_owner_reported": true,
+  "pause_state_verified": {
+    "status": 8,
+    "state": 14,
+    "commands": 3,
+    "completed_saves": 0
+  },
+  "post_reboot_cold_read": {
+    "status": 4,
+    "mode": 1,
+    "terminal": 1,
+    "state": 18,
+    "reason": 0,
+    "completed": 0,
+    "commands": 2,
+    "valid_mask": 2,
+    "generation_a": 1039,
+    "generation_b": 1038,
+    "selected_generation": 1038
+  },
+  "jtag_recovery_pass": true,
+  "host_remount_pending": true,
+  "scope": "Pocket was fully powered off at a verified between-command pause after one 128-byte record prefix. After reboot B006 read both files, rejected inactive A1039 and selected valid B1038. Exact host files and card contents still require remount verification."
+}

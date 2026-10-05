@@ -411,3 +411,10 @@ This confirms the tested 64-save session persisted across the observed Pocket sh
 ## Next prepared check — full Pocket power cycle after a torn prefix
 
 B006 already has a qualified hold after each 128-byte record chunk. A separate deterministic check is prepared to persist one prefix to inactive A, fully power off while paused with no APF command outstanding, then cold-recover generation 1038 from valid B and verify exact host bytes. The base files were remount-verified at A1037/B1038; independent preparation predicts A's partial generation-1039 file hash and unchanged B hash. Runbook: B006_POWER_CYCLE_PREFIX.md; preparation: work/evidence/b006-power-cycle-prefix-preparation.json. Hardware execution is pending. This does not test power loss during an active SD command.
+
+
+## B006 power-cycle after a partial-record prefix — PASS — 2026-10-05
+
+At a verified fresh session, B006 pause point 1 completed one 128-byte write command into inactive A for generation 1039, then held in state 14/status 8 with no command outstanding. The owner fully powered off the Pocket at that boundary, restarted it and loaded B006 from SD. The cold recovery passed with valid mask A=0/B=1, selected generation 1038 and no command error. Host remount then matched the exact independently prepared full-file hashes: partial A `53e9757a53df7bfcbb92903008348001e41abc09c98bb34ed68b7547e0a9c6b6`, valid B `a5d03367ba5cabbff739c229030bb28e0ebafe2e9f0c24b335f1334ac375a3dd`. Both files are exactly 8,192 bytes, guards pass, protected files are unchanged and no new files appeared. Evidence: `work/evidence/b006-power-cycle-prefix-jtag-summary.json`, `work/evidence/b006-power-cycle-prefix-host-summary.json` and `work/evidence/b006-power-cycle-prefix-preparation.json`. CARDWRITE was safely ejected after collection.
+
+This demonstrates recovery after full Pocket power-off with a completed partial-record prefix between SD commands. It does not test removal of SD power while a write command is active; that remains pending.

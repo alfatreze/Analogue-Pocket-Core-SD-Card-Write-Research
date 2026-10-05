@@ -1,0 +1,13 @@
+{
+  "pass": true,
+  "volume_uuid": "0C5F72C5-8851-3E82-94F5-5902CF4180FE",
+  "mounted_on_host": true,
+  "save_file_sha256": [
+    "c66e51605f7b1aaf1584925e61e046301fbd058695558527b9e7ea6e27547e55",
+    "a5d03367ba5cabbff739c229030bb28e0ebafe2e9f0c24b335f1334ac375a3dd"
+  ],
+  "matches_generation_1038_baseline": true,
+  "changed_unrelated_files": [],
+  "new_files": [],
+  "scope": "Read-only pre-interruption baseline verification; no SD writes."
+}

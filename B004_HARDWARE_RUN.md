@@ -67,4 +67,4 @@ Seventh fresh-launch read-only session passes all 32 final regions, zero writes/
 
 ## Repeat07 current result
 
-Eighth fresh-launch read-only session passes all 32 final regions, zero writes/failures; full history is `work/evidence/b004r2-physical-jtag-cold-repeat07.json`. Post-read remount/whole-file comparison pending; full power-off not separately confirmed.
+Eighth fresh-launch read-only session passes all 32 final regions, zero writes/failures; full history is `work/evidence/b004r2-physical-jtag-cold-repeat07.json`. Post-read remount also passes: complete file/guards and every prior file unchanged; only the new PASS screenshot added. See `work/evidence/b004r2-physical-file-cold-repeat07.json`. Full power-off not separately confirmed.

@@ -1,0 +1,8 @@
+{
+  "pass": true,
+  "complete_fixed_sequence": true,
+  "summary_sha256": "0f57a5946bae8f5280141b3725097f1df7ab4097b05382718fb5473a782b9f95",
+  "campaign_sha256": "68f865f73f98b0444ffdf1709b0309b5e4eb2833dbb0948f18f560089956ebda",
+  "checker_sha256": "d97f0cdfce9069db5071774d2c74786d821cc06ec63fbe80e350e1f6534ee736",
+  "scope": "All 25 expected events, 325 saves, 4 between-command cuts and repaired final generation 974 independently replayed; host remount/physical power-cut scope separate."
+}

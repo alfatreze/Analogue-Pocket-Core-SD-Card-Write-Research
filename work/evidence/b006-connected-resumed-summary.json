@@ -1,0 +1,55 @@
+{
+  "build": "B006",
+  "pass": true,
+  "evidence_replay_pass": true,
+  "campaign_completed": true,
+  "termination_error": null,
+  "committed_saves": 325,
+  "commands_including_partial_prefix_sessions": 1681,
+  "read_only_sessions": 11,
+  "between_command_FPGA_interruptions": 4,
+  "reload_journals_reverified": 24,
+  "completed_event_count": 25,
+  "final_expected_files": {
+    "valid": [
+      true,
+      true
+    ],
+    "records": [
+      {
+        "valid": true,
+        "generation": 973,
+        "crc": 988876952
+      },
+      {
+        "valid": true,
+        "generation": 974,
+        "crc": 286185605
+      }
+    ],
+    "selected": 1,
+    "generation": 974,
+    "reason": "valid-save",
+    "file_sizes": [
+      8192,
+      8192
+    ],
+    "guards_pass": true,
+    "sha256": [
+      "f3ed21f8491450f0cb8643e49a6d7bf8d1678592f9bfb8e4a7ef5d00cace44ce",
+      "96a412ac424a09943831179a0ea1734eef84a8dce09191a72fac6189e7de8085"
+    ],
+    "generated_payloads_pass": true,
+    "pass": true
+  },
+  "save_cycle_latency": {
+    "count": 325,
+    "min": 2758995,
+    "median": 4069261,
+    "max": 5142059,
+    "nominal_clock_Hz": 74250000,
+    "scope": "Retained sum of four writes plus verification read; primary units FPGA cycles, excludes boot reads and tooling/reloads"
+  },
+  "campaign_sha256": "68f865f73f98b0444ffdf1709b0309b5e4eb2833dbb0948f18f560089956ebda",
+  "scope": "Independent replay of raw/decoded/counter/record/CRC and programming histories. Predicted final file hashes remain model outputs until host remount; FPGA cuts are not SD power cuts."
+}

@@ -22,3 +22,7 @@ Archive prior qualified sources, metadata, SOF/RBF, package and experiment outpu
 B004 uses tools/update_stress.py for the audited B003R2-to-B004R2 update. Require unchanged verified B003 physical outputs, archive prior qualification, and preserve both write64.bin and batch-b003.bin. Its new stress-b004.bin must be absent before first installation. Never reset it for a later run.
 
 B005 uses tools/update_recovery.py after full qualification. Require the entire final B004 repeat09 card snapshot unchanged; archive qualified B004 artifacts and all physical evidence; preserve all three prior output files. Create the two B005 files exclusively, never reset them later. Owner authorized removing the superseded official example and CARDWRITE01 cores: use tools/cleanup_research_cores.py after installation, with verified backups and a protected-content comparison; preserve every asset and the stable CARDWRITE02 entry. Read-only B005 collectors use the completed cleanup snapshot as the subsequent baseline.
+
+## Model and reasoning recommendations (owner preference)
+
+At each new task or material phase, recommend the least expensive available model and lowest supported reasoning effort likely to complete it reliably, with a brief quality/speed/usage rationale. Routine established implementation, documentation and verified-script execution generally need GPT-5.6 Terra or Sol at Low; consider Luna for simple bounded tasks. Increase only when uncertainty, hardware risk or observed failures justify it. Recommendations do not imply the current chat model was switched.

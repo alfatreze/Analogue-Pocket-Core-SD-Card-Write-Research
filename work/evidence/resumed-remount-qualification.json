@@ -1,0 +1,19 @@
+{
+  "pass": true,
+  "sources": {
+    "tools/read_guarded_resumed_results.py": "f7a3dc2aca8ae06cc0d2b1353acf4503e7715bd45892d31852f5c78a9aeb85af",
+    "tools/update_guarded_resumed.py": "20e4c3c13dbe2253bc6afead33c28c0c38d8fb5c083837182e4babded999b738",
+    "tools/verify_guarded_completion.py": "e9f9627a52d38ee9607111053f7da8bd0b11c452b51ab9982bfba054a278da28",
+    "sim/test_read_guarded_resumed_results.py": "f866aa4deedb4f27a39d1d69d3c1ab5da56296a77f00eccf997631038ff7b5b2",
+    "sim/test_update_guarded_resumed.py": "7ac7a126036a68e86b363687c05f1f4ad2888f4f8079b1cf570b8f4547dc2439",
+    "sim/test_guarded_completion.py": "09760b0d91b38af3cd217edf11ada2d1f6ca0905e705d0b0d1e3272efc17f471"
+  },
+  "reports": {
+    "work/evidence/resumed-collector-tests.log": "47d6ad1719dcc615c8a045e73a56c7b1e582b15b434fd3c18b49aa5e059921b7",
+    "work/evidence/resumed-update-tests.log": "4678043c99de85f8d8f8bd696bf363758643e78b82ae75c68fe496dc5da7edf2",
+    "work/evidence/resumed-completion-tests.log": "dcd2147edfda2291b456dfb6d9f3021f0fed07760d5a1c8869fc5446f30e28fe"
+  },
+  "temporary_card_tests": 27,
+  "pure_completion_tests": 6,
+  "scope": "Later read-only collector and audited minimal same-entry metadata/bitstream update; no real card update yet. Full fixed-sequence B006 completion, independent replay and exact physical remount remain mandatory before mutation."
+}

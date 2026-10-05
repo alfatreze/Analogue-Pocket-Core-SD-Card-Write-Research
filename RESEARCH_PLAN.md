@@ -140,3 +140,7 @@ Final report should be one of: suitable for clean Quit only; suitable for runtim
 - Local skill evidence: KB-001/003/005/007/022/023/025/074/076. Preserve the status and scope of each claim.
 
 Next implementation: freeze the source/build of the official example, prepare an independent payload/file verifier and sentinel manifest, and specify the minimal BRAM core/address map. Hardware execution begins after those artifacts exist. This plan does not claim any newly validated method.
+
+### Tooling follow-up from resumed trials
+
+For the next orchestration revision, publish mutable in-progress checkpoints with a temporary file, flush and atomic replacement; require the terminal proof manifest to exist and match before a waiting transition proceeds. Current transitions fail closed on missing/mismatched evidence, but atomic publication removes avoidable parse/proof-publication races. Freeze each runner and preserve its exact checkpoint namespace before launch; the current B006 legacy-name read alias is explicitly documented. This follow-up does not change the running trial or qualify SD power-loss behavior.

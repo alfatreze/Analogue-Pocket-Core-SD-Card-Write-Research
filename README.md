@@ -95,3 +95,7 @@ B005 now passes full compilation and internal timing qualification and is instal
 ## Resumed Pocket trial
 
 B005's separately resumed point-3/control/repair trial passed, reaching generation 649 with both records valid. The original stopped campaign stays immutable. B006 is physically loaded via qualified JTAG and its initial full-file/guard recovery passed; five 64-save batches plus one four-point interruption round are in progress. SD metadata/bitstream still remain B005 until a later verified remount/update. See [B006_HARDWARE_RUN.md](B006_HARDWARE_RUN.md).
+
+### Latest physical result
+
+B006 completed 325 saves and four between-command FPGA interruption recoveries. Final host remount verified both complete guarded files at generations A973/B974, preserved unrelated contents, and the qualified B006 version 0.6.0 is installed in the stable CARDWRITE02 entry. See CURRENT_STATUS.md and work/evidence/b006-final-card-verification.json. Actual SD power-loss durability remains pending.

@@ -1,0 +1,11 @@
+{
+  "hardware_campaign_completed": true,
+  "original_transition_state": "failed-after-hardware-completion",
+  "original_error": "Audit model reference became a tuple due to a derived import-line substitution; no model_files method",
+  "original_verifier_sha256": "96981f8e4887d993c5695ea97df9b7bd527b74064e5e307621265b859a296f63",
+  "original_failure_log_sha256": "545a5282894f73cff97b67daec22eccd552f5e64608ca5b46e0ba096f6f938ed",
+  "corrected_verifier": "tools/verify_guarded_resumed_r2.py",
+  "corrected_verifier_sha256": "9bb42ffcf2b544b2b0a67dc234e927e3bc71089654f5ef47c7a1597a810eb0ea",
+  "corrected_completion_checker_sha256": "d97f0cdfce9069db5071774d2c74786d821cc06ec63fbe80e350e1f6534ee736",
+  "scope": "Separate audit-only correction. Original frozen verifier, failed transition and completed raw 25-event Pocket campaign retained; no hardware rerun or extra SD command."
+}

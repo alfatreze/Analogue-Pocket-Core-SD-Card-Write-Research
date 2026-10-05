@@ -90,3 +90,7 @@ Historical jtag_recovery/jtag_guarded clients are retained as exact qualificatio
 Two harmless live transport tests and host/pure safety tests pass. Real ISSP through the new client is pending. The B005 campaign/continuation stopped when the FPGA chain became unreadable; do not retry the old blanket runner or overwrite its failed evidence. Follow B005_CONNECTED_RESULTS.md's preservation/restoration conditions and create a separately identified resumed trial. Physical card power/remount checks cannot be inferred from console reconnection or cleanup.
 
 Current B005/B006 resumed workflow: preserve failed histories, require the exact stopped physical backup and restored endpoint, and use resume_recovery.py / jtag_load_resumed.py / connected_guarded_resumed.py through jtag_session.py. Do not rerun existing checkpoints. verify_guarded_completion.py qualifies the entire fixed B006 plan after independent replay. Later remount uses read_guarded_resumed_results.py; the separate updater requires that actual host result and preserved whole-card snapshot. SD metadata remains B005 during JTAG-only B006 testing.
+
+## Completed B006 audit
+
+Use verify_guarded_resumed_r2.py and verify_guarded_completion_r2.py for the separate corrected audit of the completed resumed campaign. Preserve the original failed post-hardware transition and frozen verifier. Raw transport histories are private; a public clone alone cannot reproduce their replay. B006 is now installed on SD; do not use JTAG while CARDWRITE is host-mounted.

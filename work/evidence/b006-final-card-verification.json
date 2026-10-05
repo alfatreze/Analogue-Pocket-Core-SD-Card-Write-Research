@@ -1,0 +1,77 @@
+{
+  "pass": true,
+  "test_id": "GUARDED-006-RESUMED-FINAL01",
+  "file_verification": {
+    "valid": [
+      true,
+      true
+    ],
+    "records": [
+      {
+        "valid": true,
+        "generation": 973,
+        "crc": 988876952
+      },
+      {
+        "valid": true,
+        "generation": 974,
+        "crc": 286185605
+      }
+    ],
+    "selected": 1,
+    "generation": 974,
+    "reason": "valid-save",
+    "file_sizes": [
+      8192,
+      8192
+    ],
+    "guards_pass": true,
+    "sha256": [
+      "f3ed21f8491450f0cb8643e49a6d7bf8d1678592f9bfb8e4a7ef5d00cace44ce",
+      "96a412ac424a09943831179a0ea1734eef84a8dce09191a72fac6189e7de8085"
+    ],
+    "generated_payloads_pass": true,
+    "pass": true
+  },
+  "exact_connected_model_pass": true,
+  "stable_during_collection": true,
+  "changed_or_missing_protected_files": [],
+  "reviewed_new_files": [
+    "System/core_viewby_platform.bin",
+    "System/corelist_cache.bin",
+    "System/cores_cache.bin",
+    "System/platform_viewby_category.bin",
+    "System/platforms_cache.bin"
+  ],
+  "campaign_sha256": "68f865f73f98b0444ffdf1709b0309b5e4eb2833dbb0948f18f560089956ebda",
+  "connected_summary_sha256": "0f57a5946bae8f5280141b3725097f1df7ab4097b05382718fb5473a782b9f95",
+  "installation_state": "completed",
+  "installed_version": "0.6.0",
+  "stable_core": "alfatreze.CARDWRITE02",
+  "preserved_output_files": [
+    {
+      "path": "Assets/cardwrite/alfatreze.CARDWRITE02/write64.bin",
+      "sha256": "b7b05ccadcfa2eb7ed53aee6b5b12db57a06217da1351728a82810ad757f393c"
+    },
+    {
+      "path": "Assets/cardwrite/alfatreze.CARDWRITE02/batch-b003.bin",
+      "sha256": "f29a1a67f46db9181f251199cb9bab73c65df2ccd0d70621303d56f70ee9ca26"
+    },
+    {
+      "path": "Assets/cardwrite/alfatreze.CARDWRITE02/stress-b004.bin",
+      "sha256": "0ef80e007254ccc6d63874e2aac6e0082e360de00843b82b36836807ff433e56"
+    },
+    {
+      "path": "Assets/cardwrite/alfatreze.CARDWRITE02/recover-b005-a.bin",
+      "sha256": "f3ed21f8491450f0cb8643e49a6d7bf8d1678592f9bfb8e4a7ef5d00cace44ce"
+    },
+    {
+      "path": "Assets/cardwrite/alfatreze.CARDWRITE02/recover-b005-b.bin",
+      "sha256": "96a412ac424a09943831179a0ea1734eef84a8dce09191a72fac6189e7de8085"
+    }
+  ],
+  "unexpected_update_changes": [],
+  "raw_remount_report_sha256": "7fa8c6c29057b8f65af1d0b8dee71550a56bc0bda06e979df669716dda933449",
+  "private_update_journal_sha256": "7043c7759a155e05fdff6b2c373862cfa2d1490abe69ddf6461d0c0b36c38ba0",
+  "scope": "Exact host-card bytes and guarded records verified; qualified B006 installed with backups. Between-command FPGA reload recovery is distinct from SD power-loss durability."
+}

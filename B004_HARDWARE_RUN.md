@@ -47,4 +47,4 @@ The LCD CYCLES field is the held inclusive FSM counter. Completed JTAG command t
 
 ## Repeat02 current result
 
-Third fresh-launch read-only session passes all 32 regions, zero writes/failures; full history is `work/evidence/b004r2-physical-jtag-cold-repeat02.json`. Post-read remount/whole-file comparison pending. Exact full power-off actions have not been separately confirmed.
+Third fresh-launch read-only session passes all 32 regions, zero writes/failures; full history is `work/evidence/b004r2-physical-jtag-cold-repeat02.json`. Post-read remount also passes: complete file/guards and all prior files unchanged; only the new PASS screenshot added. See `work/evidence/b004r2-physical-file-cold-repeat02.json`. Exact full power-off actions have not been separately confirmed.

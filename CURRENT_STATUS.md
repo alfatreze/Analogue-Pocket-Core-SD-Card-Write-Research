@@ -297,3 +297,11 @@ New screenshots `20261005_002904.png` and `20261005_002910.png` show CARD WRITIN
 - Mounted card matches the exact final B004 repeat09 snapshot. Owner requested removal of unneeded cores; reviewed cleanup targets only the original example and CARDWRITE01, with backups and all assets preserved, after B005 installation.
 
 - B005 implementation and simulation evidence pushed as b10514a. Full read-only backup of 98 non-OS card files (103,448,123 bytes) independently hash-verified; card unchanged during backup. Synthesis passes; final fit/timing remain pending. Synthesis infers RX, retained A record and all five history arrays as RAM; TX maps to registers with its two independent read ports. Final resource/timing reports determine whether this bounded implementation qualifies.
+
+## B005 qualified and installed — Pocket trials pending
+
+- Full compile passed at 16:33:47 WEST, zero errors / 167 warnings. All four timing corners pass, worst setup +2.924 ns / hold +0.116 ns. Resources and external-interface limits recorded in BUILD_AUDIT.md.
+- B004 qualified artifacts and complete physical evidence archived before mutation; all 196 archive files independently re-hashed afterward. Update backups and all 12 installed package file hashes independently verified. Three prior outputs and every unrelated existing file remain unchanged.
+- B005 version 0.5.0/banner B005 installed in the stable CARDWRITE02 entry. Both new 8 KiB files are intact all-0xA5 fixtures; no B005 physical write test has run.
+- Owner-authorized cleanup completed: original Keyboard Mouse Target Data example and CARDWRITE01 removed after verified 19-file backups. CARDWRITE02 is the only remaining core. Every asset, screenshot and prior output is preserved. Full protected-content comparison passes; separate immutable local update/cleanup journals and public b005-installation-summary.json retained.
+- Next: fresh-load B005 READY and collect the first 64-commit JTAG-controlled session, then full-byte/remount and read-only recovery gates in B005_HARDWARE_RUN.md. Neither installation nor simulation proves recovery under physical interruption.

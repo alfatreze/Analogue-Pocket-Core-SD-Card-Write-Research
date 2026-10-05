@@ -1,0 +1,19 @@
+{
+  "build": "B005",
+  "version": "0.5.0",
+  "stable_core": "alfatreze.CARDWRITE02",
+  "installed_package_files": 12,
+  "package_hashes_pass": true,
+  "prior_qualified_archive_files_verified": 196,
+  "backups_pass": true,
+  "prior_outputs_and_unrelated_files_unchanged": true,
+  "removed_cores": [
+    "Example Author.Keyboard Mouse Target Data",
+    "alfatreze.CARDWRITE01"
+  ],
+  "removed_core_files": 19,
+  "only_remaining_core": "alfatreze.CARDWRITE02",
+  "new_scratch_files_all_A5": true,
+  "rbf_r_sha256": "9344e1aeaff74c0104f2434503e891aff6e8ae0572c6ff5de7b82ea9d518fe02",
+  "physical_B005_result": "pending; installation is not a Pocket write/recovery test"
+}

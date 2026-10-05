@@ -138,3 +138,7 @@ B005 keeps the latest valid generation in one preallocated file while updating t
 ## NCW-024 — retain simulation and card-update evidence separately
 
 B005 passes 36 RTL trials, seven independent host-oracle tests, six mock JTAG tests, twelve mock updater tests, nine mock collector tests and five mock cleanup tests. Tests cover the real pinned command/serial modules, 64 commits, generation carry, prefix recovery/resume, malformed records and permanent error/timeout ownership. Nine native RTL screen states were inspected. Frozen recovery05 sources are compiling independently; physical B005 remains pending. Superseded research cores may be removed only after qualified installation and verified local backups, while every prior output remains on the card.
+
+## NCW-025 — qualify the actual B005 fit and audit cleanup
+
+The frozen B005 stage fits at 32% ALMs, with TX in registers and RX/retained A/history in RAM. Keep this exact implementation and its passing four-corner timing evidence; any later memory optimization needs a new frozen revision. Full compile took 42:23, exceeding the earlier-build estimate; retain actual fit/full timestamps. B004 archives and all package/backup hashes were independently verified after the update. Remove only the two superseded research core directories requested by the owner, preserving every asset/result; use the completed cleanup snapshot for subsequent B005 host comparisons. Physical B005 remains pending.

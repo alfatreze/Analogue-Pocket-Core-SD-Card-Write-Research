@@ -1,13 +1,31 @@
 {
   "provenance": {
-    "kind": "recovery05; not installable until audited bitstream exists",
-    "template_commit": "da3a021b1eaf742604d86d8dc9b33a6666263e6a",
-    "seed": 1
+    "kind": "custom recovery05, full compile and internal timing qualified; Pocket pending",
+    "seed": 1,
+    "raw_sha256": "02fe6358d0574ff618881accff9bd91c353fd64a61dd8ace6b91b98c5a593c43",
+    "rbf_r_sha256": "9344e1aeaff74c0104f2434503e891aff6e8ae0572c6ff5de7b82ea9d518fe02",
+    "minimum_reported_slack_ns": 0.116,
+    "compile_source_manifest_sha256": "d21ed2d8f1c616fcf939efbc33c1468443b722620a599d4eea14202a103416c5",
+    "reports": {
+      "quartus-fit.log": "a6e88842981adcfa581d01e55e72aef683f11900ba8ba736a9d6d173fe151d7a",
+      "ap_core.rbf": "02fe6358d0574ff618881accff9bd91c353fd64a61dd8ace6b91b98c5a593c43",
+      "ap_core.fit.summary": "495a511f7cb7d58ca233cdb95b62cbf0c22299c6bcfc07289de43f4010986191",
+      "ap_core.sta.rpt": "22ab671632e6d5ecea9e24cf26f351983c42f729677e5c7db8d18e68ecbb9119",
+      "ap_core.asm.rpt": "13f39fa3f29b9f77b9a20093734323467df3e590c160aad3ecbbf3620ebe47da",
+      "ap_core.sof": "042563eb067e0450daf22c803d67e23c321ab5d02e76d4e8a0ab02cdda2bc676",
+      "ap_core.sta.summary": "d9b22691638c9bbaec80a55aa95e6c7522c2b90ba84ba7383bcbb28f9f71acf7",
+      "ap_core.map.rpt": "2afffd2d2da2e9263290f433cdc9cd0d904708763acc1faad6ed15334cbcbf8c",
+      "ap_core.fit.rpt": "eec0b8aa8bb54805b41be399b837924be17cc83800a94eedc2273ec271d83a58"
+    },
+    "experiment_config_sha256": "1bc5a598807d0abc61423f5f5ffa8e67fe41c0908e33817522c96044f5580532",
+    "simulation_summary_sha256": "3c73b0cc12e04b5058e62d61dd3054a3003041dcf0965d84454aa4ed5e3f35c1",
+    "display_review_sha256": "8af5156c68fb9c9e3df166de98bcab7f00e51348b5ee44c01f0256beb5bccefc"
   },
   "files": {
     "Assets/cardwrite/alfatreze.CARDWRITE02/recover-b005-a.bin": "2ef1444bc950050c92f373cd2f5442022af98aa900aefd82c749cff93d4c0037",
     "Assets/cardwrite/alfatreze.CARDWRITE02/recover-b005-b.bin": "2ef1444bc950050c92f373cd2f5442022af98aa900aefd82c749cff93d4c0037",
     "Cores/alfatreze.CARDWRITE02/audio.json": "32ecc527ee672b4f478b86e35bd0ee5eff474c73183b1b46d5169f09f224e182",
+    "Cores/alfatreze.CARDWRITE02/bitstream.rbf_r": "9344e1aeaff74c0104f2434503e891aff6e8ae0572c6ff5de7b82ea9d518fe02",
     "Cores/alfatreze.CARDWRITE02/core.json": "e1f07d1700dbf4a5547d6b5ed44a4860b65357f58e669fa972dc6fbb37633814",
     "Cores/alfatreze.CARDWRITE02/data.json": "05beb6e2569bd6e88e9a20c5c2c7d04283cd24cf1635686a2a4967da358d43d1",
     "Cores/alfatreze.CARDWRITE02/info.txt": "6209719f6078c62668a01cb939bca3e006718733b746541f997385ad204470aa",

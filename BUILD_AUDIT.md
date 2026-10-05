@@ -68,3 +68,13 @@ Quartus 25.1std.0 Build 1129 Lite, 5CEBA4F23C8, seed 1; full compilation success
 - SOF (not programmed through JTAG): 0eaeed5497705763bf6512b8a23ca93f50fc68a8ad7c8aebcb9169b576e1c983.
 
 Full reports/binaries under work/fpga/stress04r2-s1/, hashed custom-build-audit-stress04r2.json and qualified package manifest. Packaging also requires the passing simulation source/configuration hashes to match the frozen stage. The designated-card update independently verified 11 installed files, 16 prior card-file backups, 68 archived qualified B003 files and no unrelated protected changes. Physical B004 stress/cold evidence remains separate.
+
+## B005 / recovery05 — full qualification
+
+Quartus 25.1std.0 Build 1129 Lite, 5CEBA4F23C8, seed 1. Full compile successful: zero errors, 167 warnings; total 42:23. Fit completed 2026-10-05 16:27:17 WEST; full flow completed 16:33:47 WEST. Java interpreter mode remains scoped to this isolated build.
+
+Resources: 5,851/18,480 ALMs (32%), 7,381 registers, 25,211/3,153,920 block-memory bits, 11/308 RAM blocks, no DSPs, one PLL. RX, retained A record and all five history arrays infer RAM. TX maps to registers because of the buffer's read/write access structure; it fits with the reported margins and is not described as BRAM.
+
+Worst setup +2.924 ns; worst hold +0.116 ns (reserved JTAG clock); worst hold on clk_74a +0.147 ns. All four reported model corners pass setup/hold/recovery/removal/pulse-width checks; all TNS values zero. Illegal/unconstrained clocks: zero. Six input and 23 output ports retain incomplete external delays, including APF bridge/scaler/JTAG interfaces. Non-dedicated SPI clock routing, inherited PLL reset/compensation warnings, unused pins and inherited table-width truncation remain documented limitations; this is internal timing qualification, not proof of board interface margins or physical persistence.
+
+Frozen source manifest SHA-256: d21ed2d8f1c616fcf939efbc33c1468443b722620a599d4eea14202a103416c5. Raw RBF: 02fe6358d0574ff618881accff9bd91c353fd64a61dd8ace6b91b98c5a593c43. Installed reversed RBF: 9344e1aeaff74c0104f2434503e891aff6e8ae0572c6ff5de7b82ea9d518fe02. Full reports, SOF/RBF and report hashes retained under work/fpga/recovery05-s1 and work/evidence/custom-build-audit-recovery05.json. Qualification matches the frozen stage, configuration, tested source hashes and reviewed native displays.

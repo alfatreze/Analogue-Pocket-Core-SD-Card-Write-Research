@@ -75,3 +75,5 @@ Completed initial campaign: [physical results and next experiment](B004_RESULTS.
 ## Next experiment: B005 recovery
 
 [B005 procedure](B005_HARDWARE_RUN.md) defines alternating preallocated records, a 64-commit clean batch, read-only recovery and controlled interruption discovery before Tau CPU integration. Simulation and host/mock checks pass; full compile and physical results are recorded separately in CURRENT_STATUS.md. `make test-recovery` exercises the implementation. B005 retains the stable CARDWRITE02 entry and distinct version 0.5.0/banner.
+
+B005 now passes full compilation and internal timing qualification and is installed as version 0.5.0. The original example and CARDWRITE01 entries have been backed up and removed from the designated card, preserving all assets and prior results. Physical B005 clean-write and recovery trials remain pending. See [installation summary](work/evidence/b005-installation-summary.json) and [build audit](BUILD_AUDIT.md).

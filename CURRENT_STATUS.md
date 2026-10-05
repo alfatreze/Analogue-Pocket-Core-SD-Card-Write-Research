@@ -305,3 +305,5 @@ New screenshots `20261005_002904.png` and `20261005_002910.png` show CARD WRITIN
 - B005 version 0.5.0/banner B005 installed in the stable CARDWRITE02 entry. Both new 8 KiB files are intact all-0xA5 fixtures; no B005 physical write test has run.
 - Owner-authorized cleanup completed: original Keyboard Mouse Target Data example and CARDWRITE01 removed after verified 19-file backups. CARDWRITE02 is the only remaining core. Every asset, screenshot and prior output is preserved. Full protected-content comparison passes; separate immutable local update/cleanup journals and public b005-installation-summary.json retained.
 - Next: fresh-load B005 READY and collect the first 64-commit JTAG-controlled session, then full-byte/remount and read-only recovery gates in B005_HARDWARE_RUN.md. Neither installation nor simulation proves recovery under physical interruption.
+
+- CARDWRITE safely ejected after qualification, update, cleanup and all independent hash/protected-content gates. Ready for fresh B005 loading; leave A/B untouched for the first JTAG-controlled batch.

@@ -15,5 +15,6 @@
   "only_remaining_core": "alfatreze.CARDWRITE02",
   "new_scratch_files_all_A5": true,
   "rbf_r_sha256": "9344e1aeaff74c0104f2434503e891aff6e8ae0572c6ff5de7b82ea9d518fe02",
-  "physical_B005_result": "pending; installation is not a Pocket write/recovery test"
+  "physical_B005_result": "pending; installation is not a Pocket write/recovery test",
+  "safely_ejected": true
 }

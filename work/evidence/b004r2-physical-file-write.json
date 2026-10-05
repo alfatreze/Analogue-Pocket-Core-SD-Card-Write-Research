@@ -1,0 +1,35 @@
+{
+  "test_id": "STRESS-004-WRITE",
+  "build": "B004R2",
+  "firmware_reported": "2.7",
+  "file_verification": {
+    "pass": true,
+    "pairs": 10000,
+    "expected_size": 262144,
+    "actual_size": 262144,
+    "failed_regions": [],
+    "first_mismatch": null,
+    "expected_sha256": "0ef80e007254ccc6d63874e2aac6e0082e360de00843b82b36836807ff433e56",
+    "actual_sha256": "0ef80e007254ccc6d63874e2aac6e0082e360de00843b82b36836807ff433e56"
+  },
+  "changed_or_missing_protected_files": [],
+  "new_files_reviewed": {
+    "result_screenshots": 1,
+    "recreated_known_menu_caches": 5,
+    "unexpected_files": 0
+  },
+  "prior_outputs_preserved": {
+    "minimal02_write64_sha256": "b7b05ccadcfa2eb7ed53aee6b5b12db57a06217da1351728a82810ad757f393c",
+    "b003_batch_sha256": "f29a1a67f46db9181f251199cb9bab73c65df2ccd0d70621303d56f70ee9ca26"
+  },
+  "screenshot": {
+    "name": "20261005_131401.png",
+    "sha256": "23fe44a7ac7f78d4f5371ad5c68af446f85a2640a58e8fc2a1389f03d06d2c1a",
+    "observed": "B004R2 STRESS PASS; OPERATION/PASSED/FINISHED 0x2710 (10000); ERROR 0; CYCLES 0x0007BC86",
+    "cycles_match": "LCD is exactly one cycle greater than the last retained completed read timing"
+  },
+  "jtag_summary": "b004r2-physical-jtag-write.json",
+  "full_jtag_history": "b004r2-physical-jtag-write-records.json.gz",
+  "verdict": "10000 immediate write/read pairs and full final file/guards after remount PASS; fresh-launch cold read pending",
+  "physical_actions": "Normal Quit/shutdown/remount requested; owner reported card mounted; exact Quit/power sequence not separately confirmed"
+}

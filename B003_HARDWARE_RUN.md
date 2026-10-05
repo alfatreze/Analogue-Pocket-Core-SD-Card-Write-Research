@@ -1,6 +1,6 @@
 # B003R2 — first automatic 32-case batch
 
-Status: full compilation/internal timing and installation qualified. Owner launched B003R2; live JTAG confirmed revision 2 and the first physical warm batch passed 32 cases / 38 write-read pairs / 76 commands, with all retained records validated. Physical whole-file/guard verification after normal shutdown and cold read remain pending. The active core identity remains `alfatreze.CARDWRITE02`, version 0.3.2; the build banner reads **SD WRITE RESEARCH B003R2**. Earlier minimal02 sources, SOF/RBF and package are archived, and its successful `write64.bin` is preserved.
+Status: full compilation/internal timing and installation qualified. Owner launched B003R2; live JTAG confirmed revision 2 and the first physical warm batch passed 32 cases / 38 write-read pairs / 76 commands, with all retained records validated. The remounted whole file matches every expected byte, guard and tail; no protected files changed. Cold read remains pending. The active core identity remains `alfatreze.CARDWRITE02`, version 0.3.2; the build banner reads **SD WRITE RESEARCH B003R2**. Earlier minimal02 sources, SOF/RBF and package are archived, and its successful `write64.bin` is preserved.
 
 ## Write session: BATCH-003-WRITE
 

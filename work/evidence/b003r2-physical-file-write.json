@@ -1,0 +1,27 @@
+{
+  "test_id": "BATCH-003-WRITE",
+  "build": "B003R2",
+  "firmware_reported": "2.7",
+  "file_verification": {
+    "expected_size": 262144,
+    "actual_size": 262144,
+    "failed_regions": [],
+    "first_mismatch": null,
+    "expected_sha256": "f29a1a67f46db9181f251199cb9bab73c65df2ccd0d70621303d56f70ee9ca26",
+    "actual_sha256": "f29a1a67f46db9181f251199cb9bab73c65df2ccd0d70621303d56f70ee9ca26",
+    "pass": true
+  },
+  "changed_or_missing_protected_files": [],
+  "new_files_review": {
+    "screenshot_count": 1,
+    "known_menu_cache_count": 5
+  },
+  "screenshot": {
+    "name": "20261005_113406.png",
+    "sha256": "0458f4199c2ac9275c32347b194d08cacc7b899c782ee57f1fc260b88c72fc17",
+    "observed": "B003R2 BATCH PASS; CASE/PASSED/FINISHED 0x20; ERROR 0; cycles 0x00079FD7"
+  },
+  "jtag_records": "b003r2-physical-jtag-write.json",
+  "verdict": "one warm batch and remounted whole-file verification PASS; cold read and repeatability pending",
+  "physical_actions": "Normal Quit/shutdown/remount requested; owner reported mounted; exact sequence not separately confirmed"
+}

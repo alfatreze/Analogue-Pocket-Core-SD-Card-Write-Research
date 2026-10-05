@@ -1,0 +1,24 @@
+{
+  "test_id": "BATCH-003-COLD",
+  "build": "B003R2",
+  "firmware_reported": "2.7",
+  "file_verification": {
+    "expected_size": 262144,
+    "actual_size": 262144,
+    "failed_regions": [],
+    "first_mismatch": null,
+    "expected_sha256": "f29a1a67f46db9181f251199cb9bab73c65df2ccd0d70621303d56f70ee9ca26",
+    "actual_sha256": "f29a1a67f46db9181f251199cb9bab73c65df2ccd0d70621303d56f70ee9ca26",
+    "pass": true
+  },
+  "changed_or_missing_since_warm": [],
+  "only_added_file": "new result screenshot",
+  "screenshot": {
+    "name": "20261005_114024.png",
+    "sha256": "cda6807fd5dab5312541c8473ebed1184d9cbb8c199d595e6c5b5330bb21ddc7",
+    "observed": "B003R2 BATCH PASS; CASE/PASSED/FINISHED 0x20; ERROR 0; cycles 0x0001A8FC"
+  },
+  "jtag_records": "b003r2-physical-jtag-cold.json",
+  "verdict": "one write/remount/fresh-launch-read/remount baseline PASS; stress and interrupted-write safety pending",
+  "physical_actions": "Normal Quit/shutdown/remount requested; owner reported done; exact power sequence not separately confirmed"
+}

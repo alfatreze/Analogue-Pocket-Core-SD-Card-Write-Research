@@ -2,7 +2,7 @@
 
 ## Why batch
 
-A fixed, independently verified transport baseline makes it possible to compare many cases in one Pocket session. FPGA compilation should be needed for changes to the transport or CPU architecture, rather than for every payload size or pattern. CARDWRITE02 is the transport repair gate; it does not yet implement an automatic batch.
+A fixed, independently verified transport baseline makes it possible to compare many cases in one Pocket session. FPGA compilation should be needed for changes to the transport or CPU architecture, rather than for every payload size or pattern. The stable CARDWRITE02 entry now runs B003R2: its first physical 32-case write batch, full-file verification, fresh-launch read-only batch and final unchanged-file check all passed.
 
 ## First automatic batch core
 

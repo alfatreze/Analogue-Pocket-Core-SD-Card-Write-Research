@@ -1,0 +1,13 @@
+{
+  "source_revision": "7b98a2ee33dc01dda2b3a19c22e924c52d08bff9",
+  "source_worktree_clean": true,
+  "scope": "Read-only source review and isolated copied CDC simulation; no Tau writes or CPU/Pocket qualification.",
+  "files": {
+    "src/fpga/core/tgt_cmd.v": "d3b3356c8440e0f9eb4e3c75184257425fd571857df92d9a6f80221bee3fa0ba",
+    "src/fpga/core/mp3_soc.v": "8df8d0ed60fafed833de5a52b20f2a782429f6174f8391468dfb49753d27f71e",
+    "src/fpga/rtl/VexRiscv_Full.v": "1ee38dc4b0f3a2ce08de9df1f8e2bb8fceb628a89adb7f624f38ae44cebe9fcc",
+    "fw/link.ld": "1f2153a68993666f22c2cb9274e50a53e7737abc2c8acfa73605ac89439d38be",
+    "sim/tb_tgt_cmd.v": "ba9af22d8086d558e0179ebc70c1564e22949529a803c2a13a11f87afddf3dc7",
+    "LICENSE": "97f2fc7dcf1d762944a4535509d4c1535b9c17dce15258ca4acafd410c19c70d"
+  }
+}

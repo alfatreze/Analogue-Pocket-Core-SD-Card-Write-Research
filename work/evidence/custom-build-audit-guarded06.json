@@ -1,0 +1,22 @@
+{
+  "kind": "custom guarded06, full compile and internal timing qualified; Pocket pending",
+  "seed": 1,
+  "raw_sha256": "2060bada9011a5232a71098d217614028f15f55e6a7566cb306cf835392f5a9a",
+  "rbf_r_sha256": "44c6cf5660c35d138b9f9ce1af9a5307bf0f5cfbfacb40c7cdc5ea9d65c5aa5f",
+  "minimum_reported_slack_ns": 0.108,
+  "compile_source_manifest_sha256": "8d6a98e217e3d8b8e6b84ad32d4dd0585af9418a4d27b53267e47f990d20b71c",
+  "reports": {
+    "quartus-fit.log": "3a7c00d574f40d29873a28aff1093a41faa750eb3670f1b3d8cef854502352f0",
+    "ap_core.rbf": "2060bada9011a5232a71098d217614028f15f55e6a7566cb306cf835392f5a9a",
+    "ap_core.fit.summary": "078da5ad07f718b0ee39e83757ba5654f5caf7300fa056bffb58e81e6ec0e70a",
+    "ap_core.sta.rpt": "b4c41ac20e94a04441e67ab881130554b24fa767f549e01854e41d046ed52461",
+    "ap_core.asm.rpt": "454ddf5b1df6b0b923a5675e5a02cd6a25e4882b1fae592b0294d8d38e81a312",
+    "ap_core.sof": "6b9f0080e10f4360243c2917934685b2b3ab5c497ab531009f4b025aa741876a",
+    "ap_core.sta.summary": "d80c87aa341e5ec8ebf8106ec17a08c45a2ed8b9fa76227fe679182d459de0ff",
+    "ap_core.map.rpt": "2331f42021c2fe78b9ba8a908747652d8fc0d9eab29248e424da05e50cdfbdb2",
+    "ap_core.fit.rpt": "6812b15fe64f564fc8b260af1979866d4199d2b0182d68ecc4712354ad3cb386"
+  },
+  "experiment_config_sha256": "cbd78c5da187cc86175ec109b4ba5a0e963ad8bb73fc22ecd85aa8daa2825056",
+  "simulation_summary_sha256": "236d20421ce09ba0f714a8dd34cb2e21c2028af505cc2145a116d1b30ccfdf53",
+  "display_review_sha256": "761d15f919ea77ff769eca2ab0ae28311e24d017199d506b5b15ebe0305ba34c"
+}

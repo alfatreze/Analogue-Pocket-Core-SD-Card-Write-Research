@@ -1,0 +1,33 @@
+{
+  "pass": true,
+  "trials": [
+    {
+      "nominal_cpu_MHz": 60,
+      "commands": 300,
+      "pass": true,
+      "log_sha256": "b84f5589dd1514264c89092f81fd2453f707aa1879243758bc59a2be70c61136"
+    },
+    {
+      "nominal_cpu_MHz": 50,
+      "commands": 300,
+      "pass": true,
+      "log_sha256": "0861e8e89c7f3f00483ee3590de782911fefab028e3cbf15d2dc854726b51af2"
+    },
+    {
+      "nominal_cpu_MHz": 74.25,
+      "commands": 300,
+      "pass": true,
+      "log_sha256": "0f28c31b96d128d138930e2d685e2184edefab8fe42475ce1a6fb768569f2756"
+    },
+    {
+      "nominal_cpu_MHz": 90,
+      "commands": 300,
+      "pass": true,
+      "log_sha256": "b96d26f98228fa057d3b93136fb311567a2a1f0a153a9f30dc2b06a209abff90"
+    }
+  ],
+  "source_sha256": "d3b3356c8440e0f9eb4e3c75184257425fd571857df92d9a6f80221bee3fa0ba",
+  "testbench_sha256": "5d506921d2d29db536e37ad4caf3a0f289433e05de92da25c278dcb946ddd082",
+  "runner_sha256": "d20ef1107b3734f3ae09e5630d0b6dc01349aa4cc1e9a04e3627353b513d0fa3",
+  "scope": "Copied exact Tau crossing RTL; APF timing modeled. Includes sticky DONE, busy GO ignored, exact one-hot selections for all five commands, all 3-bit errors and 8-bit sequence wrap. No CPU execution, physical SD flush or independent-domain reset qualification."
+}

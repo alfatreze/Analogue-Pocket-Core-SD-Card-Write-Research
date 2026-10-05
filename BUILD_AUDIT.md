@@ -78,3 +78,15 @@ Resources: 5,851/18,480 ALMs (32%), 7,381 registers, 25,211/3,153,920 block-memo
 Worst setup +2.924 ns; worst hold +0.116 ns (reserved JTAG clock); worst hold on clk_74a +0.147 ns. All four reported model corners pass setup/hold/recovery/removal/pulse-width checks; all TNS values zero. Illegal/unconstrained clocks: zero. Six input and 23 output ports retain incomplete external delays, including APF bridge/scaler/JTAG interfaces. Non-dedicated SPI clock routing, inherited PLL reset/compensation warnings, unused pins and inherited table-width truncation remain documented limitations; this is internal timing qualification, not proof of board interface margins or physical persistence.
 
 Frozen source manifest SHA-256: d21ed2d8f1c616fcf939efbc33c1468443b722620a599d4eea14202a103416c5. Raw RBF: 02fe6358d0574ff618881accff9bd91c353fd64a61dd8ace6b91b98c5a593c43. Installed reversed RBF: 9344e1aeaff74c0104f2434503e891aff6e8ae0572c6ff5de7b82ea9d518fe02. Full reports, SOF/RBF and report hashes retained under work/fpga/recovery05-s1 and work/evidence/custom-build-audit-recovery05.json. Qualification matches the frozen stage, configuration, tested source hashes and reviewed native displays.
+
+## B006 / guarded06 — full qualification
+
+Quartus 25.1std.0 Build 1129 Lite, 5CEBA4F23C8, seed 1. Full flow completed 2026-10-05 17:40:22 WEST, elapsed 39:10, zero errors / 167 warnings. Fit completed 17:34:17. Frozen compile source manifest SHA-256 8d6a98e217e3d8b8e6b84ad32d4dd0585af9418a4d27b53267e47f990d20b71c.
+
+Uses 4,893/18,480 ALMs (26%), 5,078 registers, 90,747 block-memory bits, 18/308 RAM blocks, zero DSPs and one PLL. Compared with B005, logic drops by 958 ALMs and 2,303 registers while full 8 KiB RX checking adds seven RAM blocks. Real map report confirms TX/retained A 128x32, RX 2048x32 and all five history arrays infer RAM.
+
+All four reported corners pass: worst setup +3.402 ns, hold +0.108 ns (reserved JTAG clock), recovery +25.510 ns, removal +0.377 ns and pulse-width +0.830 ns; all TNS zero. No illegal/unconstrained clocks. Six input and 23 output ports retain incomplete external delays (APF bridge/scaler/JTAG), so qualification covers internal timing. Inherited SPI clock routing, PLL/table warnings and bounded intentional low-bit truncations remain recorded in full reports; no physical margin/durability inference.
+
+Raw RBF SHA-256 2060bada9011a5232a71098d217614028f15f55e6a7566cb306cf835392f5a9a; once-bit-reversed RBF_R 44c6cf5660c35d138b9f9ce1af9a5307bf0f5cfbfacb40c7cdc5ea9d65c5aa5f; SOF 6b9f0080e10f4360243c2917934685b2b3ab5c497ab531009f4b025aa741876a. Collected reports/binaries are under work/fpga/guarded06-s1, with exact report/config/source/test/native-display hashes in custom-build-audit-guarded06.json and guarded06-manifest.json.
+
+Qualification includes 707 RTL trials, seven host oracle tests, six mock JTAG, six loader-safety and five connected-model tests, plus nine inspected native display states. Package contains no save fixtures and reuses the B005 slot/file ABI. Physical B006 JTAG trials remain pending; no card-side B006 metadata update has occurred.

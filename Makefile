@@ -80,3 +80,10 @@ test-guarded:
 	$(PYTHON) sim/test_recovery_guarded.py
 	$(PYTHON) sim/test_jtag_guarded.py
 	$(IVERILOG) -g2012 -I rtl -DLAB_RECOVERY -DLAB_RECOVERY_GUARDED -s core_top -o /private/tmp/b006-top.vvp rtl/core_top.v rtl/lab_recovery_guarded.sv rtl/lab_probe.sv rtl/lab_video.sv rtl/core_bridge_cmd.v $(TEMPLATE)/apf/common.v sim/vendor_models.v
+
+.PHONY: test-tau-cdc test-tau-cpu
+test-tau-cdc:
+	$(PYTHON) sim/test_tau_card_cdc.py
+
+test-tau-cpu:
+	$(PYTHON) sim/test_tau_cpu_card.py

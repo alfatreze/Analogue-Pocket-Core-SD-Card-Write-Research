@@ -20,3 +20,7 @@ The pinned upstream submodules, copied Analogue framework/template portions in `
 
 
 `sim/adapt_spi.py` creates an Icarus-compatible copy of the pinned serial peripheral in ignored `work/sim/`: forward declarations are moved and procedural inout drivers are expressed as registers with continuous wire assignments. The APF state machines and source notices are retained; hardware compilation uses unchanged upstream serial code.
+
+## Pinned Tau reference for isolated CPU/command simulations
+
+references/tau-7b98a2e contains exact generated VexRiscv RTL, target crossing, original crossing test and LICENSE copied read-only from Tau revision 7b98a2ee33dc01dda2b3a19c22e924c52d08bff9. Tau's MIT notice is retained there; generated VexRiscv/SpinalHDL headers and upstream provenance are preserved. Source hashes are in work/evidence/tau-cpu-reference.json. New testbenches/firmware belong to this research project. The copied modules are references for isolated simulation, not a new qualified hardware build.

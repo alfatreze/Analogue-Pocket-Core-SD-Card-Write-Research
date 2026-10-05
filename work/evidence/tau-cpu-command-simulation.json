@@ -1,0 +1,58 @@
+{
+  "pass": true,
+  "source_revision": "7b98a2ee33dc01dda2b3a19c22e924c52d08bff9",
+  "cpu_sha256": "1ee38dc4b0f3a2ce08de9df1f8e2bb8fceb628a89adb7f624f38ae44cebe9fcc",
+  "trials": [
+    {
+      "trial": "60MHz",
+      "commands": 300,
+      "pass": true,
+      "bus_wait_cycles": 0,
+      "modeled_APF_delay_cycles": 100,
+      "log_sha256": "c07a7006c992d802887ffc007db4581d8d2eebf080576f4b26efcfc1f1acbb25"
+    },
+    {
+      "trial": "50MHz",
+      "commands": 300,
+      "pass": true,
+      "bus_wait_cycles": 0,
+      "modeled_APF_delay_cycles": 100,
+      "log_sha256": "b644aa98ff2e2e3a228499a233d6453ea0c60160ce631acb08a38718da592340"
+    },
+    {
+      "trial": "74MHz",
+      "commands": 300,
+      "pass": true,
+      "bus_wait_cycles": 0,
+      "modeled_APF_delay_cycles": 100,
+      "log_sha256": "2d0dfd3a24b4b63704399dd5fdbff421001d80edfa6266268c58b6a307f94375"
+    },
+    {
+      "trial": "90MHz",
+      "commands": 300,
+      "pass": true,
+      "bus_wait_cycles": 0,
+      "modeled_APF_delay_cycles": 100,
+      "log_sha256": "c6a370c862240c6be2ee3bfd45cb218515dd0c65a0dee66d7723e8d50b6a84cb"
+    },
+    {
+      "trial": "60MHz-stalled",
+      "commands": 300,
+      "pass": true,
+      "bus_wait_cycles": 3,
+      "modeled_APF_delay_cycles": 1000,
+      "log_sha256": "79c3240d24b9970fed965607c5183b814cb0eae3b2f644d2645ee0531bcf7612"
+    }
+  ],
+  "total_commands": 1500,
+  "source_hashes": {
+    "sim/tau_cpu/link.ld": "105f5c75bb14254811bbd16fefbfad612945a120e19bf5f53fb2d71f1dacbc7d",
+    "sim/tau_cpu/start.S": "24363000a574cbdd90da7f57c808358f1f1139fbe789c79e466534fba68e3aa9",
+    "sim/tau_cpu/main.c": "1d86466f8cd12c3baefe7f61440a3d804f748029d9217a9b593fc06f53e331be",
+    "sim/tb_tau_cpu_card.sv": "4f60b5166f6043cec289ad808d350801490e41b3731eb61c4ee5bebc9ef0107c"
+  },
+  "runner_sha256": "258185f8c1acf9f24bc561d030c63dec84054e6abadd5349b5350f8e0b26c14f",
+  "firmware_sha256": "44c870c95f17ef91a34fbac949c6bb788520769afae1368cb4cc2a0ed0b007d2",
+  "compiler_version": "riscv-none-elf-gcc (xPack GNU RISC-V Embedded GCC arm64) 15.2.0",
+  "scope": "Exact generated VexRiscv executes RV32IM firmware through instruction cache and uncached MMIO on isolated modeled buses/APF. 300 busy extra GO attempts rejected per trial, all selections/errors, sequence wrap and stalled buses. No physical write, payload publication, APF serialization, full Tau SoC/playback or reset qualification."
+}

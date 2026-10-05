@@ -57,7 +57,7 @@
   ],
   "host_oracle_tests": 7,
   "mock_jtag_tests": 6,
-  "scope": "Corrected full 50-trial simulation, actual command/serial modules, whole-file received-word/guard checks and blank-only initialization. Quartus qualification and physical B006 tests pending.",
+  "scope": "Corrected 50-trial base plus 657 additional frozen-RTL trials, actual command/serial modules, full fixed-region checks and blank-only initialization. Quartus and physical B006 qualification pending.",
   "test_sources": {
     "rtl/lab_recovery_guarded.sv": "f94f0f6a675469083072998e17ec6e8de63c747a7378d9aa6b8c7e6bb5ea0a40",
     "rtl/core_top.v": "435db4f65c3b303f1329217eec39eff5e8540be06198af6df6502da0f6636837",
@@ -69,11 +69,24 @@
     "tools/jtag_guarded.py": "0bff37ad87a4eca0bee8b4285dc0bc9e74720a5c10c03f5c1b67139ea33884a7",
     "tools/jtag_guarded.tcl": "5bbcdd62cbf73ddd6e9faee89cf28373d552d70a828f592bf911968c734e0498",
     "tools/recovery.py": "3f2506ea890af50c4119b9884ae1477184e075edc7b008a20bf1897897d0464b",
-    "experiments/b005.json": "1bc5a598807d0abc61423f5f5ffa8e67fe41c0908e33817522c96044f5580532"
+    "experiments/b005.json": "1bc5a598807d0abc61423f5f5ffa8e67fe41c0908e33817522c96044f5580532",
+    "tools/jtag_load_guarded.py": "bcafa9a4c14bdd23dd2800299e2e672e6526ae4a9510f5e4a8f933122c5504ea",
+    "sim/test_jtag_load_guarded.py": "a6817d592d54aef08fc5df50e3176d65fbfc39ccf6bc3d8b3e6bf04c00155967",
+    "tools/connected_guarded_campaign.py": "451eca6c94f63f56b4ecdc8057a6700de34cc32b8b4af7ce2b414897c2dc8023",
+    "sim/test_connected_guarded_campaign.py": "6ed5cc0907f65eefc6dc104caaddf9239b9ed970a323f07766a35f6e6705ffd9",
+    "sim/test_guarded_adversarial.py": "2e5a58b93fa10ea23b1bf30abf5b87c6567a1e5b3105ccffb9acf9a5011400ee"
   },
   "reports": {
     "work/evidence/b006-test-recovery.log": "1fdcf08bcf5cbd3195a0da437bc2716d39f614160fee690c2d01e11f92556724",
-    "work/evidence/b006-test-jtag.log": "27979bc2fd02680779242d369f174232aca6d8bf9dd93e1dd08b3dced2023fb0"
+    "work/evidence/b006-test-jtag.log": "27979bc2fd02680779242d369f174232aca6d8bf9dd93e1dd08b3dced2023fb0",
+    "work/evidence/b006-test-load.log": "a25b5619af971eae96a8c9d37ebc69133b4c28e990455e210be0507206df182c",
+    "work/evidence/b006-test-connected-model.log": "1f11b6e880045ee35de832b81b45d06257342e13b5c79bbf0034379d4ca220b9",
+    "work/evidence/b006-adversarial-simulation.json": "43bb7969d264e7ae0e0ffcf7a32e690641d6c3220073f553690bbe5c612e80ef",
+    "work/evidence/b006-test-adversarial.log": "98d8aaa0a401185e9d879b73fce2ee1d11c6e91a042c445c4535cd1ab8f46bc2"
   },
-  "display_review_sha256": "761d15f919ea77ff769eca2ab0ae28311e24d017199d506b5b15ebe0305ba34c"
+  "display_review_sha256": "761d15f919ea77ff769eca2ab0ae28311e24d017199d506b5b15ebe0305ba34c",
+  "guarded_load_tests": 6,
+  "connected_model_tests": 5,
+  "additional_rtl_trials": 657,
+  "total_rtl_trials": 707
 }

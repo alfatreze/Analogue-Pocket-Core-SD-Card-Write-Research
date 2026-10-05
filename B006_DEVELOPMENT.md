@@ -19,3 +19,7 @@ Separate frozen build guarded06, version 0.6.0/banner B006, debug endpoint SDW6 
 - Nine native RTL display states are rendered/inspected independently with realistic fixture masks and NO VALID telemetry. These are renderer checks, not physical screenshots.
 - Compile sources are frozen once launched. No package qualification or physical success claim until full source/test/display/hash gates and all timing corners pass.
 - FPGA checks cover the fixed 8,192-byte region; exact host file size, any bytes beyond that region and all unrelated files still require independent host verification. These checks complement later physical host comparison; they do not supply an SD flush, authenticated storage or guaranteed power-loss atomicity.
+
+## Qualification completed
+
+The corrected 50-trial base and 657 additional frozen-RTL trials pass (707 total). Six mock JTAG, six load-safety and five connected-model tests pass. TX RAM inference is confirmed in the real map/fit; full compile completed 17:40:22 WEST with zero errors / 167 warnings, all four internal timing corners passing. Package qualification and exact hashes are in BUILD_AUDIT.md. B006_HARDWARE_RUN.md describes the subsequent compatible JTAG-only trial and remaining remount/power gates. Physical B006 programming remains pending at this entry.

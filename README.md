@@ -76,4 +76,11 @@ Completed initial campaign: [physical results and next experiment](B004_RESULTS.
 
 [B005 procedure](B005_HARDWARE_RUN.md) defines alternating preallocated records, a 64-commit clean batch, read-only recovery and controlled interruption discovery before Tau CPU integration. Simulation and host/mock checks pass; full compile and physical results are recorded separately in CURRENT_STATUS.md. `make test-recovery` exercises the implementation. B005 retains the stable CARDWRITE02 entry and distinct version 0.5.0/banner.
 
-B005 now passes full compilation and internal timing qualification and is installed as version 0.5.0. The original example and CARDWRITE01 entries have been backed up and removed from the designated card, preserving all assets and prior results. Physical B005 clean-write and recovery trials remain pending. See [installation summary](work/evidence/b005-installation-summary.json) and [build audit](BUILD_AUDIT.md).
+B005 now passes full compilation and internal timing qualification and is installed as version 0.5.0. The original example and CARDWRITE01 entries have been backed up and removed from the designated card, preserving all assets and prior results. The first physical 64-save session and read-only matching-SOF reload pass. An extended connected campaign is in progress; complete remount/file/protected-content checks remain pending. See [installation summary](work/evidence/b005-installation-summary.json) and [build audit](BUILD_AUDIT.md).
+
+
+## B006 and CPU preparation
+
+[B006](B006_DEVELOPMENT.md) adds full fixed-region guard/received-word validation and refusal to initialize damaged nonblank records. All 707 RTL trials pass. Compile/internal timing and physical trial status are recorded in CURRENT_STATUS.md; [hardware procedure](B006_HARDWARE_RUN.md) preserves the existing B005 files.
+
+[Tau integration preparation](TAU_CPU_INTEGRATION.md) uses exact hash-pinned read-only CPU/crossing references. Crossing simulation passes 1,200 modeled commands; actual generated-CPU firmware execution passes another 1,500. These are simulation results, with physical CPU persistence and playback qualification pending.

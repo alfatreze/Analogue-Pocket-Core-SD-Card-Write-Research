@@ -20,3 +20,5 @@ work/evidence/build-failures/
 work/sim/recovery05/
 work/evidence/cleanup-*/
 work/sim/guarded06/
+work/sim/tau-cpu/
+work/sim/tau-cdc/

@@ -319,3 +319,18 @@ Owner reported ready; physical SDW5 revision/width signature and fresh READY/zer
 - B006 separate frozen guarded06 stage implements full 8 KiB guard/received-word checking, refusal to initialize damaged nonblank pairs, and unified synchronous TX RAM access. Full simulation rerun and isolated compile are in progress; initial harness-only fault-injection error retained in b006-harness-correction.json and its original log. No frozen RTL was changed after launch. No B006 programming or installation yet.
 
 - Corrected B006 campaign passes all 50 RTL trials, seven independent host-oracle tests and six mock JTAG tests. Whole-file corruption at ten locations across both files, missing guard word, post-write guard corruption, both-damaged refusal, high-generation carry, 64-save command/serial paths and all inherited timeout/error/recovery cases pass. Tested RTL/top/video match frozen guarded06 source hashes exactly. Nine native screens reviewed with NO VALID fixture generation/mask corrected to zero. Full compile/internal timing and physical B006 remain pending.
+
+- B006 synthesis passes: 4,671 estimated registers and 90,747 block-memory bits. Full 2,048-word RX and 128-word TX/retained-A plus five history arrays infer RAM. TX inference improvement is established in the real map report; final fit/resource/timing qualification remains pending. B005 connected campaign continues independently.
+
+## Additional connected-period development
+
+- B006's frozen RTL passes 657 additional adversarial trials: all 513 byte-prefix boundaries replacing an inactive record, 128 seeded record-bit corruptions across both files and 16 extra guard corruptions. Combined RTL count is 707, separate from host/mock tests. Exact sources/reports are added to the qualification hash gate; physical power cuts remain untested.
+- B006 loader/campaign safety and independent-model tests pass (6 + 5). B006_HARDWARE_RUN.md defines qualification, compatible JTAG-only loading, bounded saves/reloads/pauses and later remount checks. No B006 loading yet; B005 campaign retains exclusive JTAG ownership.
+- Read-only clean Tau revision 7b98a2e is pinned with exact copied CPU/crossing/license. Crossing-only simulation passes 1,200 modeled commands. Actual generated VexRiscv executes firmware and passes 1,500 modeled commands across four clock rates plus a stalled-bus case. No Tau modifications, physical CPU writes, full SoC/playback or independent-reset qualification. TAU_CPU_INTEGRATION.md records the next stages and remaining boundaries.
+- B006 fit completed at 17:34:17 WEST: 4,893 ALMs (26%), 5,078 registers, 90,747 block-memory bits and 18 RAM blocks, no DSPs, one PLL. Final flow/timing qualification remains pending; the fitter has a real TX RAM implementation.
+
+- Isolated exact-Tau-crossing reset diagnostic confirms CPU-side busy may clear before an outstanding APF command finishes, followed by a delayed completion incrementing the post-reset sequence. This is a documented integration limitation, not a failed Pocket session or reset-safety pass. No Tau changes/hardware reset were made; coordinated owner/reset handling remains required.
+
+## B006 qualified — connected physical trial pending
+
+Full compile passed 17:40:22 WEST, zero errors / 167 warnings, 39:10. Four internal timing corners pass; worst setup +3.402 ns / hold +0.108 ns, all TNS zero. Reviewed fit/RAM/warnings/external-delay limits and exact source/test/display/config hashes qualify the genuine collected SOF/RBF and once-bit-reversed package. Details in BUILD_AUDIT.md. No B006 programming yet: await B005's completed preserved campaign, then a guarded ABI-compatible JTAG load and first full-region read-only recovery. Existing card metadata remains B005/0.5.0.

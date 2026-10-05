@@ -1,0 +1,14 @@
+{
+  "diagnostic_completed": true,
+  "robust_reset_qualified": false,
+  "source_hashes": {
+    "sim/tb_tau_card_reset.sv": "fc329b4434d955cc3bdf889576fe059acc9ee447992186b477683b01bcbf7b4c",
+    "references/tau-7b98a2e/tgt_cmd.v": "d3b3356c8440e0f9eb4e3c75184257425fd571857df92d9a6f80221bee3fa0ba",
+    "work/evidence/tau-cdc-reset-diagnostic.log": "59145197babb6d572bf8ebcabe36509bf558f5061f7ecd2562d388f237172a02"
+  },
+  "observed": [
+    "CPU-side reset clears busy while accepted APF write is outstanding",
+    "Delayed pre-reset completion increments post-reset sequence"
+  ],
+  "scope": "Exact copied Tau crossing with modeled APF at nominal 60/74.25 MHz. A reset is not cancellation. No Tau source edits or hardware reset attempted. Owner/reset policy must preserve command/payload until true completion or verified whole-core restart."
+}

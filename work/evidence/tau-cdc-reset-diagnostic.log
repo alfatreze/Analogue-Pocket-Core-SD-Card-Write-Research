@@ -1,0 +1,4 @@
+OBSERVED CPU busy cleared while accepted APF write remains outstanding
+OBSERVED delayed pre-reset APF completion increments post-reset sequence
+DIAGNOSTIC COMPLETE: independent CPU-side reset cannot cancel command ownership
+sim/tb_tau_card_reset.sv:26: $finish called at 3133208 (1ps)

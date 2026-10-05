@@ -75,4 +75,4 @@ Ninth fresh-launch read-only session passes all 32 final regions, zero writes/fa
 
 ## Repeat09 current result
 
-Tenth fresh-launch read-only session passes all 32 final regions, zero writes/failures; full history is `work/evidence/b004r2-physical-jtag-cold-repeat09.json`. All ten fresh-launch read checks pass; final post-read remount/whole-file comparison pending. Full power-off actions not separately confirmed.
+Tenth fresh-launch read-only session passes all 32 final regions, zero writes/failures; full history is `work/evidence/b004r2-physical-jtag-cold-repeat09.json`. All ten fresh-launch read checks and their post-read remount/whole-file comparisons pass. Final summary: `work/evidence/b004r2-physical-file-cold-repeat09.json`; complete campaign report: [B004_RESULTS.md](B004_RESULTS.md). Full power-off actions not separately confirmed.

@@ -281,3 +281,9 @@ New screenshots `20261005_002904.png` and `20261005_002910.png` show CARD WRITIN
 - Cold repeat09 begins from independently verified READY/zero counters after owner reports ready. Exact requested full power-off not separately confirmed; no FPGA programming or writes.
 - All 32 final-generation regions pass, 32 reads/zero failures; indexed records, clean flags, byte ranges and timing extrema independently validated. Read cycles 55,949–508,032 (0.754–6.842 ms).
 - Complete separate public history work/evidence/b004r2-physical-jtag-cold-repeat09.json; original raw/decoded captures retained privately. All ten fresh-launch read sessions pass (320 reads, zero writes/failures); final post-read screenshot/remount and comparison against STRESS-004-COLD-REPEAT08 remain pending.
+
+## B004R2 tenth remount and initial campaign summary — PASS
+
+- STRESS-004-COLD-REPEAT09 identity/whole-file/guards pass with exact expected SHA-256. Independent comparison against repeat08: all prior files unchanged; only new screenshot 20261005_152605.png. Inspected and copied/hash-verified screenshot: STRESS PASS, PASSED/FINISHED 0x20, ERROR 0, CYCLES 0x0001A207 (last retained read + 1).
+- All ten sessions and host snapshots independently rechecked as a chain: 320 reads, zero writes/failures; every prior file unchanged at each remount. Public final summary b004r2-physical-file-cold-repeat09.json and aggregate b004r2-physical-campaign-summary.json under work/evidence.
+- B004_RESULTS.md records the completed initial single-card persistence baseline and its exact limits. Power actions not separately confirmed; no confirmed-cycle or interrupted-write safety claim. Next proposed experiment B005: two preallocated alternate files, independently validated generation/checksum/length format and controlled recovery tests before Tau CPU integration.

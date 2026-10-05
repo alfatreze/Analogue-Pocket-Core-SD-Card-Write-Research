@@ -1,0 +1,21 @@
+{
+  "pass": true,
+  "sources": {
+    "tools/resume_recovery.py": "9131ae229064d27c41e8f0e4c632ad7a3fdd5a63023aec7d8fd61015a4cfc6e9",
+    "tools/verify_connected_campaign.py": "d6e1bfc924fb33d3efb2c0fc3ddbfe3f9ff2bf10d29e2a3d4442350d346c128d",
+    "tools/jtag_load_resumed.py": "21cafc5d0d24841909276e4a68dec5e4f69a011befb6654151433522d3305dc5",
+    "tools/connected_guarded_resumed.py": "931fbeeeb328f095cb1252ba7d2efbe7cbf29ff3c59e5d0487460885544c0f51",
+    "tools/verify_guarded_resumed.py": "96981f8e4887d993c5695ea97df9b7bd527b74064e5e307621265b859a296f63",
+    "sim/test_resumed_gate.py": "98f0f09a0e3ce0d87b59c1cfa7872de389d86a7d1e41586b1d4e4bf1cebea271",
+    "sim/test_jtag_load_resumed.py": "acfb82971293d01bf1bac3080300c9116710b39ea484a5cfabbded116d64d064",
+    "sim/test_connected_guarded_resumed.py": "acff96699f83b98816517bbcb64c9844bfe18fca394b62f344800000b2511cbf"
+  },
+  "reports": {
+    "work/evidence/resumed-gate-tests.log": "fc23540c8545d4075fe2f0420accd022e74e5566176c3bd4c597964ff02c2e14",
+    "work/evidence/resumed-loader-tests.log": "d1a3bdcaa925bbf92cc120237c5ab1078f911832e5f3bbdd16fd82aab85d59fa",
+    "work/evidence/resumed-guarded-model-tests.log": "1f11b6e880045ee35de832b81b45d06257342e13b5c79bbf0034379d4ca220b9"
+  },
+  "pure_tests": 19,
+  "existing_prefix_verifier_tests": 5,
+  "scope": "Separate resumed trial clients; completed independent resumed proof required for B006. Original failed checkpoints, qualified SOFs/RTL/clients unchanged. Runtime chain/live result/bitstream/source/package gates remain required; no actual power cut."
+}

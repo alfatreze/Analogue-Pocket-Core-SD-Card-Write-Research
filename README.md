@@ -91,3 +91,7 @@ B005 now passes full compilation and internal timing qualification and is instal
 [B005 connected results](B005_CONNECTED_RESULTS.md): 647 saves and seven between-command FPGA interruption recoveries pass their immediate oracles. The planned campaign stopped on a JTAG connection failure; full physical remount/power-loss qualification remains pending. B006 is fully compiled/internal-timing qualified with 707 passing RTL trials, but was not loaded after the connection fault. CPU save-format and received-mask prototypes pass isolated modeled-transport checks; actual CPU-driven Pocket persistence remains pending. New console session tooling prevents the observed remote-process leak.
 
 - Long exact-CPU simulations now pass eight recovery starting states, 512 modeled saves / 2,576 commands with exact full-file checks. Both harness failures remain documented; physical card persistence and full Tau integration remain unqualified. Details: [TAU_CPU_INTEGRATION.md](TAU_CPU_INTEGRATION.md).
+
+## Resumed Pocket trial
+
+B005's separately resumed point-3/control/repair trial passed, reaching generation 649 with both records valid. The original stopped campaign stays immutable. B006 is physically loaded via qualified JTAG and its initial full-file/guard recovery passed; five 64-save batches plus one four-point interruption round are in progress. SD metadata/bitstream still remain B005 until a later verified remount/update. See [B006_HARDWARE_RUN.md](B006_HARDWARE_RUN.md).

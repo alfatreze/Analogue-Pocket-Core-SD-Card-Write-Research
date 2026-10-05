@@ -108,3 +108,12 @@ test-tau-cpu-save-stress-fast:
 
 test-tau-cpu-save-states:
 	$(PYTHON) sim/test_tau_cpu_save_states.py
+
+.PHONY: test-resumed-clients
+test-resumed-clients:
+	$(PYTHON) sim/test_resumed_gate.py
+	$(PYTHON) sim/test_jtag_load_resumed.py
+	$(PYTHON) sim/test_connected_guarded_resumed.py
+	$(PYTHON) sim/test_guarded_completion.py
+	$(PYTHON) sim/test_read_guarded_resumed_results.py
+	$(PYTHON) sim/test_update_guarded_resumed.py

@@ -40,3 +40,5 @@ work/evidence/tau-cpu-received-harness-syntax-failure.log
 work/sim/tau-cpu-save-stress-r2/
 work/evidence/tau-cpu-save-stress-tests.log
 work/sim/tau-cpu-save-states/
+work/evidence/b006-connected-resumed-campaign.json
+work/evidence/b006-connected-campaign.json

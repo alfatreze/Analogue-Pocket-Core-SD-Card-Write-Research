@@ -1,0 +1,5 @@
+{
+  "scope": "Temporary-card updater fixtures only; no physical card update",
+  "initial_failure": "Derived updater still referenced original campaign summary filenames; test fixtures exposed missing paths. Corrected separate updater to resumed summary/campaign paths and unique prior archive. Original updater unchanged.",
+  "private_failure_log_sha256": "385133c827db6247ef97d9b2600223a42cd1867b43013a2f144b849432d022e0"
+}

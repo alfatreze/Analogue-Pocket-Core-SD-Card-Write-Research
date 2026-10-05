@@ -1,0 +1,51 @@
+{
+  "pass": true,
+  "campaign_sha256": "907f3791d60dbf86afcc7f4b7048eddb69302e7c6d8a3068e71c463e7322b455",
+  "base": {
+    "power_return_summary_sha256": "d53cc5c8f1d4e2732ad4258a9751b13824c836be15012f531bd48bb0453bd247",
+    "stopped_campaign_sha256": "ef1a06025b7a38c009c05b2e3b746a68940882638af0ce657ba3ee371d50a889",
+    "stopped_summary_sha256": "a14f133c94918064c4ff631a793c1301ae05595d59890f567ecec87a853f397b",
+    "physical_result_sha256": "7e41b7bbc16dd5fa7279c92c2ef6e6c20e30bfee077e338d2cb7c21f5b8444ca",
+    "initial_file_sha256": [
+      "41b5b767f85a832b63f0888914382dfa824dc313c762ab9c6ebe58458fd7b51b",
+      "ff5c586c43076beb0d7893088147d1a15a3f73b5afac102564b9d50e096ba495"
+    ]
+  },
+  "new_commits": 2,
+  "combined_B005_commits": 649,
+  "point_3_second_repetition_pass": true,
+  "final_expected_files": {
+    "valid": [
+      true,
+      true
+    ],
+    "records": [
+      {
+        "valid": true,
+        "generation": 649,
+        "crc": 961053847
+      },
+      {
+        "valid": true,
+        "generation": 648,
+        "crc": 2530033315
+      }
+    ],
+    "selected": 0,
+    "generation": 649,
+    "reason": "valid-save",
+    "file_sizes": [
+      8192,
+      8192
+    ],
+    "guards_pass": true,
+    "sha256": [
+      "6ea600f6397f7227fa7b32fb014fcea097382f77f4f13f716d5e35b685cc6017",
+      "694613b923bc7b32e87d3f9d66c5e7b6d5a66156240f5873b7e56410553ebfcf"
+    ],
+    "generated_payloads_pass": true,
+    "pass": true
+  },
+  "last_result": "b005-session-results-1791233076389509000.json",
+  "scope": "Independent stopped-prefix replay plus exact host baseline and completed separately resumed point-3/control/repair histories. Predicted new file hashes await next remount; FPGA reloads are between commands, not SD power cuts."
+}

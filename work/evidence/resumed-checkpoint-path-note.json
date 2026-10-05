@@ -1,0 +1,6 @@
+{
+  "scope": "Local checkpoint naming correction only; no physical operation or running-source change",
+  "actual_checkpoint": "work/evidence/b006-connected-campaign.json",
+  "resumed_reader_alias": "work/evidence/b006-connected-resumed-campaign.json",
+  "reason": "Frozen derived runner retains original checkpoint filename. A relative local read alias resolves the separate verifier/collector filename while preserving running sources, all existing failed B005 history and the exact checkpoint bytes. Both paths excluded from public publication."
+}

@@ -1,0 +1,96 @@
+{
+  "pass": true,
+  "build": "B005",
+  "fresh_READY_verified_before_read": true,
+  "read_only_recovery": {
+    "status": 4,
+    "mode": 1,
+    "terminal": 1,
+    "state": 18,
+    "reason": 0,
+    "completed": 0,
+    "commands": 2,
+    "valid_mask": 1,
+    "generation_a": 647,
+    "generation_b": 648,
+    "selected_generation": 647
+  },
+  "expected_CRC_matches_readback": true,
+  "new_saves": 0,
+  "SD_read_commands": 2,
+  "physical_remount_before_restart": {
+    "file_evidence_pass": true,
+    "protected_existing_files_unchanged": true,
+    "stable_snapshot": true,
+    "files": {
+      "valid": [
+        true,
+        false
+      ],
+      "records": [
+        {
+          "valid": true,
+          "generation": 647,
+          "crc": 315479754
+        },
+        {
+          "valid": false,
+          "reason": "checksum",
+          "stored_crc": 2530033315,
+          "computed_crc": 4121309140
+        }
+      ],
+      "selected": 0,
+      "generation": 647,
+      "reason": "valid-save",
+      "file_sizes": [
+        8192,
+        8192
+      ],
+      "guards_pass": true,
+      "sha256": [
+        "41b5b767f85a832b63f0888914382dfa824dc313c762ab9c6ebe58458fd7b51b",
+        "ff5c586c43076beb0d7893088147d1a15a3f73b5afac102564b9d50e096ba495"
+      ],
+      "generated_payloads_pass": true,
+      "pass": true
+    },
+    "new_menu_cache_files": [
+      "System/core_viewby_platform.bin",
+      "System/corelist_cache.bin",
+      "System/cores_cache.bin",
+      "System/platform_viewby_category.bin",
+      "System/platforms_cache.bin"
+    ],
+    "private_raw_result_sha256": "7e41b7bbc16dd5fa7279c92c2ef6e6c20e30bfee077e338d2cb7c21f5b8444ca"
+  },
+  "owned_console_sessions_closed": 4,
+  "evidence": {
+    "ready": {
+      "raw_file": "b005-session-status-1791232382811287000.txt",
+      "raw_sha256": "ab09eaea3ea774c65254da4ebf76c70d2c07cec1efb724855694bf01b801d21b",
+      "decoded_sha256": "ea4d924905ceba25d451ca716be2019e5747f62ec4230ea2e1c4a84bf19175b5",
+      "transport_sha256": "52c4a7ee7ff085397deae607c994793b505f59a62d954206dcb3e2e317127831"
+    },
+    "cold_request": {
+      "raw_file": "b005-session-cold-1791232428022266000.txt",
+      "raw_sha256": "eda820ad5831697a72c08c52bc1bc0b83a222cac4c6f413d59c7c638f7c998bb",
+      "decoded_sha256": "e1c03a353b88486a6cdef42ce952f73fd70cea33ef04807d35a330af0bc5e9fb",
+      "transport_sha256": "eb9b56e0a0c6d5667cf414a0e30040acb26638466ac515f85bf0bd765bb717cc"
+    },
+    "finished_status": {
+      "raw_file": "b005-session-status-1791232458298659000.txt",
+      "raw_sha256": "8ab63397cb67b447dafd0c4a979fb2dafa7ff790db1a82174a9d0af450d29ba9",
+      "decoded_sha256": "ea4d924905ceba25d451ca716be2019e5747f62ec4230ea2e1c4a84bf19175b5",
+      "transport_sha256": "1da422d4450e834dd6977ba70ec62881962609e80519b338befd9796b51793c9"
+    },
+    "results": {
+      "raw_file": "b005-session-results-1791232484103296000.txt",
+      "raw_sha256": "288d591e7db81c0f24f050a0219132227180339f33e0416217859987b3702fbc",
+      "decoded_sha256": "f779e0b69b058a2289759a32a788163fc8700179660f8aae7fb2965ef6999472",
+      "transport_sha256": "8ddb037d770f733dce520cb706b97d448089b002a847a27cbc305638a5ef69bc"
+    }
+  },
+  "finding": "Last successful pre-failure snapshot was completed read-only recovery; the next failed action stopped at status before another reload. No issued ongoing save is evidenced at that boundary. Deliberate earlier two-chunk inactive-record interruption is preserved exactly and recovered after restart.",
+  "limits": "Owner reports restored boot after changing faulty charging cable and charging. Exact loss-of-power time and SD in-flight state at that instant were not measured; no active-write power-cut qualification, full filesystem-allocation check or hardware fault diagnosis."
+}

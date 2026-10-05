@@ -132,3 +132,28 @@ Each test instance records ID, phase, applicable method/build, environment, payl
 Required suite for initial settings writing: applicable P0 tests plus T01/T02/T09/T13. Add all playback P1 tests before enabling saves while playing; add resume, logging and export tests as those features enter scope. Interruption-recovery claims require R04/R06 for the claimed conditions.
 
 The final report links each supported capability to completed test instances and lists failures, exclusions, card/firmware coverage, resource/timing results and remaining uncertainty.
+
+## Evidence update — 2026-10-05 connected interval
+
+The catalogue above remains the required scope, rather than a blanket pass. Current evidence narrows several gates:
+
+| Gate | Evidence achieved | Still required |
+|---|---|---|
+| Repeated physical saves | B004 10,000 write/read pairs with host checks; B005 647 committed saves and seven between-command FPGA interruption recoveries | B005 final remount, independently confirmed power cycles and actual card power interruptions |
+| Record/guard validation | B006 707 RTL trials and full compile/internal timing qualification | Actual B006 Pocket trial and protected whole-card host comparison |
+| Exact CPU command transport | 1,500 commands executed by pinned generated CPU over modeled APF completion | Actual payload bridge, full SoC bus and physical SD transport |
+| Exact CPU save format | Eight modeled cases; separate fault diagnostics and received-mask remedy | Qualified CPU hardware implementation, cache/publication and lifecycle policy |
+| Reset while outstanding | Exact crossing diagnostic exposes delayed completion after CPU-side reset | Coordinated ownership/reset fix and replay of all affected timing boundaries |
+| Connected tooling | Owned console lifecycle passes harmless VM scripts and safety fixtures | Real ISSP session through the new client after connection restoration |
+
+Additional P0 CPU completeness and lifecycle tests, prompted by the observed gaps:
+
+| ID | Test | Required result |
+|---|---|---|
+| C13 | Omit any received index while its old RX word already matches expected data; duplicate other indices. | No completion accepted until every distinct expected index arrives; duplicates cannot increase coverage. |
+| C14 | Deliver out-of-range, misaligned, wrong-slot or old-lease words. | Reject or quarantine before RX/coverage mutation; preserve current owner and last valid record. |
+| C15 | CPU reset or timeout while APF owns TX/parameters; allow a delayed completion, then request again. | No buffer reuse or new owner until coordinated recovery; delayed old completion cannot publish a new save. |
+| C16 | Publish final RX word and completion at every relative CPU/bridge phase; read coverage/data immediately. | Completion and coverage become visible only after the entire data set is coherent. |
+| C17 | Full Tau MMIO map/version mismatch, including the isolated lease address overlapping PCM status. | Refuse incompatible firmware/RTL before command issue; no writes to audio registers or memory aliases. |
+
+These additional tests are planned hardware/full-SoC gates. The current isolated model catches missing boot/verify guard words, but does not implement production CDC, a compatible MMIO map or coordinated reset recovery. Private stopped histories remain locally reproducible; sanitized public outcomes are in work/evidence/b005-connected-public-summary.json. No B007 hardware image exists.

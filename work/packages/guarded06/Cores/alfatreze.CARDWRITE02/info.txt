@@ -1,0 +1,7 @@
+SD Write Research B006 - whole-file guards
+Reuse existing B005 files in slots 0x25/0x26.
+Never reset existing test output files.
+A: 64 saves, full 8 KiB guard/readback checks.
+B: recovery only, full-file validation.
+Initialize only an exactly blank pair.
+Retained endpoint SDW6; CRC is not authentication.

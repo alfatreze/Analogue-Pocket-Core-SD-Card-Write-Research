@@ -1,0 +1,11 @@
+{
+  "build": "B006", "core_id": "alfatreze.CARDWRITE02", "version": "0.6.0",
+  "files": ["recover-b005-a.bin", "recover-b005-b.bin"], "slot_ids": [37, 38],
+  "reuse_existing_B005_files": true, "file_size": 8192, "guard_byte": 165,
+  "record_offset": 512, "record_size": 512, "header_size": 32,
+  "chunk_size": 128, "clean_commits": 64,
+  "read_offset": 0, "read_length": 8192, "received_words": 2048,
+  "format": "Unchanged B005 SDR5 record and CRC-32/ISO-HDLC",
+  "initialization": "Only initialize if both records are exactly all 0xA5 and full-file guards pass; damaged nonblank pair refuses writes",
+  "security_scope": "Guard/format validation and bounded existing-file updates; no authentication, flush primitive or guaranteed physical atomicity"
+}

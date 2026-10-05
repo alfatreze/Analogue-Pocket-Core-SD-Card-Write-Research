@@ -1,0 +1,23 @@
+{
+  "data": {
+    "magic": "APF_VER_1",
+    "data_slots": [
+      {
+        "name": "Recovery A",
+        "id": "0x25",
+        "required": false,
+        "parameters": 2,
+        "deferload": true,
+        "filename": "recover-b005-a.bin"
+      },
+      {
+        "name": "Recovery B",
+        "id": "0x26",
+        "required": false,
+        "parameters": 2,
+        "deferload": true,
+        "filename": "recover-b005-b.bin"
+      }
+    ]
+  }
+}

@@ -142,3 +142,11 @@ B005 passes 36 RTL trials, seven independent host-oracle tests, six mock JTAG te
 ## NCW-025 — qualify the actual B005 fit and audit cleanup
 
 The frozen B005 stage fits at 32% ALMs, with TX in registers and RX/retained A/history in RAM. Keep this exact implementation and its passing four-corner timing evidence; any later memory optimization needs a new frozen revision. Full compile took 42:23, exceeding the earlier-build estimate; retain actual fit/full timestamps. B004 archives and all package/backup hashes were independently verified after the update. Remove only the two superseded research core directories requested by the owner, preserving every asset/result; use the completed cleanup snapshot for subsequent B005 host comparisons. Physical B005 remains pending.
+
+## NCW-026 — use qualified matching-SOF reloads for connected experiments
+
+Owner requested all feasible development/tests without a card swap. Official Pocket documentation and Tau's verified procedure support FPGA reload with the same core metadata; JTAG chain and qualified SOF hashes are checked first. Preserve full result history and compare it to live terminal state before reload. A separate explicit pause mode permits only known between-command FPGA interruption. Busy/fault/host-mounted states are refused. Record this as FPGA-session recovery, not SD power loss or physical remount durability. First reload read recovers generation 64 with two reads/zero writes.
+
+## NCW-027 — full-file guards and nonblank initialization refusal
+
+B006 reads entire existing 8 KiB files, requires all 2,048 words and intact 0xA5 guards, and accepts initialization only for an exactly blank pair. A damaged nonblank pair cannot silently become generation 1. Unified TX addressing aims to infer RAM; use real reports to qualify it. Existing filenames/record format remain compatible and packages contain no replacement save fixtures. Preserve the first fault-injection harness failure, correct only the testbench and rerun; frozen RTL remains unchanged.

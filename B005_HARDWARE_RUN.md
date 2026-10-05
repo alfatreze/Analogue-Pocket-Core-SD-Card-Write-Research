@@ -53,3 +53,11 @@ Use separate immutable trial IDs, including phase, control/cut, repetition and e
 | Repeatability | Multiple cards/controllers, firmware versions and filesystem layouts, long campaign with all failure counts and protected-content hashes |
 
 The four prefix-cut simulations, real command-module/serial-bridge simulations, and mock tool tests establish implementation expectations. They do not substitute for these physical trials.
+
+## Connected-only campaign (owner authorized while unable to swap card)
+
+The first B005 batch and matching-SOF reload recovery pass. tools/jtag_reload_recovery.py checks the exact qualified local/VM SOF hashes, one USB-Blaster cable and 02B050DD device, and a live snapshot matching a previously preserved full PASS history before reconfiguration. It rejects busy/faulted/host-mounted conditions. An explicitly requested core-interruption mode accepts only the verified between-command PAUSED state and its exact point/count; never an outstanding request.
+
+The bounded tools/connected_recovery_campaign.py campaign adds nine 64-save batches with read-only reload checks, two rounds of all four pause/resume controls and FPGA reconfiguration at all four between-command points, then repairs the inactive partial record and reads both valid records. The first batch is included in the total of 640 clean-batch commits. The planned final generation is 649 (eight successful single-save controls and one final repair). Expected final records are A=649/B=648. These numbers are a plan, not an outcome; the campaign stops on any mismatch and records its actual final state.
+
+Full per-session results and evidence hashes are checkpointed in work/evidence/b005-connected-campaign.json; raw console/reload files and predicted file fixtures stay private. The expected files are a software model. Physical post-remount bytes/guards/protected contents remain pending. FPGA reconfiguration is not a card power cut, full Pocket power cycle or proof of durable filesystem storage. Do not run another campaign while this one is active or silently overwrite its evidence.

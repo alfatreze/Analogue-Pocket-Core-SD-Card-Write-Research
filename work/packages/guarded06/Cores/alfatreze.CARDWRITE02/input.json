@@ -1,0 +1,22 @@
+{
+  "input": {
+    "magic": "APF_VER_1",
+    "controllers": [
+      {
+        "type": "default",
+        "mappings": [
+          {
+            "id": 0,
+            "name": "Run 64 saves",
+            "key": "pad_btn_a"
+          },
+          {
+            "id": 1,
+            "name": "Recover only",
+            "key": "pad_btn_b"
+          }
+        ]
+      }
+    ]
+  }
+}

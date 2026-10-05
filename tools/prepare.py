@@ -57,8 +57,8 @@ def prepare_reference(pins):
 
 
 def prepare_custom(pins, build="minimal01"):
-    suffix = "02" if build.startswith(("batch03","stress04","recovery05")) else build[-2:]
-    label = {"batch03":"B003", "batch03r1":"B003R1", "batch03r2":"B003R2", "stress04":"B004", "stress04r1":"B004R1", "stress04r2":"B004R2", "recovery05":"B005"}.get(build,suffix)
+    suffix = "02" if build.startswith(("batch03","stress04","recovery05","guarded06")) else build[-2:]
+    label = {"batch03":"B003", "batch03r1":"B003R1", "batch03r2":"B003R2", "stress04":"B004", "stress04r1":"B004R1", "stress04r2":"B004R2", "recovery05":"B005", "guarded06":"B006"}.get(build,suffix)
     core_id = "alfatreze.CARDWRITE" + suffix
     source = ROOT / 'vendor/core-template'
     stage = ROOT / 'work/build' / build
@@ -79,7 +79,7 @@ def prepare_custom(pins, build="minimal01"):
                   'set_global_assignment -name SEARCH_PATH core',
                   'set_global_assignment -name NUM_PARALLEL_PROCESSORS 2',
                   'set_global_assignment -name SEED 1'])
-    if build in ('minimal02', 'batch03', 'batch03r1', 'batch03r2','stress04','stress04r1','stress04r2','recovery05'):
+    if build in ('minimal02', 'batch03', 'batch03r1', 'batch03r2','stress04','stress04r1','stress04r2','recovery05','guarded06'):
         lines.append('set_global_assignment -name ALLOW_POWER_UP_DONT_CARE OFF')
     if build.startswith('batch03'):
         lines.extend(['set_global_assignment -name VERILOG_MACRO LAB_BATCH=1',
@@ -92,6 +92,8 @@ def prepare_custom(pins, build="minimal01"):
     if build in ('stress04r1','stress04r2'):lines.append('set_global_assignment -name VERILOG_MACRO LAB_STRESS_REV='+build[-1])
     if build=='recovery05':
         lines.extend(['set_global_assignment -name VERILOG_MACRO LAB_RECOVERY=1', 'set_global_assignment -name SYSTEMVERILOG_FILE core/lab_recovery.sv'])
+    if build=='guarded06':
+        lines.extend(['set_global_assignment -name VERILOG_MACRO LAB_RECOVERY=1','set_global_assignment -name VERILOG_MACRO LAB_RECOVERY_GUARDED=1','set_global_assignment -name SYSTEMVERILOG_FILE core/lab_recovery_guarded.sv'])
     qsf.write_text('\n'.join(lines) + '\n')
     # Keep real related PLL outputs grouped together; no false cut between them.
     (core / 'core_constraints.sdc').write_text('''set_clock_groups -asynchronous \\
@@ -123,8 +125,8 @@ def prepare_custom(pins, build="minimal01"):
             if name=='core':value['core']['metadata'].update(description='SD Write Research '+label+' - 10000 pairs',version='0.4.'+build[-1] if build in ('stress04r1','stress04r2') else '0.4.0',date_release='2026-10-05')
             elif name=='data':value['data']['data_slots']=[dict(name='Stress B004',id='0x24',required=False,parameters=2,deferload=True,filename='stress-b004.bin')]
             elif name=='input':value['input']['controllers']=[dict(type='default',mappings=[dict(id=0,name='Run 10000 pairs',key='pad_btn_a'),dict(id=1,name='Cold read 32 finals',key='pad_btn_b')])]
-        if build=='recovery05':
-            if name=='core':value['core']['metadata'].update(description='SD Write Research B005 - alternate saves',version='0.5.0',date_release='2026-10-05')
+        if build in ('recovery05','guarded06'):
+            if name=='core':value['core']['metadata'].update(description='SD Write Research '+label+(' - whole-file guards' if build=='guarded06' else ' - alternate saves'),version='0.6.0' if build=='guarded06' else '0.5.0',date_release='2026-10-05')
             elif name=='data':value['data']['data_slots']=[dict(name='Recovery '+x.upper(),id=hex(37+i),required=False,parameters=2,deferload=True,filename='recover-b005-'+x+'.bin') for i,x in enumerate(('a','b'))]
             elif name=='input':value['input']['controllers']=[dict(type='default',mappings=[dict(id=0,name='Run 64 saves',key='pad_btn_a'),dict(id=1,name='Recover only',key='pad_btn_b')])]
         json_write(dest / (name + '.json'), value)
@@ -147,6 +149,9 @@ def prepare_custom(pins, build="minimal01"):
         (dest/'info.txt').write_text('SD Write Research B005 - alternate saves\nA validates both files and saves 64 generations.\nB validates and recovers only; no writes.\nCollect SDW5 JTAG results before Quit.\nJTAG single-save pause points are a separate test.\nCRC detects damage, not deliberate forgery.\nTimeout/error: reconfigure, never retry live.\n')
         output.unlink()
         for x in ('a','b'):(output.parent/('recover-b005-'+x+'.bin')).write_bytes(bytes([165])*8192)
+    if build=='guarded06':
+        output.unlink()
+        (dest/'info.txt').write_text('SD Write Research B006 - whole-file guards\nReuse existing B005 files in slots 0x25/0x26.\nNever reset existing test output files.\nA: 64 saves, full 8 KiB guard/readback checks.\nB: recovery only, full-file validation.\nInitialize only an exactly blank pair.\nRetained endpoint SDW6; CRC is not authentication.\n')
     manifest(package, {'kind': build+'; not installable until audited bitstream exists',
                        'template_commit': pins['core-template']['commit'], 'seed': 1})
     print(f'Staged {stage}; prepared {package}')
@@ -154,7 +159,7 @@ def prepare_custom(pins, build="minimal01"):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--build", choices=["minimal01","minimal02","batch03","batch03r1","batch03r2","stress04","stress04r1","stress04r2","recovery05"], default="minimal01")
+    parser.add_argument("--build", choices=["minimal01","minimal02","batch03","batch03r1","batch03r2","stress04","stress04r1","stress04r2","recovery05","guarded06"], default="minimal01")
     args = parser.parse_args()
     pins = validate_vendor()
     if args.build == "minimal01": prepare_reference(pins)

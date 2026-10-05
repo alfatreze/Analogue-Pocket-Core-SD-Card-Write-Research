@@ -1,0 +1,19 @@
+{
+  "pass": true,
+  "build": "B006",
+  "scope": "Nine native RTL renderer states, deterministic fixture telemetry; no physical display claim",
+  "frozen_video_sha256": "97060578a19d902921ef835b5e70d8fcc14549436733e8afed60528c786448fc",
+  "testbench_sha256": "2ca195f05fc9bc53479a91bf7b023ec36c534a1c80e9442380132b12e279bc75",
+  "captures": {
+    "work/sim/b006-video/frame-0.png": "effce59130631436f47d7585d0b9f3839748bec35c656b71b1147e31f5fe7fa7",
+    "work/sim/b006-video/frame-1.png": "16ad1b07e51af5cc2b2747e7da2363d949d749e0a0731ec95acb1e2880da2894",
+    "work/sim/b006-video/frame-2.png": "bc1411c91d2d3143e829598ba7beb1017a47dcca6e5c50738305775f56cd6340",
+    "work/sim/b006-video/frame-3.png": "488853560efd21358c969622bc85cb9fbbb866c9dc344679c57decc8ca522d6b",
+    "work/sim/b006-video/frame-4.png": "01ec05f546b5020d563bfbdc5171975c0ce6145d5b43714319ec11627d42a7e9",
+    "work/sim/b006-video/frame-5.png": "a4975f95bea663e5f2328b97c719268dedc748ccd623073a04298481c0d41dae",
+    "work/sim/b006-video/frame-6.png": "338f10a8803b9989e2d0e857a6e7b55772d0eaebb652f833fadb73f552dfa247",
+    "work/sim/b006-video/frame-7.png": "7b03c40dd3c8bedc537d9e61d511ebfae590fbd6e9bda53ea2730453cccd3e04",
+    "work/sim/b006-video/frame-8.png": "ae26ec43372d79d33f20d083033b58446723bfa773c1bfe7f9c2597a01319909",
+    "work/sim/b006-video/review-all.png": "1eab5bbf32234ca6593873f5ddf45a850bb19a656d70c97c6616d56c998a1a1d"
+  }
+}

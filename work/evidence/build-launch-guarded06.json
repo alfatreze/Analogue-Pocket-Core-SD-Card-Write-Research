@@ -1,0 +1,8 @@
+{
+  "remote": "card-writing-lab/guarded06-s1",
+  "archive_sha256": "7ff207a96c1bb71da66868c3659409c6a65d83b8842e798404d53f7011aae147",
+  "source_manifest": "work/build/guarded06-manifest.json",
+  "seed": 1,
+  "quartus": "/home/taualpha/intelFPGA_lite/25.1std/quartus/bin/quartus_sh",
+  "java_options": "-Xint (avoid JIT SIGILL under VM emulation)"
+}

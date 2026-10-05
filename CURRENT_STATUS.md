@@ -307,3 +307,15 @@ New screenshots `20261005_002904.png` and `20261005_002910.png` show CARD WRITIN
 - Next: fresh-load B005 READY and collect the first 64-commit JTAG-controlled session, then full-byte/remount and read-only recovery gates in B005_HARDWARE_RUN.md. Neither installation nor simulation proves recovery under physical interruption.
 
 - CARDWRITE safely ejected after qualification, update, cleanup and all independent hash/protected-content gates. Ready for fresh B005 loading; leave A/B untouched for the first JTAG-controlled batch.
+
+## B005 first physical clean batch — immediate PASS
+
+Owner reported ready; physical SDW5 revision/width signature and fresh READY/zero counters verified before JTAG start. All 64 retained records pass: 322 commands, zero failures, generation A=63/B=64, sequence 1–64 with alternating destinations and independently reconstructed CRCs. Full public history: work/evidence/b005-physical-jtag-clean01.json; original raw/decoded evidence preserved privately. Final physical file/guard/remount checks remain pending. Owner cannot swap the card for several hours and requested all feasible connected tests/development; proceed with bounded qualified matching-SOF reload campaigns while preserving each prior history. FPGA reload is not a power cycle or SD remount.
+
+## Connected B005 tests and B006 development in progress
+
+- Qualified matching-SOF JTAG reload demonstrated: exact local/VM SOF SHA and cable/device verified, zero-error programming preserved. First read-only reload check passes generation 64, two reads, zero writes. New reload safety tests (6) and independent connected-model tests (5) pass.
+- Owner requested all feasible connected tests/development while unable to swap the card for several hours. Bounded connected B005 campaign started: nine additional clean batches/reloads, two rounds of four pause/resume controls and FPGA-only between-command interruptions, then inactive-record repair. Every history is preserved before reload; stop on any mismatch. Actual checkpoints in b005-connected-campaign.json. No power-cycle, SD-power-cut or host-remount claim.
+- B006 separate frozen guarded06 stage implements full 8 KiB guard/received-word checking, refusal to initialize damaged nonblank pairs, and unified synchronous TX RAM access. Full simulation rerun and isolated compile are in progress; initial harness-only fault-injection error retained in b006-harness-correction.json and its original log. No frozen RTL was changed after launch. No B006 programming or installation yet.
+
+- Corrected B006 campaign passes all 50 RTL trials, seven independent host-oracle tests and six mock JTAG tests. Whole-file corruption at ten locations across both files, missing guard word, post-write guard corruption, both-damaged refusal, high-generation carry, 64-save command/serial paths and all inherited timeout/error/recovery cases pass. Tested RTL/top/video match frozen guarded06 source hashes exactly. Nine native screens reviewed with NO VALID fixture generation/mask corrected to zero. Full compile/internal timing and physical B006 remain pending.

@@ -1,0 +1,7 @@
+{
+  "scope": "Test-harness failure, not an RTL or physical failure",
+  "failed_trial": "missing-guard-word",
+  "cause": "Text replacement of j==12 also changed j==127 to j==1407, preventing insertion of the separate missing-guard-word injection. INJECT=9 therefore omitted no word and the RTL correctly passed.",
+  "preserved_failed_testbench_sha256": "00bba96bb55c42d46b23dfabba5f47077fb13ea169b9647176244d3fd0be5b49",
+  "frozen_compile_sources_changed": false
+}

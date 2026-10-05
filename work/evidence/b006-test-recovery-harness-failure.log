@@ -1,0 +1,116 @@
+.......
+----------------------------------------------------------------------
+Ran 7 tests in 0.091s
+
+OK
+PASS B006 mode=          0 injection=          0 hold=         -1 command=          0 spi=          0 saves=        64 cmds=       322 generation=0000000000000040
+/Users/abel.santos/Downloads/DEV PROJECTS/Tau Alpha/APC - Card Write Research/sim/tb_recovery_guarded.sv:122: $finish called at 8717846000 (1ps)
+PASS B006 mode=          1 injection=          0 hold=         -1 command=          0 spi=          0 saves=         0 cmds=         2 generation=0000000000000040
+/Users/abel.santos/Downloads/DEV PROJECTS/Tau Alpha/APC - Card Write Research/sim/tb_recovery_guarded.sv:122: $finish called at 247446000 (1ps)
+PASS B006 mode=          0 injection=          0 hold=         -1 command=          1 spi=          0 saves=        64 cmds=       322 generation=0000000000000042
+/Users/abel.santos/Downloads/DEV PROJECTS/Tau Alpha/APC - Card Write Research/sim/tb_recovery_guarded.sv:122: $finish called at 8811346000 (1ps)
+PASS B006 mode=          0 injection=          0 hold=         -1 command=          0 spi=          1 saves=        64 cmds=       322 generation=0000000000000042
+/Users/abel.santos/Downloads/DEV PROJECTS/Tau Alpha/APC - Card Write Research/sim/tb_recovery_guarded.sv:122: $finish called at 419472406000 (1ps)
+PASS B006 mode=          2 injection=          0 hold=         -1 command=          0 spi=          0 saves=         1 cmds=         7 generation=0000000000000003
+/Users/abel.santos/Downloads/DEV PROJECTS/Tau Alpha/APC - Card Write Research/sim/tb_recovery_guarded.sv:122: $finish called at 379826000 (1ps)
+PASS B006 mode=          2 injection=          0 hold=         -1 command=          0 spi=          0 saves=         1 cmds=         7 generation=0000000100000000
+/Users/abel.santos/Downloads/DEV PROJECTS/Tau Alpha/APC - Card Write Research/sim/tb_recovery_guarded.sv:122: $finish called at 379826000 (1ps)
+PASS paused prefix           0, external power cut simulated by new process
+/Users/abel.santos/Downloads/DEV PROJECTS/Tau Alpha/APC - Card Write Research/sim/tb_recovery_guarded.sv:74: $finish called at 250276000 (1ps)
+PASS B006 mode=          1 injection=          0 hold=         -1 command=          0 spi=          0 saves=         0 cmds=         2 generation=0000000000000002
+/Users/abel.santos/Downloads/DEV PROJECTS/Tau Alpha/APC - Card Write Research/sim/tb_recovery_guarded.sv:122: $finish called at 247446000 (1ps)
+PASS B006 mode=          2 injection=          0 hold=          0 command=          0 spi=          0 saves=         1 cmds=         7 generation=0000000000000003
+/Users/abel.santos/Downloads/DEV PROJECTS/Tau Alpha/APC - Card Write Research/sim/tb_recovery_guarded.sv:122: $finish called at 380866000 (1ps)
+PASS paused prefix           1, external power cut simulated by new process
+/Users/abel.santos/Downloads/DEV PROJECTS/Tau Alpha/APC - Card Write Research/sim/tb_recovery_guarded.sv:74: $finish called at 251936000 (1ps)
+PASS B006 mode=          1 injection=          0 hold=         -1 command=          0 spi=          0 saves=         0 cmds=         2 generation=0000000000000002
+/Users/abel.santos/Downloads/DEV PROJECTS/Tau Alpha/APC - Card Write Research/sim/tb_recovery_guarded.sv:122: $finish called at 247446000 (1ps)
+PASS B006 mode=          2 injection=          0 hold=          1 command=          0 spi=          0 saves=         1 cmds=         7 generation=0000000000000003
+/Users/abel.santos/Downloads/DEV PROJECTS/Tau Alpha/APC - Card Write Research/sim/tb_recovery_guarded.sv:122: $finish called at 380866000 (1ps)
+PASS paused prefix           2, external power cut simulated by new process
+/Users/abel.santos/Downloads/DEV PROJECTS/Tau Alpha/APC - Card Write Research/sim/tb_recovery_guarded.sv:74: $finish called at 253596000 (1ps)
+PASS B006 mode=          1 injection=          0 hold=         -1 command=          0 spi=          0 saves=         0 cmds=         2 generation=0000000000000002
+/Users/abel.santos/Downloads/DEV PROJECTS/Tau Alpha/APC - Card Write Research/sim/tb_recovery_guarded.sv:122: $finish called at 247446000 (1ps)
+PASS B006 mode=          2 injection=          0 hold=          2 command=          0 spi=          0 saves=         1 cmds=         7 generation=0000000000000003
+/Users/abel.santos/Downloads/DEV PROJECTS/Tau Alpha/APC - Card Write Research/sim/tb_recovery_guarded.sv:122: $finish called at 380866000 (1ps)
+PASS paused prefix           3, external power cut simulated by new process
+/Users/abel.santos/Downloads/DEV PROJECTS/Tau Alpha/APC - Card Write Research/sim/tb_recovery_guarded.sv:74: $finish called at 255256000 (1ps)
+PASS B006 mode=          1 injection=          0 hold=         -1 command=          0 spi=          0 saves=         0 cmds=         2 generation=0000000000000002
+/Users/abel.santos/Downloads/DEV PROJECTS/Tau Alpha/APC - Card Write Research/sim/tb_recovery_guarded.sv:122: $finish called at 247446000 (1ps)
+PASS B006 mode=          2 injection=          0 hold=          3 command=          0 spi=          0 saves=         1 cmds=         7 generation=0000000000000003
+/Users/abel.santos/Downloads/DEV PROJECTS/Tau Alpha/APC - Card Write Research/sim/tb_recovery_guarded.sv:122: $finish called at 380866000 (1ps)
+PASS B006 mode=          0 injection=          1 hold=         -1 command=          0 spi=          0 saves=         0 cmds=         7 generation=0000000000000002
+/Users/abel.santos/Downloads/DEV PROJECTS/Tau Alpha/APC - Card Write Research/sim/tb_recovery_guarded.sv:122: $finish called at 379616000 (1ps)
+PASS B006 mode=          0 injection=          2 hold=         -1 command=          0 spi=          0 saves=         0 cmds=         7 generation=0000000000000002
+/Users/abel.santos/Downloads/DEV PROJECTS/Tau Alpha/APC - Card Write Research/sim/tb_recovery_guarded.sv:122: $finish called at 379576000 (1ps)
+PASS B006 mode=          0 injection=          3 hold=         -1 command=          0 spi=          0 saves=         0 cmds=         3 generation=0000000000000002
+/Users/abel.santos/Downloads/DEV PROJECTS/Tau Alpha/APC - Card Write Research/sim/tb_recovery_guarded.sv:122: $finish called at 251686000 (1ps)
+PASS B006 mode=          0 injection=          4 hold=         -1 command=          0 spi=          0 saves=         0 cmds=         2 generation=0000000000000002
+/Users/abel.santos/Downloads/DEV PROJECTS/Tau Alpha/APC - Card Write Research/sim/tb_recovery_guarded.sv:122: $finish called at 1250676000 (1ps)
+PASS B006 mode=          0 injection=          5 hold=         -1 command=          0 spi=          0 saves=         0 cmds=         1 generation=0000000000000000
+/Users/abel.santos/Downloads/DEV PROJECTS/Tau Alpha/APC - Card Write Research/sim/tb_recovery_guarded.sv:122: $finish called at 83526000 (1ps)
+PASS B006 mode=          0 injection=          6 hold=         -1 command=          0 spi=          0 saves=         0 cmds=         7 generation=0000000000000002
+/Users/abel.santos/Downloads/DEV PROJECTS/Tau Alpha/APC - Card Write Research/sim/tb_recovery_guarded.sv:122: $finish called at 338646000 (1ps)
+PASS B006 mode=          0 injection=          7 hold=         -1 command=          0 spi=          0 saves=         0 cmds=         6 generation=0000000000000002
+/Users/abel.santos/Downloads/DEV PROJECTS/Tau Alpha/APC - Card Write Research/sim/tb_recovery_guarded.sv:122: $finish called at 1257316000 (1ps)
+PASS B006 mode=          1 injection=          0 hold=         -1 command=          0 spi=          0 saves=         0 cmds=         2 generation=0000000000000001
+/Users/abel.santos/Downloads/DEV PROJECTS/Tau Alpha/APC - Card Write Research/sim/tb_recovery_guarded.sv:122: $finish called at 247446000 (1ps)
+PASS B006 mode=          1 injection=          0 hold=         -1 command=          0 spi=          0 saves=         0 cmds=         2 generation=0000000000000000
+/Users/abel.santos/Downloads/DEV PROJECTS/Tau Alpha/APC - Card Write Research/sim/tb_recovery_guarded.sv:122: $finish called at 247446000 (1ps)
+PASS B006 mode=          1 injection=          0 hold=         -1 command=          0 spi=          0 saves=         0 cmds=         2 generation=0000000000000002
+/Users/abel.santos/Downloads/DEV PROJECTS/Tau Alpha/APC - Card Write Research/sim/tb_recovery_guarded.sv:122: $finish called at 247446000 (1ps)
+PASS B006 mode=          1 injection=          0 hold=         -1 command=          0 spi=          0 saves=         0 cmds=         2 generation=0000000000000000
+/Users/abel.santos/Downloads/DEV PROJECTS/Tau Alpha/APC - Card Write Research/sim/tb_recovery_guarded.sv:122: $finish called at 247446000 (1ps)
+PASS B006 mode=          0 injection=          0 hold=         -1 command=          0 spi=          0 saves=         0 cmds=         2 generation=ffffffffffffffff
+/Users/abel.santos/Downloads/DEV PROJECTS/Tau Alpha/APC - Card Write Research/sim/tb_recovery_guarded.sv:122: $finish called at 247456000 (1ps)
+PASS B006 mode=          1 injection=          0 hold=         -1 command=          0 spi=          0 saves=         0 cmds=         2 generation=0000000000000001
+/Users/abel.santos/Downloads/DEV PROJECTS/Tau Alpha/APC - Card Write Research/sim/tb_recovery_guarded.sv:122: $finish called at 247446000 (1ps)
+PASS B006 mode=          1 injection=          0 hold=         -1 command=          0 spi=          0 saves=         0 cmds=         2 generation=0000000000000001
+/Users/abel.santos/Downloads/DEV PROJECTS/Tau Alpha/APC - Card Write Research/sim/tb_recovery_guarded.sv:122: $finish called at 247446000 (1ps)
+PASS B006 mode=          1 injection=          0 hold=         -1 command=          0 spi=          0 saves=         0 cmds=         2 generation=0000000000000001
+/Users/abel.santos/Downloads/DEV PROJECTS/Tau Alpha/APC - Card Write Research/sim/tb_recovery_guarded.sv:122: $finish called at 247446000 (1ps)
+PASS B006 mode=          1 injection=          0 hold=         -1 command=          0 spi=          0 saves=         0 cmds=         2 generation=0000000000000001
+/Users/abel.santos/Downloads/DEV PROJECTS/Tau Alpha/APC - Card Write Research/sim/tb_recovery_guarded.sv:122: $finish called at 247446000 (1ps)
+PASS B006 mode=          1 injection=          0 hold=         -1 command=          0 spi=          0 saves=         0 cmds=         2 generation=0000000000000001
+/Users/abel.santos/Downloads/DEV PROJECTS/Tau Alpha/APC - Card Write Research/sim/tb_recovery_guarded.sv:122: $finish called at 247446000 (1ps)
+PASS B006 mode=          1 injection=          0 hold=         -1 command=          0 spi=          0 saves=         0 cmds=         2 generation=0000000000000001
+/Users/abel.santos/Downloads/DEV PROJECTS/Tau Alpha/APC - Card Write Research/sim/tb_recovery_guarded.sv:122: $finish called at 247446000 (1ps)
+PASS B006 mode=          0 injection=          0 hold=         -1 command=          0 spi=          0 saves=         0 cmds=         2 generation=0000000000000000
+/Users/abel.santos/Downloads/DEV PROJECTS/Tau Alpha/APC - Card Write Research/sim/tb_recovery_guarded.sv:122: $finish called at 247446000 (1ps)
+PASS B006 mode=          1 injection=          0 hold=         -1 command=          0 spi=          0 saves=         0 cmds=         2 generation=0000000000000000
+/Users/abel.santos/Downloads/DEV PROJECTS/Tau Alpha/APC - Card Write Research/sim/tb_recovery_guarded.sv:122: $finish called at 247446000 (1ps)
+PASS B006 mode=          0 injection=          0 hold=         -1 command=          0 spi=          0 saves=         0 cmds=         1 generation=0000000000000000
+/Users/abel.santos/Downloads/DEV PROJECTS/Tau Alpha/APC - Card Write Research/sim/tb_recovery_guarded.sv:122: $finish called at 124496000 (1ps)
+PASS B006 mode=          0 injection=          0 hold=         -1 command=          0 spi=          0 saves=         0 cmds=         1 generation=0000000000000000
+/Users/abel.santos/Downloads/DEV PROJECTS/Tau Alpha/APC - Card Write Research/sim/tb_recovery_guarded.sv:122: $finish called at 124496000 (1ps)
+PASS B006 mode=          0 injection=          0 hold=         -1 command=          0 spi=          0 saves=         0 cmds=         1 generation=0000000000000000
+/Users/abel.santos/Downloads/DEV PROJECTS/Tau Alpha/APC - Card Write Research/sim/tb_recovery_guarded.sv:122: $finish called at 124496000 (1ps)
+PASS B006 mode=          0 injection=          0 hold=         -1 command=          0 spi=          0 saves=         0 cmds=         1 generation=0000000000000000
+/Users/abel.santos/Downloads/DEV PROJECTS/Tau Alpha/APC - Card Write Research/sim/tb_recovery_guarded.sv:122: $finish called at 124496000 (1ps)
+PASS B006 mode=          0 injection=          0 hold=         -1 command=          0 spi=          0 saves=         0 cmds=         1 generation=0000000000000000
+/Users/abel.santos/Downloads/DEV PROJECTS/Tau Alpha/APC - Card Write Research/sim/tb_recovery_guarded.sv:122: $finish called at 124496000 (1ps)
+PASS B006 mode=          0 injection=          0 hold=         -1 command=          0 spi=          0 saves=         0 cmds=         2 generation=0000000000000000
+/Users/abel.santos/Downloads/DEV PROJECTS/Tau Alpha/APC - Card Write Research/sim/tb_recovery_guarded.sv:122: $finish called at 247436000 (1ps)
+PASS B006 mode=          0 injection=          0 hold=         -1 command=          0 spi=          0 saves=         0 cmds=         2 generation=0000000000000000
+/Users/abel.santos/Downloads/DEV PROJECTS/Tau Alpha/APC - Card Write Research/sim/tb_recovery_guarded.sv:122: $finish called at 247436000 (1ps)
+PASS B006 mode=          0 injection=          0 hold=         -1 command=          0 spi=          0 saves=         0 cmds=         2 generation=0000000000000000
+/Users/abel.santos/Downloads/DEV PROJECTS/Tau Alpha/APC - Card Write Research/sim/tb_recovery_guarded.sv:122: $finish called at 247436000 (1ps)
+PASS B006 mode=          0 injection=          0 hold=         -1 command=          0 spi=          0 saves=         0 cmds=         2 generation=0000000000000000
+/Users/abel.santos/Downloads/DEV PROJECTS/Tau Alpha/APC - Card Write Research/sim/tb_recovery_guarded.sv:122: $finish called at 247436000 (1ps)
+PASS B006 mode=          0 injection=          0 hold=         -1 command=          0 spi=          0 saves=         0 cmds=         2 generation=0000000000000000
+/Users/abel.santos/Downloads/DEV PROJECTS/Tau Alpha/APC - Card Write Research/sim/tb_recovery_guarded.sv:122: $finish called at 247436000 (1ps)
+PASS B006 mode=          0 injection=          8 hold=         -1 command=          0 spi=          0 saves=         0 cmds=         7 generation=0000000000000002
+/Users/abel.santos/Downloads/DEV PROJECTS/Tau Alpha/APC - Card Write Research/sim/tb_recovery_guarded.sv:122: $finish called at 379616000 (1ps)
+FATAL: /Users/abel.santos/Downloads/DEV PROJECTS/Tau Alpha/APC - Card Write Research/sim/tb_recovery_guarded.sv:111: wrong status  4 reason 00
+       Time: 511066000  Scope: tb_recovery_guarded
+Traceback (most recent call last):
+  File "/Users/abel.santos/Downloads/DEV PROJECTS/Tau Alpha/APC - Card Write Research/sim/test_recovery_guarded.py", line 101, in <module>
+    if __name__=='__main__':campaign()
+                            ^^^^^^^^^^
+  File "/Users/abel.santos/Downloads/DEV PROJECTS/Tau Alpha/APC - Card Write Research/sim/test_recovery_guarded.py", line 98, in campaign
+    out=rtl_run(label,initial,COMMITS=2,INJECT=inject,EXPECT_STATUS=5);assert out[1]==initial[1];trials.append(label)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/abel.santos/Downloads/DEV PROJECTS/Tau Alpha/APC - Card Write Research/sim/test_recovery_guarded.py", line 55, in rtl_run
+    if c.returncode:raise RuntimeError('RTL trial failed '+name)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: RTL trial failed missing-guard-word

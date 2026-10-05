@@ -1,0 +1,45 @@
+{
+  "test_id": "RECOVERY-005-JTAG-RELOAD-READ01",
+  "build": "B005",
+  "raw_sha256": "9e49a97b5704f51a06c6087bdf30d31d0b1278ac931104339bca2cac416f374c",
+  "decoded_sha256": "7c710b54bcaaaf22862c0eeee5ad69cd1d5af67cee1660aa299b0b9372ae161b",
+  "result": {
+    "pass": true,
+    "summary": {
+      "status": 4,
+      "mode": 1,
+      "terminal": 1,
+      "state": 18,
+      "reason": 0,
+      "completed": 0,
+      "commands": 2,
+      "valid_mask": 3,
+      "generation_a": 63,
+      "generation_b": 64,
+      "selected_generation": 64
+    },
+    "records": [],
+    "scope": "retained comparisons/recovery; physical final files and power actions checked separately",
+    "exit_code": 0,
+    "script_sha256": "54655091e6144eaff6c2bf83dd6637a9fa56eecb291603eac091e242f0b6bc65"
+  },
+  "summary_words": [
+    1396987653,
+    1342444032,
+    0,
+    0,
+    2,
+    3,
+    63,
+    0,
+    64,
+    0,
+    64,
+    0,
+    2147483654,
+    3297380615,
+    3297380615,
+    858849
+  ],
+  "scope": "Matching-SOF FPGA reload then two successful reads, zero writes, selected generation 64. No power cycle/remount/file-guard persistence claim."
+}

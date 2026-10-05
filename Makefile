@@ -74,3 +74,9 @@ test-recovery:
 	mkdir -p work/sim/b005-video
 	$(IVERILOG) -g2012 -I rtl -s tb_video -Ptb_video.BUILD=5 -Ptb_video.FRAMES=9 -o /private/tmp/b005-video.vvp sim/tb_video.sv rtl/lab_video.sv
 	cd work/sim/b005-video && $(VVP) /private/tmp/b005-video.vvp
+
+.PHONY: test-guarded
+test-guarded:
+	$(PYTHON) sim/test_recovery_guarded.py
+	$(PYTHON) sim/test_jtag_guarded.py
+	$(IVERILOG) -g2012 -I rtl -DLAB_RECOVERY -DLAB_RECOVERY_GUARDED -s core_top -o /private/tmp/b006-top.vvp rtl/core_top.v rtl/lab_recovery_guarded.sv rtl/lab_probe.sv rtl/lab_video.sv rtl/core_bridge_cmd.v $(TEMPLATE)/apf/common.v sim/vendor_models.v

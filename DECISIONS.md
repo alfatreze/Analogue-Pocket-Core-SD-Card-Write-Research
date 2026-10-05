@@ -130,3 +130,11 @@ The full-history test must reconstruct extrema from all retained operations, in 
 ## NCW-022 — preserve and publish complete physical stress history
 
 For the first B004R2 physical session, collect all 10,000 retained records while the owner remains powered. Preserve raw and decoded originals privately, and publish the complete decoded history compressed losslessly with zero gzip timestamp alongside a readable summary and raw/decoded/archive hashes. Verify decompression byte for byte and independently reconstruct all global timing extrema. A passing immediate session remains separate from post-Quit whole-file durability, cold reads and interrupted-write recovery.
+
+## NCW-023 — test alternating records before adding the Tau CPU
+
+B005 keeps the latest valid generation in one preallocated file while updating the other in four 128-byte chunks. A 512-byte record validates fixed header, 64-bit nonzero generation, reserved flags, CRC and exact readback; equal-generation disagreement and wrap refuse writes. Commit publication follows full readback, without claiming a flush or physical atomicity. Four controlled pause points permit reproducible prefix interruption experiments. CRC is accidental-corruption detection, not authentication. Keep every failure and require independent raw-file/guard checks and explicit power-action evidence before claiming recovery.
+
+## NCW-024 — retain simulation and card-update evidence separately
+
+B005 passes 36 RTL trials, seven independent host-oracle tests, six mock JTAG tests, twelve mock updater tests, seven mock collector tests and five mock cleanup tests. Tests cover the real pinned command/serial modules, 64 commits, generation carry, prefix recovery/resume, malformed records and permanent error/timeout ownership. Nine native RTL screen states were inspected. Frozen recovery05 sources are compiling independently; physical B005 remains pending. Superseded research cores may be removed only after qualified installation and verified local backups, while every prior output remains on the card.

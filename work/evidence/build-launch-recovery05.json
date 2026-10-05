@@ -1,0 +1,8 @@
+{
+  "remote": "card-writing-lab/recovery05-s1",
+  "archive_sha256": "8b59881ca7d174b1821c7824c1e22d8d6c28455b4054aeaa774840d26801c08f",
+  "source_manifest": "work/build/recovery05-manifest.json",
+  "seed": 1,
+  "quartus": "/home/taualpha/intelFPGA_lite/25.1std/quartus/bin/quartus_sh",
+  "java_options": "-Xint (avoid JIT SIGILL under VM emulation)"
+}

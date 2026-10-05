@@ -16,3 +16,5 @@ work/evidence/jtag/
 work/evidence/update-*/
 work/archives/
 work/evidence/build-failures/
+
+work/sim/recovery05/

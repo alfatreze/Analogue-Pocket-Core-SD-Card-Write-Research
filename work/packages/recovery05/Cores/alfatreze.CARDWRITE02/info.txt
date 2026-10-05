@@ -1,0 +1,7 @@
+SD Write Research B005 - alternate saves
+A validates both files and saves 64 generations.
+B validates and recovers only; no writes.
+Collect SDW5 JTAG results before Quit.
+JTAG single-save pause points are a separate test.
+CRC detects damage, not deliberate forgery.
+Timeout/error: reconfigure, never retry live.

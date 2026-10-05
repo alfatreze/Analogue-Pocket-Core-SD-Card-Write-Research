@@ -287,3 +287,11 @@ New screenshots `20261005_002904.png` and `20261005_002910.png` show CARD WRITIN
 - STRESS-004-COLD-REPEAT09 identity/whole-file/guards pass with exact expected SHA-256. Independent comparison against repeat08: all prior files unchanged; only new screenshot 20261005_152605.png. Inspected and copied/hash-verified screenshot: STRESS PASS, PASSED/FINISHED 0x20, ERROR 0, CYCLES 0x0001A207 (last retained read + 1).
 - All ten sessions and host snapshots independently rechecked as a chain: 320 reads, zero writes/failures; every prior file unchanged at each remount. Public final summary b004r2-physical-file-cold-repeat09.json and aggregate b004r2-physical-campaign-summary.json under work/evidence.
 - B004_RESULTS.md records the completed initial single-card persistence baseline and its exact limits. Power actions not separately confirmed; no confirmed-cycle or interrupted-write safety claim. Next proposed experiment B005: two preallocated alternate files, independently validated generation/checksum/length format and controlled recovery tests before Tau CPU integration.
+
+## B005 prepared — compilation and physical trials pending
+
+- B004 baseline committed and pushed as ad3f039. Its complete 10,000-pair history, ten read-only sessions and final snapshots remain preserved.
+- B005 implements alternating preallocated files, fixed record/header/CRC validation, 64-bit generation, exact readback and controlled single-update pause/resume points. Full planned procedure: B005_HARDWARE_RUN.md.
+- 36 RTL trials and 37 host/mock tests pass (7 oracle, 6 JTAG, 12 updater, 7 collector, 5 cleanup). Actual pinned command and serial modules are exercised under simulation. Nine native display states reviewed.
+- Unique version 0.5.0/banner B005 uses the stable CARDWRITE02 entry. Frozen recovery05 stage launched on the isolated VM; full fit/timing qualification pending. No B005 card mutation or physical success yet.
+- Mounted card matches the exact final B004 repeat09 snapshot. Owner requested removal of unneeded cores; reviewed cleanup targets only the original example and CARDWRITE01, with backups and all assets preserved, after B005 installation.

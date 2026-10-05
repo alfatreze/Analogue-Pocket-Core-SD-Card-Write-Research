@@ -1,0 +1,20 @@
+{
+  "pass": true,
+  "build": "B005",
+  "kind": "native RTL framebuffer captures, simulated display inputs, visually inspected 9 states at 320x240",
+  "frozen_video_sha256": "ed78e84efd2db098d678127c920bf549e19e013d285a559f578ae40f721009e6",
+  "testbench_sha256": "40e39b6c72df722178c288fd89b0335565ea9405d65d5c02c893b959dcffbf2e",
+  "captures": {
+    "work/sim/b005-video/frame-0.png": "14187ae40142dda519ddfa7f1468740a699661185a0cdf630b33ff99d7712498",
+    "work/sim/b005-video/frame-1.png": "f239b8c686bf955d46cacb4e05a6cca2208b3788e5bc6501ae2cb18199a4f5ae",
+    "work/sim/b005-video/frame-2.png": "a89fdff2af65503ce25739d1b752267e81ff2686e86bee1c42d444f7d5e829c4",
+    "work/sim/b005-video/frame-3.png": "da76a84443b539af5560564d99d6f21e369ea986f513b2c698178c687ca9fd81",
+    "work/sim/b005-video/frame-4.png": "c5bb4b10c0c7ac52652bcfd2623ca5ecc5cd40b1d08fcf60125c8d136af3150c",
+    "work/sim/b005-video/frame-5.png": "dac99e278a72fb1fcf18f0254c96b757c9a4316e3a73c8f4b041b001bc2461f3",
+    "work/sim/b005-video/frame-6.png": "ad39336a4443e46453812957b7ef4ef9700b46f9e99b610435e7450ab056ea64",
+    "work/sim/b005-video/frame-7.png": "e17968a4000c92c4302c48fc8f15b81c8ca3e8be8b682b2cbb22aa31f515749f",
+    "work/sim/b005-video/frame-8.png": "5630066019cf90872487fcb0e4a3699deaf8bfede854e3b19f326fe79b29a516",
+    "work/sim/b005-video/review-all.png": "f8bb5332dd1c4e40a542ec0826a3773e056bee62099a52cd6020867249dca242"
+  },
+  "observed": "Banner B005; READY, validating, writing alternate, verifying, PASS, FAIL, no valid save, timeout stopped, paused cut point. Generation low32 is explicitly labeled; full 64-bit value is in JTAG. ERROR is APF command error; full validation reason is in JTAG."
+}

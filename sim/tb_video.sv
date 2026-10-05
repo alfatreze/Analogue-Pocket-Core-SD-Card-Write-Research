@@ -1,20 +1,26 @@
 `timescale 1ns/1ps
 module tb_video;
-parameter integer BUILD=2, REVISION=0;
+parameter integer BUILD=2, REVISION=0, FRAMES=8;
 reg clk=0;
 always #5 clk=~clk;
 wire [23:0] rgb;
 wire de,hs,vs;
 reg [3:0] status=0;
 reg [31:0] completed=0,loaded=0;
-lab_video #(.BUILD_NUMBER(BUILD),.BUILD_REVISION(REVISION)) display(.clk(clk),.reset_n(1'b1),.status(status),.generation(BUILD==4?32'd10000:BUILD==3?32'd32:32'd1),
+reg [31:0] shown_generation=0;
+lab_video #(.BUILD_NUMBER(BUILD),.BUILD_REVISION(REVISION)) display(.clk(clk),.reset_n(1'b1),.status(status),.generation(shown_generation),
  .loaded_generation(loaded),.completed(completed),.error(3'd0),.elapsed(32'd1000),
  .rgb(rgb),.de(de),.hs(hs),.vs(vs));
 integer frame,pixels,fd;
 reg [255:0] name;
 initial begin
- for(frame=0;frame<8;frame=frame+1)begin
+ for(frame=0;frame<FRAMES;frame=frame+1)begin
   status=frame;completed=frame>2?(BUILD==4?10000:BUILD==3?32:1):0;loaded=frame==4?(BUILD==4?10000:BUILD==3?32:1):0;
+  shown_generation=BUILD==4?10000:BUILD==3?32:1;
+  if(BUILD==5)begin
+   shown_generation=frame==0?0:frame==4?64:2;
+   loaded=frame==0?0:3;completed=frame==4?64:0;
+  end
   // Start at a frame boundary, then capture the actual RTL active pixels.
   @(posedge vs);
   $sformat(name,"frame-%0d.ppm",frame);
@@ -25,6 +31,6 @@ initial begin
   end
   $fclose(fd);
  end
- $display("Captured 8 actual RTL video states at native 320x240");$finish;
+ $display("Captured %0d actual RTL video states at native 320x240",FRAMES);$finish;
 end
 endmodule

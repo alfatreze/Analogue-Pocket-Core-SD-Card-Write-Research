@@ -1,0 +1,10 @@
+{
+  "build": "B005", "core_id": "alfatreze.CARDWRITE02", "version": "0.5.0",
+  "files": ["recover-b005-a.bin", "recover-b005-b.bin"],
+  "slot_ids": [37, 38], "file_size": 8192, "guard_byte": 165,
+  "record_offset": 512, "record_size": 512, "header_size": 32,
+  "chunk_size": 128, "clean_commits": 64,
+  "magic": "0x53445235", "format_version": 1,
+  "crc": "CRC-32/ISO-HDLC over record bytes 0..27 and 32..511; checksum at 28..31, big endian",
+  "generation": "unsigned 64-bit, nonzero, no wrap; equal generation requires identical records"
+}

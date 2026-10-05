@@ -62,3 +62,15 @@ test-stress:
 	$(PYTHON) sim/test_update_stress.py
 	$(PYTHON) sim/test_jtag_stress.py
 	$(IVERILOG) -g2012 -I rtl -DLAB_STRESS -DLAB_STRESS_REV=2 -s core_top -o work/sim/stress/top.vvp rtl/core_top.v rtl/lab_stress.sv rtl/lab_probe.sv rtl/lab_video.sv rtl/core_bridge_cmd.v $(TEMPLATE)/apf/common.v sim/vendor_models.v
+
+.PHONY: test-recovery
+test-recovery:
+	$(PYTHON) sim/test_recovery.py
+	$(PYTHON) sim/test_jtag_recovery.py
+	$(PYTHON) sim/test_update_recovery.py
+	$(PYTHON) sim/test_read_recovery_results.py
+	$(PYTHON) sim/test_cleanup_research_cores.py
+	$(IVERILOG) -g2012 -I rtl -DLAB_RECOVERY -s core_top -o /private/tmp/b005-top.vvp rtl/core_top.v rtl/lab_recovery.sv rtl/lab_probe.sv rtl/lab_video.sv rtl/core_bridge_cmd.v $(TEMPLATE)/apf/common.v sim/vendor_models.v
+	mkdir -p work/sim/b005-video
+	$(IVERILOG) -g2012 -I rtl -s tb_video -Ptb_video.BUILD=5 -Ptb_video.FRAMES=9 -o /private/tmp/b005-video.vvp sim/tb_video.sv rtl/lab_video.sv
+	cd work/sim/b005-video && $(VVP) /private/tmp/b005-video.vvp

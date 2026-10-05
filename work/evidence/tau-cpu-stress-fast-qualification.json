@@ -1,0 +1,16 @@
+{
+  "pass": true,
+  "report_sha256": "ad3f788d1a7d4d37bc0ecd85561b0089c629d32c96f6280ae752d3ef9fdfe11d",
+  "sources": {
+    "sim/tau_cpu_save/link.ld": "105f5c75bb14254811bbd16fefbfad612945a120e19bf5f53fb2d71f1dacbc7d",
+    "sim/tau_cpu_save/start.S": "24363000a574cbdd90da7f57c808358f1f1139fbe789c79e466534fba68e3aa9",
+    "sim/tau_cpu_save/stress.c": "350389d0e9031535b3a4f90af597fbc96aa066fd3630765932c8e55f356d39f2",
+    "sim/tb_tau_cpu_save_stress_r2.sv": "8c4fddb8e10f002061a8b75e2ffe8dc875c02d1f93d22e1a9ade658370090b4e"
+  },
+  "runner_sha256": "9348e2a2723ede2999590565a7e0a2fae75d6fccfa532d672995120e14c19e9b",
+  "firmware_sha256": "5188b9b246cc7446f51be7999d1847b899a82c0bd2eb520804d96b51bb456278",
+  "executable_sha256": "3a2354fc043cb943491f73ad776fd4c8652fc4dda13fe2bcb3bfdc0c74de58ea",
+  "compile_log_sha256": "35e9100d4c32139191c3942e9a573317505643b20218fac72ce77567f25f306e",
+  "review": "Width warnings concern bounded testbench array indices checked by range assertions; received mask has modeled writers in two clocked testbench blocks. BLKANDNBLK suppression permits final dump of testbench memory also written by bus. This is a synthetic transport model, not synthesizable coherent CDC hardware. Exact CPU/crossing unchanged.",
+  "initial_space_build_failure_sha256": "016e3015d2271435d2c3804a221ff7606fd83e2cb01f5616ee8de83743cce6b5"
+}

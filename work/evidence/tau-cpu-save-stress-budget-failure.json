@@ -1,0 +1,9 @@
+{
+  "completed": false,
+  "pass": false,
+  "trial": "clean64",
+  "simulator": "Icarus",
+  "reason": "Inherited global testbench budget expired at 200 ms simulated time, 302 of expected 322 modeled APF commands completed; no terminal success result. High-carry profile not attempted.",
+  "raw_log_sha256": "5f37626075917a72376c40f4996a3f9505c47cacb6cf5a30790ace0719d58f03",
+  "scope": "Test harness budget failure; not proof of a storage transport fault or robustness pass. Original log/TB/driver retained."
+}

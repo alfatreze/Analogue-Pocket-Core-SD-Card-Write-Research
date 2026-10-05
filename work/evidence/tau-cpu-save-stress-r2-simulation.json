@@ -1,0 +1,39 @@
+{
+  "pass": true,
+  "trials": [
+    {
+      "trial": "clean64",
+      "pass": true,
+      "commands": 322,
+      "committed_saves": 64,
+      "expected_generation": 66,
+      "log_sha256": "4e37e26cb0b016eab46cbc8490bb6bf33c4b703deac124e1c3f7d0efc857aa32",
+      "final_sha256": [
+        "27d75cf91bee1956592b212a16f9c112d8ceb02dda198d00104593981de1bf5a",
+        "d197b257ce404a1806b663b478544dc1ea0c870d3f493b646f41a9685abecce6"
+      ]
+    },
+    {
+      "trial": "high-carry64",
+      "pass": true,
+      "commands": 322,
+      "committed_saves": 64,
+      "expected_generation": 4294967359,
+      "log_sha256": "d13b356c48835652a32af235027f944254b68542a5b688125b6d5943e7e8f397",
+      "final_sha256": [
+        "f1dad02b6baff563572431639eb7cdc2b3d8a3aa6eb93bb331581fc6ca504cb4",
+        "6664077a743c544b986989a1e47bc2cd9f1e73912b1414286cb2296a6b116c5d"
+      ]
+    }
+  ],
+  "source_hashes": {
+    "sim/tau_cpu_save/link.ld": "105f5c75bb14254811bbd16fefbfad612945a120e19bf5f53fb2d71f1dacbc7d",
+    "sim/tau_cpu_save/start.S": "24363000a574cbdd90da7f57c808358f1f1139fbe789c79e466534fba68e3aa9",
+    "sim/tau_cpu_save/stress.c": "350389d0e9031535b3a4f90af597fbc96aa066fd3630765932c8e55f356d39f2",
+    "sim/tb_tau_cpu_save_stress_r2.sv": "8c4fddb8e10f002061a8b75e2ffe8dc875c02d1f93d22e1a9ade658370090b4e"
+  },
+  "runner_sha256": "9348e2a2723ede2999590565a7e0a2fae75d6fccfa532d672995120e14c19e9b",
+  "firmware_sha256": "5188b9b246cc7446f51be7999d1847b899a82c0bd2eb520804d96b51bb456278",
+  "simulator": "Verilator binary with timing; separate R2 TB extends global simulation budget from 200 to 300 ms, no CPU/firmware/transport logic changes",
+  "scope": "Two full 64-save actual pinned-CPU campaigns, 322 modeled APF commands each, sequence wrap and 32-bit generation carry. Full received-index mask contract and uncached word staging; independent exact final files/guards/CRC. Synthetic transport only, no physical persistence, real serialization or playback qualification."
+}

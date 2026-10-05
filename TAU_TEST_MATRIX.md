@@ -157,3 +157,5 @@ Additional P0 CPU completeness and lifecycle tests, prompted by the observed gap
 | C17 | Full Tau MMIO map/version mismatch, including the isolated lease address overlapping PCM status. | Refuse incompatible firmware/RTL before command issue; no writes to audio registers or memory aliases. |
 
 These additional tests are planned hardware/full-SoC gates. The current isolated model catches missing boot/verify guard words, but does not implement production CDC, a compatible MMIO map or coordinated reset recovery. Private stopped histories remain locally reproducible; sanitized public outcomes are in work/evidence/b005-connected-public-summary.json. No B007 hardware image exists.
+
+Long CPU campaign follow-up: eight profiles × 64 saves pass (512 modeled saves / 2,576 commands), covering blank, damaged newest, one-valid, identical ties, counter wrap and high-generation carry. This expands isolated CPU-format evidence; C13–C17 production hardware/full-SoC gates remain pending.

@@ -101,3 +101,10 @@ test-tau-cpu-save-received:
 
 test-tau-cpu-save-stress:
 	$(PYTHON) sim/test_tau_cpu_save_stress.py
+
+.PHONY: test-tau-cpu-save-stress-fast test-tau-cpu-save-states
+test-tau-cpu-save-stress-fast:
+	$(PYTHON) sim/test_tau_cpu_save_stress_fast.py
+
+test-tau-cpu-save-states:
+	$(PYTHON) sim/test_tau_cpu_save_states.py

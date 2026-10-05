@@ -37,3 +37,6 @@ work/evidence/b006-continuation.log
 work/evidence/console-exit-command-failure.log
 work/evidence/console-transport-live-tests.json
 work/evidence/tau-cpu-received-harness-syntax-failure.log
+work/sim/tau-cpu-save-stress-r2/
+work/evidence/tau-cpu-save-stress-tests.log
+work/sim/tau-cpu-save-states/

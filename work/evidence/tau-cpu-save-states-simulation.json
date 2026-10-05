@@ -1,0 +1,105 @@
+{
+  "pass": true,
+  "trials": [
+    {
+      "trial": "blank64",
+      "pass": true,
+      "committed_saves": 64,
+      "commands": 322,
+      "generation": 64,
+      "initial_sha256": [
+        "2ef1444bc950050c92f373cd2f5442022af98aa900aefd82c749cff93d4c0037",
+        "2ef1444bc950050c92f373cd2f5442022af98aa900aefd82c749cff93d4c0037"
+      ],
+      "final_sha256": [
+        "49bd069ef438459d22b218d75aaea25f16ecc1e4823d2536f1b4e1cdbd033894",
+        "5203b68a238fa6367117d54f61fc0dca0d07da250edf9df860153ceecbc245fb"
+      ],
+      "log_sha256": "e08c309350eeb38310f16d0af9518776ffae3d9793b180532dadbbb44c015ca6"
+    },
+    {
+      "trial": "a-newest64",
+      "pass": true,
+      "committed_saves": 64,
+      "commands": 322,
+      "generation": 66,
+      "initial_sha256": [
+        "c2fafef8711fede759c9c4da28dcc44a38cf08ec1924556a4c572d15ed5024b1",
+        "9dde7f27d9f249fb3906189db5cdedd2fa0c6a98488286cbce62c7138ccf9629"
+      ],
+      "final_sha256": [
+        "d197b257ce404a1806b663b478544dc1ea0c870d3f493b646f41a9685abecce6",
+        "27d75cf91bee1956592b212a16f9c112d8ceb02dda198d00104593981de1bf5a"
+      ],
+      "log_sha256": "4859193480115104abaf486946bb206a14aef3b57f2cda79800b7dff52ef71a7"
+    },
+    {
+      "trial": "corrupt-newest64",
+      "pass": true,
+      "committed_saves": 64,
+      "commands": 322,
+      "generation": 65,
+      "initial_sha256": [
+        "9dde7f27d9f249fb3906189db5cdedd2fa0c6a98488286cbce62c7138ccf9629",
+        "72934d68c0ed42f0391be39e23fd58fb6aedc1a5bc9ca72f85ec964fb7183758"
+      ],
+      "final_sha256": [
+        "27d75cf91bee1956592b212a16f9c112d8ceb02dda198d00104593981de1bf5a",
+        "5203b68a238fa6367117d54f61fc0dca0d07da250edf9df860153ceecbc245fb"
+      ],
+      "log_sha256": "f4bdf4243a947094ddc01d89978685e8c40a32eb441988f7c95cdec07ff61b58"
+    },
+    {
+      "trial": "only-b64",
+      "pass": true,
+      "committed_saves": 64,
+      "commands": 322,
+      "generation": 66,
+      "initial_sha256": [
+        "2ef1444bc950050c92f373cd2f5442022af98aa900aefd82c749cff93d4c0037",
+        "c2fafef8711fede759c9c4da28dcc44a38cf08ec1924556a4c572d15ed5024b1"
+      ],
+      "final_sha256": [
+        "27d75cf91bee1956592b212a16f9c112d8ceb02dda198d00104593981de1bf5a",
+        "d197b257ce404a1806b663b478544dc1ea0c870d3f493b646f41a9685abecce6"
+      ],
+      "log_sha256": "3c2783eaf5f31c6ba7ba597fea200253eecf738fd226e983d65a86c1736cfdf4"
+    },
+    {
+      "trial": "identical-tie64",
+      "pass": true,
+      "committed_saves": 64,
+      "commands": 322,
+      "generation": 71,
+      "initial_sha256": [
+        "22f7922cc0e0236a033bbaed06439716c7fdb14627b5407c9c1473357c9c94df",
+        "22f7922cc0e0236a033bbaed06439716c7fdb14627b5407c9c1473357c9c94df"
+      ],
+      "final_sha256": [
+        "0b24713cd5132bafa07e8327394a8b837e70ad76e87d8020dac8df4770d076cf",
+        "d1b1e7f14b276d977527db3862e858a409d35b4584cede581fb7786206ed0a47"
+      ],
+      "log_sha256": "814f8c7387e2be4126c351f301b56bd16a7edc5569f80961bc14c17599122626"
+    },
+    {
+      "trial": "high-word64",
+      "pass": true,
+      "committed_saves": 64,
+      "commands": 322,
+      "generation": 1311768467750121280,
+      "initial_sha256": [
+        "8be6cc93270133b8ec0ac2e21fac71f7424a2f243b43dc456ad53234b30ac9b4",
+        "ef71464e0f8f6c63f252f4331dbd52ba217a7ede6beea38ee47832080768b0df"
+      ],
+      "final_sha256": [
+        "d63f4041caa71c1ab10984be7f548bbc672dd48e22192d37034cbc2c2c85e2f9",
+        "5caa270e47c8ef90233c2b95b2b5405371c736d45f93dd504e56aeefd6722468"
+      ],
+      "log_sha256": "13a36de79bcbae71bac4a8e930327a7af417fdc88ab2286f222586209431af70"
+    }
+  ],
+  "qualified_executable_sha256": "3a2354fc043cb943491f73ad776fd4c8652fc4dda13fe2bcb3bfdc0c74de58ea",
+  "qualification_sha256": "13aaa277703159d21190bfc1a66f22702f16f07e2217ff90d9835380dc4c4496",
+  "runner_sha256": "6ce3973e151a8fc91758a3b57d446db07c8e19d408d7b4083f12f35167af0041",
+  "scope": "Six additional full 64-save actual pinned CPU profiles, exact independent final bytes/guards/CRC/generation. Synthetic word transport; no card persistence, real serialization, production CDC, MMIO compatibility or reset qualification."
+}

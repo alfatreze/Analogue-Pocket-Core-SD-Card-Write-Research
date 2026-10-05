@@ -7,6 +7,9 @@ from pathlib import Path
 import shlex
 import re
 import subprocess
+import selectors
+import os
+import time
 import vm_build
 import batch
 
@@ -56,15 +59,35 @@ def main():
     vm_build.remote('mkdir -p card-writing-lab && cat > '+shlex.quote(remote),script)
     actual=vm_build.remote('sha256sum '+shlex.quote(remote)).decode().split()[0]
     if actual!=digest:raise SystemExit('VM script hash mismatch')
-    exit_code=0
-    try:
-        raw=vm_build.remote('env _JAVA_OPTIONS=-Xint '+shlex.quote(CONSOLE)+' --cli --script='+shlex.quote(remote)).decode()
-    except subprocess.CalledProcessError as exc:
-        exit_code=exc.returncode
-        raw=exc.stdout.decode(errors='replace')+'\n'+exc.stderr.decode(errors='replace')
+    # System Console dispatches stdin after initialization. Closing SSH stdin at
+    # launch can skip --script entirely, with a misleading zero exit status.
+    command='env _JAVA_OPTIONS=-Xint '+shlex.quote(CONSOLE)+' -cli -disable_readline'
+    process=subprocess.Popen(vm_build.SSH+[command],stdin=subprocess.PIPE,
+                             stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
+    invocation=('if {[catch {source /home/taualpha/'+remote+
+                '} err]} {puts "SDW3 ERROR: $err"}; puts "SDW3 transport done"\n')
+    process.stdin.write(invocation.encode());process.stdin.flush()
+    chunks=[];deadline=time.monotonic()+90;finished=False
+    selector=selectors.DefaultSelector();selector.register(process.stdout,selectors.EVENT_READ)
+    while time.monotonic()<deadline:
+        if not selector.select(timeout=1):
+            if process.poll() is not None:break
+            continue
+        chunk=os.read(process.stdout.fileno(),65536)
+        if not chunk:break
+        chunks.append(chunk)
+        if re.search(rb'(?:^|\n)SDW3 transport done\r?(?:\n|$)',b''.join(chunks)):finished=True;break
+    selector.close();process.stdin.close()
+    try:process.wait(timeout=15)
+    except subprocess.TimeoutExpired:
+        process.terminate();process.wait(timeout=10)
+    raw=b''.join(chunks).decode(errors='replace')
+    summary=re.search(r'SDW3 summary status=(\d+)',raw)
+    valid=(finished and 'SDW3 done' in raw and 'SDW3 ERROR:' not in raw and summary is not None)
+    if args.mode in ('start','cold'):valid=valid and 'SDW3 requested '+args.mode in raw
+    exit_code=0 if valid else 1
     folder=ROOT/'work/evidence/jtag';folder.mkdir(parents=True,exist_ok=True)
     # Exclusive evidence file; do not replace prior capture or infer durable success.
-    import time
     out=folder/('b003-'+args.mode+'-'+str(time.time_ns())+'.txt')
     out.write_text(raw)
     result=decode(raw) if args.mode=='results' else {'mode':args.mode,'raw_evidence_only':True}

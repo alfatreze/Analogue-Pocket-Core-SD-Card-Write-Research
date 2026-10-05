@@ -69,4 +69,4 @@ if {$mode in {start cold}} {
     }
 }
 close_service issp $handle
-exit 0
+puts "SDW3 done"

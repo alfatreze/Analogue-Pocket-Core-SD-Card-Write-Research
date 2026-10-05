@@ -106,3 +106,7 @@ tools/update.py requires exact hashes of the installed minimal02 core and the qu
 ## NCW-016 — resource evidence requires synchronous RAM output ports
 
 B003R1 did generate the JTAG fabric, but its synthesis report showed TX and retained-log arrays uninferred, with estimated ALMs beyond device capacity. Preserve the partial report and explicitly label the agent-stopped attempt. B003R2 uses dedicated unconditional clocked RAM read registers, then applies address-validity/held-response logic one clock later. The previous-request APF convention is retained and must pass the actual serial peripheral simulation again. ISSP index is held before the snapshot toggle so its synchronous log reads are ready when latched. RAM inference must be checked in the real Quartus report before installation.
+
+## NCW-017 — validate console output, not its process exit alone
+
+Physical System Console returned only its banner with exit 0 when --script ran with closed SSH stdin. Holding stdin open and sourcing the absolute script produced the live SDW3 endpoint and READY signature. Tcl exit is not available in this console. The host now sources the isolated script interactively, captures both output streams, waits for explicit completion, closes stdin normally, and requires a real summary plus start/cold acknowledgement. Any missing/error output fails. No reconfiguration, SOF programming or global VM changes are needed. The first physical 32-case batch then passed all 38 write/read pairs; durable card bytes remain a separate gate.

@@ -54,7 +54,7 @@ For this project's batch build, prefer a small ISSP control/status block and sta
 
 ## B003R2 retained-results interface
 
-B003R2 updates the same CARDWRITE02 entry and adds **SDW3**, source width 32 / probe width 256. The older minimal02 image has no debug endpoint. `tools/jtag_batch.py status|results|start|cold` accesses the endpoint without programming. Start/cold refuses a host-mounted CARDWRITE volume. The Tcl code selects the exact instance name and widths, checks the FPGA signature and acknowledges each snapshot. Results must be terminal; no transient polling is treated as event history. Tcl semantics are tested with a fake service; physical JTAG operation on this new endpoint remains a hardware gate.
+B003R2 updates the same CARDWRITE02 entry and adds **SDW3**, source width 32 / probe width 256. The older minimal02 image has no debug endpoint. `tools/jtag_batch.py status|results|start|cold` accesses the endpoint without programming. Start/cold refuses a host-mounted CARDWRITE volume. The Tcl code selects the exact instance name and widths, checks the FPGA signature and acknowledges each snapshot. Results must be terminal; no transient polling is treated as event history. Tcl semantics are tested with a fake service; physical B003R2 JTAG operation is demonstrated by the first warm batch: all 38 retained records decoded cleanly. Durable file/cold-read qualification remains separate.
 
 Source bits: 31 snapshot toggle; 30 write-session toggle; 29 cold-read toggle; 6:5 ordinal-minus-one; 4:0 case. Hold index stable before toggling snapshot. Write/read triggers are accepted only at READY and ignored during/after a session.
 
@@ -74,3 +74,7 @@ The snapshot contains eight 32-bit words, most significant first:
 Before a record completes, flags are zero. A timed-out record has bit 15 and retained cycles but not the completed-log flag. While a session is busy, indexed result words are suppressed and the terminal bit is zero. An invalid ordinal also suppresses the indexed result. The host decoder requires all expected completed records and exact clean flags (0x80000007 write/read, 0x80000006 cold read), plus correct offset/length/revision and summary counts. JTAG success is immediate-result evidence, not a physical persistence claim.
 
 The installed Java JIT crashed during first JTAG-fabric generation under VM emulation. `_JAVA_OPTIONS=-Xint` is scoped to the research compiler/System Console process; it changes no global VM settings. Full compilation/timing remains mandatory. API reference: [Intel System Console ISSP commands](https://cdrdv2-public.intel.com/704766/ug-qpp-debug-21-2-683819-704766.pdf).
+
+### Physical console invocation correction
+
+The installed System Console can return banner/exit 0 without running --script when SSH stdin closes at launch. The wrapper now keeps stdin open, sends an absolute source command, captures stdout/stderr, waits for explicit completion, and then closes input. Its Tcl environment has no exit command. An actual revision-checked summary and request acknowledgement are required; a zero process exit alone is never success. The physical first warm batch is recorded in work/evidence/b003r2-physical-jtag-write.json.

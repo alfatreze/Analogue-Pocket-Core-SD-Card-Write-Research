@@ -98,3 +98,11 @@ New screenshots `20261005_002904.png` and `20261005_002910.png` show CARD WRITIN
 - Sole new user file is screenshot 20261005_113406.png; five known cleared menu caches were recreated. Screenshot visually inspected: SD WRITE RESEARCH B003R2, BATCH PASS, CASE/PASSED/FINISHED 0x20, ERROR 0, cycles 0x00079FD7, consistent with retained JTAG records.
 - Immutable output/screenshot/snapshots/collector result under private work/evidence/runs/BATCH-003-WRITE/. Public summary: work/evidence/b003r2-physical-file-write.json. Normal Quit/shutdown/remount requested, owner confirmed mounted; exact physical action sequence not separately confirmed.
 - Verdict: one complete warm batch, immediate comparisons and remounted whole-file persistence PASS. Cold B-only read, repeated sessions, other media/firmware and interruption safety remain pending. Next: safely eject, fresh launch same B003R2 core, leave READY for JTAG cold request; do not press A.
+
+## BATCH-003-COLD — physical fresh-launch read-only PASS
+
+- CARDWRITE was safely ejected after warm whole-file verification. Owner reported done after instruction to insert, fresh-launch B003R2 and leave READY without A. JTAG confirmed revision 2, READY, zero counters and accepted cold control. Host-mounted CARDWRITE absent. Exact power sequence not separately confirmed.
+- Terminal retained summary: status 4, cold 1, 32 completed, 32 passed, 0 failed, 32 commands. All 32 indexed records matched expected case/final ordinal/offset/max read length/final write length and exact clean read-only flags 0x80000006; every retained write-cycle value is zero. No FPGA programming.
+- Public structured evidence: work/evidence/b003r2-physical-jtag-cold.json. Original console evidence retained privately under work/evidence/jtag/.
+- Verdict: one complete fresh-launch read-only recovery of all final payloads and preserved tails PASS. Final remount must confirm the whole guarded file and protected contents stayed unchanged during cold reads. Repeatability/stress, interruptions, other media/firmware and Tau CPU integration remain pending.
+- Next owner action: final screenshot, normal Quit/shutdown and remount CARDWRITE for BATCH-003-COLD host collection; do not press A or reset until capture is complete (now collected).

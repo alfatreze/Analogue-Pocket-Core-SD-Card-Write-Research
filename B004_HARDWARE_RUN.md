@@ -1,6 +1,6 @@
 # B004R2 — changing-data repeatability stress
 
-Status: simulation and host tooling pass; corrected B004R2 compilation in progress. The initial B004 stage failed because Intel ISSP permits at most 511 probe bits; its frozen stage/log is preserved. R1 drops only the constant-zero most significant signature bit; a timing-history assertion then detected a one-clock accounting discrepancy. Its unqualified compile was stopped only after checking the exact stage/process group. R2 captures read-completion timing once so retained records and extrema agree. The mounted card still runs verified B003R2. B004 is not physically qualified or installed yet.
+Status: **B004R2 is compiled/internal-timing qualified and installed** in the stable CARDWRITE02 entry, version 0.4.2. All 11 package hashes verified; verified B003R2 artifacts archived and both prior physical outputs preserved. CARDWRITE was safely ejected; physical 10,000-pair trial and live 511-bit endpoint qualification begin after fresh launch. The initial B004 stage exceeded the real ISSP probe limit, and R1's expanded timing test exposed a one-clock accounting discrepancy. Those stages/failure evidence are preserved; R2 corrects both and passes the complete simulation suite.
 
 ## Scope
 
@@ -40,3 +40,5 @@ Source width 32, probe width 511, no FPGA programming. The 16-word logical packe
 16 MSB-first words: signature 0x53445704; header; selected operation; completed; passed; failed; command count; region file offset; length; flags; write cycles; read cycles; min write cycles; max write cycles; min read cycles; max read cycles. Header: ack31, cold30, terminal29, reserved28:26, revision25:18 (=2), status17:14, first failure13:0 (16383 means none). Clean flags: warm 0x80000007 / cold 0x80000006; timeout bit15 with bit12 write or bit13 read. Cold write timing is zero and min-write sentinel 0xffffffff.
 
 Fresh launch alone does not prove a particular power-off sequence: record owner actions separately. Runtime firmware 2.7 is known from prior runtime metadata; verify About if changing firmware.
+
+The LCD CYCLES field is the held inclusive FSM counter. Completed JTAG command timings are captured at DONE before the final counter increment; the LCD final value is one clock greater than the final retained read timing. Compare extrema against retained records, as the regression does.

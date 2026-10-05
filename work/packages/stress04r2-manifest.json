@@ -1,12 +1,29 @@
 {
   "provenance": {
-    "kind": "stress04r2; not installable until audited bitstream exists",
-    "template_commit": "da3a021b1eaf742604d86d8dc9b33a6666263e6a",
-    "seed": 1
+    "kind": "custom stress04r2, full compile and internal timing qualified; Pocket pending",
+    "seed": 1,
+    "raw_sha256": "4d9e0385cf656405a09a8df98750dd8650a94ef102a1aa4b522f32c1ae66c9f3",
+    "rbf_r_sha256": "4f8ee21d60090aab672b7539541d75bf5e44b474428e08a64651e10e00f3ad91",
+    "minimum_reported_slack_ns": 0.152,
+    "compile_source_manifest_sha256": "20b40c60f9a11e3df62c73b4c70d41e9d735bb03d9f2a3b22c598cb51bbd2fce",
+    "reports": {
+      "quartus-fit.log": "849a89f81f9fe1838df02a4b5a99053e1d35c1cc0761bf28b7803dd2f74f0dd6",
+      "ap_core.rbf": "4d9e0385cf656405a09a8df98750dd8650a94ef102a1aa4b522f32c1ae66c9f3",
+      "ap_core.fit.summary": "a013574b9a840efba4aa7ea5394715d9ad865557b6db8cca497a9af5c9738b75",
+      "ap_core.sta.rpt": "08f6de49e0b150c87c21b300edbf65045089152aab4003cd9a239c881956e01e",
+      "ap_core.asm.rpt": "8995fb069356a8828574851a79e662001350677f16c27fcd46fef1b11e6a99ad",
+      "ap_core.sof": "0eaeed5497705763bf6512b8a23ca93f50fc68a8ad7c8aebcb9169b576e1c983",
+      "ap_core.sta.summary": "5adb71e3b54024d58d655a4174390431334113a3eb1e40fc9f407157f0b8f2fb",
+      "ap_core.map.rpt": "9bdd8d9c2fae7f9d1fea0833e943f8d12b93dcf8d7c2a5b2735cc31ac42642be",
+      "ap_core.fit.rpt": "e6563af0d5b9f940a41934cdd85da6a32c89ad8c98cba7f6bf94e49ecd72d01f"
+    },
+    "experiment_config_sha256": "a6304609af4208a5b7c0f298d4ed0ddff354bc204be7b3dcddf4bc082c7e1571",
+    "simulation_summary_sha256": "bec023dcc955e0c580d5c3be9af76410d007b4e5a604bf8f51fce6266b2944e8"
   },
   "files": {
     "Assets/cardwrite/alfatreze.CARDWRITE02/stress-b004.bin": "b9b8561490d31103a2783ddcbf67ffcb6aa02b1aa71a9800aad615aeb20c8c55",
     "Cores/alfatreze.CARDWRITE02/audio.json": "32ecc527ee672b4f478b86e35bd0ee5eff474c73183b1b46d5169f09f224e182",
+    "Cores/alfatreze.CARDWRITE02/bitstream.rbf_r": "4f8ee21d60090aab672b7539541d75bf5e44b474428e08a64651e10e00f3ad91",
     "Cores/alfatreze.CARDWRITE02/core.json": "a7139d540463f557ad9a330ba8241f78711c563d8bcd37405fe6b4c440316b51",
     "Cores/alfatreze.CARDWRITE02/data.json": "562756ce24c9fed887593305b6b4699d10e343cf96c977bbcaff94cc40dfc2b5",
     "Cores/alfatreze.CARDWRITE02/info.txt": "0f9a2f2f840622cdc1812e2908acfa2009b46a0ff4798aafca1a3cb2100fd4e0",

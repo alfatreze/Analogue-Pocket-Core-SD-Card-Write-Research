@@ -42,11 +42,19 @@ def main():
     reverse=bytes(int(f'{byte:08b}'[::-1],2) for byte in range(256))
     bitstream=PACKAGE/'Cores'/('alfatreze.CARDWRITE02' if build_id.startswith(('batch03','stress04')) else 'alfatreze.CARDWRITE'+build_id[-2:])/'bitstream.rbf_r'
     bitstream.write_bytes(raw.read_bytes().translate(reverse))
+    if build_id.startswith('stress04'):
+        simulation=json.loads((ROOT/'work/evidence/b004r2-simulation-summary.json').read_text())
+        if (not simulation.get('pass') or simulation['source_manifest_sha256']!=sha(source_manifest) or
+            simulation['configuration_sha256']!=sha(ROOT/'experiments/b004.json')):
+            raise SystemExit('Stress simulation/configuration does not match this frozen compile')
     audit={'kind':'custom '+build_id+', full compile and internal timing qualified; Pocket pending',
            'seed':1,'raw_sha256':sha(raw),'rbf_r_sha256':sha(bitstream),
            'minimum_reported_slack_ns':min(slacks),
            'compile_source_manifest_sha256':sha(source_manifest),
            'reports':{p.name:sha(p) for p in BUILD.iterdir() if p.is_file()}}
+    if build_id.startswith('stress04'):
+        audit['experiment_config_sha256']=sha(ROOT/'experiments/b004.json')
+        audit['simulation_summary_sha256']=sha(ROOT/'work/evidence/b004r2-simulation-summary.json')
     (ROOT/'work/evidence'/('custom-build-audit.json' if build_id=='minimal01' else 'custom-build-audit-'+build_id+'.json')).write_text(json.dumps(audit,indent=2)+'\n')
     files={p.relative_to(PACKAGE).as_posix():sha(p) for p in sorted(PACKAGE.rglob('*')) if p.is_file()}
     (PACKAGE.parent/(build_id+'-manifest.json')).write_text(json.dumps({'provenance':audit,'files':files},indent=2)+'\n')

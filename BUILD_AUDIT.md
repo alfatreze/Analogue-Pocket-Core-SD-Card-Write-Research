@@ -57,3 +57,14 @@ Exclusive stage `work/build/batch03r2`, remote `card-writing-lab/batch03r2-s1`, 
 - SOF SHA-256 `7b9d1e98f5d1e65e075c3199b9b9bdfb619c3c1c169c09b331ff893141c71303`.
 
 Complete reports/SOF/RBF: `work/fpga/batch03r2-s1`; audit and report hashes: `work/evidence/custom-build-audit-batch03r2.json`. Matching package: `work/packages/batch03r2`, fixed core identity CARDWRITE02, visible B003R2/version 0.3.2, new batch-b003.bin slot 0x23. Physical batch and new ISSP endpoint remain pending.
+
+## B004R2 — qualified and installed; physical stress pending
+
+Quartus 25.1std.0 Build 1129 Lite, 5CEBA4F23C8, seed 1; full compilation successful (0 errors / 168 warnings), elapsed 31:05. Uses 3,248/18,480 ALMs (18%), 3,617 registers, 1,034,037/3,153,920 block-memory bits (33%), 129/308 RAM blocks (42%), zero DSPs and one PLL. All three 10,000x32 history arrays and both 1,024x32 payload arrays infer RAM. Worst setup +3.767 ns, hold +0.152 ns; all reported setup/hold/recovery/removal/pulse checks pass and TNS is zero. Illegal/unconstrained clocks: zero. Six input and 23 output ports retain incomplete external delay constraints (including JTAG), so board-level external margins are not fully qualified.
+
+- Frozen source manifest SHA-256: 20b40c60f9a11e3df62c73b4c70d41e9d735bb03d9f2a3b22c598cb51bbd2fce.
+- Raw RBF: 4d9e0385cf656405a09a8df98750dd8650a94ef102a1aa4b522f32c1ae66c9f3.
+- Once-bit-reversed Pocket RBF_R: 4f8ee21d60090aab672b7539541d75bf5e44b474428e08a64651e10e00f3ad91.
+- SOF (not programmed through JTAG): 0eaeed5497705763bf6512b8a23ca93f50fc68a8ad7c8aebcb9169b576e1c983.
+
+Full reports/binaries under work/fpga/stress04r2-s1/, hashed custom-build-audit-stress04r2.json and qualified package manifest. Packaging also requires the passing simulation source/configuration hashes to match the frozen stage. The designated-card update independently verified 11 installed files, 16 prior card-file backups, 68 archived qualified B003 files and no unrelated protected changes. Physical B004 stress/cold evidence remains separate.

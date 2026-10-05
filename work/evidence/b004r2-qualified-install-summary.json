@@ -1,0 +1,52 @@
+{
+  "build": "B004R2",
+  "version": "0.4.2",
+  "stable_core": "alfatreze.CARDWRITE02",
+  "qualified": {
+    "full_compile_errors": 0,
+    "warnings": 168,
+    "duration": "00:31:05",
+    "ALMs": 3248,
+    "registers": 3617,
+    "block_memory_bits": 1034037,
+    "RAM_blocks": 129,
+    "DSP_blocks": 0,
+    "PLLs": 1,
+    "worst_setup_ns": 3.767,
+    "worst_hold_ns": 0.152,
+    "all_reported_TNS": 0,
+    "illegal_clocks": 0,
+    "unconstrained_clocks": 0,
+    "unconstrained_inputs": 6,
+    "unconstrained_outputs": 23,
+    "external_IO_margins": "not fully qualified"
+  },
+  "hashes": {
+    "source_manifest": "20b40c60f9a11e3df62c73b4c70d41e9d735bb03d9f2a3b22c598cb51bbd2fce",
+    "raw_rbf": "4d9e0385cf656405a09a8df98750dd8650a94ef102a1aa4b522f32c1ae66c9f3",
+    "pocket_rbf_r": "4f8ee21d60090aab672b7539541d75bf5e44b474428e08a64651e10e00f3ad91",
+    "sof": "0eaeed5497705763bf6512b8a23ca93f50fc68a8ad7c8aebcb9169b576e1c983",
+    "configuration": "a6304609af4208a5b7c0f298d4ed0ddff354bc204be7b3dcddf4bc082c7e1571",
+    "simulation_summary": "bec023dcc955e0c580d5c3be9af76410d007b4e5a604bf8f51fce6266b2944e8"
+  },
+  "installation": {
+    "state": "verified",
+    "all_package_files": 11,
+    "backed_up_prior_card_files": 16,
+    "archived_qualified_files": 68,
+    "protected_file_changes": [],
+    "preserved_outputs": [
+      {
+        "path": "Assets/cardwrite/alfatreze.CARDWRITE02/write64.bin",
+        "sha256": "b7b05ccadcfa2eb7ed53aee6b5b12db57a06217da1351728a82810ad757f393c"
+      },
+      {
+        "path": "Assets/cardwrite/alfatreze.CARDWRITE02/batch-b003.bin",
+        "sha256": "f29a1a67f46db9181f251199cb9bab73c65df2ccd0d70621303d56f70ee9ca26"
+      }
+    ],
+    "rbf_r_sha256": "4f8ee21d60090aab672b7539541d75bf5e44b474428e08a64651e10e00f3ad91"
+  },
+  "physical_stress_trial": "pending owner fresh launch and JTAG start",
+  "safe_ejection": "normal diskutil eject succeeded; CARDWRITE no longer mounted"
+}

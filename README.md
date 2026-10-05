@@ -68,4 +68,4 @@ Original project work is licensed under the [MIT License](LICENSE). Third-party 
 
 ## Next build: B004R2 stress
 
-[B004 procedure](B004_HARDWARE_RUN.md) describes the 10,000-pair changing-data stress profile, complete retained failure history and repeated cold-read checks. Simulation passes; corrected B004R2 compilation and physical qualification are pending. The initial B004 probe exceeded the real ISSP width limit, and its failed stage is preserved. The card remains on B003R2 until the replacement qualifies.
+[B004 procedure](B004_HARDWARE_RUN.md) describes the 10,000-pair changing-data stress profile, complete retained failure history and repeated cold-read checks. Simulation and full compilation/internal timing pass. B004R2 (version 0.4.2) is installed in the same CARDWRITE02 entry with verified B003 backups and preserved prior results. Physical stress qualification is pending fresh launch; earlier failed/stopped stages are retained.

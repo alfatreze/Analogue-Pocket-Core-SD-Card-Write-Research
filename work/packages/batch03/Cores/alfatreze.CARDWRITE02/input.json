@@ -1,0 +1,22 @@
+{
+  "input": {
+    "magic": "APF_VER_1",
+    "controllers": [
+      {
+        "type": "default",
+        "mappings": [
+          {
+            "id": 0,
+            "name": "Run 32 write tests",
+            "key": "pad_btn_a"
+          },
+          {
+            "id": 1,
+            "name": "Cold read 32 tests",
+            "key": "pad_btn_b"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,7 @@
+SD Write Research B003R2 - 32 cases
+A runs one write/read batch.
+B after fresh boot reads prior batch.
+Wait for BATCH PASS or FAIL, screenshot.
+Quit, shutdown, verify on computer.
+Retained JTAG probe: SDW3.
+Timeout: reconfigure, never retry live.

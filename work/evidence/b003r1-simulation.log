@@ -1,0 +1,96 @@
+mkdir -p work/sim/batch
+iverilog -g2012 -I rtl -s tb_batch -o work/sim/batch/write.vvp sim/tb_batch.sv rtl/lab_batch.sv rtl/core_bridge_cmd.v sim/vendor_models.v vendor/core-template/src/fpga/apf/common.v
+rtl/core_bridge_cmd.v:567: warning: Port 1 (address_a) of module mf_datatable expects 8 bit(s), given 10.
+rtl/core_bridge_cmd.v:567:        : Pruning 2 high bits of the expression.
+rtl/core_bridge_cmd.v:567: warning: Port 2 (address_b) of module mf_datatable expects 8 bit(s), given 10.
+rtl/core_bridge_cmd.v:567:        : Pruning 2 high bits of the expression.
+cd work/sim/batch && vvp write.vvp
+PASS B003 cold=          0 inject=          0 commands=         76
+sim/tb_batch.sv:136: $finish called at 1239096000 (1ps)
+python3 sim/test_batch.py
+.....
+----------------------------------------------------------------------
+Ran 5 tests in 0.082s
+
+OK
+iverilog -g2012 -I rtl -s tb_batch -Ptb_batch.COLD=1 -o work/sim/batch/cold.vvp sim/tb_batch.sv rtl/lab_batch.sv rtl/core_bridge_cmd.v sim/vendor_models.v vendor/core-template/src/fpga/apf/common.v
+rtl/core_bridge_cmd.v:567: warning: Port 1 (address_a) of module mf_datatable expects 8 bit(s), given 10.
+rtl/core_bridge_cmd.v:567:        : Pruning 2 high bits of the expression.
+rtl/core_bridge_cmd.v:567: warning: Port 2 (address_b) of module mf_datatable expects 8 bit(s), given 10.
+rtl/core_bridge_cmd.v:567:        : Pruning 2 high bits of the expression.
+cd work/sim/batch && vvp cold.vvp
+PASS B003 cold=          1 inject=          0 commands=         32
+sim/tb_batch.sv:136: $finish called at 514396000 (1ps)
+for mode in 1 2 3 4; do iverilog -g2012 -I rtl -s tb_batch -Ptb_batch.INJECT=$mode -o work/sim/batch/fault.vvp sim/tb_batch.sv rtl/lab_batch.sv rtl/core_bridge_cmd.v sim/vendor_models.v vendor/core-template/src/fpga/apf/common.v && (cd work/sim/batch && vvp fault.vvp) || exit 1; done
+rtl/core_bridge_cmd.v:567: warning: Port 1 (address_a) of module mf_datatable expects 8 bit(s), given 10.
+rtl/core_bridge_cmd.v:567:        : Pruning 2 high bits of the expression.
+rtl/core_bridge_cmd.v:567: warning: Port 2 (address_b) of module mf_datatable expects 8 bit(s), given 10.
+rtl/core_bridge_cmd.v:567:        : Pruning 2 high bits of the expression.
+PASS B003 cold=          0 inject=          1 commands=         76
+sim/tb_batch.sv:136: $finish called at 1239096000 (1ps)
+rtl/core_bridge_cmd.v:567: warning: Port 1 (address_a) of module mf_datatable expects 8 bit(s), given 10.
+rtl/core_bridge_cmd.v:567:        : Pruning 2 high bits of the expression.
+rtl/core_bridge_cmd.v:567: warning: Port 2 (address_b) of module mf_datatable expects 8 bit(s), given 10.
+rtl/core_bridge_cmd.v:567:        : Pruning 2 high bits of the expression.
+PASS B003 cold=          0 inject=          2 commands=         76
+sim/tb_batch.sv:136: $finish called at 1239056000 (1ps)
+rtl/core_bridge_cmd.v:567: warning: Port 1 (address_a) of module mf_datatable expects 8 bit(s), given 10.
+rtl/core_bridge_cmd.v:567:        : Pruning 2 high bits of the expression.
+rtl/core_bridge_cmd.v:567: warning: Port 2 (address_b) of module mf_datatable expects 8 bit(s), given 10.
+rtl/core_bridge_cmd.v:567:        : Pruning 2 high bits of the expression.
+PASS B003 cold=          0 inject=          3 commands=         76
+sim/tb_batch.sv:136: $finish called at 1236536000 (1ps)
+rtl/core_bridge_cmd.v:567: warning: Port 1 (address_a) of module mf_datatable expects 8 bit(s), given 10.
+rtl/core_bridge_cmd.v:567:        : Pruning 2 high bits of the expression.
+rtl/core_bridge_cmd.v:567: warning: Port 2 (address_b) of module mf_datatable expects 8 bit(s), given 10.
+rtl/core_bridge_cmd.v:567:        : Pruning 2 high bits of the expression.
+PASS B003 cold=          0 inject=          4 commands=         15
+sim/tb_batch.sv:136: $finish called at 216666000 (1ps)
+iverilog -g2012 -I rtl -s tb_batch -Ptb_batch.COMMAND=1 -o work/sim/batch/command.vvp sim/tb_batch.sv rtl/lab_batch.sv rtl/core_bridge_cmd.v sim/vendor_models.v vendor/core-template/src/fpga/apf/common.v
+rtl/core_bridge_cmd.v:567: warning: Port 1 (address_a) of module mf_datatable expects 8 bit(s), given 10.
+rtl/core_bridge_cmd.v:567:        : Pruning 2 high bits of the expression.
+rtl/core_bridge_cmd.v:567: warning: Port 2 (address_b) of module mf_datatable expects 8 bit(s), given 10.
+rtl/core_bridge_cmd.v:567:        : Pruning 2 high bits of the expression.
+cd work/sim/batch && vvp command.vvp
+PASS B003 cold=          0 inject=          0 commands=         76
+sim/tb_batch.sv:136: $finish called at 1261256000 (1ps)
+python3 sim/adapt_spi.py
+iverilog -g2012 -I rtl -s tb_batch_spi -o work/sim/batch/spi.vvp sim/tb_batch_spi.sv rtl/lab_batch.sv vendor/core-template/src/fpga/apf/common.v work/sim/io_bridge_peripheral_icarus.v
+cd work/sim/batch && vvp spi.vvp
+PASS B003 actual APF SPI: 32 cases, 76 commands, all payload words
+sim/tb_batch_spi.sv:101: $finish called at 50923666000 (1ps)
+python3 sim/test_batch.py
+.....
+----------------------------------------------------------------------
+Ran 5 tests in 0.080s
+
+OK
+iverilog -g2012 -I rtl -s tb_batch -Ptb_batch.JTAG=1 -o work/sim/batch/jtag.vvp sim/tb_batch.sv rtl/lab_batch.sv rtl/core_bridge_cmd.v sim/vendor_models.v vendor/core-template/src/fpga/apf/common.v
+rtl/core_bridge_cmd.v:567: warning: Port 1 (address_a) of module mf_datatable expects 8 bit(s), given 10.
+rtl/core_bridge_cmd.v:567:        : Pruning 2 high bits of the expression.
+rtl/core_bridge_cmd.v:567: warning: Port 2 (address_b) of module mf_datatable expects 8 bit(s), given 10.
+rtl/core_bridge_cmd.v:567:        : Pruning 2 high bits of the expression.
+cd work/sim/batch && vvp jtag.vvp
+PASS B003 cold=          0 inject=          0 commands=         76
+sim/tb_batch.sv:136: $finish called at 1239126000 (1ps)
+iverilog -g2012 -I rtl -s tb_batch -Ptb_batch.COLD=1 -Ptb_batch.INJECT=5 -o work/sim/batch/empty-cold.vvp sim/tb_batch.sv rtl/lab_batch.sv rtl/core_bridge_cmd.v sim/vendor_models.v vendor/core-template/src/fpga/apf/common.v
+rtl/core_bridge_cmd.v:567: warning: Port 1 (address_a) of module mf_datatable expects 8 bit(s), given 10.
+rtl/core_bridge_cmd.v:567:        : Pruning 2 high bits of the expression.
+rtl/core_bridge_cmd.v:567: warning: Port 2 (address_b) of module mf_datatable expects 8 bit(s), given 10.
+rtl/core_bridge_cmd.v:567:        : Pruning 2 high bits of the expression.
+cd work/sim/batch && vvp empty-cold.vvp
+PASS B003 cold=          1 inject=          5 commands=         32
+sim/tb_batch.sv:136: $finish called at 514396000 (1ps)
+python3 sim/test_update.py
+......
+----------------------------------------------------------------------
+Ran 6 tests in 0.298s
+
+OK
+B003 installed in the same core entry; all hashes verified, prior results preserved.
+python3 sim/test_jtag.py
+...
+----------------------------------------------------------------------
+Ran 3 tests in 0.037s
+
+OK

@@ -51,3 +51,26 @@ References consulted without modifying Tau Alpha: `tau-alpha/docs/procedures/JTA
 - If USB passthrough is visibly present but the scan has no cable, Tau once encountered a stale `jtagd` USB handle after reconnection. Check USB inventory first; daemon restart is a recovery action, not something to do routinely or during another active debug session.
 
 For this project's batch build, prefer a small ISSP control/status block and stable result history first, because Tau provides working evidence for that setup. Add SignalTap only when the retained results leave a specific timing question unresolved. CARDWRITE02 still contains neither facility.
+
+## B003R2 retained-results interface
+
+B003R2 updates the same CARDWRITE02 entry and adds **SDW3**, source width 32 / probe width 256. The older minimal02 image has no debug endpoint. `tools/jtag_batch.py status|results|start|cold` accesses the endpoint without programming. Start/cold refuses a host-mounted CARDWRITE volume. The Tcl code selects the exact instance name and widths, checks the FPGA signature and acknowledges each snapshot. Results must be terminal; no transient polling is treated as event history. Tcl semantics are tested with a fake service; physical JTAG operation on this new endpoint remains a hardware gate.
+
+Source bits: 31 snapshot toggle; 30 write-session toggle; 29 cold-read toggle; 6:5 ordinal-minus-one; 4:0 case. Hold index stable before toggling snapshot. Write/read triggers are accepted only at READY and ignored during/after a session.
+
+The snapshot contains eight 32-bit words, most significant first:
+
+| Word | Meaning |
+|---|---|
+| 0 | Signature 0x53445703 (SD write build 3) |
+| 1 | Bit 31 snapshot acknowledgement; 30 cold mode; 29 terminal; 28:24 selected case; 23:22 ordinal; 21:14 revision (2); 3:0 status |
+| 2 | Four bytes: command count, failed cases, passed cases, completed cases |
+| 3 | File offset |
+| 4 | Maximum read length / current write length, two 16-bit halves |
+| 5 | Flags: 31 completed log; 15 timeout; 13/12 timed-out read/write; 10 comparison failure; 9/8 read/write command error; 22:20 read error; 18:16 write error; 2 comparison pass; 1 read command OK; 0 write command OK |
+| 6 | Write cycles (zero for cold read) |
+| 7 | Read cycles |
+
+Before a record completes, flags are zero. A timed-out record has bit 15 and retained cycles but not the completed-log flag. While a session is busy, indexed result words are suppressed and the terminal bit is zero. An invalid ordinal also suppresses the indexed result. The host decoder requires all expected completed records and exact clean flags (0x80000007 write/read, 0x80000006 cold read), plus correct offset/length/revision and summary counts. JTAG success is immediate-result evidence, not a physical persistence claim.
+
+The installed Java JIT crashed during first JTAG-fabric generation under VM emulation. `_JAVA_OPTIONS=-Xint` is scoped to the research compiler/System Console process; it changes no global VM settings. Full compilation/timing remains mandatory. API reference: [Intel System Console ISSP commands](https://cdrdv2-public.intel.com/704766/ug-qpp-debug-21-2-683819-704766.pdf).

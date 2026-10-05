@@ -38,14 +38,14 @@ def launch():
         bundle.add(stage / 'src', arcname='src')
     remote(f'test ! -e {shlex.quote(REMOTE)} && mkdir -p {shlex.quote(REMOTE)} && tar xzf - -C {shlex.quote(REMOTE)}', archive.getvalue())
     command = (f'cd {shlex.quote(REMOTE)}/src/fpga && '
-               f'(setsid nohup {shlex.quote(QUARTUS)} --flow compile ap_core.qpf '
+               f'(setsid nohup env _JAVA_OPTIONS=-Xint {shlex.quote(QUARTUS)} --flow compile ap_core.qpf '
                '< /dev/null > ../../quartus-fit.log 2>&1 &) ; echo started')
     remote(command)
     (ROOT / 'work/evidence').mkdir(parents=True, exist_ok=True)
     (ROOT / 'work/evidence' / ('build-launch-'+BUILD_ID+'.json')).write_text(json.dumps({
         'remote': REMOTE, 'archive_sha256': hashlib.sha256(archive.getvalue()).hexdigest(),
         'source_manifest': 'work/build/'+BUILD_ID+'-manifest.json', 'seed': 1,
-        'quartus': QUARTUS}, indent=2) + '\n')
+        'quartus': QUARTUS, 'java_options': '-Xint (avoid JIT SIGILL under VM emulation)'}, indent=2) + '\n')
     print('Launched isolated build ' + REMOTE)
 
 
@@ -85,7 +85,7 @@ def collect():
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('command', choices=['launch', 'status', 'collect'])
-    parser.add_argument("--build", choices=["minimal01","minimal02"], default="minimal01")
+    parser.add_argument("--build", choices=["minimal01","minimal02","batch03","batch03r1","batch03r2"], default="minimal01")
     args = parser.parse_args()
     BUILD_ID = args.build
     REMOTE = "card-writing-lab/"+BUILD_ID+"-s1"

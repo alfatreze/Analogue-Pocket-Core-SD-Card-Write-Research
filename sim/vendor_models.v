@@ -13,6 +13,14 @@ always @(posedge clock_b) begin
     q_b<=mem[address_b];
 end
 endmodule
+// Compilation-only ISSP stub. JTAG transport is qualified separately in Quartus/hardware.
+module altsource_probe #(parameter sld_auto_instance_index="YES", sld_instance_index=0,
+ instance_id="NONE", probe_width=1, source_width=1, source_initial_value="0",
+ enable_metastability="NO")(
+ input source_clk, source_ena, input [probe_width-1:0] probe,
+ output [source_width-1:0] source);
+assign source={source_width{1'b0}};
+endmodule
 module mf_pllbase(input refclk,rst,output outclk_0,outclk_1,output locked);
 assign outclk_0=refclk;
 assign outclk_1=refclk;

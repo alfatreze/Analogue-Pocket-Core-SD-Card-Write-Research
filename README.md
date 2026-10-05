@@ -31,6 +31,7 @@ The first experiments should use a disposable test card and small deterministic 
 - [Current status](CURRENT_STATUS.md) — actual implementation/build/card evidence and next gate.
 - [JTAG workflow](JTAG_WORKFLOW.md) — cable compatibility, debug captures, reload and USB card access.
 - [Batch test plan](BATCH_TEST_PLAN.md) — automatic case batches after transport repair, with independent file records and guard checks.
+- [B003 hardware run](B003_HARDWARE_RUN.md) — one 32-case session, retained JTAG results and independent whole-file verification.
 - [Next hardware run](NEXT_HARDWARE_RUN.md) — corrected CARDWRITE02, physical byte verification and cold reload.
 - [First hardware run](FIRST_HARDWARE_RUN.md) — official control and minimal-probe instructions.
 
@@ -58,7 +59,7 @@ Requirements for simulation: Python 3 and Icarus Verilog. `make test` runs the h
 
 The first build stage is frozen evidence. `make prepare` refuses to replace it; use a new build stage for subsequent experiments. VM connection defaults in `tools/vm_build.py` describe the original local setup and must be adapted before building elsewhere. Card installation is deliberately bound to the original designated CARDWRITE volume UUID; configure a separate disposable card explicitly before using these tools on another setup.
 
-Pocket hardware results remain pending. See CURRENT_STATUS.md and FIRST_HARDWARE_RUN.md.
+Minimal02 has one verified physical 64-byte write and a successful reload readback observation. Repeatability, interrupted-write safety and Tau integration remain pending. See CURRENT_STATUS.md. `make test-batch` exercises B003's 32 cases, cold read and failure paths; `python3 sim/test_update.py` and `python3 sim/test_jtag.py` check temporary-card updater behavior and mocked Tcl handshake semantics.
 
 
 ## License

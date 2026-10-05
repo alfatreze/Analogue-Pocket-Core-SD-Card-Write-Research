@@ -1,0 +1,15 @@
+{
+  "build": "B003R1",
+  "state": "stopped by agent during synthesis after resource review; no full compile or bitstream qualification",
+  "estimated_ALMs": 30203,
+  "device_ALMs": 18480,
+  "registers": 43065,
+  "inferred_block_memory_bits": 41197,
+  "reason": "TX buffer and three result memories were uninferred due to read logic; RX did infer block RAM",
+  "next_revision": "B003R2, dedicated synchronous RAM output registers before validity/hold muxes",
+  "hashes": {
+    "quartus-fit.log": "4f6a0fc2af8daac375005d1499eddc29b7b4a2db9e964b17e05fc38d67d098d7",
+    "ap_core.map.summary": "81190bf83efd4b7fde8a44c4ea1b40a93923cc86fd4eeb08f945f17625ea6a9a",
+    "ap_core.map.rpt": "971943d597c076509a20590b8c5582639148057e21f2aace90435400867f1938"
+  }
+}

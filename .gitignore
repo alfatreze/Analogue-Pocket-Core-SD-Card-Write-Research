@@ -13,3 +13,6 @@ work/sim/**/*.vvp
 work/sim/**/*.ppm
 work/sim/**/*.hex
 work/evidence/jtag/
+work/evidence/update-*/
+work/archives/
+work/evidence/build-failures/

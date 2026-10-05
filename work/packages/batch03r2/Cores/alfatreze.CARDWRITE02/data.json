@@ -1,0 +1,15 @@
+{
+  "data": {
+    "magic": "APF_VER_1",
+    "data_slots": [
+      {
+        "name": "Batch B003",
+        "id": "0x23",
+        "required": false,
+        "parameters": 2,
+        "deferload": true,
+        "filename": "batch-b003.bin"
+      }
+    ]
+  }
+}

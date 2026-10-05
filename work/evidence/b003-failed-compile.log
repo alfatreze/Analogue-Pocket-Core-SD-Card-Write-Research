@@ -1,0 +1,275 @@
+Info: *******************************************************************
+Info: Running Quartus Prime Shell
+    Info: Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
+    Info: Copyright (C) 2025  Altera Corporation. All rights reserved.
+    Info: Your use of Altera Corporation's design tools, logic functions 
+    Info: and other software and tools, and any partner logic 
+    Info: functions, and any output files from any of the foregoing 
+    Info: (including device programming or simulation files), and any 
+    Info: associated documentation or information are expressly subject 
+    Info: to the terms and conditions of the Altera Program License 
+    Info: Subscription Agreement, the Altera Quartus Prime License Agreement,
+    Info: the Altera IP License Agreement, or other applicable license
+    Info: agreement, including, without limitation, that your use is for
+    Info: the sole purpose of programming logic devices manufactured by
+    Info: Altera and sold by Altera or its authorized distributors.  Please
+    Info: refer to the Altera Software License Subscription Agreements 
+    Info: on the Quartus Prime software download page.
+    Info: Processing started: Mon Oct  5 00:58:53 2026
+Info: Command: quartus_sh --flow compile ap_core.qpf
+Info: Quartus(args): compile ap_core.qpf
+Info: Project Name = /home/taualpha/card-writing-lab/batch03-s1/src/fpga/ap_core
+Info: Revision Name = ap_core
+Info (125068): Revision "ap_core" was previously opened in Quartus Prime software version 18.1.1 Lite Edition. Created Quartus Prime Default Settings File /home/taualpha/card-writing-lab/batch03-s1/src/fpga/ap_core_assignment_defaults.qdf, which contains the default assignment setting information from Quartus Prime software version 18.1.1 Lite Edition.
+Info (125069): Default assignment values were changed in the current version of the Quartus Prime software -- changes to default assignments values are contained in file /home/taualpha/intelFPGA_lite/25.1std/quartus/linux64/assignment_defaults.qdf
+Info: *******************************************************************
+Info: Running Quartus Prime Shell
+    Info: Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
+    Info: Processing started: Mon Oct  5 00:58:59 2026
+Info: Command: quartus_sh -t apf/build_id_gen.tcl compile ap_core ap_core
+Info: Quartus(args): compile ap_core ap_core
+Info: APF core build date/time generated: /home/taualpha/card-writing-lab/batch03-s1/src/fpga/apf/build_id.mif
+Info (23030): Evaluation of Tcl script apf/build_id_gen.tcl was successful
+Info: Quartus Prime Shell was successful. 0 errors, 0 warnings
+    Info: Peak virtual memory: 442 megabytes
+    Info: Processing ended: Mon Oct  5 00:59:00 2026
+    Info: Elapsed time: 00:00:01
+    Info: Total CPU time (on all processors): 00:00:01
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
+    Info: Processing started: Mon Oct  5 00:59:06 2026
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off ap_core -c ap_core
+Info (16303): High Performance Effort optimization mode selected -- timing performance will be prioritized at the potential cost of increased compilation time
+    Info (16304): Mode behavior is affected by advanced setting Fitter Effort (default for this mode is Standard Fit)
+Info (20032): Parallel compilation is enabled and will use up to 2 processors
+Info (12021): Found 1 design units, including 1 entities, in source file apf/apf_top.v
+    Info (12023): Found entity 1: apf_top File: /home/taualpha/card-writing-lab/batch03-s1/src/fpga/apf/apf_top.v Line: 44
+Info (12021): Found 4 design units, including 4 entities, in source file apf/common.v
+    Info (12023): Found entity 1: synch_2 File: /home/taualpha/card-writing-lab/batch03-s1/src/fpga/apf/common.v Line: 39
+    Info (12023): Found entity 2: synch_3 File: /home/taualpha/card-writing-lab/batch03-s1/src/fpga/apf/common.v Line: 62
+    Info (12023): Found entity 3: bram_block_dp File: /home/taualpha/card-writing-lab/batch03-s1/src/fpga/apf/common.v Line: 82
+    Info (12023): Found entity 4: bram_block_dp_nonstd File: /home/taualpha/card-writing-lab/batch03-s1/src/fpga/apf/common.v Line: 120
+Info (12021): Found 1 design units, including 1 entities, in source file apf/io_bridge_peripheral.v
+    Info (12023): Found entity 1: io_bridge_peripheral File: /home/taualpha/card-writing-lab/batch03-s1/src/fpga/apf/io_bridge_peripheral.v Line: 52
+Info (12021): Found 1 design units, including 1 entities, in source file apf/io_pad_controller.v
+    Info (12023): Found entity 1: io_pad_controller File: /home/taualpha/card-writing-lab/batch03-s1/src/fpga/apf/io_pad_controller.v Line: 41
+Info (12021): Found 1 design units, including 1 entities, in source file apf/mf_ddio_bidir_12.v
+    Info (12023): Found entity 1: mf_ddio_bidir_12 File: /home/taualpha/card-writing-lab/batch03-s1/src/fpga/apf/mf_ddio_bidir_12.v Line: 40
+Info (12021): Found 1 design units, including 1 entities, in source file apf/mf_datatable.v
+    Info (12023): Found entity 1: mf_datatable File: /home/taualpha/card-writing-lab/batch03-s1/src/fpga/apf/mf_datatable.v Line: 40
+Info (12021): Found 1 design units, including 1 entities, in source file core/core_top.v
+    Info (12023): Found entity 1: core_top File: /home/taualpha/card-writing-lab/batch03-s1/src/fpga/core/core_top.v Line: 9
+Info (12021): Found 1 design units, including 1 entities, in source file core/core_bridge_cmd.v
+    Info (12023): Found entity 1: core_bridge_cmd File: /home/taualpha/card-writing-lab/batch03-s1/src/fpga/core/core_bridge_cmd.v Line: 18
+Info (12021): Found 1 design units, including 1 entities, in source file core/mf_pllbase.v
+    Info (12023): Found entity 1: mf_pllbase File: /home/taualpha/card-writing-lab/batch03-s1/src/fpga/core/mf_pllbase.v Line: 8
+Info (12021): Found 1 design units, including 1 entities, in source file core/mf_pllbase/mf_pllbase_0002.v
+    Info (12023): Found entity 1: mf_pllbase_0002 File: /home/taualpha/card-writing-lab/batch03-s1/src/fpga/core/mf_pllbase/mf_pllbase_0002.v Line: 2
+Info (12021): Found 1 design units, including 1 entities, in source file core/lab_probe.sv
+    Info (12023): Found entity 1: lab_probe File: /home/taualpha/card-writing-lab/batch03-s1/src/fpga/core/lab_probe.sv Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file core/lab_video.sv
+    Info (12023): Found entity 1: lab_video File: /home/taualpha/card-writing-lab/batch03-s1/src/fpga/core/lab_video.sv Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file core/lab_batch.sv
+    Info (12023): Found entity 1: lab_batch File: /home/taualpha/card-writing-lab/batch03-s1/src/fpga/core/lab_batch.sv Line: 4
+Info (12127): Elaborating entity "apf_top" for the top level hierarchy
+Info (12128): Elaborating entity "mf_ddio_bidir_12" for hierarchy "mf_ddio_bidir_12:isco" File: /home/taualpha/card-writing-lab/batch03-s1/src/fpga/apf/apf_top.v Line: 253
+Info (12128): Elaborating entity "altddio_bidir" for hierarchy "mf_ddio_bidir_12:isco|altddio_bidir:ALTDDIO_BIDIR_component" File: /home/taualpha/card-writing-lab/batch03-s1/src/fpga/apf/mf_ddio_bidir_12.v Line: 81
+Info (12130): Elaborated megafunction instantiation "mf_ddio_bidir_12:isco|altddio_bidir:ALTDDIO_BIDIR_component" File: /home/taualpha/card-writing-lab/batch03-s1/src/fpga/apf/mf_ddio_bidir_12.v Line: 81
+Info (12133): Instantiated megafunction "mf_ddio_bidir_12:isco|altddio_bidir:ALTDDIO_BIDIR_component" with the following parameter: File: /home/taualpha/card-writing-lab/batch03-s1/src/fpga/apf/mf_ddio_bidir_12.v Line: 81
+    Info (12134): Parameter "extend_oe_disable" = "OFF"
+    Info (12134): Parameter "implement_input_in_lcell" = "OFF"
+    Info (12134): Parameter "intended_device_family" = "Cyclone V"
+    Info (12134): Parameter "invert_output" = "OFF"
+    Info (12134): Parameter "lpm_hint" = "UNUSED"
+    Info (12134): Parameter "lpm_type" = "altddio_bidir"
+    Info (12134): Parameter "oe_reg" = "UNREGISTERED"
+    Info (12134): Parameter "power_up_high" = "OFF"
+    Info (12134): Parameter "width" = "12"
+Info (12021): Found 1 design units, including 1 entities, in source file db/ddio_bidir_euo.tdf
+    Info (12023): Found entity 1: ddio_bidir_euo File: /home/taualpha/card-writing-lab/batch03-s1/src/fpga/db/ddio_bidir_euo.tdf Line: 33
+Info (12128): Elaborating entity "ddio_bidir_euo" for hierarchy "mf_ddio_bidir_12:isco|altddio_bidir:ALTDDIO_BIDIR_component|ddio_bidir_euo:auto_generated" File: /home/taualpha/intelFPGA_lite/25.1std/quartus/libraries/megafunctions/altddio_bidir.tdf Line: 116
+Info (12128): Elaborating entity "io_pad_controller" for hierarchy "io_pad_controller:ipm" File: /home/taualpha/card-writing-lab/batch03-s1/src/fpga/apf/apf_top.v Line: 314
+Info (12128): Elaborating entity "synch_3" for hierarchy "io_pad_controller:ipm|synch_3:s00" File: /home/taualpha/card-writing-lab/batch03-s1/src/fpga/apf/io_pad_controller.v Line: 65
+Info (12128): Elaborating entity "io_bridge_peripheral" for hierarchy "io_bridge_peripheral:ibs" File: /home/taualpha/card-writing-lab/batch03-s1/src/fpga/apf/apf_top.v Line: 343
+Info (12128): Elaborating entity "core_top" for hierarchy "core_top:ic" File: /home/taualpha/card-writing-lab/batch03-s1/src/fpga/apf/apf_top.v Line: 472
+Info (12128): Elaborating entity "mf_pllbase" for hierarchy "core_top:ic|mf_pllbase:mp1" File: /home/taualpha/card-writing-lab/batch03-s1/src/fpga/core/core_top.v Line: 315
+Info (12128): Elaborating entity "mf_pllbase_0002" for hierarchy "core_top:ic|mf_pllbase:mp1|mf_pllbase_0002:mf_pllbase_inst" File: /home/taualpha/card-writing-lab/batch03-s1/src/fpga/core/mf_pllbase.v Line: 28
+Info (12128): Elaborating entity "altera_pll" for hierarchy "core_top:ic|mf_pllbase:mp1|mf_pllbase_0002:mf_pllbase_inst|altera_pll:altera_pll_i" File: /home/taualpha/card-writing-lab/batch03-s1/src/fpga/core/mf_pllbase/mf_pllbase_0002.v Line: 97
+Info (10008): Verilog HDL or VHDL information: EDA Netlist Writer cannot regroup multidimensional array "wire_to_nowhere_64" into its bus
+Info (12130): Elaborated megafunction instantiation "core_top:ic|mf_pllbase:mp1|mf_pllbase_0002:mf_pllbase_inst|altera_pll:altera_pll_i" File: /home/taualpha/card-writing-lab/batch03-s1/src/fpga/core/mf_pllbase/mf_pllbase_0002.v Line: 97
+Info (12133): Instantiated megafunction "core_top:ic|mf_pllbase:mp1|mf_pllbase_0002:mf_pllbase_inst|altera_pll:altera_pll_i" with the following parameter: File: /home/taualpha/card-writing-lab/batch03-s1/src/fpga/core/mf_pllbase/mf_pllbase_0002.v Line: 97
+    Info (12134): Parameter "fractional_vco_multiplier" = "true"
+    Info (12134): Parameter "reference_clock_frequency" = "74.25 MHz"
+    Info (12134): Parameter "operation_mode" = "normal"
+    Info (12134): Parameter "number_of_clocks" = "5"
+    Info (12134): Parameter "output_clock_frequency0" = "12.287999 MHz"
+    Info (12134): Parameter "phase_shift0" = "0 ps"
+    Info (12134): Parameter "duty_cycle0" = "50"
+    Info (12134): Parameter "output_clock_frequency1" = "12.287999 MHz"
+    Info (12134): Parameter "phase_shift1" = "20345 ps"
+    Info (12134): Parameter "duty_cycle1" = "50"
+    Info (12134): Parameter "output_clock_frequency2" = "133.119993 MHz"
+    Info (12134): Parameter "phase_shift2" = "0 ps"
+    Info (12134): Parameter "duty_cycle2" = "50"
+    Info (12134): Parameter "output_clock_frequency3" = "133.119992 MHz"
+    Info (12134): Parameter "phase_shift3" = "6573 ps"
+    Info (12134): Parameter "duty_cycle3" = "50"
+    Info (12134): Parameter "output_clock_frequency4" = "133.119990 MHz"
+    Info (12134): Parameter "phase_shift4" = "5634 ps"
+    Info (12134): Parameter "duty_cycle4" = "50"
+    Info (12134): Parameter "output_clock_frequency5" = "0 MHz"
+    Info (12134): Parameter "phase_shift5" = "0 ps"
+    Info (12134): Parameter "duty_cycle5" = "50"
+    Info (12134): Parameter "output_clock_frequency6" = "0 MHz"
+    Info (12134): Parameter "phase_shift6" = "0 ps"
+    Info (12134): Parameter "duty_cycle6" = "50"
+    Info (12134): Parameter "output_clock_frequency7" = "0 MHz"
+    Info (12134): Parameter "phase_shift7" = "0 ps"
+    Info (12134): Parameter "duty_cycle7" = "50"
+    Info (12134): Parameter "output_clock_frequency8" = "0 MHz"
+    Info (12134): Parameter "phase_shift8" = "0 ps"
+    Info (12134): Parameter "duty_cycle8" = "50"
+    Info (12134): Parameter "output_clock_frequency9" = "0 MHz"
+    Info (12134): Parameter "phase_shift9" = "0 ps"
+    Info (12134): Parameter "duty_cycle9" = "50"
+    Info (12134): Parameter "output_clock_frequency10" = "0 MHz"
+    Info (12134): Parameter "phase_shift10" = "0 ps"
+    Info (12134): Parameter "duty_cycle10" = "50"
+    Info (12134): Parameter "output_clock_frequency11" = "0 MHz"
+    Info (12134): Parameter "phase_shift11" = "0 ps"
+    Info (12134): Parameter "duty_cycle11" = "50"
+    Info (12134): Parameter "output_clock_frequency12" = "0 MHz"
+    Info (12134): Parameter "phase_shift12" = "0 ps"
+    Info (12134): Parameter "duty_cycle12" = "50"
+    Info (12134): Parameter "output_clock_frequency13" = "0 MHz"
+    Info (12134): Parameter "phase_shift13" = "0 ps"
+    Info (12134): Parameter "duty_cycle13" = "50"
+    Info (12134): Parameter "output_clock_frequency14" = "0 MHz"
+    Info (12134): Parameter "phase_shift14" = "0 ps"
+    Info (12134): Parameter "duty_cycle14" = "50"
+    Info (12134): Parameter "output_clock_frequency15" = "0 MHz"
+    Info (12134): Parameter "phase_shift15" = "0 ps"
+    Info (12134): Parameter "duty_cycle15" = "50"
+    Info (12134): Parameter "output_clock_frequency16" = "0 MHz"
+    Info (12134): Parameter "phase_shift16" = "0 ps"
+    Info (12134): Parameter "duty_cycle16" = "50"
+    Info (12134): Parameter "output_clock_frequency17" = "0 MHz"
+    Info (12134): Parameter "phase_shift17" = "0 ps"
+    Info (12134): Parameter "duty_cycle17" = "50"
+    Info (12134): Parameter "pll_type" = "General"
+    Info (12134): Parameter "pll_subtype" = "General"
+Info (12128): Elaborating entity "altsource_probe" for hierarchy "core_top:ic|altsource_probe:batch_debug" File: /home/taualpha/card-writing-lab/batch03-s1/src/fpga/core/core_top.v Line: 337
+Info (12130): Elaborated megafunction instantiation "core_top:ic|altsource_probe:batch_debug" File: /home/taualpha/card-writing-lab/batch03-s1/src/fpga/core/core_top.v Line: 337
+Info (12133): Instantiated megafunction "core_top:ic|altsource_probe:batch_debug" with the following parameter: File: /home/taualpha/card-writing-lab/batch03-s1/src/fpga/core/core_top.v Line: 337
+    Info (12134): Parameter "sld_auto_instance_index" = "YES"
+    Info (12134): Parameter "sld_instance_index" = "0"
+    Info (12134): Parameter "instance_id" = "SDW3"
+    Info (12134): Parameter "probe_width" = "256"
+    Info (12134): Parameter "source_width" = "32"
+    Info (12134): Parameter "source_initial_value" = "0"
+    Info (12134): Parameter "enable_metastability" = "NO"
+Info (12128): Elaborating entity "sld_jtag_endpoint_adapter" for hierarchy "core_top:ic|altsource_probe:batch_debug|sld_jtag_endpoint_adapter:jtag_signal_adapter" File: /home/taualpha/intelFPGA_lite/25.1std/quartus/libraries/megafunctions/altsource_probe.v Line: 169
+Info (12128): Elaborating entity "sld_jtag_endpoint_adapter_impl" for hierarchy "core_top:ic|altsource_probe:batch_debug|sld_jtag_endpoint_adapter:jtag_signal_adapter|sld_jtag_endpoint_adapter_impl:sld_jtag_endpoint_adapter_impl_inst" File: /home/taualpha/intelFPGA_lite/25.1std/quartus/libraries/megafunctions/sld_jtag_endpoint_adapter.vhd Line: 232
+Info (12128): Elaborating entity "altsource_probe_body" for hierarchy "core_top:ic|altsource_probe:batch_debug|altsource_probe_body:altsource_probe_body_inst" File: /home/taualpha/intelFPGA_lite/25.1std/quartus/libraries/megafunctions/altsource_probe.v Line: 205
+Info (12128): Elaborating entity "altsource_probe_impl" for hierarchy "core_top:ic|altsource_probe:batch_debug|altsource_probe_body:altsource_probe_body_inst|altsource_probe_impl:\wider_probe_gen:wider_probe_inst" File: /home/taualpha/intelFPGA_lite/25.1std/quartus/libraries/megafunctions/altsource_probe_body.vhd Line: 508
+Info (12128): Elaborating entity "sld_rom_sr" for hierarchy "core_top:ic|altsource_probe:batch_debug|altsource_probe_body:altsource_probe_body_inst|altsource_probe_impl:\wider_probe_gen:wider_probe_inst|sld_rom_sr:\instance_id_gen:rom_info_inst" File: /home/taualpha/intelFPGA_lite/25.1std/quartus/libraries/megafunctions/altsource_probe_body.vhd Line: 756
+Info (12128): Elaborating entity "core_bridge_cmd" for hierarchy "core_top:ic|core_bridge_cmd:commands" File: /home/taualpha/card-writing-lab/batch03-s1/src/fpga/core/core_top.v Line: 374
+Warning (10036): Verilog HDL or VHDL warning at core_bridge_cmd.v(139): object "host_2C" assigned a value but never read File: /home/taualpha/card-writing-lab/batch03-s1/src/fpga/core/core_bridge_cmd.v Line: 139
+Warning (10858): Verilog HDL warning at core_bridge_cmd.v(144): object host_4C used but never assigned File: /home/taualpha/card-writing-lab/batch03-s1/src/fpga/core/core_bridge_cmd.v Line: 144
+Warning (10036): Verilog HDL or VHDL warning at core_bridge_cmd.v(170): object "target_40" assigned a value but never read File: /home/taualpha/card-writing-lab/batch03-s1/src/fpga/core/core_bridge_cmd.v Line: 170
+Warning (10036): Verilog HDL or VHDL warning at core_bridge_cmd.v(171): object "target_44" assigned a value but never read File: /home/taualpha/card-writing-lab/batch03-s1/src/fpga/core/core_bridge_cmd.v Line: 171
+Warning (10036): Verilog HDL or VHDL warning at core_bridge_cmd.v(172): object "target_48" assigned a value but never read File: /home/taualpha/card-writing-lab/batch03-s1/src/fpga/core/core_bridge_cmd.v Line: 172
+Warning (10036): Verilog HDL or VHDL warning at core_bridge_cmd.v(173): object "target_4C" assigned a value but never read File: /home/taualpha/card-writing-lab/batch03-s1/src/fpga/core/core_bridge_cmd.v Line: 173
+Warning (10230): Verilog HDL assignment warning at core_bridge_cmd.v(243): truncated value with size 32 to match size of target (10) File: /home/taualpha/card-writing-lab/batch03-s1/src/fpga/core/core_bridge_cmd.v Line: 243
+Warning (10762): Verilog HDL Case Statement warning at core_bridge_cmd.v(246): can't check case statement for completeness because the case expression has too many possible states File: /home/taualpha/card-writing-lab/batch03-s1/src/fpga/core/core_bridge_cmd.v Line: 246
+Warning (10762): Verilog HDL Case Statement warning at core_bridge_cmd.v(281): can't check case statement for completeness because the case expression has too many possible states File: /home/taualpha/card-writing-lab/batch03-s1/src/fpga/core/core_bridge_cmd.v Line: 281
+Warning (10030): Net "host_4C" at core_bridge_cmd.v(144) has no driver or initial value, using a default initial value '0' File: /home/taualpha/card-writing-lab/batch03-s1/src/fpga/core/core_bridge_cmd.v Line: 144
+Info (12128): Elaborating entity "mf_datatable" for hierarchy "core_top:ic|core_bridge_cmd:commands|mf_datatable:idt" File: /home/taualpha/card-writing-lab/batch03-s1/src/fpga/core/core_bridge_cmd.v Line: 578
+Info (12128): Elaborating entity "altsyncram" for hierarchy "core_top:ic|core_bridge_cmd:commands|mf_datatable:idt|altsyncram:altsyncram_component" File: /home/taualpha/card-writing-lab/batch03-s1/src/fpga/apf/mf_datatable.v Line: 100
+Info (12130): Elaborated megafunction instantiation "core_top:ic|core_bridge_cmd:commands|mf_datatable:idt|altsyncram:altsyncram_component" File: /home/taualpha/card-writing-lab/batch03-s1/src/fpga/apf/mf_datatable.v Line: 100
+Info (12133): Instantiated megafunction "core_top:ic|core_bridge_cmd:commands|mf_datatable:idt|altsyncram:altsyncram_component" with the following parameter: File: /home/taualpha/card-writing-lab/batch03-s1/src/fpga/apf/mf_datatable.v Line: 100
+    Info (12134): Parameter "address_reg_b" = "CLOCK1"
+    Info (12134): Parameter "clock_enable_input_a" = "BYPASS"
+    Info (12134): Parameter "clock_enable_input_b" = "BYPASS"
+    Info (12134): Parameter "clock_enable_output_a" = "BYPASS"
+    Info (12134): Parameter "clock_enable_output_b" = "BYPASS"
+    Info (12134): Parameter "indata_reg_b" = "CLOCK1"
+    Info (12134): Parameter "init_file" = "./apf/build_id.mif"
+    Info (12134): Parameter "intended_device_family" = "Cyclone V"
+    Info (12134): Parameter "lpm_type" = "altsyncram"
+    Info (12134): Parameter "numwords_a" = "256"
+    Info (12134): Parameter "numwords_b" = "256"
+    Info (12134): Parameter "operation_mode" = "BIDIR_DUAL_PORT"
+    Info (12134): Parameter "outdata_aclr_a" = "NONE"
+    Info (12134): Parameter "outdata_aclr_b" = "NONE"
+    Info (12134): Parameter "outdata_reg_a" = "CLOCK0"
+    Info (12134): Parameter "outdata_reg_b" = "CLOCK1"
+    Info (12134): Parameter "power_up_uninitialized" = "FALSE"
+    Info (12134): Parameter "read_during_write_mode_port_a" = "NEW_DATA_NO_NBE_READ"
+    Info (12134): Parameter "read_during_write_mode_port_b" = "NEW_DATA_NO_NBE_READ"
+    Info (12134): Parameter "widthad_a" = "8"
+    Info (12134): Parameter "widthad_b" = "8"
+    Info (12134): Parameter "width_a" = "32"
+    Info (12134): Parameter "width_b" = "32"
+    Info (12134): Parameter "width_byteena_a" = "1"
+    Info (12134): Parameter "width_byteena_b" = "1"
+    Info (12134): Parameter "wrcontrol_wraddress_reg_b" = "CLOCK1"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_ltk2.tdf
+    Info (12023): Found entity 1: altsyncram_ltk2 File: /home/taualpha/card-writing-lab/batch03-s1/src/fpga/db/altsyncram_ltk2.tdf Line: 28
+Info (12128): Elaborating entity "altsyncram_ltk2" for hierarchy "core_top:ic|core_bridge_cmd:commands|mf_datatable:idt|altsyncram:altsyncram_component|altsyncram_ltk2:auto_generated" File: /home/taualpha/intelFPGA_lite/25.1std/quartus/libraries/megafunctions/altsyncram.tdf Line: 792
+Warning (113028): 253 out of 256 addresses are uninitialized. The Quartus Prime software will initialize them to "0". There are 2 warnings found, and 2 warnings are reported. File: /home/taualpha/card-writing-lab/batch03-s1/src/fpga/apf/build_id.mif Line: 1
+    Warning (113027): Addresses ranging from 0 to 223 are not initialized File: /home/taualpha/card-writing-lab/batch03-s1/src/fpga/apf/build_id.mif Line: 1
+    Warning (113027): Addresses ranging from 227 to 255 are not initialized File: /home/taualpha/card-writing-lab/batch03-s1/src/fpga/apf/build_id.mif Line: 1
+Info (12128): Elaborating entity "lab_batch" for hierarchy "core_top:ic|lab_batch:probe" File: /home/taualpha/card-writing-lab/batch03-s1/src/fpga/core/core_top.v Line: 389
+Warning (10230): Verilog HDL assignment warning at lab_batch.sv(39): truncated value with size 32 to match size of target (11) File: /home/taualpha/card-writing-lab/batch03-s1/src/fpga/core/lab_batch.sv Line: 39
+Warning (10230): Verilog HDL assignment warning at lab_batch.sv(40): truncated value with size 32 to match size of target (7) File: /home/taualpha/card-writing-lab/batch03-s1/src/fpga/core/lab_batch.sv Line: 40
+Warning (10230): Verilog HDL assignment warning at lab_batch.sv(43): truncated value with size 32 to match size of target (7) File: /home/taualpha/card-writing-lab/batch03-s1/src/fpga/core/lab_batch.sv Line: 43
+Warning (10230): Verilog HDL assignment warning at lab_batch.sv(50): truncated value with size 13 to match size of target (8) File: /home/taualpha/card-writing-lab/batch03-s1/src/fpga/core/lab_batch.sv Line: 50
+Warning (10764): Verilog HDL warning at lab_batch.sv(143): converting signed shift amount to unsigned File: /home/taualpha/card-writing-lab/batch03-s1/src/fpga/core/lab_batch.sv Line: 143
+Warning (10230): Verilog HDL assignment warning at lab_batch.sv(63): truncated value with size 32 to match size of target (13) File: /home/taualpha/card-writing-lab/batch03-s1/src/fpga/core/lab_batch.sv Line: 63
+Warning (10230): Verilog HDL assignment warning at lab_batch.sv(182): truncated value with size 32 to match size of target (4) File: /home/taualpha/card-writing-lab/batch03-s1/src/fpga/core/lab_batch.sv Line: 182
+Info (12128): Elaborating entity "synch_3" for hierarchy "core_top:ic|synch_3:display_sync" File: /home/taualpha/card-writing-lab/batch03-s1/src/fpga/core/core_top.v Line: 394
+Warning (10230): Verilog HDL assignment warning at common.v(74): truncated value with size 135 to match size of target (1) File: /home/taualpha/card-writing-lab/batch03-s1/src/fpga/apf/common.v Line: 74
+Warning (10230): Verilog HDL assignment warning at common.v(75): truncated value with size 135 to match size of target (1) File: /home/taualpha/card-writing-lab/batch03-s1/src/fpga/apf/common.v Line: 75
+Info (12128): Elaborating entity "lab_video" for hierarchy "core_top:ic|lab_video:screen" File: /home/taualpha/card-writing-lab/batch03-s1/src/fpga/core/core_top.v Line: 408
+Warning (10762): Verilog HDL Case Statement warning at lab_video.sv(75): can't check case statement for completeness because the case expression has too many possible states File: /home/taualpha/card-writing-lab/batch03-s1/src/fpga/core/lab_video.sv Line: 75
+Warning (10270): Verilog HDL Case Statement warning at lab_video.sv(75): incomplete case statement has no default case item File: /home/taualpha/card-writing-lab/batch03-s1/src/fpga/core/lab_video.sv Line: 75
+Warning (10762): Verilog HDL Case Statement warning at lab_video.sv(99): can't check case statement for completeness because the case expression has too many possible states File: /home/taualpha/card-writing-lab/batch03-s1/src/fpga/core/lab_video.sv Line: 99
+Warning (10270): Verilog HDL Case Statement warning at lab_video.sv(99): incomplete case statement has no default case item File: /home/taualpha/card-writing-lab/batch03-s1/src/fpga/core/lab_video.sv Line: 99
+Warning (10230): Verilog HDL assignment warning at lab_video.sv(9): truncated value with size 32 to match size of target (8) File: /home/taualpha/card-writing-lab/batch03-s1/src/fpga/core/lab_video.sv Line: 9
+Warning (10230): Verilog HDL assignment warning at lab_video.sv(136): truncated value with size 32 to match size of target (10) File: /home/taualpha/card-writing-lab/batch03-s1/src/fpga/core/lab_video.sv Line: 136
+Info (11170): Starting IP generation for the debug fabric: alt_sld_fab.
+Info (11172): #
+Info (11172): # A fatal error has been detected by the Java Runtime Environment:
+Info (11172): #
+Info (11172): #  SIGILL (0x4) at pc=0x0000708bf92c0025, pid=415182, tid=0x0000708c0fbff640
+Info (11172): #
+Info (11172): # JRE version: OpenJDK Runtime Environment (8.0_432-b06) (build 1.8.0_432-b06)
+Info (11172): # Java VM: OpenJDK 64-Bit Server VM (25.432-b06 mixed mode linux-amd64 compressed oops)
+Info (11172): # Problematic frame:
+Info (11172): # J 620 C1 java.util.regex.Pattern.append(II)V (39 bytes) @ 0x0000708bf92c0025 [0x0000708bf92c0000+0x25]
+Info (11172): #
+Info (11172): # Failed to write core dump. Core dumps have been disabled. To enable core dumping, try "ulimit -c unlimited" before starting Java again
+Info (11172): #
+Info (11172): # An error report file with more information is saved as:
+Info (11172): # /home/taualpha/card-writing-lab/batch03-s1/src/fpga/hs_err_pid415182.log
+Info (11172): Segmentation fault (core dumped)
+Info (11171): Finished IP generation for the debug fabric: alt_sld_fab.
+Error (12006): Node instance "instrumentation_fabric" instantiates undefined entity "alt_sld_fab". Ensure that required library paths are specified correctly, define the specified entity, or change the instantiation. If this entity represents Intel FPGA or third-party IP, generate the synthesis files for the IP. File: /home/taualpha/intelFPGA_lite/25.1std/quartus/libraries/megafunctions/sld_hub.vhd Line: 1000
+Warning (12241): 15 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Error: Quartus Prime Analysis & Synthesis was unsuccessful. 1 error, 29 warnings
+    Error: Peak virtual memory: 537 megabytes
+    Error: Processing ended: Mon Oct  5 01:00:46 2026
+    Error: Elapsed time: 00:01:40
+    Error: Total CPU time (on all processors): 00:02:48
+Error (293001): Quartus Prime Full Compilation was unsuccessful. 3 errors, 29 warnings
+Error: Flow compile (for project /home/taualpha/card-writing-lab/batch03-s1/src/fpga/ap_core) was not successful
+Error: ERROR: Error(s) found while running an executable. See report file(s) for error message(s). Message log indicates which executable was run last.
+
+Error (23031): Evaluation of Tcl script /home/taualpha/intelFPGA_lite/25.1std/quartus/common/tcl/internal/qsh_flow.tcl unsuccessful
+Error: Quartus Prime Shell was unsuccessful. 10 errors, 29 warnings
+    Error: Peak virtual memory: 459 megabytes
+    Error: Processing ended: Mon Oct  5 01:00:47 2026
+    Error: Elapsed time: 00:01:54
+    Error: Total CPU time (on all processors): 00:03:01

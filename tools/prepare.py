@@ -57,7 +57,8 @@ def prepare_reference(pins):
 
 
 def prepare_custom(pins, build="minimal01"):
-    suffix = build[-2:]
+    suffix = "02" if build.startswith("batch03") else build[-2:]
+    label = {"batch03":"B003", "batch03r1":"B003R1", "batch03r2":"B003R2"}.get(build,suffix)
     core_id = "alfatreze.CARDWRITE" + suffix
     source = ROOT / 'vendor/core-template'
     stage = ROOT / 'work/build' / build
@@ -71,15 +72,20 @@ def prepare_custom(pins, build="minimal01"):
             shutil.copy2(path, core / path.name)
     qsf = stage / 'src/fpga/ap_core.qsf'
     lines = [line for line in qsf.read_text().splitlines()
-             if not any(key in line for key in ('SIGNALTAP', 'core/core_constraints.sdc'))]
+             if not any(key in line for key in ('SIGNALTAP', 'SLD_FILE', 'core/core_constraints.sdc'))]
     lines.extend(['set_global_assignment -name ENABLE_SIGNALTAP OFF',
                   'set_global_assignment -name SYSTEMVERILOG_FILE core/lab_probe.sv',
                   'set_global_assignment -name SYSTEMVERILOG_FILE core/lab_video.sv',
                   'set_global_assignment -name SEARCH_PATH core',
                   'set_global_assignment -name NUM_PARALLEL_PROCESSORS 2',
                   'set_global_assignment -name SEED 1'])
-    if build == 'minimal02':
+    if build in ('minimal02', 'batch03', 'batch03r1', 'batch03r2'):
         lines.append('set_global_assignment -name ALLOW_POWER_UP_DONT_CARE OFF')
+    if build.startswith('batch03'):
+        lines.extend(['set_global_assignment -name VERILOG_MACRO LAB_BATCH=1',
+                      'set_global_assignment -name SYSTEMVERILOG_FILE core/lab_batch.sv'])
+    if build in ('batch03r1','batch03r2'):
+        lines.append('set_global_assignment -name VERILOG_MACRO LAB_BATCH_REV='+build[-1])
     qsf.write_text('\n'.join(lines) + '\n')
     # Keep real related PLL outputs grouped together; no false cut between them.
     (core / 'core_constraints.sdc').write_text('''set_clock_groups -asynchronous \\
@@ -97,25 +103,27 @@ def prepare_custom(pins, build="minimal01"):
         value = json.loads((source / (name + '.json')).read_text())
         if name == 'core':
             value['core']['metadata'].update(platform_ids=['cardwrite'], shortname='CARDWRITE'+suffix,
-                author='alfatreze', description='Card write probe '+suffix+' - 64 byte BRAM FSM',
-                version='0.2.0' if build=='minimal02' else '0.1.0', date_release='2026-10-05' if build=='minimal02' else '2026-10-04',
+                author='alfatreze', description='SD Write Research '+label+' - 32 case batch' if build.startswith('batch03') else 'Card write probe '+suffix+' - 64 byte BRAM FSM',
+                version={'batch03':'0.3.0','batch03r1':'0.3.1','batch03r2':'0.3.2','minimal02':'0.2.0'}.get(build,'0.1.0'), date_release='2026-10-05' if build in ('minimal02','batch03','batch03r1','batch03r2') else '2026-10-04',
                 url='https://github.com/alfatreze')
         elif name == 'data':
-            value['data']['data_slots'] = [dict(name='Probe output', id='0x22', required=False,
-                parameters=2, deferload=True, filename='write64.bin')]
+            value['data']['data_slots'] = [dict(name='Batch B003' if build.startswith('batch03') else 'Probe output', id='0x23' if build.startswith('batch03') else '0x22', required=False,
+                parameters=2, deferload=True, filename='batch-b003.bin' if build.startswith('batch03') else 'write64.bin')]
         elif name == 'input':
             value['input']['controllers'] = [dict(type='default', mappings=[
-                dict(id=0,name='Write generation',key='pad_btn_a'),
-                dict(id=1,name='Read and compare',key='pad_btn_b')])]
+                dict(id=0,name='Run 32 write tests' if build.startswith('batch03') else 'Write generation',key='pad_btn_a'),
+                dict(id=1,name='Cold read 32 tests' if build.startswith('batch03') else 'Read and compare',key='pad_btn_b')])]
         json_write(dest / (name + '.json'), value)
     platform = json.loads((source / 'dist/platforms/ex_platform.json').read_text())
     platform['platform'].update(name='Card Writing Lab', category='Research', manufacturer='Tau', year=2026)
     json_write(package / 'Platforms/cardwrite.json', platform)
     (dest / 'info.txt').write_text('Card write research probe '+suffix+'\nA writes generation 1, then 2, etc.\nB reads and compares against expected.\nWRITE CMD OK is not a durability claim.\nVerify write64.bin on the host after Quit.\nDisposable test card only.\nTimeout: quit and relaunch the core.\n')
-    output = package / 'Assets/cardwrite' / core_id / 'write64.bin'
+    if build.startswith('batch03'):
+        (dest / 'info.txt').write_text('SD Write Research '+label+' - 32 cases\nA runs one write/read batch.\nB after fresh boot reads prior batch.\nWait for BATCH PASS or FAIL, screenshot.\nQuit, shutdown, verify on computer.\nRetained JTAG probe: SDW3.\nTimeout: reconfigure, never retry live.\n')
+    output = package / 'Assets/cardwrite' / core_id / ('batch-b003.bin' if build.startswith('batch03') else 'write64.bin')
     output.parent.mkdir(parents=True, exist_ok=True)
     # Existing-file baseline. First write must visibly replace zero bytes.
-    output.write_bytes(bytes(64))
+    output.write_bytes(bytes([0xa5])*262144 if build.startswith('batch03') else bytes(64))
     manifest(package, {'kind': build+'; not installable until audited bitstream exists',
                        'template_commit': pins['core-template']['commit'], 'seed': 1})
     print(f'Staged {stage}; prepared {package}')
@@ -123,7 +131,7 @@ def prepare_custom(pins, build="minimal01"):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--build", choices=["minimal01","minimal02"], default="minimal01")
+    parser.add_argument("--build", choices=["minimal01","minimal02","batch03","batch03r1","batch03r2"], default="minimal01")
     args = parser.parse_args()
     pins = validate_vendor()
     if args.build == "minimal01": prepare_reference(pins)

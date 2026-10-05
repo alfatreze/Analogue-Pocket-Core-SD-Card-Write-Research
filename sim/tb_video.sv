@@ -1,19 +1,20 @@
 `timescale 1ns/1ps
 module tb_video;
+parameter integer BUILD=2, REVISION=0;
 reg clk=0;
 always #5 clk=~clk;
 wire [23:0] rgb;
 wire de,hs,vs;
 reg [3:0] status=0;
 reg [31:0] completed=0,loaded=0;
-lab_video display(.clk(clk),.reset_n(1'b1),.status(status),.generation(32'd1),
+lab_video #(.BUILD_NUMBER(BUILD),.BUILD_REVISION(REVISION)) display(.clk(clk),.reset_n(1'b1),.status(status),.generation(BUILD==3?32'd32:32'd1),
  .loaded_generation(loaded),.completed(completed),.error(3'd0),.elapsed(32'd1000),
  .rgb(rgb),.de(de),.hs(hs),.vs(vs));
 integer frame,pixels,fd;
 reg [255:0] name;
 initial begin
  for(frame=0;frame<8;frame=frame+1)begin
-  status=frame;completed=frame>2?1:0;loaded=frame==4?1:0;
+  status=frame;completed=frame>2?(BUILD==3?32:1):0;loaded=frame==4?(BUILD==3?32:1):0;
   // Start at a frame boundary, then capture the actual RTL active pixels.
   @(posedge vs);
   $sformat(name,"frame-%0d.ppm",frame);

@@ -14,7 +14,7 @@ def sha(path):return hashlib.sha256(path.read_bytes()).hexdigest()
 
 def main():
     parser=argparse.ArgumentParser()
-    parser.add_argument('--build',choices=['minimal01','minimal02'],default='minimal01')
+    parser.add_argument('--build',choices=['minimal01','minimal02','batch03','batch03r1','batch03r2'],default='minimal01')
     build_id=parser.parse_args().build
     BUILD=ROOT/'work/fpga'/(build_id+'-s1')
     PACKAGE=ROOT/'work/packages'/build_id
@@ -40,7 +40,7 @@ def main():
     if sha(raw)==sha(original):
         raise SystemExit('Collected RBF matches unmodified template; wrong build suspected')
     reverse=bytes(int(f'{byte:08b}'[::-1],2) for byte in range(256))
-    bitstream=PACKAGE/'Cores'/('alfatreze.CARDWRITE'+build_id[-2:])/'bitstream.rbf_r'
+    bitstream=PACKAGE/'Cores'/('alfatreze.CARDWRITE02' if build_id.startswith('batch03') else 'alfatreze.CARDWRITE'+build_id[-2:])/'bitstream.rbf_r'
     bitstream.write_bytes(raw.read_bytes().translate(reverse))
     audit={'kind':'custom '+build_id+', full compile and internal timing qualified; Pocket pending',
            'seed':1,'raw_sha256':sha(raw),'rbf_r_sha256':sha(bitstream),

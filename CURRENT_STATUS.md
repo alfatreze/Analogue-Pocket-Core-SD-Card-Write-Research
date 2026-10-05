@@ -66,3 +66,11 @@ New screenshots `20261005_002904.png` and `20261005_002910.png` show CARD WRITIN
 - Immutable local evidence is under `work/evidence/runs/FSM-002-COLD/`, with screenshot, physical output, inventory, original collector result and separate review.
 - Verdict: reload readback and physical bytes PASS. Exact cold power-off sequence is not separately confirmed; one observation does not establish repeatability or interrupted-write safety.
 - Next implementation: uniquely numbered B003 automatic multi-case batch, updating the stable active core entry with verified backups. Preserve the successful minimal02 artifacts and output.
+
+## B003 implementation and compile attempts
+
+- Automatic 32-case CPU-free batch implemented, with 38 write/read pairs, disjoint guarded regions, shrinking overwrites, cold read mode and retained per-operation ISSP results. Exact catalogue: experiments/b003.json. No physical batch result yet.
+- Initial batch03 synthesis failed when bundled Java JIT crashed during JTAG fabric generation. Failed stage/log retained; Java interpreter mode scoped to the research build fixes that generator.
+- B003R1 synthesis resource review found TX/result memories mapped to registers: 30,203 estimated ALMs against 18,480 available, 43,065 registers. Stopped only that isolated compile after retaining partial reports. This was not a full fit/timing verdict.
+- B003R2 introduces dedicated synchronous RAM read registers ahead of the validity/response-hold muxes. Real pinned APF serial simulation still matches every requested payload byte and the whole guarded file; command-interface and cold/fault tests pass. Existing minimal02 regression also passes. New frozen B003R2 stage is compiling; timing and physical JTAG/batch qualification remain pending.
+- The audited updater and Tcl helper are tested against temporary fake card trees and a mocked ISSP service. Neither supplies physical JTAG/SD evidence. CARDWRITE remains on the working minimal02 build until qualification succeeds.

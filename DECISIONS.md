@@ -88,3 +88,21 @@ FSM-002-R1 produces the exact generation-1 record on the remounted physical card
 ## NCW-012 — stable launcher, distinct build identity
 
 Owner requested distinct build naming without repeatedly selecting a new core. Future delivery uses one persistent active card core (currently CARDWRITE02), updated in place with backed-up prior artifacts, and uniquely numbered versions/descriptions/screen banners. This avoids the old-core resumption problem caused by adding a separate menu entry for each compile. Existing first-install tooling must gain an audited update path before this convention is used; no card change is made during the pending cold-reload observation.
+
+## NCW-013 — implement the bounded first batch
+
+B003 uses one preallocated 256 KiB slot 0x23 file, 32 disjoint 8 KiB regions and 38 write/read pairs. The exact configuration lives in experiments/b003.json. A separate Python byte oracle checks all payloads, guards and preserved tails. RTL generates initialized BRAM payloads, holds APF response data until the next read strobe, masks only bytes beyond each read's requested length, and requires receipt of every requested word. Timeout never releases command ownership. Errors and comparison failures remain in retained per-operation logs. B on a fresh launch reads the final expected payloads without writing. One session cannot be accidentally rerun by buttons.
+
+The SDW3 ISSP instance supplies a stable 256-bit indexed snapshot with a toggle/acknowledgement, and optional start/read controls accepted only at READY. Host index changes precede a snapshot toggle; results are read only at a terminal state. This implements the retained-history approach learned from Tau. It adds no SignalTap. Simulation substitutes do not establish physical JTAG or APF timing.
+
+## NCW-014 — preserve and correct the JTAG fabric build failure
+
+Initial batch03 synthesis failed because Quartus's bundled Java 8 JIT received SIGILL under VM emulation while generating alt_sld_fab; the subsequently reported missing entity is a consequence. Preserve that stage/log, do not remove debug logic to hide it. The new exclusive batch03r1 stage uses Java interpreter mode (_JAVA_OPTIONS=-Xint) scoped to the research compile process, removes an inherited stale SLD_FILE reference, and carries a distinct B003R1 screen/version. No Tau source or global VM setting is changed. Full fit/timing evidence is still required before card delivery.
+
+## NCW-015 — audited in-place update of the stable entry
+
+tools/update.py requires exact hashes of the installed minimal02 core and the qualified replacement package. Before mutation it archives prior sources, metadata, SOF/RBF and package; backs up every old active-core file, known catalogue caches and the successful physical write64.bin; revalidates card identity and plan; then replaces only reviewed core files and creates a fresh scratch file. File hashes and protected-content snapshots are verified afterward. An existing batch file, changed old core, changed package or symlink is refused. Cache refresh is backed up and journalled; no prior test output is silently reset.
+
+## NCW-016 — resource evidence requires synchronous RAM output ports
+
+B003R1 did generate the JTAG fabric, but its synthesis report showed TX and retained-log arrays uninferred, with estimated ALMs beyond device capacity. Preserve the partial report and explicitly label the agent-stopped attempt. B003R2 uses dedicated unconditional clocked RAM read registers, then applies address-validity/held-response logic one clock later. The previous-request APF convention is retained and must pass the actual serial peripheral simulation again. ISSP index is held before the snapshot toggle so its synchronous log reads are ready when latched. RAM inference must be checked in the real Quartus report before installation.

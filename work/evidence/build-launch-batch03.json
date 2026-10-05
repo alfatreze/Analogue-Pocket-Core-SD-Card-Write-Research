@@ -1,0 +1,7 @@
+{
+  "remote": "card-writing-lab/batch03-s1",
+  "archive_sha256": "2b34fc32359574e712ad4dc9c4483fef04fe7ead714cfda6b5c8892c2cfef3a5",
+  "source_manifest": "work/build/batch03-manifest.json",
+  "seed": 1,
+  "quartus": "/home/taualpha/intelFPGA_lite/25.1std/quartus/bin/quartus_sh"
+}

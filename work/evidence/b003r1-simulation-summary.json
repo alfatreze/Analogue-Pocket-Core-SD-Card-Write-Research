@@ -1,0 +1,29 @@
+{
+  "build": "B003R1",
+  "configuration": "experiments/b003.json",
+  "write_pairs": 38,
+  "cases": 32,
+  "scope": "simulation and host tooling only; physical batch/JTAG/persistence pending",
+  "direct_and_real_command_simulation": "PASS",
+  "actual_pinned_serial_bridge_simulation": "PASS, entire file independently compared",
+  "cold_read_simulation": "PASS; unwritten file correctly fails",
+  "fault_injection": [
+    "corruption",
+    "missing requested word",
+    "read command error",
+    "timeout/late completion/reset ownership"
+  ],
+  "debug_control_and_snapshot_simulation": "PASS",
+  "host_oracle_tests": 5,
+  "temporary_card_update_tests": 6,
+  "mocked_Tcl_tests": 3,
+  "native_RTL_renderer": "8 states inspected; deterministic fixtures, not physical evidence",
+  "hashes": {
+    "experiments/b003.json": "3da6c7c910ad1e6d72c9a6537cda28d682101e1f51173878456aef9c0603f72f",
+    "work/build/batch03r1-manifest.json": "ac8d721e8e96aee2d86273d8876331ef9f968eadc294195a4094eae606dfd3ed",
+    "work/evidence/b003r1-simulation.log": "61382514f1b578a65dfc55d930dc5286573695d9d091cebe876520ffc2856920",
+    "work/evidence/b003r1-baseline-regression.log": "9e9109cbad5453ab8120e922c859dded265f95d9ba041d8e60d487cd331da7f9",
+    "work/evidence/b003r1-test_update.log": "144629a523a3fd8423c576756a3e5bc54d656dd44ae417ba441632de21cf87a2",
+    "work/evidence/b003r1-test_jtag.log": "e4203c2a2c9a8a087787df57a8aeba4f3c42ad2d29b7c8d9ed9832bce2de5a83"
+  }
+}

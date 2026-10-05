@@ -1,0 +1,19 @@
+{
+  "provenance": {
+    "kind": "batch03r2; not installable until audited bitstream exists",
+    "template_commit": "da3a021b1eaf742604d86d8dc9b33a6666263e6a",
+    "seed": 1
+  },
+  "files": {
+    "Assets/cardwrite/alfatreze.CARDWRITE02/batch-b003.bin": "b9b8561490d31103a2783ddcbf67ffcb6aa02b1aa71a9800aad615aeb20c8c55",
+    "Cores/alfatreze.CARDWRITE02/audio.json": "32ecc527ee672b4f478b86e35bd0ee5eff474c73183b1b46d5169f09f224e182",
+    "Cores/alfatreze.CARDWRITE02/core.json": "97bf58d011c6826fe5fc80a2a86d7c57ba1c6fe68c0f0e07c43eeda9c34e93f0",
+    "Cores/alfatreze.CARDWRITE02/data.json": "64406e6e05ce9e9f6d11087130d722c3cd51749d87d66971f147cc9b0f8ecdeb",
+    "Cores/alfatreze.CARDWRITE02/info.txt": "1156d0dabed2b1cead920b2e759a3590477a313989f19c100eca546a96d50d7c",
+    "Cores/alfatreze.CARDWRITE02/input.json": "a1ed28e26b743bfc76ad6dcc7036a78e2a98e6fe899ea1490d5b980e26a36e4f",
+    "Cores/alfatreze.CARDWRITE02/interact.json": "ec6df9dd48158b2ffbe22958dde4378c24b99e1f856e90e2297aa1280ca37f51",
+    "Cores/alfatreze.CARDWRITE02/variants.json": "2c69bdff29586e2e6e32a9dfc1efb7b77b18ba367187713de5c655b843b716ea",
+    "Cores/alfatreze.CARDWRITE02/video.json": "4da1bd060190c1c543fd40b0cc98989df25429e98038632a44e5fd37ea42dbe9",
+    "Platforms/cardwrite.json": "ee53a491638a2d1960b36e9552a08c9f01dc55627be4e64a9ee7932060f183a3"
+  }
+}

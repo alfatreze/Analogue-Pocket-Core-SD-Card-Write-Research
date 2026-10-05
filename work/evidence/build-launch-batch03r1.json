@@ -1,0 +1,8 @@
+{
+  "remote": "card-writing-lab/batch03r1-s1",
+  "archive_sha256": "a4950629149d973a68e2b8786242af255d6517e2d91a5b359601ca9ad9f9e8ec",
+  "source_manifest": "work/build/batch03r1-manifest.json",
+  "seed": 1,
+  "quartus": "/home/taualpha/intelFPGA_lite/25.1std/quartus/bin/quartus_sh",
+  "java_options": "-Xint (avoid JIT SIGILL under VM emulation)"
+}

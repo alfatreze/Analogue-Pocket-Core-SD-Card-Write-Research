@@ -165,3 +165,10 @@ New screenshots `20261005_002904.png` and `20261005_002910.png` show CARD WRITIN
 - No prior protected file changed or disappeared. Both successful minimal02 and B003 output hashes remain unchanged. Only additions: five expected regenerated menu caches and one result screenshot; no unexpected additions.
 - Inspected native screenshot 20261005_131401.png: B004R2 STRESS PASS, OPERATION/PASSED/FINISHED 0x2710 (10,000), ERROR 0, CYCLES 0x0007BC86. The LCD timing is exactly one greater than the last retained completed read timing, as specified. Screenshot copied/hash-verified into immutable private run evidence.
 - Public summary work/evidence/b004r2-physical-file-write.json. Original full snapshots/output/screenshot retained under work/evidence/runs/STRESS-004-WRITE. Normal Quit/shutdown/remount requested; owner reported card mounted, exact power sequence not separately confirmed. This establishes final-file persistence after remount; cold launch, repeated power cycles and interrupted-write recovery still pending.
+
+## B004R2 first fresh-launch cold read — JTAG PASS
+
+- Owner reported done after requested insertion/fresh launch. Live SDW4 revision 2 READY validated with zero completed/command counters; requested cold mode once. No FPGA programming or writes.
+- Terminal cold PASS: all 32 final-generation regions pass, 32 reads, zero writes/failures, first-failure sentinel 16,383. All 32 distinct expected final-operation indices, clean flags 0x80000006, zero write timing, byte ranges and consistent global timing extrema independently verified.
+- Read cycles 58,405–597,148 (0.787–8.042 ms at 74.25 MHz). Full public record history and original capture hashes: work/evidence/b004r2-physical-jtag-cold.json. Original raw/decoded captures retained privately.
+- Result collection finished before Quit. Next: screenshot, normal Quit/shutdown/remount, then whole-file and protected-content comparison against immutable STRESS-004-WRITE snapshot. Exact power sequence not separately confirmed; repeated power-cycle/interruption qualification still pending.

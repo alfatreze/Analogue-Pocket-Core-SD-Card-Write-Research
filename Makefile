@@ -87,3 +87,17 @@ test-tau-cdc:
 
 test-tau-cpu:
 	$(PYTHON) sim/test_tau_cpu_card.py
+
+.PHONY: test-tau-cpu-save
+test-tau-cpu-save:
+	$(PYTHON) sim/test_tau_cpu_save.py
+
+.PHONY: test-tau-cpu-save-fault test-tau-cpu-save-received test-tau-cpu-save-stress
+test-tau-cpu-save-fault:
+	$(PYTHON) sim/test_tau_cpu_save_fault.py
+
+test-tau-cpu-save-received:
+	$(PYTHON) sim/test_tau_cpu_save_received.py
+
+test-tau-cpu-save-stress:
+	$(PYTHON) sim/test_tau_cpu_save_stress.py

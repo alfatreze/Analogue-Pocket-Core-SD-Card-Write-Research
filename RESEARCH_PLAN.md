@@ -2,6 +2,8 @@
 
 Prepared 2026-10-04. Planning and source review only; no new hardware experiment has been run.
 
+Current outcomes are recorded separately in CURRENT_STATUS.md, B004_RESULTS.md, B005_CONNECTED_RESULTS.md, B006_DEVELOPMENT.md and TAU_CPU_INTEGRATION.md. This dated plan retains the original experimental sequence; it is not the latest hardware-status report.
+
 ## Research question and possible outcomes
 
 Can a Pocket core write its own persistent data, recover correctly, and leave Tau's music and other card contents untouched, repeatedly under a defined set of conditions?

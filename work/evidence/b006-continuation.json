@@ -1,0 +1,7 @@
+{
+  "state": "failed",
+  "qualified_audit_sha256": "1c6b9037d76a91121d0f5ac63b2e241f10d634ebd87d2179ca22a7f5f7f9cfc3",
+  "runner_sha256": "0c045b0c53bbadfe04a2f68d5244b423748220f1285f27b359aa7380fed05358",
+  "scope": "Serialized bounded connected research; no physical card remount/power-loss claim.",
+  "error": "B005 failed; no loading"
+}

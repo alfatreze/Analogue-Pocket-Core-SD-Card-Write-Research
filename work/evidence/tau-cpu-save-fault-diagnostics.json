@@ -1,0 +1,105 @@
+{
+  "diagnostics_completed": true,
+  "missing_word_robustness_qualified": false,
+  "trials": [
+    {
+      "trial": "boot-error",
+      "expected_outcome_observed": true,
+      "parameters": {
+        "ERROR_ON": 1,
+        "EXPECT_EXIT": 33,
+        "EXPECT_COMMANDS": 1
+      },
+      "final_expected_kind": "unchanged",
+      "log_sha256": "4cc71d32a40e6817c7c695cd789d0b406f00f990c1198903ce0d124947193ab3",
+      "final_sha256": [
+        "9dde7f27d9f249fb3906189db5cdedd2fa0c6a98488286cbce62c7138ccf9629",
+        "c2fafef8711fede759c9c4da28dcc44a38cf08ec1924556a4c572d15ed5024b1"
+      ]
+    },
+    {
+      "trial": "first-chunk-error",
+      "expected_outcome_observed": true,
+      "parameters": {
+        "ERROR_ON": 3,
+        "EXPECT_EXIT": 33,
+        "EXPECT_COMMANDS": 3
+      },
+      "final_expected_kind": "prefix",
+      "log_sha256": "ee8dd041970e6750bd441fd68601056bd38e2af9fc9bbdc5fd6904f7e97a6607",
+      "final_sha256": [
+        "b793d8e223ae114d2edb7cda80c02a7a514fb79cb65580db975565c9791905a4",
+        "c2fafef8711fede759c9c4da28dcc44a38cf08ec1924556a4c572d15ed5024b1"
+      ]
+    },
+    {
+      "trial": "verify-error",
+      "expected_outcome_observed": true,
+      "parameters": {
+        "ERROR_ON": 7,
+        "EXPECT_EXIT": 33,
+        "EXPECT_COMMANDS": 7
+      },
+      "final_expected_kind": "new-valid",
+      "log_sha256": "d77772786a913d04067394170cf8d7e17695a34e610fe15e0f7415a50bcaed89",
+      "final_sha256": [
+        "7d9c9bacb8abe2c826649e7af62b30a44072d68efd5a62283178ee033cf8f5f9",
+        "c2fafef8711fede759c9c4da28dcc44a38cf08ec1924556a4c572d15ed5024b1"
+      ]
+    },
+    {
+      "trial": "verify-return-guard-corrupt",
+      "expected_outcome_observed": true,
+      "parameters": {
+        "BAD_GUARD_ON": 7,
+        "EXPECT_EXIT": 37,
+        "EXPECT_COMMANDS": 7
+      },
+      "final_expected_kind": "new-valid",
+      "log_sha256": "6ba8d2d293b02a6d21e44f0625503803323b8d4a675872fae85512e6155f4cfd",
+      "final_sha256": [
+        "7d9c9bacb8abe2c826649e7af62b30a44072d68efd5a62283178ee033cf8f5f9",
+        "c2fafef8711fede759c9c4da28dcc44a38cf08ec1924556a4c572d15ed5024b1"
+      ]
+    },
+    {
+      "trial": "boot-timeout",
+      "expected_outcome_observed": true,
+      "parameters": {
+        "TIMEOUT_ON": 1,
+        "EXPECT_EXIT": 32,
+        "EXPECT_COMMANDS": 0,
+        "EXPECT_REQUESTS": 1
+      },
+      "final_expected_kind": "unchanged",
+      "log_sha256": "9ca2c4c27a257eeed519be734e49c820b5f21787a4c5309869533e71984193eb",
+      "final_sha256": [
+        "9dde7f27d9f249fb3906189db5cdedd2fa0c6a98488286cbce62c7138ccf9629",
+        "c2fafef8711fede759c9c4da28dcc44a38cf08ec1924556a4c572d15ed5024b1"
+      ]
+    },
+    {
+      "trial": "missing-stale-guard-word",
+      "expected_outcome_observed": true,
+      "parameters": {
+        "OMIT_GUARD_ON": 1,
+        "EXPECT_COMMANDS": 22
+      },
+      "final_expected_kind": "diagnostic-completeness-gap",
+      "log_sha256": "4e298aefc7878a054a8f21c81060d275cb59cfbb474ccbe0663934b87800eee6",
+      "final_sha256": [
+        "87f13e734f02057e7c990a2dcc6cd9adb2ecf79227bae0106eb14d5f9f4f4fe7",
+        "38e21fd45fa5ca1539bca879f144c971763161d9ea7e79f14a0e6df559cee152"
+      ]
+    }
+  ],
+  "source_hashes": {
+    "sim/tau_cpu_save/link.ld": "105f5c75bb14254811bbd16fefbfad612945a120e19bf5f53fb2d71f1dacbc7d",
+    "sim/tau_cpu_save/start.S": "24363000a574cbdd90da7f57c808358f1f1139fbe789c79e466534fba68e3aa9",
+    "sim/tau_cpu_save/fault.c": "58c3f4d4e22dfb1ba5de91c1e6f5635083eb760876a1f88b940e385e6e9ff240",
+    "sim/tb_tau_cpu_save_fault.sv": "14ed08851fd61dbb5066d6188398912a3b2cc850562ced6bb7557f26dedb292f"
+  },
+  "runner_sha256": "fee56c80f9dc3983923880be06acd2faa9766924e490ce958d4d845e038e0e01",
+  "firmware_sha256": "2ef70f88ff18d1e2e273b84919d7c7e581f86d9b1aec7ff3a46271ffec05f216",
+  "scope": "Actual CPU prototype modeled APF errors stop after exact prefix/full write; timeout halts before another command. Reduced 500-poll diagnostic budget. Deliberately missing a guard word whose stale RX value equals A5 is accepted: direct CPU scan lacks received-word proof. B006 hardware mask is required for real integration. No physical writes, APF transport or late completion after timeout qualification."
+}

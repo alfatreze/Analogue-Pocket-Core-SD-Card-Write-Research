@@ -1,0 +1,19 @@
+{
+  "pass": true,
+  "sources": {
+    "tools/console_transport.py": "b1f75b2a5f12635fd5f37eca192f17f17d44fd3ba95cef03ebd04c3924a25793",
+    "tools/jtag_session.py": "015274bf443fa8340da9692f1d2c9b4ed231f66187c10c620db20dab469466e6",
+    "tools/jtag_recovery.py": "4701503dc2d595800fbc913de4434e07ebfd3697e26583615d3a3d518f20f57e",
+    "tools/jtag_recovery.tcl": "22f0ac9169abf384c580c0d5e59a1cccafed60a36d42a4fc6f67da5a8600aa31",
+    "tools/jtag_guarded.py": "0bff37ad87a4eca0bee8b4285dc0bc9e74720a5c10c03f5c1b67139ea33884a7",
+    "tools/jtag_guarded.tcl": "5bbcdd62cbf73ddd6e9faee89cf28373d552d70a828f592bf911968c734e0498",
+    "sim/test_console_session.py": "356904158557518bf33cd4488117b02345ad27cc0fb42808a358394d8b2c5b17"
+  },
+  "reports": {
+    "work/evidence/console-session-host-tests.log": "0490208e5a254f2f2e6e0f70f7a5ee55157accf27688d6887c0492cc0a5b37e0",
+    "work/evidence/console-transport-live-tests.json": "f26cd16dbb16e7ca5940549983758a49f2118b82681f7fcfb64f295c88c1f1b8"
+  },
+  "host_tests": 9,
+  "harmless_VM_tests": 2,
+  "scope": "Client lifetime/signature/error guards; SDK tested with harmless scripts. ISSP access through new client remains pending after FPGA chain restoration."
+}

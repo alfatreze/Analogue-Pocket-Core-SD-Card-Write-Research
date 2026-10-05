@@ -1,0 +1,10 @@
+{
+  "state": "verified-closed",
+  "owned_console_clients_closed": 131,
+  "remaining_client_count": 0,
+  "plan_sha256": "752ba2f42cac304a0f4cf2f51a530cfa1d0e1b148c1b6de2aff14fe6db615a30",
+  "observation_sha256": "269fa1bfda10d0238f0c45b4a8e663304f5a9fbd285f3ba84f0d806e4ad3a5ea",
+  "initial_cleanup_report_exit_code": 1,
+  "reporting_note": "Termination was followed by a failing report invocation; separate read-only observation verifies actual process state, with no additional signals.",
+  "scope": "Only orphan System Console CLI clients paired with preserved B005 terminal captures; no JTAG daemon, unrelated console, FPGA or card mutation"
+}

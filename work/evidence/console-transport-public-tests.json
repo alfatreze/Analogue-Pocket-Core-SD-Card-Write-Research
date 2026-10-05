@@ -1,0 +1,37 @@
+{
+  "pass": true,
+  "tests": [
+    {
+      "script_sha256": "fabcbc8541673c8f007140a1f2fd5d28ddcd2283640d12c64eeec27035f1ac90",
+      "transport_done": true,
+      "natural_exit": false,
+      "controlled_exit": true,
+      "returncode": 143,
+      "cleanup": {
+        "returncode": 0,
+        "output": "owned-console-terminated\n"
+      },
+      "test": "controlled-clean",
+      "pass_": true,
+      "raw_sha256": "2c3a54a5b351a30a8bd76038b2d0db18fa8720bff61ed0c88f5feee3592ec701"
+    },
+    {
+      "script_sha256": "eea820cb04a09b678f77a06870f1bdafa6731c48fa2d0b786ae78713f2df6eff",
+      "transport_done": true,
+      "natural_exit": false,
+      "controlled_exit": true,
+      "returncode": 143,
+      "cleanup": {
+        "returncode": 0,
+        "output": "owned-console-terminated\n"
+      },
+      "test": "controlled-error",
+      "pass_": true,
+      "raw_sha256": "6a7e4571320d4c7c2338b4448f862b6e5f34ef343acc062b2a79615aaf3a53f1"
+    }
+  ],
+  "scope": "Harmless console-only scripts, no ISSP/source request or FPGA programming. On both success and deliberate Tcl error, completed script markers precede closing only the owned PID after matching start ticks/CLI identity. Tcl exit is unsupported in this SDK.",
+  "source_sha256": "b1f75b2a5f12635fd5f37eca192f17f17d44fd3ba95cef03ebd04c3924a25793",
+  "original_private_report_sha256": "f26cd16dbb16e7ca5940549983758a49f2118b82681f7fcfb64f295c88c1f1b8",
+  "publication_note": "Process identifiers omitted; original qualification report preserved privately."
+}

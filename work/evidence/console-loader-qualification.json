@@ -1,0 +1,16 @@
+{
+  "pass": true,
+  "sources": {
+    "tools/jtag_reload_session.py": "a6af2bb863dff882b4d60eea7e0511af308c9457035bd1788d8cf15e5c542ee1",
+    "tools/jtag_load_session.py": "f3c76c53f47b203351f84e476696cef12a5df20950d7363acfad834830d9b51e",
+    "sim/test_jtag_reload_session.py": "d4fd6e90457654533e656246b10a1c1958cf355c8cc9be1b707e0f89941efb5d",
+    "sim/test_jtag_load_session.py": "55fe05f87e09244e84bed9e70a6d36c54cfdc3260a26ffcdd8548254cdc5802b"
+  },
+  "reports": {
+    "work/evidence/console-reload-safety-tests.log": "dcd2147edfda2291b456dfb6d9f3021f0fed07760d5a1c8869fc5446f30e28fe",
+    "work/evidence/console-load-safety-tests.log": "d1a3bdcaa925bbf92cc120237c5ab1078f911832e5f3bbdd16fd82aab85d59fa"
+  },
+  "pure_safety_tests": 12,
+  "console_qualification_sha256": "7591e919d7e017ef32279d8f6d957831491240284677e92d543a98a4a7e10f90",
+  "scope": "Separate clients preserve frozen original tools, reuse exact decoders/Tcl/qualified SOFs and add owned-session lifecycle gates. No programming/ISSP through these clients yet; connection restoration and preserved-state comparison required."
+}

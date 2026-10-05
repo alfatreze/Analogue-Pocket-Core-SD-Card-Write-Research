@@ -84,3 +84,8 @@ B005 now passes full compilation and internal timing qualification and is instal
 [B006](B006_DEVELOPMENT.md) adds full fixed-region guard/received-word validation and refusal to initialize damaged nonblank records. All 707 RTL trials pass. Compile/internal timing and physical trial status are recorded in CURRENT_STATUS.md; [hardware procedure](B006_HARDWARE_RUN.md) preserves the existing B005 files.
 
 [Tau integration preparation](TAU_CPU_INTEGRATION.md) uses exact hash-pinned read-only CPU/crossing references. Crossing simulation passes 1,200 modeled commands; actual generated-CPU firmware execution passes another 1,500. These are simulation results, with physical CPU persistence and playback qualification pending.
+
+
+## Latest connected result
+
+[B005 connected results](B005_CONNECTED_RESULTS.md): 647 saves and seven between-command FPGA interruption recoveries pass their immediate oracles. The planned campaign stopped on a JTAG connection failure; full physical remount/power-loss qualification remains pending. B006 is fully compiled/internal-timing qualified with 707 passing RTL trials, but was not loaded after the connection fault. CPU save-format and received-mask prototypes pass isolated modeled-transport checks; actual CPU-driven Pocket persistence remains pending. New console session tooling prevents the observed remote-process leak.

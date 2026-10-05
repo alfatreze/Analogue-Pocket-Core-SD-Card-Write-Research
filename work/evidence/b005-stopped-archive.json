@@ -1,0 +1,8 @@
+{
+  "pass": true,
+  "archive": "work/archives/b005-stopped-20261005",
+  "files": 624,
+  "manifest_sha256": "e94940fa10555768d72a70c9dea54a548f6d985c547195f6c3d61ed4775f8304",
+  "qualified_B006_source_reports_package_unchanged": true,
+  "scope": "Local hash-verified archive only; no card access or programming"
+}

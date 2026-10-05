@@ -1,0 +1,3 @@
+clean-complete observed complete
+missing-stale-boot-guard observed unchanged
+missing-verify-guard observed new-valid

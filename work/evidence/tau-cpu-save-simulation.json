@@ -1,0 +1,112 @@
+{
+  "pass": true,
+  "source_revision": "7b98a2ee33dc01dda2b3a19c22e924c52d08bff9",
+  "trials": [
+    {
+      "trial": "clean",
+      "pass": true,
+      "commands": 22,
+      "expected_exit": 0,
+      "expected_generation": 6,
+      "final_sha256": [
+        "87f13e734f02057e7c990a2dcc6cd9adb2ecf79227bae0106eb14d5f9f4f4fe7",
+        "38e21fd45fa5ca1539bca879f144c971763161d9ea7e79f14a0e6df559cee152"
+      ],
+      "log_sha256": "2669cf0c809187acb2dc344e6639e6417d962387df80ec1bf2b7126dded622df"
+    },
+    {
+      "trial": "blank",
+      "pass": true,
+      "commands": 22,
+      "expected_exit": 0,
+      "expected_generation": 4,
+      "final_sha256": [
+        "7d9c9bacb8abe2c826649e7af62b30a44072d68efd5a62283178ee033cf8f5f9",
+        "0a333f6ae7160f9b7ce21fdf2e310391f55d343027cf31269f629827f01f4c5b"
+      ],
+      "log_sha256": "ecddfefeea1fe56e505483dc1ede3927d6755bc441b26d621aee44de9e9e19f0"
+    },
+    {
+      "trial": "high-carry",
+      "pass": true,
+      "commands": 22,
+      "expected_exit": 0,
+      "expected_generation": 4294967299,
+      "final_sha256": [
+        "ec377c33bfae582bdfe5a446d7c124c559f10da020e25fc31113929613441d6b",
+        "853c87e1e4b0377d59c20bce54347dbc8f56385bd7d3cb0eabebd0e73fbe7c2c"
+      ],
+      "log_sha256": "b204c077219e8433f1185ce94a148c1e8b0b771a12ce922176ad321f5c6d5b1b"
+    },
+    {
+      "trial": "corrupt-newest",
+      "pass": true,
+      "commands": 22,
+      "expected_exit": 0,
+      "expected_generation": 5,
+      "final_sha256": [
+        "87f13e734f02057e7c990a2dcc6cd9adb2ecf79227bae0106eb14d5f9f4f4fe7",
+        "0a333f6ae7160f9b7ce21fdf2e310391f55d343027cf31269f629827f01f4c5b"
+      ],
+      "log_sha256": "33e46ec8f276cea15d6569dbd90be58c89399e9f37f6d3af00a6d7aac2f0b6b8"
+    },
+    {
+      "trial": "both-damaged",
+      "pass": true,
+      "commands": 2,
+      "expected_exit": 19,
+      "expected_generation": 0,
+      "final_sha256": [
+        "a12c50bd9b08f5fa072b28b2f108f158b9955c63806935c863cd55d0362d2f20",
+        "6629ede5f6b47a6987c6676b29f95f4e5d2f5eab70c00a3dac403c20620a5aa5"
+      ],
+      "log_sha256": "e1855ece555fdd522188f5f249ed68094a511422184a1d28f19b15cf6fcb8cd4"
+    },
+    {
+      "trial": "guard-damage",
+      "pass": true,
+      "commands": 1,
+      "expected_exit": 37,
+      "expected_generation": 0,
+      "final_sha256": [
+        "ef46ee30f793bd026215ad6f5f70305e149b17800137268ccc4085a38f392dff",
+        "c2fafef8711fede759c9c4da28dcc44a38cf08ec1924556a4c572d15ed5024b1"
+      ],
+      "log_sha256": "7287f75df28504e79faf66bdefd61c6dfbcf3ef9c7182c57a80b5cf2f403fcbd"
+    },
+    {
+      "trial": "equal-conflict",
+      "pass": true,
+      "commands": 2,
+      "expected_exit": 17,
+      "expected_generation": 0,
+      "final_sha256": [
+        "c2fafef8711fede759c9c4da28dcc44a38cf08ec1924556a4c572d15ed5024b1",
+        "5fb9dd0072f860875c658c33b3d510c7cbb957ff932624e4befc8b816374c80f"
+      ],
+      "log_sha256": "acdf6cf26500091c3fe51c7e78830be51f7712fca09f21ded0843cdc4aa65dcc"
+    },
+    {
+      "trial": "exhausted",
+      "pass": true,
+      "commands": 2,
+      "expected_exit": 18,
+      "expected_generation": 0,
+      "final_sha256": [
+        "ddb5c6900ad477fb34a8642b2547b1ecaac6d308566817cab89b06b33b16b85c",
+        "2ef1444bc950050c92f373cd2f5442022af98aa900aefd82c749cff93d4c0037"
+      ],
+      "log_sha256": "2352565eda3a882609e9b3094b7849e995063fc8807209d76d8ec6da5fde57bd"
+    }
+  ],
+  "firmware_bytes": 1892,
+  "firmware_sha256": "eece6cd06656dcbf5a4a773ba03fa1bb24fd2618424b3c50a8e01c6be0c08802",
+  "source_hashes": {
+    "sim/tau_cpu_save/link.ld": "105f5c75bb14254811bbd16fefbfad612945a120e19bf5f53fb2d71f1dacbc7d",
+    "sim/tau_cpu_save/start.S": "24363000a574cbdd90da7f57c808358f1f1139fbe789c79e466534fba68e3aa9",
+    "sim/tau_cpu_save/main.c": "fb3dd132788104d5a1194f2891f7b02479854bec71fdd31137fbd07c94c7bbe2",
+    "sim/tb_tau_cpu_save.sv": "9e8a5e78b45ddceda4cd6ab5735f5d276e658613a430f3adf15efed553358470"
+  },
+  "runner_sha256": "e4c7163900222ce475a0b1b0ca6202bab2b3d08b82c1181507c12d4f0816cca6",
+  "scope": "Actual pinned VexRiscv/target crossing executes C save/recovery code; APF modeled as bounded big-endian word transfers with completed full reads and uncached word staging. Independent host oracle compares full files. No real bridge/serial transport, physical persistence, missing words, power loss, playback or standalone hardware qualification."
+}

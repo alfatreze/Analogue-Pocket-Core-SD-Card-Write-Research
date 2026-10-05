@@ -1,0 +1,6 @@
+boot-error observed unchanged
+first-chunk-error observed prefix
+verify-error observed new-valid
+verify-return-guard-corrupt observed new-valid
+boot-timeout observed unchanged
+missing-stale-guard-word observed diagnostic-completeness-gap

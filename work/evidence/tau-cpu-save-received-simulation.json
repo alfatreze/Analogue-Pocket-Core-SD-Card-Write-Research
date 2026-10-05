@@ -1,0 +1,58 @@
+{
+  "diagnostics_completed": true,
+  "modeled_missing_word_rejected": true,
+  "trials": [
+    {
+      "trial": "clean-complete",
+      "expected_outcome_observed": true,
+      "parameters": {
+        "EXPECT_COMMANDS": 22
+      },
+      "final_expected_kind": "complete",
+      "log_sha256": "ccf4179288b73d767d6a775b7f24da679db4c3a174ffdf9e905d041be544b290",
+      "final_sha256": [
+        "87f13e734f02057e7c990a2dcc6cd9adb2ecf79227bae0106eb14d5f9f4f4fe7",
+        "38e21fd45fa5ca1539bca879f144c971763161d9ea7e79f14a0e6df559cee152"
+      ]
+    },
+    {
+      "trial": "missing-stale-boot-guard",
+      "expected_outcome_observed": true,
+      "parameters": {
+        "OMIT_GUARD_ON": 1,
+        "EXPECT_EXIT": 35,
+        "EXPECT_COMMANDS": 1
+      },
+      "final_expected_kind": "unchanged",
+      "log_sha256": "90abc773fe3a14140148552e99e4193927937bc6f6f9dc1b3bb319a6c62d8d46",
+      "final_sha256": [
+        "9dde7f27d9f249fb3906189db5cdedd2fa0c6a98488286cbce62c7138ccf9629",
+        "c2fafef8711fede759c9c4da28dcc44a38cf08ec1924556a4c572d15ed5024b1"
+      ]
+    },
+    {
+      "trial": "missing-verify-guard",
+      "expected_outcome_observed": true,
+      "parameters": {
+        "OMIT_GUARD_ON": 7,
+        "EXPECT_EXIT": 35,
+        "EXPECT_COMMANDS": 7
+      },
+      "final_expected_kind": "new-valid",
+      "log_sha256": "8ee60453b3f8437dbb273e31eebd780972cdc11c1f7cfdcbfabd01716bd31090",
+      "final_sha256": [
+        "7d9c9bacb8abe2c826649e7af62b30a44072d68efd5a62283178ee033cf8f5f9",
+        "c2fafef8711fede759c9c4da28dcc44a38cf08ec1924556a4c572d15ed5024b1"
+      ]
+    }
+  ],
+  "source_hashes": {
+    "sim/tau_cpu_save/link.ld": "105f5c75bb14254811bbd16fefbfad612945a120e19bf5f53fb2d71f1dacbc7d",
+    "sim/tau_cpu_save/start.S": "24363000a574cbdd90da7f57c808358f1f1139fbe789c79e466534fba68e3aa9",
+    "sim/tau_cpu_save/received.c": "5d5bf882e3ab9456701e0cac6ffb367c9da77ef59abb2444c65c07ecad2c13ca",
+    "sim/tb_tau_cpu_save_received.sv": "674f157cd4eaf44db13c8c507402f4895fb5cbc075566c53406bd560d57ba1be"
+  },
+  "runner_sha256": "3a9e97f96c67e59ca680557520edc8644c4e63d95f69e821726e56290470d056",
+  "firmware_sha256": "a1d6557f72bf8068bd676c1d947ad2ee5b6d0507cccb2e5dee75bce624426b50",
+  "scope": "Actual CPU prototype modeled APF errors stop after exact prefix/full write; timeout halts before another command. Reduced 500-poll diagnostic budget. CPU clears a receive lease before each read and requires 2048 distinct received-word bits before consuming RX. Missing stale guard words at boot/verification now stop; last valid file is preserved. The model adds the received-mask MMIO contract; a real B007 implementation must wire the actual B006 bridge-word tracking with safe CDC. No physical writes, APF transport or late completion after timeout qualification."
+}

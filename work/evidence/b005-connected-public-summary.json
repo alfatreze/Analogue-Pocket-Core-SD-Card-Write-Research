@@ -1,0 +1,58 @@
+{
+  "build": "B005",
+  "pass": false,
+  "evidence_replay_pass": true,
+  "campaign_completed": false,
+  "termination_error": "JTAG status could not claim FPGA service; device-chain read failed. Original diagnostic retained privately.",
+  "committed_saves": 647,
+  "commands_including_partial_prefix_sessions": 3326,
+  "read_only_sessions": 17,
+  "between_command_FPGA_interruptions": 7,
+  "reload_journals_reverified": 39,
+  "completed_event_count": 40,
+  "final_expected_files": {
+    "valid": [
+      true,
+      false
+    ],
+    "records": [
+      {
+        "valid": true,
+        "generation": 647,
+        "crc": 315479754
+      },
+      {
+        "valid": false,
+        "reason": "checksum",
+        "stored_crc": 2530033315,
+        "computed_crc": 4121309140
+      }
+    ],
+    "selected": 0,
+    "generation": 647,
+    "reason": "valid-save",
+    "file_sizes": [
+      8192,
+      8192
+    ],
+    "guards_pass": true,
+    "sha256": [
+      "41b5b767f85a832b63f0888914382dfa824dc313c762ab9c6ebe58458fd7b51b",
+      "ff5c586c43076beb0d7893088147d1a15a3f73b5afac102564b9d50e096ba495"
+    ],
+    "generated_payloads_pass": true,
+    "pass": true
+  },
+  "save_cycle_latency": {
+    "count": 647,
+    "min": 2318935,
+    "median": 3785550,
+    "max": 18699600,
+    "nominal_clock_Hz": 74250000,
+    "scope": "Retained sum of four writes plus verification read; primary units FPGA cycles, excludes boot reads and tooling/reloads"
+  },
+  "campaign_sha256": "ef1a06025b7a38c009c05b2e3b746a68940882638af0ce657ba3ee371d50a889",
+  "scope": "Independent replay of raw/decoded/counter/record/CRC and programming histories. Predicted final file hashes remain model outputs until host remount; FPGA cuts are not SD power cuts.",
+  "original_summary_sha256": "a14f133c94918064c4ff631a793c1301ae05595d59890f567ecec87a853f397b",
+  "publication_note": "Sanitized report; raw campaign, tracebacks and process metadata remain private. Exact original evidence hashes retained."
+}

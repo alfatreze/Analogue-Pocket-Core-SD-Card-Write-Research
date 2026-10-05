@@ -22,3 +22,18 @@ work/evidence/cleanup-*/
 work/sim/guarded06/
 work/sim/tau-cpu/
 work/sim/tau-cdc/
+work/sim/tau-cpu-save/
+work/sim/tau-cpu-save-fault/
+work/sim/tau-cpu-save-received/
+work/sim/tau-cpu-save-stress/
+
+# Raw connected diagnostics remain local; publish sanitized result reports.
+work/evidence/b005-connected-campaign.json
+work/evidence/b005-connected-campaign.log
+work/evidence/b005-connected-stopped-summary.json
+work/evidence/b005-stopped-verification.log
+work/evidence/b005-verifier-schema-failure.log
+work/evidence/b006-continuation.log
+work/evidence/console-exit-command-failure.log
+work/evidence/console-transport-live-tests.json
+work/evidence/tau-cpu-received-harness-syntax-failure.log

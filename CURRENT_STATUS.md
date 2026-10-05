@@ -185,3 +185,9 @@ New screenshots `20261005_002904.png` and `20261005_002910.png` show CARD WRITIN
 - Cold repeat01 begins from independently verified READY/zero counters after card ejection and owner reporting ready. Owner was asked to power fully off before insertion/launch; full power-off is not separately confirmed and this session is not yet counted as an owner-confirmed power cycle.
 - All 32 final-generation regions pass again, 32 reads/zero writes/failures. Every indexed record, clean flag/bounds and timing extrema validated independently. Read cycles 55,013–507,271 (0.741–6.832 ms).
 - Separate complete history: work/evidence/b004r2-physical-jtag-cold-repeat01.json; original raw/decoded captures retained privately. Prior results remain unchanged. Post-read screenshot/remount and whole-file/protected-content comparison against STRESS-004-COLD remain pending.
+
+## B004R2 cold repeat01 after remount — PASS
+
+- Designated card identity revalidated; whole 262,144-byte file/guards match the expected 0ef80e007254ccc6d63874e2aac6e0082e360de00843b82b36836807ff433e56 SHA-256.
+- Independent comparison against STRESS-004-COLD: every prior file unchanged, none missing; only new result screenshot 20261005_134021.png. Native screenshot inspected, copied and hash-verified: B004R2 STRESS PASS, OPERATION 0x2700, PASSED/FINISHED 0x20, ERROR 0, CYCLES 0x00019FDD (last retained read timing + 1).
+- Separate public summary work/evidence/b004r2-physical-file-cold-repeat01.json; full private snapshot/output/screenshot retained immutably. Two separate fresh-launch read-only sessions now pass with subsequent whole-file/protected-content verification. Owner reported mounted without separately confirming full power-off; do not count these as confirmed power-cycle qualification.

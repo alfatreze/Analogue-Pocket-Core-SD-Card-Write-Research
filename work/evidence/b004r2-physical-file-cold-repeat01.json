@@ -1,0 +1,28 @@
+{
+  "test_id": "STRESS-004-COLD-REPEAT01",
+  "build": "B004R2",
+  "firmware_reported": "2.7",
+  "file_verification": {
+    "pass": true,
+    "pairs": 10000,
+    "expected_size": 262144,
+    "actual_size": 262144,
+    "failed_regions": [],
+    "first_mismatch": null,
+    "expected_sha256": "0ef80e007254ccc6d63874e2aac6e0082e360de00843b82b36836807ff433e56",
+    "actual_sha256": "0ef80e007254ccc6d63874e2aac6e0082e360de00843b82b36836807ff433e56"
+  },
+  "changed_or_missing_since_previous_cold": [],
+  "only_added_file": "new result screenshot",
+  "screenshot": {
+    "name": "20261005_134021.png",
+    "sha256": "d6bf219ea91ae840c9eb5d46276734634c39c0e946af678dd00ecd9615af178d",
+    "observed": "B004R2 STRESS PASS; OPERATION 0x2700; PASSED/FINISHED 0x20; ERROR 0; CYCLES 0x00019FDD",
+    "cycles_match": "LCD is exactly one greater than last retained completed read timing"
+  },
+  "jtag_records": "b004r2-physical-jtag-cold-repeat01.json",
+  "verdict": "Second fresh-launch read-only session and exact whole-file/guards/protected contents after remount PASS",
+  "physical_actions": "Normal Quit/shutdown/remount requested; owner reported card mounted. Full power-off action not separately confirmed.",
+  "confirmed_power_cycle": false,
+  "scope": "One 10000-pair warm session and two separate 32-region fresh-launch read sessions pass with subsequent complete-file checks. Repeated confirmed power cycles and interruption recovery remain pending."
+}

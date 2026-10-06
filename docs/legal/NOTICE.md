@@ -9,7 +9,7 @@ Pinned upstream references:
 
 `rtl/core_top.v` retains the template physical interface and unused-I/O tie-offs and adds the lab logic. `rtl/core_bridge_cmd.v` is the template command module with the data-table declarations moved ahead of their first use for Icarus compatibility; no protocol behavior is intentionally changed. Build minimal01 was staged before that declaration reorder and uses the original pinned command module; the simulation copy differs only in declaration order.
 
-The custom lab probe, readout, testbenches and host tools are in this project. No implementation files were imported from Tau Alpha; its source was consulted for architecture and failure history.
+The custom lab probe, readout, testbenches and host tools are in this project. The early CPU-free lab used Tau Alpha as a read-only architecture/failure-history reference. Later pinned CPU/crossing references and the B008 CPU candidate are identified below.
 
 
 ## License scope
@@ -23,4 +23,6 @@ The pinned upstream submodules, copied Analogue framework/template portions in `
 
 ## Pinned Tau reference for isolated CPU/command simulations
 
-references/tau-7b98a2e contains exact generated VexRiscv RTL, target crossing, original crossing test and LICENSE copied read-only from Tau revision 7b98a2ee33dc01dda2b3a19c22e924c52d08bff9. Tau's MIT notice is retained there; generated VexRiscv/SpinalHDL headers and upstream provenance are preserved. Source hashes are in work/evidence/tau-cpu-reference.json. New testbenches/firmware belong to this research project. The copied modules are references for isolated simulation, not a new qualified hardware build.
+references/tau-7b98a2e contains exact generated VexRiscv RTL, target crossing, original crossing test and LICENSE copied read-only from Tau revision 7b98a2ee33dc01dda2b3a19c22e924c52d08bff9. Tau's MIT notice is retained there; generated VexRiscv/SpinalHDL headers and upstream provenance are preserved. Source hashes are in work/evidence/tau-cpu-reference.json. New testbenches/firmware belong to this research project. A read-only PLL parameter reference from the same Tau revision is retained as pll-parameter-reference.v.txt; b008_cpu_pll.v is a new one-output configuration using the altera_pll interface. The copied crossing remains an isolated simulation reference. B008R1 stages the exact copied VexRiscv into a separate frozen FPGA candidate; its fit and physical persistence remain unqualified. The retained Tau MIT notice and generated upstream notices apply to this copy.
+
+B008 retains the template physical interface/tie-offs in rtl/b008_core_top.v. Its video font/timing renderer derives from this project’s original lab_video.sv; B007 sources are unchanged. The source manifest identifies every imported/staged source hash and firmware provenance.

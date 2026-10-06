@@ -547,3 +547,30 @@ are indexed in work/evidence/b008-cpu-engine-simulation.json; report is
 docs/results/B008_RESULTS.md. No hardware compile, card update, JTAG operation
 or Tau source modification occurred. Physical CPU persistence remains pending
 and overall milestone score remains 60/100.
+
+## B008R1 SoC, firmware, UI and frozen fit — launched (2026-10-06)
+
+Implemented separate b008_soc, Pocket top-level, nominal 60 MHz PLL, renderer
+and 528-byte interactive firmware. Actual synthesizable-bus simulation passed
+19 trials: 32 modeled reads, 14 attempted writes, eleven completions and six
+CPU resets. Four trials execute the identical hardware firmware; three full-size
+trials match unchanged B007 oracle tag 1. First engine/CPU sources remain pinned.
+CPU faults/reset lock the client while the engine retains ownership.
+
+Eleven native screen states were reviewed; B008-only status-5 colour was corrected
+before final capture. Full top-level elaboration passed with inherited data-table
+width warnings. CPU/engine related clocks are retained in one timing group;
+only first synchronizer stages are false-pathed and narrowly named stable
+mailbox bundles have three-setup/two-hold destination-cycle exceptions. Empty
+required-register collections fail STA; actual post-fit matching remains pending.
+A standalone TimeQuest help diagnostic failed on load_package and is retained
+locally; it made no source/build changes.
+
+prepare_b008.py froze cpu08r1 and metadata 0.8.1, with new cpu-b008.bin rather
+than resetting B007 scratch. The guarded VM launcher checked for competitors
+and verified source hashes, then launched card-writing-lab/cpu08r1-s1 around
+19:46 Lisbon. Estimated finish 20:31, runtime range 30–60 minutes; no recurring
+monitor was restarted. Source stage is immutable. Fit/resource/STA/PLL/RAM
+inference and installable bitstream are pending. No card/JTAG/Tau source writes.
+Evidence: b008-soc-simulation.json, b008r1-display-review.json,
+b008r1-preflight.json and work/build/cpu08r1-manifest.json. Overall score 60/100.

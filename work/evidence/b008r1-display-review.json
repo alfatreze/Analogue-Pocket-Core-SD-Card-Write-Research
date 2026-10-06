@@ -1,0 +1,21 @@
+{
+  "build": "B008R1",
+  "pass": true,
+  "video_sha256": "0aa8388c3a8e652b6516622eeb131f68e49fea58ff86f51633f7c545bdc79ebc",
+  "testbench_sha256": "2fea5b0db72cdb4ca204aa3f49d18f0cf73e290463fe2fd104f6f4f0206a97e1",
+  "captures": {
+    "work/sim/b008r1-video/frame-0.ppm": "e18758d16de0f7547d2ee8f0f659f327a3cd9e06eaa28f4ec96dccbd6b940259",
+    "work/sim/b008r1-video/frame-1.ppm": "be773be7444a3358f659c47f27ff988949c3b0c11aa3a9f0e64103638cc1ab09",
+    "work/sim/b008r1-video/frame-10.ppm": "d20136e5bb1d47daef97854f6536a859aeeb9984bf3cc98ba504e6862e75ece8",
+    "work/sim/b008r1-video/frame-2.ppm": "17a58f1c1ffcfaf48ecb5863c2cc49d74fd858be3cfdf4a0d5b2a001ab308166",
+    "work/sim/b008r1-video/frame-3.ppm": "0cfc5e7d30b33b514b442c588ac0a5954b4bce73247877c9160fef18f0bcbf90",
+    "work/sim/b008r1-video/frame-4.ppm": "c0e4b8fd7c6e49822b72e9f140e3648001fc59c61a3e4722c34cf881177b6987",
+    "work/sim/b008r1-video/frame-5.ppm": "997e5d5d4e455e80e8492d58cdd60137ca3df8e6085505936be76da4d0cee97a",
+    "work/sim/b008r1-video/frame-6.ppm": "c8fe1e4f70668f75f26cbf183cb551f03933cbffbcd182d1c91e87f2a5778dc9",
+    "work/sim/b008r1-video/frame-7.ppm": "ba6c496d8f0ac5657f5665a9ee31f24bf43b19a1cc20236e99a0729651705780",
+    "work/sim/b008r1-video/frame-8.ppm": "489a696517f89ffce5b884e1c1490ad248779f8118a7f8a161537e4138e4a320",
+    "work/sim/b008r1-video/frame-9.ppm": "12dff63b91cc36ef0025e5d3f1e1ddbf15108eb0e4114e3735484b6a4dd09488"
+  },
+  "review": "Inspected eleven native 320x240 RTL captures in an unscaled grid: unique B008R1 title, controls, values and all status strings legible; COLD READ PASS is green, mismatch/timeout/CPU fault are orange, CPU reset is amber. Display telemetry is observation only.",
+  "corrections": "Copied renderer originally coloured status 5 as error. Changed B008-only status colour mapping, regenerated and inspected all eleven states; original B007 renderer unchanged."
+}

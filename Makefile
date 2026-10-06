@@ -129,3 +129,10 @@ test-resumed-clients:
 .PHONY: test-b008-cpu-engine
 test-b008-cpu-engine:
 	$(PYTHON) sim/test_b008_cpu_engine.py
+
+.PHONY: test-b008-soc prepare-b008
+test-b008-soc:
+	$(PYTHON) sim/test_b008_soc.py
+
+prepare-b008:
+	$(PYTHON) tools/prepare_b008.py

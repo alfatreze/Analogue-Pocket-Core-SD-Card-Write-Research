@@ -294,3 +294,19 @@ a held unchanged beat once, based on the observed actual-CPU reset failure.
 Retain failed evidence and pass complete regression before preparing hardware.
 Simulation does not credit the physical CPU milestone or permit card installation
 without a distinct top-level, native UI and complete Quartus/CDC/timing review.
+
+## Freeze B008R1 as a separate CPU Pocket candidate (2026-10-06)
+
+Use the actual synthesizable bounded CPU bus for regression and compile the
+same interactive firmware bytes used by four trials. Retain pinned CPU/B007
+engine and prior top-level/renderer. CPU commands never expose payload pointers.
+X/APF/PLL reset affects the CPU client; B007 ownership survives to genuine DONE.
+Use a new preallocated cpu-b008.bin fixture so B007 scratch and earlier saves
+remain protected. Keep CARDWRITE02 identity and distinct B008R1/0.8.1 label.
+
+Constrain related CPU/engine clocks together, cut only first synchronizer
+stages and narrowly relax stable mailbox bundles for their handshake latency;
+empty required-register matches must fail STA. Freeze sources before fit and
+require complete inference/resource/multicorner/exception/warning review before
+packaging. The current package has no bitstream. No periodic monitor restart
+was inferred from this continuation; the completion estimate is recorded first.

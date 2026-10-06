@@ -118,3 +118,16 @@ See [ordered case results](../results/B008_RESULTS.md) and
 [mailbox/register/reset contract](B008_MAILBOX.md). Next prepare a separate
 B008 top-level/clock/BRAM/native UI and reviewed CDC/timing constraints, then
 freeze and qualify Quartus before installation. No card or Tau source changed.
+
+## B008R1 separate Pocket candidate — frozen / fit launched (2026-10-06)
+
+The synthesizable 16 KiB CPU bus replays all fifteen first-gate trials and four
+additional interactive firmware trials. The exact 528-byte firmware reads
+synchronized buttons and requests engine cold-read/start/stop, with explicit
+recovery after CPU reset. Separate top-level, nominal 60 MHz PLL configuration
+and native B008R1 UI are frozen as cpu08r1. New cpu-b008.bin is separate from
+B007 scratch and prior outputs. Nineteen trials passed; actual RAM/PLL/timing
+and Pocket persistence remain pending. Quartus launched around 19:46 Lisbon,
+estimated finish 20:31 (30–60 minute duration range); no recurring monitor.
+See [SoC/candidate results](../results/B008_SOC_RESULTS.md) and
+[implementation/remaining gates](../build/B008_IMPLEMENTATION.md).

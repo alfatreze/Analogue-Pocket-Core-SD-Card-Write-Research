@@ -1,0 +1,36 @@
+{
+  "build": "B008R1",
+  "build_stage": "cpu08r1",
+  "preflight_pass": true,
+  "fit_status": "launched; no result inspected yet",
+  "source_manifest_sha256": "7cd4d1098190b29f0a49a9530d44664117312edb49a0ef35a00725d223df7e03",
+  "soc_simulation_sha256": "cddc7163124d48d5d282cc6e7bb5164bf8ae7bf8cab224b391e18d9a6f227af8",
+  "display_review_sha256": "2ca70a7589bdb72fc5c32f29919988de47089830921b947cd5d41ab7bee26e98",
+  "launch": {
+    "remote": "card-writing-lab/cpu08r1-s1",
+    "archive_sha256": "7c9781170bb00f8bc15a2206855f1da39b3b474adeb65d2b5a9a48b8012f676b",
+    "source_manifest": "work/build/cpu08r1-manifest.json",
+    "seed": 1,
+    "quartus": "/home/taualpha/intelFPGA_lite/25.1std/quartus/bin/quartus_sh",
+    "java_options": "-Xint (avoid JIT SIGILL under VM emulation)"
+  },
+  "start_approx_local": "2026-10-06 19:46 Europe/Lisbon",
+  "estimated_completion_local": "2026-10-06 20:31 Europe/Lisbon",
+  "estimated_duration_minutes": 45,
+  "duration_range_minutes": [
+    30,
+    60
+  ],
+  "estimate_basis": "B007R5 full compile 23:36; new exact CPU, 16KiB memory and second PLL increase mapping/fit scope. Not measured B008 fit progress.",
+  "monitoring": "No recurring monitor restarted.",
+  "top_elaboration": "PASS with PLL/JTAG stubs; two inherited data-table address-width warnings. Not an IP/timing check.",
+  "pinned_engine_sha256": "4ea25d793ece1da4424e424ba814b46b76e59c369ae16b137291f1cc880f5946",
+  "pinned_cpu_sha256": "1ee38dc4b0f3a2ce08de9df1f8e2bb8fceb628a89adb7f624f38ae44cebe9fcc",
+  "pll_reference": {
+    "source_commit": "7b98a2ee33dc01dda2b3a19c22e924c52d08bff9",
+    "source": "src/fpga/core/mf_pllbase/mf_pllbase_0002.v",
+    "copy": "references/tau-7b98a2e/pll-parameter-reference.v.txt",
+    "sha256": "8ffc03afcbeca3110c8852707903706c71b39461016ce1b1a27a98b36c941785"
+  },
+  "scope": "Sources and metadata frozen; no fit/STA/RAM-inference/PLL or physical CPU persistence claim. No Tau/card/JTAG mutation."
+}

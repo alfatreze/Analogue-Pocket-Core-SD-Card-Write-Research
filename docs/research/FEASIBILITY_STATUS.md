@@ -21,7 +21,7 @@ This is a **weighted discovery-milestone tally introduced for reporting**, not a
 | Sustained updates and repeat cold reads | 15 | 15 | [B004](../results/B004_RESULTS.md): 10,000 pairs and ten fresh-launch sessions. |
 | Guarded records and between-command recovery | 15 | 15 | [B005](../results/B005_CONNECTED_RESULTS.md), [B006](../results/B006_RESULTS.md); limited interruption scope. |
 | Active-write interruption characterization and torn-data refusal | 10 | 10 | [B007](../results/B007_RESULTS.md); tearing observed, selected refusal checks pass. |
-| Exact CPU-to-engine integration and physical persistence | 15 | 0 | [B008 simulation gate passed](../results/B008_RESULTS.md); fit/timing and Pocket/remount evidence pending. |
+| Exact CPU-to-engine integration and physical persistence | 15 | 0 | [B008 simulation gate passed](../results/B008_RESULTS.md); [SoC trials passed / B008R1 fit launched](../results/B008_SOC_RESULTS.md); timing and Pocket/remount evidence pending. |
 | Tau functional/memory/workload suitability | 15 | 0 | Settings, migration, playback and actual buffer/latency budgets pending. |
 | Environment and endurance qualification | 10 | 0 | Declared card/firmware/filesystem and repeated lifecycle/interruption matrix pending. |
 | **Total** | **100** | **60** | **Five initial discovery milestones evidenced; three remaining.** |
@@ -44,4 +44,4 @@ This is a **weighted discovery-milestone tally introduced for reporting**, not a
 
 ## Next gate
 
-B008 has joined the pinned generated CPU to the proven B007 engine in an isolated dual-clock simulation; its first ownership/reset/clock-crossing checks passed. Next prepare a separate Pocket top-level, clock/BRAM/UI and reviewed CDC/timing constraints, then freeze, fit and test exact Pocket/host persistence. See [B008 plan](TAU_CPU_INTEGRATION.md#b008-first-implementation-gate). Further active-cut qualification of the intended A/B format must remain explicit before any stronger power-loss-safety claim.
+B008 has joined the pinned generated CPU to the proven B007 engine in an isolated dual-clock simulation; its first ownership/reset/clock-crossing checks passed. The separate B008R1 top-level, clock/RAM/UI and timing constraints are frozen; Quartus fit is launched. Next review every fit/timing/resource result, then qualify the package/updater and exact Pocket/host persistence. See [B008 plan](TAU_CPU_INTEGRATION.md#b008-first-implementation-gate). Further active-cut qualification of the intended A/B format must remain explicit before any stronger power-loss-safety claim.

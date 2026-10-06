@@ -85,7 +85,7 @@ def collect():
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('command', choices=['launch', 'status', 'collect'])
-    parser.add_argument("--build", choices=["minimal01","minimal02","batch03","batch03r1","batch03r2","stress04","stress04r1","stress04r2","recovery05","guarded06","powercut07","powercut07r1","powercut07r2","powercut07r3","powercut07r4","powercut07r5"], default="minimal01")
+    parser.add_argument("--build", choices=["minimal01","minimal02","batch03","batch03r1","batch03r2","stress04","stress04r1","stress04r2","recovery05","guarded06","powercut07","powercut07r1","powercut07r2","powercut07r3","powercut07r4","powercut07r5","cpu08r1"], default="minimal01")
     args = parser.parse_args()
     BUILD_ID = args.build
     REMOTE = "card-writing-lab/"+BUILD_ID+"-s1"

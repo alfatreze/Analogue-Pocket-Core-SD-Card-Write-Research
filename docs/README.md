@@ -22,6 +22,8 @@ Project documentation is grouped by its role. The repository-root [README](../RE
 - [B003 batch](results/B003_RESULTS.md) and [B004 stress](results/B004_RESULTS.md) — bounded-write and sustained-repeatability evidence.
 - [B005 recovery](results/B005_CONNECTED_RESULTS.md) and [B006 guards](results/B006_RESULTS.md) — alternating records and interruption boundaries.
 - [B007 fit](results/B007_FIT_RESULTS.md) and [B007 active cuts](results/B007_RESULTS.md) — redesign, tearing, and selected cold-read refusal.
+- [B008 Pocket candidate](build/B008_IMPLEMENTATION.md) — frozen B008R1 clock/RAM/reset/firmware, fit and hardware prerequisites.
+- [B008 SoC results](results/B008_SOC_RESULTS.md) — nineteen exact-CPU trials, interactive firmware and native screen qualification.
 - [B008 CPU/engine gate](results/B008_RESULTS.md) — actual-CPU simulation, fault/reset trials, observed bus correction and next hardware prerequisites.
 - [CPU simulations](results/CPU_SIM_RESULTS.md) — exact generated CPU prototype findings.
 - [Result template](results/TEMPLATE.md) — required suite/case reporting order.

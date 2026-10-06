@@ -54,3 +54,11 @@ work/evidence/b006-connected-resumed-campaign.json
 work/evidence/b006-connected-campaign.json
 
 work/sim/b008/
+
+work/sim/b008-soc/
+work/sim/b008-hardware-fw*/
+work/sim/b008r1-video/
+work/build/cpu08*/
+work/packages/cpu08*/
+work/fpga/cpu08*/
+work/evidence/build-launch-cpu08*.json

@@ -14,11 +14,20 @@ Tau's crossing selects read/open/get/write/flush through cmd_sel 0–4. It waits
 
 This is crossing-level simulation, without executing VexRiscv or talking to the Pocket. Modeled flush selection does not prove physical flush support. Independent clock-domain reset is not qualified: the 74 MHz FSM/toggles are initialized at FPGA configuration, while rst_sys directly resets only the CPU-side state. A production owner must block reset/parameter changes while outstanding, and reset semantics need a separate fault test before integration.
 
-## Planned CPU integration stage (after B007 active-write study)
+## B007 gate closed; B008 CPU integration next
 
-The next Pocket build is B007 for an isolated, high-duty-cycle active SD-write
-power-cut experiment. CPU integration remains a later, separate build (provisionally
-B008); it must not share the B007 image or change B006's preserved save files.
+B007R5 is Quartus-qualified and physically exercised on the disposable
+CARDWRITE exFAT card. Three JTAG-observed active-write cuts produced mixed
+scratch images; cold reads rejected them and disabled further writes. Post-cut
+clean-stop and completed-command power-cycle controls also passed exact host
+file checks. One additional unmonitored shutdown showed the same mixed-image
+and fail-closed behavior. These results apply only to this card, Pocket and
+firmware; they do not establish atomic updates, exact power-rail timing or
+multi-card reliability. Three optional additional cut repetitions are deferred.
+
+B008 is now the next separate build. It must keep B007R5 and B006 source,
+packages and save files unchanged. Tau remains a read-only pinned reference;
+all implementation work belongs in this research repository.
 
 ## CPU integration implementation order
 
@@ -30,7 +39,31 @@ B008); it must not share the B007 image or change B006's preserved save files.
 6. Freeze new sources, simulate, review native UI, compile/qualify every corner/resources and only then program hardware. Existing B005/B006 histories and files must remain preserved.
 7. Add Tau's memory sources and playback load one at a time; derive permitted save cadence from measured FIFO margin and command occupancy. Full Tau playback and real power-loss qualification remain later gates in TAU_TEST_MATRIX.md.
 
-No B007 hardware image or CPU-driven persistence claim exists yet.
+The CPU-driven persistence claim remains unqualified; B007R5's physical
+results validate only the CPU-free storage engine.
+
+## B008 first implementation gate
+
+Start with a CPU-supervised B007 storage engine, not direct CPU ownership of
+the APF target bridge or payload buffers. The B007 engine remains the sole
+owner of transfer parameters and scratch data until genuine target completion.
+An isolated CPU MMIO command block may request cold-read, start-write, or
+stop-after-current-command; it must serialize requests and reject a second
+request while one is pending. Cross the CPU 60 MHz and engine 74.25 MHz domains
+with a request/acknowledgment mailbox that keeps command bits stable until
+acknowledged. Return multi-bit completion/status as a coherent snapshot, not
+independent bit synchronizers. Reset or timeout must not release ownership of
+an outstanding command.
+
+First deliverable: an isolated dual-clock simulation combining the exact
+hash-pinned VexRiscv, small ROM/RAM, the command block, and the proven B007
+engine interface. Check cold-read gating, serialized start/stop, busy-request
+rejection, delayed completion, target error, timeout, reset between commands,
+and reset while outstanding. Prove a held request causes at most one engine
+action and that the CPU cannot change payload ownership while the target is
+busy. Only after this gate passes should a distinct B008 top-level and 60 MHz
+PLL/Quartus candidate be prepared. The existing Tau CPU prototypes use synthetic
+APF completion and do not satisfy this integration gate.
 
 ## Actual generated CPU command simulation — PASS
 
@@ -63,4 +96,4 @@ Eight 64-save profiles passed: clean, generation carry, blank, A newest, corrupt
 
 The first Icarus clean64 run reached its inherited 200 ms global simulation budget at 302/322 commands and has no terminal PASS; its unchanged original TB/driver/log are retained privately and its public failure summary remains explicit. A separate R2 testbench increases only the budget to 300 ms; the real CPU/firmware/transport logic is unchanged. Installed Verilator with timing executes the full clean profile in about six seconds at ~212 ms simulated time. The first Verilator build failed because its internal make invocation mishandled spaces in the output path; the runner now compiles identical copied inputs in a temporary path without spaces and copies generated artifacts back. Both failures and their source/log hashes are archived separately.
 
-Warnings include bounded testbench array-index widths and the received mask's modeled writers in two clocked blocks. These simulations validate the isolated CPU/format contract, not production receive CDC, physical APF serialization, a compatible Tau MMIO map, playback or card durability. No B007 image exists and B006 remains unprogrammed. All scheduled local simulations have completed; physical research remains stopped on the unreadable FPGA chain.
+Warnings include bounded testbench array-index widths and the received mask's modeled writers in two clocked blocks. These simulations validate the isolated CPU/format contract, not production receive CDC, physical APF serialization, a compatible Tau MMIO map, playback or card durability. B006 remains preserved; B007R5 is physically qualified only within the stated single-card scope. All scheduled local simulations have completed; the next implementation gate is the isolated B008 CPU/engine integration, not changes to Tau Alpha.

@@ -87,7 +87,7 @@ B005 now passes full compilation and internal timing qualification and is instal
 
 ## B007 active-write interruption study
 
-[B007 plan and qualification gates](B007_ACTIVE_WRITE.md) define a CPU-free repeated writer to a new 256 KiB scratch file in slot `0x27`, with read-only cold recovery and continuous SDW7 JTAG observations. R5 replaces the failed 65,536-bit register coverage vector with an M10K-inferred synchronous bitmap while retaining full-address validation. Full-size RTL simulation, host oracle, JTAG/updater safeguards, top-level compile, and display review pass. Quartus R5 fit/timing now passes with the bitmap inferred as a 65,536x1 M10K simple-dual-port RAM and 11% ALM use; hardware/card qualification remains pending, and no active-command power cut has been attempted. Tau CPU integration remains separate in B008.
+[B007 plan and qualification gates](B007_ACTIVE_WRITE.md) cover a CPU-free writer to a disposable 256 KiB scratch file in slot `0x27`. R5's full-size simulation, independent oracle, JTAG/updater safeguards, top-level compile, display review and Quartus timing/fit pass. On one CARDWRITE exFAT card, three JTAG-observed active-write cuts produced stable mixed images; B007R5 rejected torn images and disabled writes. Post-cut clean-stop and between-command power-cycle controls passed exact host checks with protected files unchanged. Optional extra cuts are deferred; these results do not establish atomic updates, exact power-rail timing, or multi-card reliability. Tau CPU integration is the separate next stage, B008.
 
 
 ## Latest connected result

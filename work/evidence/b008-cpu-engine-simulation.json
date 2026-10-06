@@ -1,0 +1,224 @@
+{
+  "pass": true,
+  "scope": "Isolated exact VexRiscv execution and unchanged B007 engine; synthetic APF, no card or hardware writes; reduced adversarial fixtures and one exact 256KiB B007 oracle trial. Does not qualify physical CPU persistence, metastability/STA, full Tau mapping or playback.",
+  "mailbox": {
+    "pass": true,
+    "snapshot_trials": 32,
+    "output": "PASS B008 mailbox held beat, pending rejection, coherent snapshots, byte strobes, reset in transit\n/Users/abel.santos/Downloads/DEV PROJECTS/Tau Alpha/APC - Card Write Research/sim/tb_b008_mailbox.sv:47: $finish called at 44580000 (1ps)",
+    "log_sha256": "030277c407a7891143a2df89295ab30f87fd923bb4d36165f8e1be17c5b9824d"
+  },
+  "local_artifacts": "work/sim/b008/20261006-192743",
+  "trials": [
+    {
+      "file_bytes": 1024,
+      "profile": 0,
+      "cpu_half_ps": 8333,
+      "engine_phase_ps": 0,
+      "pass": true,
+      "output": "PASS B008 CPU engine profile=0 reads=2 writes=1 completed=1 reset=0 actions=43\n- tb_b008_cpu_engine.sv:106: Verilog $finish\n- S i m u l a t i o n   R e p o r t: Verilator 5.052 2026-09-05\n- Verilator: $finish at 63us; walltime 0.012 s; speed 5.310 ms/s\n- Verilator: cpu 0.012 s on 1 threads; allocated 2 MB",
+      "firmware_sha256": "f938de72d7006a816073844c00efe569d5a1655e5217e62b76cb49adf93e7e03",
+      "log_sha256": "9599ac550d8661f4307bb71e844634be29e24bff7e4b0c3afeedf871100de7f8",
+      "final_file_sha256": "9822ed774fe170f9cff1f1f6511e0a4268e7b6fe01b9e528d6b26ce572d9f5c3"
+    },
+    {
+      "file_bytes": 1024,
+      "profile": 0,
+      "cpu_half_ps": 10000,
+      "engine_phase_ps": 2171,
+      "pass": true,
+      "output": "PASS B008 CPU engine profile=0 reads=2 writes=1 completed=1 reset=0 actions=37\n- tb_b008_cpu_engine.sv:106: Verilog $finish\n- S i m u l a t i o n   R e p o r t: Verilator 5.052 2026-09-05\n- Verilator: $finish at 67us; walltime 0.005 s; speed 12.228 ms/s\n- Verilator: cpu 0.005 s on 1 threads; allocated 2 MB",
+      "firmware_sha256": "f938de72d7006a816073844c00efe569d5a1655e5217e62b76cb49adf93e7e03",
+      "log_sha256": "2117de924def105d037961fc73c13c365ab09b03af26a8cd3c575cd69823bbb9",
+      "final_file_sha256": "9822ed774fe170f9cff1f1f6511e0a4268e7b6fe01b9e528d6b26ce572d9f5c3"
+    },
+    {
+      "file_bytes": 1024,
+      "profile": 0,
+      "cpu_half_ps": 6734,
+      "engine_phase_ps": 3001,
+      "pass": true,
+      "output": "PASS B008 CPU engine profile=0 reads=2 writes=1 completed=1 reset=0 actions=52\n- tb_b008_cpu_engine.sv:106: Verilog $finish\n- S i m u l a t i o n   R e p o r t: Verilator 5.052 2026-09-05\n- Verilator: $finish at 60us; walltime 0.006 s; speed 10.204 ms/s\n- Verilator: cpu 0.006 s on 1 threads; allocated 2 MB",
+      "firmware_sha256": "f938de72d7006a816073844c00efe569d5a1655e5217e62b76cb49adf93e7e03",
+      "log_sha256": "d8ef6a5e3a51217bf1bb35c66679b3ab21aa5604de348fbc70dc704fdcf1af3e",
+      "final_file_sha256": "9822ed774fe170f9cff1f1f6511e0a4268e7b6fe01b9e528d6b26ce572d9f5c3"
+    },
+    {
+      "file_bytes": 1024,
+      "profile": 0,
+      "cpu_half_ps": 5556,
+      "engine_phase_ps": 571,
+      "pass": true,
+      "output": "PASS B008 CPU engine profile=0 reads=2 writes=1 completed=1 reset=0 actions=63\n- tb_b008_cpu_engine.sv:106: Verilog $finish\n- S i m u l a t i o n   R e p o r t: Verilator 5.052 2026-09-05\n- Verilator: $finish at 58us; walltime 0.006 s; speed 10.248 ms/s\n- Verilator: cpu 0.006 s on 1 threads; allocated 2 MB",
+      "firmware_sha256": "f938de72d7006a816073844c00efe569d5a1655e5217e62b76cb49adf93e7e03",
+      "log_sha256": "c1e232efd750aaf540ab2bdf39cce660068a317fcb0864a86eb18958330fed86",
+      "final_file_sha256": "9822ed774fe170f9cff1f1f6511e0a4268e7b6fe01b9e528d6b26ce572d9f5c3"
+    },
+    {
+      "file_bytes": 1024,
+      "profile": 1,
+      "cpu_half_ps": 8333,
+      "engine_phase_ps": 1777,
+      "pass": true,
+      "output": "PASS B008 CPU engine profile=1 reads=1 writes=0 completed=0 reset=0 actions=9\n- tb_b008_cpu_engine.sv:106: Verilog $finish\n- S i m u l a t i o n   R e p o r t: Verilator 5.052 2026-09-05\n- Verilator: $finish at 31us; walltime 0.003 s; speed 9.851 ms/s\n- Verilator: cpu 0.003 s on 1 threads; allocated 2 MB",
+      "firmware_sha256": "db2a98911c6c0124599bb6039858e69dde997b4b54bda77b9a1bf4d49282c898",
+      "log_sha256": "5a778f320f1a0473978c2f2f7fc49ac7ea826932914da856d6e405127937fb9f",
+      "final_file_sha256": "5ab0152306a48acb40e576476cc65031b49054910a291e9dd25116c6635ec322"
+    },
+    {
+      "file_bytes": 1024,
+      "profile": 2,
+      "cpu_half_ps": 8333,
+      "engine_phase_ps": 1777,
+      "pass": true,
+      "output": "PASS B008 CPU engine profile=2 reads=1 writes=1 completed=0 reset=0 actions=23\n- tb_b008_cpu_engine.sv:106: Verilog $finish\n- S i m u l a t i o n   R e p o r t: Verilator 5.052 2026-09-05\n- Verilator: $finish at 44us; walltime 0.004 s; speed 11.047 ms/s\n- Verilator: cpu 0.004 s on 1 threads; allocated 2 MB",
+      "firmware_sha256": "8cbd103d2e6812b5014bfbef62fea697c210cabb245d8095d812b47ebb2ceb51",
+      "log_sha256": "e7409556cf37cca681ad7c5ae98b2eabbd8e05cc47c776275bd4775e46e1d35a",
+      "final_file_sha256": "5ab0152306a48acb40e576476cc65031b49054910a291e9dd25116c6635ec322"
+    },
+    {
+      "file_bytes": 1024,
+      "profile": 3,
+      "cpu_half_ps": 8333,
+      "engine_phase_ps": 1777,
+      "pass": true,
+      "output": "PASS B008 CPU engine profile=3 reads=1 writes=1 completed=0 reset=0 actions=3192\n- tb_b008_cpu_engine.sv:106: Verilog $finish\n- S i m u l a t i o n   R e p o r t: Verilator 5.052 2026-09-05\n- Verilator: $finish at 3ms; walltime 0.177 s; speed 15.448 ms/s\n- Verilator: cpu 0.177 s on 1 threads; allocated 2 MB",
+      "firmware_sha256": "fed806fbecfe2e98d70f2c1c0e3b4a1a778519b18bebfddfc362f73013a6d10d",
+      "log_sha256": "9bb73a61e504a415fcc1c78cc76b073fb93ca3184c7ea8fd710c60ddc003371f",
+      "final_file_sha256": "5ab0152306a48acb40e576476cc65031b49054910a291e9dd25116c6635ec322"
+    },
+    {
+      "file_bytes": 1024,
+      "profile": 4,
+      "cpu_half_ps": 8333,
+      "engine_phase_ps": 1777,
+      "pass": true,
+      "output": "PASS B008 CPU engine profile=4 reads=1 writes=0 completed=0 reset=0 actions=19\n- tb_b008_cpu_engine.sv:106: Verilog $finish\n- S i m u l a t i o n   R e p o r t: Verilator 5.052 2026-09-05\n- Verilator: $finish at 42us; walltime 0.004 s; speed 11.495 ms/s\n- Verilator: cpu 0.004 s on 1 threads; allocated 2 MB",
+      "firmware_sha256": "db2a98911c6c0124599bb6039858e69dde997b4b54bda77b9a1bf4d49282c898",
+      "log_sha256": "d08c39d4de7499b206b06fe534a0101faf813edc33b2312f340ccc5a169e8060",
+      "final_file_sha256": "0e1a5deea35abc0ab355ca012a8a6386a5e12e4f1f85ed29da18b998bdda9435"
+    },
+    {
+      "file_bytes": 1024,
+      "profile": 5,
+      "cpu_half_ps": 8333,
+      "engine_phase_ps": 1777,
+      "pass": true,
+      "output": "PASS B008 CPU engine profile=5 reads=2 writes=0 completed=0 reset=1 actions=38\n- tb_b008_cpu_engine.sv:106: Verilog $finish\n- S i m u l a t i o n   R e p o r t: Verilator 5.052 2026-09-05\n- Verilator: $finish at 67us; walltime 0.005 s; speed 13.633 ms/s\n- Verilator: cpu 0.005 s on 1 threads; allocated 2 MB",
+      "firmware_sha256": "645ce641cfb01702020ab2f240913888da5a9bd8a31f20638f909c45ab8a9525",
+      "log_sha256": "cad18b2ab90b764ecb18d7228947f7d166fc27d3d62f6bfbb64e09cc18fa4494",
+      "final_file_sha256": "5ab0152306a48acb40e576476cc65031b49054910a291e9dd25116c6635ec322"
+    },
+    {
+      "file_bytes": 1024,
+      "profile": 6,
+      "cpu_half_ps": 8333,
+      "engine_phase_ps": 1777,
+      "pass": true,
+      "output": "PASS B008 CPU engine profile=6 reads=2 writes=1 completed=1 reset=1 actions=39\n- tb_b008_cpu_engine.sv:106: Verilog $finish\n- S i m u l a t i o n   R e p o r t: Verilator 5.052 2026-09-05\n- Verilator: $finish at 67us; walltime 0.005 s; speed 13.449 ms/s\n- Verilator: cpu 0.005 s on 1 threads; allocated 2 MB",
+      "firmware_sha256": "d7cae0c9250e016bd3c702648c21491561095f45b65328ae62791d32ee68eb38",
+      "log_sha256": "35d73332882e5a5c90ba28e493884d2975b001b32424811b580090983a1623e3",
+      "final_file_sha256": "9822ed774fe170f9cff1f1f6511e0a4268e7b6fe01b9e528d6b26ce572d9f5c3"
+    },
+    {
+      "file_bytes": 1024,
+      "profile": 7,
+      "cpu_half_ps": 8333,
+      "engine_phase_ps": 1777,
+      "pass": true,
+      "output": "PASS B008 CPU engine profile=7 reads=2 writes=0 completed=0 reset=1 actions=29\n- tb_b008_cpu_engine.sv:106: Verilog $finish\n- S i m u l a t i o n   R e p o r t: Verilator 5.052 2026-09-05\n- Verilator: $finish at 58us; walltime 0.005 s; speed 12.545 ms/s\n- Verilator: cpu 0.005 s on 1 threads; allocated 2 MB",
+      "firmware_sha256": "b9fd5f4707911730c2d46a94b9b64d70ab052ed0c695b8200ea37d6429c9c587",
+      "log_sha256": "eca55efa8734247c7591f775cc481d490004a8601cc4361a61ceeaabec6a8113",
+      "final_file_sha256": "5ab0152306a48acb40e576476cc65031b49054910a291e9dd25116c6635ec322"
+    },
+    {
+      "file_bytes": 1024,
+      "profile": 8,
+      "cpu_half_ps": 8333,
+      "engine_phase_ps": 1777,
+      "pass": true,
+      "output": "PASS B008 CPU engine profile=8 reads=2 writes=1 completed=1 reset=0 actions=89\n- tb_b008_cpu_engine.sv:106: Verilog $finish\n- S i m u l a t i o n   R e p o r t: Verilator 5.052 2026-09-05\n- Verilator: $finish at 102us; walltime 0.008 s; speed 13.523 ms/s\n- Verilator: cpu 0.007 s on 1 threads; allocated 2 MB",
+      "firmware_sha256": "f938de72d7006a816073844c00efe569d5a1655e5217e62b76cb49adf93e7e03",
+      "log_sha256": "fc3577f53f3b80a5d5d6c8fa955311e2a024d8f021d409518f15f469eb374fd0",
+      "final_file_sha256": "9822ed774fe170f9cff1f1f6511e0a4268e7b6fe01b9e528d6b26ce572d9f5c3"
+    },
+    {
+      "file_bytes": 1024,
+      "profile": 9,
+      "cpu_half_ps": 8333,
+      "engine_phase_ps": 1777,
+      "pass": true,
+      "output": "PASS B008 CPU engine profile=9 reads=1 writes=0 completed=0 reset=0 actions=19\n- tb_b008_cpu_engine.sv:106: Verilog $finish\n- S i m u l a t i o n   R e p o r t: Verilator 5.052 2026-09-05\n- Verilator: $finish at 42us; walltime 0.004 s; speed 11.364 ms/s\n- Verilator: cpu 0.004 s on 1 threads; allocated 2 MB",
+      "firmware_sha256": "db2a98911c6c0124599bb6039858e69dde997b4b54bda77b9a1bf4d49282c898",
+      "log_sha256": "91fa1791ed05fd3ef57b18298ea469a962dd0f3eb91f1c015b822859b3543339",
+      "final_file_sha256": "5ab0152306a48acb40e576476cc65031b49054910a291e9dd25116c6635ec322"
+    },
+    {
+      "file_bytes": 1024,
+      "profile": 10,
+      "cpu_half_ps": 8333,
+      "engine_phase_ps": 1777,
+      "pass": true,
+      "output": "PASS B008 CPU engine profile=10 reads=1 writes=1 completed=0 reset=1 actions=3183\n- tb_b008_cpu_engine.sv:106: Verilog $finish\n- S i m u l a t i o n   R e p o r t: Verilator 5.052 2026-09-05\n- Verilator: $finish at 3ms; walltime 0.183 s; speed 15.006 ms/s\n- Verilator: cpu 0.168 s on 1 threads; allocated 2 MB",
+      "firmware_sha256": "ccdee0241e30a7c6e931dcf45ca24f2e11671cbe5a13db79e00da6b7c0186364",
+      "log_sha256": "ac2964108f5910cc12f56f3193cfe700562023ae7be95e9e2dca571fa4297904",
+      "final_file_sha256": "5ab0152306a48acb40e576476cc65031b49054910a291e9dd25116c6635ec322"
+    },
+    {
+      "file_bytes": 262144,
+      "profile": 0,
+      "cpu_half_ps": 8333,
+      "engine_phase_ps": 1777,
+      "pass": true,
+      "output": "PASS B008 CPU engine profile=0 reads=2 writes=1 completed=1 reset=0 actions=10385\n- tb_b008_cpu_engine.sv:106: Verilog $finish\n- S i m u l a t i o n   R e p o r t: Verilator 5.052 2026-09-05\n- Verilator: $finish at 9ms; walltime 0.617 s; speed 14.353 ms/s\n- Verilator: cpu 0.617 s on 1 threads; allocated 2 MB",
+      "firmware_sha256": "f938de72d7006a816073844c00efe569d5a1655e5217e62b76cb49adf93e7e03",
+      "log_sha256": "af026ea22a3c93282181cf9865ec5c3cd4ae8e7c1297a1676e6d39ad06fb12d8",
+      "final_file_sha256": "00aec285fa738e1225c201774629ea5af4bd630f89f64976fbb5ad632a8f7a6a"
+    }
+  ],
+  "source_hashes": {
+    "rtl/b008_mailbox.sv": "1d6d333983d48a8944cfe8671436ad4afb12b03d49b3e2be618ebd35c0fc1501",
+    "rtl/lab_powercut.sv": "4ea25d793ece1da4424e424ba814b46b76e59c369ae16b137291f1cc880f5946",
+    "references/tau-7b98a2e/VexRiscv_Full.v": "1ee38dc4b0f3a2ce08de9df1f8e2bb8fceb628a89adb7f624f38ae44cebe9fcc",
+    "sim/tb_b008_cpu_engine.sv": "3c7eecdc3863459f8ba19480a6df9d33b1d9bb1468ca43d669febeb8ec723d62",
+    "sim/b008/start.S": "0e41b3e58afe7c0670378ae0ccb48779cb80a64bfb3aeb580f162a3b19a7d016",
+    "sim/b008/link.ld": "fc6070a4cb426a9c6e904be2e478a6a6d4990588add1228550a134955085ab77",
+    "sim/b008/main.c": "10be95282936739ff8e27f8cd000e02ce4c161897ab0211f61c931f422facd83",
+    "sim/test_b008_cpu_engine.py": "80acc453ad94cb6cc34d081fa55ef31682944ae56aaf539b62ad02988639e25e",
+    "sim/tb_b008_mailbox.sv": "981ee77a1a68a66af05aa054dc26633812beee5f8e1e26722ef81a54590eb246",
+    "tools/b007_oracle.py": "b7d6713b84ea1f9157c0cbdb50c92680a84ccd3724f87d486e32d94b5b11db0a"
+  },
+  "failed_attempts": [
+    {
+      "artifacts": "work/sim/b008/20261006-192149",
+      "failure_sha256": "cb1412746309478a5ad3b8251eef717378370455a5959c94a4189f80cb4f0f67",
+      "error": "Failed: work/sim/b008/20261006-192149/bytes1024-p5-clk8333/run.log",
+      "source_hashes": {
+        "rtl/b008_mailbox.sv": "be3ef29d77c7cd6c413d18aba1efd4f77e24b40cee08afbf8ed5af2ac2435a37",
+        "rtl/lab_powercut.sv": "4ea25d793ece1da4424e424ba814b46b76e59c369ae16b137291f1cc880f5946",
+        "references/tau-7b98a2e/VexRiscv_Full.v": "1ee38dc4b0f3a2ce08de9df1f8e2bb8fceb628a89adb7f624f38ae44cebe9fcc",
+        "sim/tb_b008_cpu_engine.sv": "5caae8454ce4cdc3216d7dc6d70cc24def7509de6d4e3942b5296579acf9096d",
+        "sim/b008/start.S": "0e41b3e58afe7c0670378ae0ccb48779cb80a64bfb3aeb580f162a3b19a7d016",
+        "sim/b008/link.ld": "fc6070a4cb426a9c6e904be2e478a6a6d4990588add1228550a134955085ab77",
+        "sim/b008/main.c": "10be95282936739ff8e27f8cd000e02ce4c161897ab0211f61c931f422facd83",
+        "sim/test_b008_cpu_engine.py": "c80979b4fde86c5ba9a1c921ce68255d9d8d49cc5f9f1dca64f88c12f92d382f"
+      },
+      "failed_log_sha256": "c394dccd29a0bbe44a364e7ae270811a3adf5ce95984aaf380bc45d08b5a6a2c"
+    },
+    {
+      "artifacts": "work/sim/b008/20261006-192233",
+      "failure_sha256": "e659f70c48817148b66ff67cd2095d330299ad1fe52d269f5399e47f47eca5ed",
+      "error": "Failed: work/sim/b008/20261006-192233/bytes1024-p5-clk8333/run.log",
+      "source_hashes": {
+        "rtl/b008_mailbox.sv": "be3ef29d77c7cd6c413d18aba1efd4f77e24b40cee08afbf8ed5af2ac2435a37",
+        "rtl/lab_powercut.sv": "4ea25d793ece1da4424e424ba814b46b76e59c369ae16b137291f1cc880f5946",
+        "references/tau-7b98a2e/VexRiscv_Full.v": "1ee38dc4b0f3a2ce08de9df1f8e2bb8fceb628a89adb7f624f38ae44cebe9fcc",
+        "sim/tb_b008_cpu_engine.sv": "3c7eecdc3863459f8ba19480a6df9d33b1d9bb1468ca43d669febeb8ec723d62",
+        "sim/b008/start.S": "0e41b3e58afe7c0670378ae0ccb48779cb80a64bfb3aeb580f162a3b19a7d016",
+        "sim/b008/link.ld": "fc6070a4cb426a9c6e904be2e478a6a6d4990588add1228550a134955085ab77",
+        "sim/b008/main.c": "10be95282936739ff8e27f8cd000e02ce4c161897ab0211f61c931f422facd83",
+        "sim/test_b008_cpu_engine.py": "c80979b4fde86c5ba9a1c921ce68255d9d8d49cc5f9f1dca64f88c12f92d382f"
+      },
+      "failed_log_sha256": "1c1355297ad9b02f47f479fa934f1e9b52bacc219828c78b5e595478f03c4505"
+    }
+  ]
+}

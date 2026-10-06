@@ -278,3 +278,19 @@ Lead the README with the overall capability decision and a transparent 60/100 we
 ## Park generated-library features for future tests (2026-10-06)
 
 At the owner’s request, record directory scanning, library updates, optimized cover generation, and new playlist creation as parked optional investigations in FUTURE_TESTS.md. Keep prerequisites and pending evidence explicit. Do not advance these features or change the B008 gate/progress score merely by adding them to the backlog.
+
+## B008 CPU supervisor preserves B007 ownership (2026-10-06)
+
+Implement CPU commands as a separate stable-payload toggle mailbox; acknowledge
+delivery separately from target completion. Preserve the frozen B007 engine
+and actual pinned CPU. The CPU cannot modify target parameters or payloads.
+CPU reset preserves mailbox state, locks new commands and asks the writer to
+stop only after genuine DONE; safe idle recovery is explicit. A timed-out
+engine stays owned/faulted even after late completion.
+
+Use an isolated uncached MMIO map and small simulated RAM first. Recognize
+consecutive changed Wishbone beats without dropping CYC/STB, while accepting
+a held unchanged beat once, based on the observed actual-CPU reset failure.
+Retain failed evidence and pass complete regression before preparing hardware.
+Simulation does not credit the physical CPU milestone or permit card installation
+without a distinct top-level, native UI and complete Quartus/CDC/timing review.

@@ -125,3 +125,7 @@ test-resumed-clients:
 	$(PYTHON) sim/test_guarded_completion.py
 	$(PYTHON) sim/test_read_guarded_resumed_results.py
 	$(PYTHON) sim/test_update_guarded_resumed.py
+
+.PHONY: test-b008-cpu-engine
+test-b008-cpu-engine:
+	$(PYTHON) sim/test_b008_cpu_engine.py

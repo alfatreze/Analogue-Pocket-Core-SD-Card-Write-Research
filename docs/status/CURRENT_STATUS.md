@@ -524,3 +524,26 @@ README now starts with overall feasibility and a documented 60/100 discovery-mil
 ## Optional generated-library backlog parked (2026-10-06)
 
 Four future investigations are documented in docs/research/FUTURE_TESTS.md: MP3 directory discovery, library-index generation/replacement, optimized cover-image outputs, and playlist creation. No investigation or hardware trial has started; all results are pending. The active CPU/save roadmap and 60/100 discovery score are unchanged.
+
+## B008 exact CPU/B007 engine first gate — simulated PASS (2026-10-06)
+
+Implemented a separate synthesizable b008_mailbox supervisor and isolated
+exact pinned VexRiscv/16 KiB memory/B007 simulation harness. CPU and engine
+domains use serialized toggle mailboxes with coherent response snapshots; CPU
+reset locks submission and asks an active writer to stop after real completion.
+B007 remains sole owner, including after timeout and late DONE.
+
+Two initial runs reached the idle-reset profile and timed out after eight passes
+each. Actual CPU consecutive distinct register beats kept CYC/STB active; the
+adapter was corrected to recognize changed address/control without replaying
+an unchanged held beat. A directed assertion also needed to wait for the
+consuming engine edge. All failures are retained and disclosed.
+
+Final regression: 15 CPU trials (24 modeled reads, ten attempted writes, seven
+completed writes, four CPU resets), plus a directed campaign with 32 coherent
+snapshots, held-beat/pending/byte-strobe/reset checks. Full 262,144-byte output
+matched unchanged B007 oracle tag 1. Source hashes, logs and failed attempts
+are indexed in work/evidence/b008-cpu-engine-simulation.json; report is
+docs/results/B008_RESULTS.md. No hardware compile, card update, JTAG operation
+or Tau source modification occurred. Physical CPU persistence remains pending
+and overall milestone score remains 60/100.

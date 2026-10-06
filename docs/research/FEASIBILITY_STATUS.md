@@ -21,7 +21,7 @@ This is a **weighted discovery-milestone tally introduced for reporting**, not a
 | Sustained updates and repeat cold reads | 15 | 15 | [B004](../results/B004_RESULTS.md): 10,000 pairs and ten fresh-launch sessions. |
 | Guarded records and between-command recovery | 15 | 15 | [B005](../results/B005_CONNECTED_RESULTS.md), [B006](../results/B006_RESULTS.md); limited interruption scope. |
 | Active-write interruption characterization and torn-data refusal | 10 | 10 | [B007](../results/B007_RESULTS.md); tearing observed, selected refusal checks pass. |
-| Exact CPU-to-engine integration and physical persistence | 15 | 0 | B008 simulation gate, fit/timing, and Pocket/remount evidence pending. |
+| Exact CPU-to-engine integration and physical persistence | 15 | 0 | [B008 simulation gate passed](../results/B008_RESULTS.md); fit/timing and Pocket/remount evidence pending. |
 | Tau functional/memory/workload suitability | 15 | 0 | Settings, migration, playback and actual buffer/latency budgets pending. |
 | Environment and endurance qualification | 10 | 0 | Declared card/firmware/filesystem and repeated lifecycle/interruption matrix pending. |
 | **Total** | **100** | **60** | **Five initial discovery milestones evidenced; three remaining.** |
@@ -36,7 +36,7 @@ This is a **weighted discovery-milestone tally introduced for reporting**, not a
 | Atomic overwrite | Not supported by observed trials | Three live cuts left mixed old/new bytes. |
 | Torn-data detection/refusal | Demonstrated on selected B007 cold reads | CUT1, CUT3, and separate unmonitored shutdown; not a per-cut claim for CUT2/CUT4. |
 | Protection of unrelated files | Passed retained host comparisons | Full destination/invalid-input security catalogue not completed. |
-| Exact Tau CPU writes | Modeled prototypes only | Physical persistence and production ownership/reset/CDC pending. |
+| Exact Tau CPU writes | B008 engine integration passed in simulation | Physical persistence and production ownership/reset/CDC pending. |
 | Saving during playback | Pending | No measured Tau FIFO/latency qualification yet. |
 | Create/resize, NV shutdown, explicit flush | Not qualified by these campaigns | Preallocated target writes are the established baseline. |
 | Authentication/encryption | Not implemented/qualified | CRC and guard checks detect accidental damage; they do not authenticate data. |
@@ -44,4 +44,4 @@ This is a **weighted discovery-milestone tally introduced for reporting**, not a
 
 ## Next gate
 
-B008 first joins the pinned generated CPU to the proven B007 engine in an isolated dual-clock simulation. Only after ownership/reset/CDC cases pass should a new frozen FPGA build be fitted and tested for exact Pocket/host persistence. See [B008 plan](TAU_CPU_INTEGRATION.md#b008-first-implementation-gate). Further active-cut qualification of the intended A/B format must remain explicit before any stronger power-loss-safety claim.
+B008 has joined the pinned generated CPU to the proven B007 engine in an isolated dual-clock simulation; its first ownership/reset/clock-crossing checks passed. Next prepare a separate Pocket top-level, clock/BRAM/UI and reviewed CDC/timing constraints, then freeze, fit and test exact Pocket/host persistence. See [B008 plan](TAU_CPU_INTEGRATION.md#b008-first-implementation-gate). Further active-cut qualification of the intended A/B format must remain explicit before any stronger power-loss-safety claim.

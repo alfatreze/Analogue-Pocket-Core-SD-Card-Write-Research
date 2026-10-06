@@ -18,7 +18,7 @@ This is crossing-level simulation, without executing VexRiscv or talking to the 
 
 B007R5 is Quartus-qualified and physically exercised on the disposable
 CARDWRITE exFAT card. Three JTAG-observed active-write cuts produced mixed
-scratch images; cold reads rejected them and disabled further writes. Post-cut
+scratch images; selected cold reads (CUT1, CUT3 and the separate unmonitored shutdown) rejected torn images and disabled further writes. Post-cut
 clean-stop and completed-command power-cycle controls also passed exact host
 file checks. One additional unmonitored shutdown showed the same mixed-image
 and fail-closed behavior. These results apply only to this card, Pocket and
@@ -97,3 +97,24 @@ Eight 64-save profiles passed: clean, generation carry, blank, A newest, corrupt
 The first Icarus clean64 run reached its inherited 200 ms global simulation budget at 302/322 commands and has no terminal PASS; its unchanged original TB/driver/log are retained privately and its public failure summary remains explicit. A separate R2 testbench increases only the budget to 300 ms; the real CPU/firmware/transport logic is unchanged. Installed Verilator with timing executes the full clean profile in about six seconds at ~212 ms simulated time. The first Verilator build failed because its internal make invocation mishandled spaces in the output path; the runner now compiles identical copied inputs in a temporary path without spaces and copies generated artifacts back. Both failures and their source/log hashes are archived separately.
 
 Warnings include bounded testbench array-index widths and the received mask's modeled writers in two clocked blocks. These simulations validate the isolated CPU/format contract, not production receive CDC, physical APF serialization, a compatible Tau MMIO map, playback or card durability. B006 remains preserved; B007R5 is physically qualified only within the stated single-card scope. All scheduled local simulations have completed; the next implementation gate is the isolated B008 CPU/engine integration, not changes to Tau Alpha.
+
+## B008 first isolated engine/CPU gate — simulated PASS (2026-10-06)
+
+The new mailbox and exact pinned VexRiscv execute against unchanged B007R5
+in 15 CPU trials plus directed mailbox checks. Coverage includes four CPU
+clock rates, cold-read gating, serialized start/stop, read/write errors, delayed
+completion, mixed and missing/duplicate receipt, idle/live-read/live-write CPU
+reset, and timeout with late DONE, including a reset-plus-timeout trial.
+Full-size 256 KiB output matches the independent unchanged B007 oracle.
+
+Initial idle-reset runs exposed consecutive Wishbone beats with CYC/STB held
+active across changing register addresses. The mailbox now acknowledges the
+next address/control beat while preserving one action for an unchanged held
+beat; complete regression passed. Failed attempts remain archived. This is
+an isolated simulation harness, not a synthesizable Pocket SoC or hardware
+persistence result. Progress remains 60/100.
+
+See [ordered case results](../results/B008_RESULTS.md) and
+[mailbox/register/reset contract](B008_MAILBOX.md). Next prepare a separate
+B008 top-level/clock/BRAM/native UI and reviewed CDC/timing constraints, then
+freeze and qualify Quartus before installation. No card or Tau source changed.

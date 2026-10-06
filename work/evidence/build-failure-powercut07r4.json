@@ -1,0 +1,30 @@
+{
+  "build": "powercut07r4",
+  "result": "fit-failed",
+  "fitter_status": "Failed",
+  "device": "5CEBA4F23C8",
+  "logic_utilization_alms": 46936,
+  "available_alms": 18480,
+  "logic_utilization_percent": 254,
+  "total_registers": 67588,
+  "elapsed": "02:41:34",
+  "collected_reports": {
+    "ap_core.fit.summary": {
+      "sha256": "78b6df191a196d29025337736bf58c6e3baab89eea8e703ffaa4fdf1bd974c33",
+      "size": 670
+    },
+    "ap_core.fit.rpt": {
+      "sha256": "e85e4248d2628d779ff37b621ef478d8b78d52bc2bf186eafb0eb16fdc365044",
+      "size": 637504
+    },
+    "ap_core.map.rpt": {
+      "sha256": "c698888f296bdb5c5e0a49aa9f1f84e52cf2841a3cd697100bc78bdab5eef563",
+      "size": 367717
+    },
+    "quartus-fit.log": {
+      "sha256": "fee1d92c3933412b34fb8d2fc9530a8fa4727572bc66c0a71243268651b00b3a",
+      "size": 119996
+    }
+  },
+  "fitter_capacity_error": "93013 combinational nodes requested; device supports 36960"
+}

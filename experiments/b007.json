@@ -1,0 +1,39 @@
+{
+  "build": "B007",
+  "purpose": "CPU-free high-duty-cycle interruption of one APF data-slot write",
+  "stable_core_id": "alfatreze.CARDWRITE02",
+  "slot_id": "0x27",
+  "slot_name": "B007 scratch",
+  "filename": "powercut-b007.bin",
+  "deferload": true,
+  "parameters": 2,
+  "initial_size_bytes": 262144,
+  "candidate_transfer_size_bytes": 262144,
+  "transfer_size_status": "provisional; must be proven against the bridge payload window before compile qualification",
+  "payload": {
+    "kind": "address-derived deterministic pattern",
+    "operation_tag": "included in each expected whole-file host image",
+    "host_oracle": "required"
+  },
+  "write_policy": "repeat only after genuine target done; no timeout retry; stop on target error",
+  "recovery_policy": "cold read-only inspection; never initialize, repair, or retry",
+  "preserve": [
+    "Assets/cardwrite/alfatreze.CARDWRITE02/recover-b005-a.bin",
+    "Assets/cardwrite/alfatreze.CARDWRITE02/recover-b005-b.bin",
+    "Assets/cardwrite/alfatreze.CARDWRITE02/stress-b004.bin"
+  ],
+  "physical_cut": {
+    "method": "manual full Pocket power-off",
+    "precision": "unknown until measured",
+    "active_command_evidence": "continuous host-side JTAG SDW7 capture plus on-screen WRITE ACTIVE cue"
+  },
+  "release_gates": [
+    "RTL stream and byte-order checks",
+    "exact APF bridge maximum-length proof",
+    "readback completeness and independent host oracle",
+    "simulation and native display review",
+    "Quartus fit, timing, resources, warnings, and bitstream hashes",
+    "audited B006-to-B007 updater with raw rollback backups",
+    "B007 no-cut physical control and read-only cold recovery"
+  ]
+}

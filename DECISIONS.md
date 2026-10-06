@@ -228,3 +228,33 @@ This confirms the tested 64-save session persisted across the observed Pocket sh
 At a verified fresh session, B006 pause point 1 completed one 128-byte write command into inactive A for generation 1039, then held in state 14/status 8 with no command outstanding. The owner fully powered off the Pocket at that boundary, restarted it and loaded B006 from SD. The cold recovery passed with valid mask A=0/B=1, selected generation 1038 and no command error. Host remount then matched the exact independently prepared full-file hashes: partial A `53e9757a53df7bfcbb92903008348001e41abc09c98bb34ed68b7547e0a9c6b6`, valid B `a5d03367ba5cabbff739c229030bb28e0ebafe2e9f0c24b335f1334ac375a3dd`. Both files are exactly 8,192 bytes, guards pass, protected files are unchanged and no new files appeared. Evidence: `work/evidence/b006-power-cycle-prefix-jtag-summary.json`, `work/evidence/b006-power-cycle-prefix-host-summary.json` and `work/evidence/b006-power-cycle-prefix-preparation.json`. CARDWRITE was safely ejected after collection.
 
 This demonstrates recovery after full Pocket power-off with a completed partial-record prefix between SD commands. It does not test removal of SD power while a write command is active; that remains pending.
+
+## B007 sequencing and active-write experiment (2026-10-05)
+
+Reserve B007 for an isolated CPU-free active data-slot-write interruption experiment. Move the planned Tau CPU integration to a later separate stage (provisionally B008); do not combine architecture changes with physical power-cut trials. Use a new deferred slot/file, preserve B005/B006 records and B004 stress output, collect JTAG snapshots externally without pausing the core, and cold-recover read-only. Treat 256 KiB as a candidate only: APF file-size capacity does not prove the bridge source window can serve that many bytes. Verify source address range, data stability, byte order and completeness before hardware. Every physical classification requires a full shutdown/remount and independent host hash/content comparison. Manual off timing is not described as precise without measurement. This was the initial design direction; later implementation gates and outcomes are recorded in CURRENT_STATUS.md. No card or FPGA mutation has occurred for B007.
+
+## B007R3 implementation decisions and current gate (2026-10-05)
+
+Use a two-image alternating pattern so a torn active overwrite is distinguishable from the known 0/1 images after FPGA reconfiguration. The file path/slot is unique; B005/B006 data are not reused as B007 scratch. Require an explicit cold read before any write, a 65,536-bit receive-completeness mask, a host independent byte/word oracle, and no retry on command error/timeout. A stop request only relinquishes ownership after APF DONE. The on-screen cut cue requires target ACK and DONE low, and external JTAG samples must corroborate those bits. These are RTL/protocol controls, not proof of persistence.
+
+Current implementation and simulation have passed their stated local gates. After sandbox approval, the launcher checked for other Quartus jobs and started `powercut07r3-s1`; fitter completion and reports are pending. Do not load B007, run a physical interruption, or update CARDWRITE until the exact frozen stage passes full fit/timing/resource/warning review and the B006-to-B007 updater rechecks the exact latest card inventory.
+
+## B007R4 stop-edge correction (2026-10-06)
+
+R3 simulation did not cover a B press during the `ISSUE_WRITE` cycle before target acknowledgement, so that request could be lost. R4 latches the request through command arming and waits for actual DONE before stopping. R4 has passed local simulation, host oracle, JTAG/updater tests, top-level compile, and reviewed display captures. R3's Quartus run is still in megafunction elaboration; it is superseded and must not be installed. Wait for that process to finish before launching the immutable R4 stage. No card write or physical interruption has occurred.
+
+## B007R3 fit failure; R4 compiling (2026-10-06)
+
+R3 fitter placement failed at 46,914 / 18,480 ALMs (254%) and reported 92,968 combinational nodes versus 36,960 available. The finished log and reports are preserved locally in `work/fpga/powercut07r3-s1/`. After confirming the old compile had exited, the separate immutable R4 stage was launched. R4 retains the received-word completeness mask, so FPGA capacity remains a material risk. Await R4 reports; do not update CARDWRITE unless all fit/timing/resource gates pass.
+
+## B007R4 fit failure and capacity redesign gate (2026-10-06)
+
+R4 failed after 2:41:34 at 46,936 / 18,480 ALMs (254%) and 93,013 combinational nodes versus 36,960 available. This matches R3's failure and points to the large 65,536-bit read-coverage mask as a likely capacity driver. Preserve both failed revisions and reports. Do not build or install another B007 revision until coverage bookkeeping is redesigned and simulations still prove full-file completeness and duplicate/missing-word rejection within the actual target FPGA budget. No Quartus process or card update is active.
+
+## B007R5 RAM-backed coverage (2026-10-06)
+
+R5 uses a synchronous 65,536x1 `M10K` bitmap, with direct per-address set writes and a sequential read scan after the target command completes. This avoids a live read-modify-write path and retains missing-plus-duplicate detection through exact count plus exhaustive bit scan. Full-size RTL and package/updater simulations pass. Quartus must confirm block-RAM inference and successful fit before any card work.
+
+## B007R5 FPGA fit success; hardware gate remains (2026-10-06)
+
+Quartus confirms the 65,536x1 coverage bitmap maps to M10K, and the full fit passes at 11% ALM utilization with positive reported timing (minimum +0.123 ns). All 161 warnings were reviewed; no latch or RAM-inference warning was found. The package is locally qualified. This does not authorize treating any physical write as proven: install/control/remount and interruption trials remain outstanding.

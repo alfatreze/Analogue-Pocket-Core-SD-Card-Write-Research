@@ -40,5 +40,15 @@ work/evidence/tau-cpu-received-harness-syntax-failure.log
 work/sim/tau-cpu-save-stress-r2/
 work/evidence/tau-cpu-save-stress-tests.log
 work/sim/tau-cpu-save-states/
+
+# B007 generated stages and card-specific forensic restores remain local.
+work/build/powercut07*/
+work/packages/powercut07*/
+work/fpga/powercut07*-s1/
+work/evidence/restores/
+work/evidence/build-launch-powercut07*.json
+work/sim/b007/
+work/sim/b007r4-video/
+work/sim/b007r5-video/
 work/evidence/b006-connected-resumed-campaign.json
 work/evidence/b006-connected-campaign.json

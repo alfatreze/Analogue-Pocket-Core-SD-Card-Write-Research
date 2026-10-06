@@ -1,0 +1,20 @@
+{
+  "build": "B007R5",
+  "status": "quartus-full-compile-success",
+  "fitter_status": "Successful - Tue Oct  6 07:26:02 2026",
+  "device": "5CEBA4F23C8",
+  "alm_use": "1,991 / 18,480 (11%)",
+  "registers": 2287,
+  "ram_blocks": "13 / 308 (4%)",
+  "block_memory_bits": "74,043 / 3,153,920 (2%)",
+  "coverage_ram_inference": [
+    "core_top:ic|lab_powercut:probe|altsyncram:received_rtl_0|altsyncram_37s1:auto_generated|ALTSYNCRAM                                ; M10K block ; Simple Dual Port ; 65536        ; 1            ; 65536        ; 1            ; 65536 ; None"
+  ],
+  "timing_corners": 64,
+  "minimum_reported_slack_ns": 0.123,
+  "warning_count": 161,
+  "warning_review": "Warnings were reviewed. The 65,536x1 coverage store is explicitly mapped as an M10K simple-dual-port RAM; remaining warning categories are mainly inherited unused/stuck APF pins, pre-existing unused/unassigned bridge signals, and width truncations. No latch or memory-inference warning was found.",
+  "raw_rbf_sha256": "be6e13066cd5ac7e681ba0b9f814274606214c89e26461d02d5da84d34cbfdc1",
+  "reversed_rbf_sha256": "8ea96781c1b9b42b4573705fb94d5ad7b730782a771a9fef7dc381c97119b570",
+  "compile_log_success": "Full Compilation was successful. 0 errors"
+}

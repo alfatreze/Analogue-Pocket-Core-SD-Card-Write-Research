@@ -85,6 +85,10 @@ B005 now passes full compilation and internal timing qualification and is instal
 
 [Tau integration preparation](TAU_CPU_INTEGRATION.md) uses exact hash-pinned read-only CPU/crossing references. Crossing simulation passes 1,200 modeled commands; actual generated-CPU firmware execution passes another 1,500. These are simulation results, with physical CPU persistence and playback qualification pending.
 
+## B007 active-write interruption study
+
+[B007 plan and qualification gates](B007_ACTIVE_WRITE.md) define a CPU-free repeated writer to a new 256 KiB scratch file in slot `0x27`, with read-only cold recovery and continuous SDW7 JTAG observations. R5 replaces the failed 65,536-bit register coverage vector with an M10K-inferred synchronous bitmap while retaining full-address validation. Full-size RTL simulation, host oracle, JTAG/updater safeguards, top-level compile, and display review pass. Quartus R5 fit/timing now passes with the bitmap inferred as a 65,536x1 M10K simple-dual-port RAM and 11% ALM use; hardware/card qualification remains pending, and no active-command power cut has been attempted. Tau CPU integration remains separate in B008.
+
 
 ## Latest connected result
 

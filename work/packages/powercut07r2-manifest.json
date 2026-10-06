@@ -1,0 +1,19 @@
+{
+  "provenance": {
+    "kind": "powercut07r2; not installable until audited bitstream exists",
+    "template_commit": "da3a021b1eaf742604d86d8dc9b33a6666263e6a",
+    "seed": 1
+  },
+  "files": {
+    "Assets/cardwrite/alfatreze.CARDWRITE02/powercut-b007.bin": "a77f3185b8e29297a05a4c9072162c3719019ff547c202d44920875147329658",
+    "Cores/alfatreze.CARDWRITE02/audio.json": "32ecc527ee672b4f478b86e35bd0ee5eff474c73183b1b46d5169f09f224e182",
+    "Cores/alfatreze.CARDWRITE02/core.json": "ce5f4976ef4f174c036c7dc0747d4e0edca159c84b551a949206b575a7b3884e",
+    "Cores/alfatreze.CARDWRITE02/data.json": "6eed13b311f3181a746db675736fec786722f7055fe5eb19b87b7782f55ccc23",
+    "Cores/alfatreze.CARDWRITE02/info.txt": "256596177cdf085101e858ad15a96f664e177e3937fcf8eed3b05a4960d5e9fc",
+    "Cores/alfatreze.CARDWRITE02/input.json": "b4d2d0b0c3255f2b4c54ccfed70919c3c8f274b1227cfad0944307dbd5a55ecd",
+    "Cores/alfatreze.CARDWRITE02/interact.json": "ec6df9dd48158b2ffbe22958dde4378c24b99e1f856e90e2297aa1280ca37f51",
+    "Cores/alfatreze.CARDWRITE02/variants.json": "2c69bdff29586e2e6e32a9dfc1efb7b77b18ba367187713de5c655b843b716ea",
+    "Cores/alfatreze.CARDWRITE02/video.json": "4da1bd060190c1c543fd40b0cc98989df25429e98038632a44e5fd37ea42dbe9",
+    "Platforms/cardwrite.json": "ee53a491638a2d1960b36e9552a08c9f01dc55627be4e64a9ee7932060f183a3"
+  }
+}

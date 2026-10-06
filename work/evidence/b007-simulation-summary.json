@@ -1,0 +1,77 @@
+{
+  "kind": "B007 active-write RTL plus independent host-image oracle; hardware pending",
+  "pass": true,
+  "build_stage": "powercut07r5",
+  "source_manifest_sha256": "82ae67f4c72cdd203c2c1b746b142577a113c31705b49131290c70d478eb8475",
+  "configuration_sha256": "428f69f6a5ba4ee0dcd9947ad4b924b9bc4790a8acb0b64c7c7b013f1af620d8",
+  "test_sources": {
+    "rtl/lab_powercut.sv": "4ea25d793ece1da4424e424ba814b46b76e59c369ae16b137291f1cc880f5946",
+    "sim/tb_powercut.sv": "c6c43ccd0e865debddae85820a968aec64077694fb27680522be97eaef6a60bb",
+    "tools/b007_oracle.py": "b7d6713b84ea1f9157c0cbdb50c92680a84ccd3724f87d486e32d94b5b11db0a",
+    "sim/test_powercut.py": "84a4f01c41f8375f586c47d31143fb411091b95addc61d77d17e4cc53387ae8b",
+    "tools/jtag_powercut.py": "3c2c395b3a25aed6014afabf5fe88384f783f440aed361918299702bfea93f8f",
+    "tools/jtag_powercut.tcl": "9ff62f3a1cb133bc96ca898e8bbae447196149dfeb0af1b205182a80b88774f4",
+    "tools/jtag_powercut_session.py": "c444d2aeb173fdffb49283543e707e464516b49a2dbec7fc1dcca7c8d3ebb01b",
+    "sim/test_jtag_powercut.py": "778775f6c316965f0f3f1d41faf0ff997ec798dc843f15d1c02fe2b52a26ca1b",
+    "tools/update_powercut.py": "a9335323b8f1428ec774b6ec75b84afae6a64d613bbb6849f93a9a86784e6fcf",
+    "tools/read_powercut.py": "36b100b07433eb2a8d3576ed32cd54bfb5cb16c8a5c280fbb57960858bf50bc4",
+    "sim/test_update_powercut.py": "750997c75f609734e9241a65839c49dc8a10c03e73ed0b6772dc881267bf3d21"
+  },
+  "reports": {
+    "work/sim/b007/powercut.log": "d547ed0b94c2f0b6498963b8bc26cc9bbb60a20086b480741f41a86035b9ff53",
+    "work/sim/b007/jtag-decoder.log": "888a0c0ed615e57d32cf72be501b0c355f33b8613c81dfdaa99db33d7959487e",
+    "work/sim/b007/update-plan-tests.log": "740c1b51353a927a4df9382357e7a37cd9212625aebd3df205dddd0bba247da1"
+  },
+  "simulation_cases": [
+    "complete baseline cold read and all received-word marks",
+    "write locked before cold read",
+    "alternating full-file source at first/middle/final bridge addresses",
+    "stop requested during active write waits for genuine DONE",
+    "missing plus duplicate receive address is rejected",
+    "SDW7 snapshot magic",
+    "host exact baseline/image, mixed boundary, unknown corruption and size classification"
+  ],
+  "host_oracle_outcomes": {
+    "baseline": {
+      "classification": "exact-operation-image",
+      "operation": 0,
+      "sha256": "a77f3185b8e29297a05a4c9072162c3719019ff547c202d44920875147329658"
+    },
+    "updated": {
+      "classification": "exact-operation-image",
+      "operation": 1,
+      "sha256": "00aec285fa738e1225c201774629ea5af4bd630f89f64976fbb5ad632a8f7a6a"
+    },
+    "word_aligned_mix": {
+      "classification": "mixed-old-new",
+      "sha256": "36e9e7d6ca002091d267569d8faa8c47390fff36233b2a1f7038163bb98c9f69",
+      "best_adjacent_pair": {
+        "old_operation": 0,
+        "new_operation": 1,
+        "old_words": 32768,
+        "new_words": 32768,
+        "unknown_words": 0,
+        "class_transitions": 1
+      }
+    },
+    "unknown_corruption": {
+      "classification": "unrecognized-or-damaged",
+      "sha256": "dca29ce558f5ef86821023dde8c22f4c0c43e0391b3399e49741e6a71aad3c23",
+      "best_adjacent_pair": {
+        "old_operation": 0,
+        "new_operation": 1,
+        "old_words": 3,
+        "new_words": 65532,
+        "unknown_words": 1,
+        "class_transitions": 5
+      }
+    },
+    "wrong_size": {
+      "classification": "wrong-size",
+      "actual_size": 262143,
+      "expected_size": 262144,
+      "sha256": "7041d3f5d36df179909e4268955e4be38d80454164c39c211a91157c766c875c"
+    }
+  },
+  "note": "Target transport and persistence are modeled; no Pocket or SD card result is implied."
+}

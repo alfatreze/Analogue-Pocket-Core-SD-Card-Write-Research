@@ -95,6 +95,42 @@ always @(*) begin
             default: line_text = "UNKNOWN                 ";
         endcase
     endcase
+    if (BUILD_NUMBER == 7) begin
+        case(line_no)
+            0: line_text = "SD WRITE RESEARCH B007  ";
+            1: line_text = "A WRITE  B READ/STOP    ";
+            2: line_text = "POWER CUT TEST          ";
+            3: case(status)
+                0: line_text = "READ REQUIRED           ";
+                1: line_text = "PREPARE COLD READ       ";
+                2: line_text = "WRITE ACTIVE CUT NOW    ";
+                3: line_text = "CHECKING READ COVERAGE  ";
+                4: line_text = "WRITE STOPPED CLEANLY   ";
+                5: line_text = "COLD READ PASS          ";
+                6: line_text = "MISMATCH NO WRITE       ";
+            7: line_text = "TIMEOUT STOPPED         ";
+                8: line_text = "ARMING WRITE            ";
+                default: line_text = "POWER CUT ERROR         ";
+            endcase
+            4: line_text = "OPERATION  00000000     ";
+            5: line_text = "VALID TAG  00000000     ";
+            6: line_text = "COMPLETE   00000000     ";
+            7: line_text = "ERROR      0            ";
+            8: line_text = "CYCLES     00000000     ";
+            9: line_text = "CHECK CARD AFTER COLD   ";
+            10: line_text = "POWER OFF WHILE ACTIVE  ";
+        endcase
+    end
+    if (BUILD_NUMBER == 7 && BUILD_REVISION == 1 && line_no == 0)
+        line_text = "SD WRITE RESEARCH B007R1";
+    if (BUILD_NUMBER == 7 && BUILD_REVISION == 2 && line_no == 0)
+        line_text = "SD WRITE RESEARCH B007R2";
+    if (BUILD_NUMBER == 7 && BUILD_REVISION == 3 && line_no == 0)
+        line_text = "SD WRITE RESEARCH B007R3";
+    if (BUILD_NUMBER == 7 && BUILD_REVISION == 4 && line_no == 0)
+        line_text = "SD WRITE RESEARCH B007R4";
+    if (BUILD_NUMBER == 7 && BUILD_REVISION == 5 && line_no == 0)
+        line_text = "SD WRITE RESEARCH B007R5";
     if (BUILD_NUMBER == 3) begin
         case(line_no)
             0: line_text = "SD WRITE RESEARCH B003  ";

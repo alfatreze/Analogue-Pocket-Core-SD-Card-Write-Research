@@ -325,7 +325,17 @@ wire [31:0] target_offset, target_address, target_length;
 wire [3:0] probe_status;
 wire [31:0] generation, loaded_generation, completed, elapsed;
 wire [2:0] last_error;
-`ifdef LAB_RECOVERY
+`ifdef LAB_POWERCUT
+localparam LAB_SLOT=16'h27;
+localparam LAB_MAX_FILE=262144;
+wire [31:0] power_source;
+wire [511:0] power_snapshot;
+altsource_probe #(.sld_auto_instance_index("YES"), .sld_instance_index(0),
+    .instance_id("SDW7"), .probe_width(511), .source_width(32),
+    .source_initial_value("0"), .enable_metastability("NO")) power_debug(
+    .source_clk(clk_74a), .source_ena(1'b1),
+    .probe(power_snapshot[510:0]), .source(power_source));
+`elsif LAB_RECOVERY
 localparam LAB_SLOT=16'h25;
 localparam LAB_MAX_FILE=8192;
 wire [31:0] recovery_source;
@@ -407,7 +417,9 @@ core_bridge_cmd commands(
     .target_buffer_param_struct(32'd0), .target_buffer_resp_struct(32'd0),
     .datatable_addr(10'd0), .datatable_wren(1'b0), .datatable_data(32'd0), .datatable_q());
 
-`ifdef LAB_RECOVERY
+`ifdef LAB_POWERCUT
+lab_powercut probe(.debug_source(power_source), .debug_probe(power_snapshot), .target_ack(target_ack),
+`elsif LAB_RECOVERY
 `ifdef LAB_RECOVERY_GUARDED
 lab_recovery_guarded probe(.debug_source(recovery_source), .debug_probe(recovery_snapshot),
 `else
@@ -438,7 +450,14 @@ assign video_rgb_clock = clk_pixel;
 assign video_rgb_clock_90 = clk_pixel_90;
 assign video_skip = 1'b0;
 lab_video #(
-`ifdef LAB_RECOVERY
+`ifdef LAB_POWERCUT
+    .BUILD_NUMBER(7),
+`ifdef LAB_POWERCUT_REV
+    .BUILD_REVISION(`LAB_POWERCUT_REV)
+`else
+    .BUILD_REVISION(0)
+`endif
+`elsif LAB_RECOVERY
 `ifdef LAB_RECOVERY_GUARDED
     .BUILD_NUMBER(6), .BUILD_REVISION(0)
 `else

@@ -81,6 +81,14 @@ test-guarded:
 	$(PYTHON) sim/test_jtag_guarded.py
 	$(IVERILOG) -g2012 -I rtl -DLAB_RECOVERY -DLAB_RECOVERY_GUARDED -s core_top -o /private/tmp/b006-top.vvp rtl/core_top.v rtl/lab_recovery_guarded.sv rtl/lab_probe.sv rtl/lab_video.sv rtl/core_bridge_cmd.v $(TEMPLATE)/apf/common.v sim/vendor_models.v
 
+.PHONY: test-powercut
+test-powercut:
+	$(PYTHON) sim/test_powercut.py --stage powercut07r5
+	$(IVERILOG) -g2012 -I rtl -DLAB_POWERCUT -DLAB_POWERCUT_REV=5 -s core_top -o /private/tmp/b007-top.vvp rtl/core_top.v rtl/lab_powercut.sv rtl/lab_probe.sv rtl/lab_video.sv rtl/core_bridge_cmd.v $(TEMPLATE)/apf/common.v sim/vendor_models.v
+	mkdir -p work/sim/b007r5-video
+	$(IVERILOG) -g2012 -I rtl -s tb_video -Ptb_video.BUILD=7 -Ptb_video.REVISION=5 -Ptb_video.FRAMES=9 -o /private/tmp/b007r5-video.vvp sim/tb_video.sv rtl/lab_video.sv
+	cd work/sim/b007r5-video && $(VVP) /private/tmp/b007r5-video.vvp
+
 .PHONY: test-tau-cdc test-tau-cpu
 test-tau-cdc:
 	$(PYTHON) sim/test_tau_card_cdc.py

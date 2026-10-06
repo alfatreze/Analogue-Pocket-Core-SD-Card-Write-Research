@@ -1,0 +1,28 @@
+{
+  "pass": true,
+  "build": "B007R5",
+  "frozen_video_sha256": "e534ff3141aeb2dd95958781e1d74390c18ca9b406a44762bb6ce5589f38805f",
+  "captures": {
+    "work/sim/b007r5-video/frame-0.ppm": "d0bc574d79c04af35a02ab44bf5b52e2a8a9781296d69edc0296257ba28a28e4",
+    "work/sim/b007r5-video/frame-1.ppm": "cea7d07f04a6de3461ebbb1cfa942463ca388a7a6bb7171c70f4562bbf5fa1ab",
+    "work/sim/b007r5-video/frame-2.ppm": "7209e2340901d78413e7066985810f646ff4e76381bd916f28d71fba40677e4b",
+    "work/sim/b007r5-video/frame-3.ppm": "a82b8fdf68bc546fbe30412229c08adcc4a53be270935f6221999189d9d0ad69",
+    "work/sim/b007r5-video/frame-4.ppm": "6eae947532c257ce93df5be6fd358eebc7eede3bd88ce13a70ddc78be1fe7729",
+    "work/sim/b007r5-video/frame-5.ppm": "498b5f7d4eae5db8f1afe454b328d18c61ba19819cf32155ca43efbe78e35ffd",
+    "work/sim/b007r5-video/frame-6.ppm": "04f63da6b67d09ea891d4b63105d2d1d26557cd725cb92baeb9e5dacb5a10bba",
+    "work/sim/b007r5-video/frame-7.ppm": "468a432af69932f6ef994cfe6907bd61041df39a78e304fc9ab262391ffffc4a",
+    "work/sim/b007r5-video/frame-8.ppm": "fb68d22f911ae49e4b12b56ca62318a26c70d9631e0f2ba1dbaa12acb69ebbd6"
+  },
+  "reviewed_states": [
+    "idle",
+    "read-in-progress",
+    "write-arm pending target acknowledgement",
+    "confirmed active write",
+    "read-coverage scan",
+    "write stopped",
+    "cold-read pass",
+    "read mismatch lockout",
+    "timeout"
+  ],
+  "review": "Native 320x240 captures visually reviewed. The B007R5 title is distinct; ARMING WRITE and confirmed active WRITE ACTIVE CUT NOW remain distinct and legible."
+}

@@ -14,7 +14,13 @@ Tau's crossing selects read/open/get/write/flush through cmd_sel 0–4. It waits
 
 This is crossing-level simulation, without executing VexRiscv or talking to the Pocket. Modeled flush selection does not prove physical flush support. Independent clock-domain reset is not qualified: the 74 MHz FSM/toggles are initialized at FPGA configuration, while rst_sys directly resets only the CPU-side state. A production owner must block reset/parameter changes while outstanding, and reset semantics need a separate fault test before integration.
 
-## B007 implementation order
+## Planned CPU integration stage (after B007 active-write study)
+
+The next Pocket build is B007 for an isolated, high-duty-cycle active SD-write
+power-cut experiment. CPU integration remains a later, separate build (provisionally
+B008); it must not share the B007 image or change B006's preserved save files.
+
+## CPU integration implementation order
 
 1. Pin/copy the exact generated CPU with its license/provenance; retain the CPU-free B006 baseline. Do not regenerate or silently substitute another CPU configuration.
 2. Build a small isolated 60 MHz SoC with uncached command/status registers and bounded BRAM; exclude audio, SDRAM and PSRAM initially. Preserve the exact SDR5 format, two slots and independent host oracle.

@@ -14,7 +14,7 @@ def sha(path):return hashlib.sha256(path.read_bytes()).hexdigest()
 
 def main():
     parser=argparse.ArgumentParser()
-    parser.add_argument('--build',choices=['minimal01','minimal02','batch03','batch03r1','batch03r2','stress04','stress04r1','stress04r2','recovery05','guarded06'],default='minimal01')
+    parser.add_argument('--build',choices=['minimal01','minimal02','batch03','batch03r1','batch03r2','stress04','stress04r1','stress04r2','recovery05','guarded06','powercut07','powercut07r1','powercut07r2','powercut07r3','powercut07r4','powercut07r5'],default='minimal01')
     build_id=parser.parse_args().build
     BUILD=ROOT/'work/fpga'/(build_id+'-s1')
     PACKAGE=ROOT/'work/packages'/build_id
@@ -40,7 +40,7 @@ def main():
     if sha(raw)==sha(original):
         raise SystemExit('Collected RBF matches unmodified template; wrong build suspected')
     reverse=bytes(int(f'{byte:08b}'[::-1],2) for byte in range(256))
-    bitstream=PACKAGE/'Cores'/('alfatreze.CARDWRITE02' if build_id.startswith(('batch03','stress04','recovery05','guarded06')) else 'alfatreze.CARDWRITE'+build_id[-2:])/'bitstream.rbf_r'
+    bitstream=PACKAGE/'Cores'/('alfatreze.CARDWRITE02' if build_id.startswith(('batch03','stress04','recovery05','guarded06','powercut07')) else 'alfatreze.CARDWRITE'+build_id[-2:])/'bitstream.rbf_r'
     if build_id.startswith('stress04'):
         simulation=json.loads((ROOT/'work/evidence/b004r2-simulation-summary.json').read_text())
         if (not simulation.get('pass') or simulation['source_manifest_sha256']!=sha(source_manifest) or
@@ -61,6 +61,23 @@ def main():
             raise SystemExit('Native display review does not match compiled video')
         for relative,expected in review['captures'].items():
             if sha(ROOT/relative)!=expected:raise SystemExit('Reviewed capture changed')
+    if build_id.startswith('powercut07'):
+        simulation=json.loads((ROOT/'work/evidence/b007-simulation-summary.json').read_text())
+        if (not simulation.get('pass') or simulation.get('build_stage')!=build_id or
+            simulation['source_manifest_sha256']!=sha(source_manifest) or
+            simulation['configuration_sha256']!=sha(ROOT/'experiments/b007.json')):
+            raise SystemExit('B007 simulation/configuration does not match this frozen source stage')
+        for relative,expected in simulation['test_sources'].items():
+            if sha(ROOT/relative)!=expected:raise SystemExit('B007 tested source changed: '+relative)
+        for relative,expected in simulation['reports'].items():
+            if sha(ROOT/relative)!=expected:raise SystemExit('B007 simulation report changed: '+relative)
+        review=json.loads((ROOT/'work/evidence/b007-display-review.json').read_text())
+        expected_label={'powercut07':'B007','powercut07r1':'B007R1','powercut07r2':'B007R2','powercut07r3':'B007R3','powercut07r4':'B007R4','powercut07r5':'B007R5'}[build_id]
+        if (not review.get('pass') or review.get('build')!=expected_label or
+            review['frozen_video_sha256']!=sha(ROOT/'work/build'/build_id/'src/fpga/core/lab_video.sv')):
+            raise SystemExit('B007 display review does not match staged video source')
+        for relative,expected in review['captures'].items():
+            if sha(ROOT/relative)!=expected:raise SystemExit('Reviewed B007 capture changed')
     bitstream.write_bytes(raw.read_bytes().translate(reverse))
     audit={'kind':'custom '+build_id+', full compile and internal timing qualified; Pocket pending',
            'seed':1,'raw_sha256':sha(raw),'rbf_r_sha256':sha(bitstream),
@@ -75,6 +92,10 @@ def main():
         audit['experiment_config_sha256']=sha(ROOT/'experiments'/(prefix+'.json'))
         audit['simulation_summary_sha256']=sha(ROOT/'work/evidence'/(prefix+'-simulation-summary.json'))
         audit['display_review_sha256']=sha(ROOT/'work/evidence'/(prefix+'-display-review.json'))
+    if build_id.startswith('powercut07'):
+        audit['experiment_config_sha256']=sha(ROOT/'experiments/b007.json')
+        audit['simulation_summary_sha256']=sha(ROOT/'work/evidence/b007-simulation-summary.json')
+        audit['display_review_sha256']=sha(ROOT/'work/evidence/b007-display-review.json')
     (ROOT/'work/evidence'/('custom-build-audit.json' if build_id=='minimal01' else 'custom-build-audit-'+build_id+'.json')).write_text(json.dumps(audit,indent=2)+'\n')
     files={p.relative_to(PACKAGE).as_posix():sha(p) for p in sorted(PACKAGE.rglob('*')) if p.is_file()}
     (PACKAGE.parent/(build_id+'-manifest.json')).write_text(json.dumps({'provenance':audit,'files':files},indent=2)+'\n')

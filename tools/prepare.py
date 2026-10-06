@@ -57,8 +57,8 @@ def prepare_reference(pins):
 
 
 def prepare_custom(pins, build="minimal01"):
-    suffix = "02" if build.startswith(("batch03","stress04","recovery05","guarded06")) else build[-2:]
-    label = {"batch03":"B003", "batch03r1":"B003R1", "batch03r2":"B003R2", "stress04":"B004", "stress04r1":"B004R1", "stress04r2":"B004R2", "recovery05":"B005", "guarded06":"B006"}.get(build,suffix)
+    suffix = "02" if build.startswith(("batch03","stress04","recovery05","guarded06","powercut07")) else build[-2:]
+    label = {"batch03":"B003", "batch03r1":"B003R1", "batch03r2":"B003R2", "stress04":"B004", "stress04r1":"B004R1", "stress04r2":"B004R2", "recovery05":"B005", "guarded06":"B006", "powercut07":"B007", "powercut07r1":"B007R1", "powercut07r2":"B007R2", "powercut07r3":"B007R3", "powercut07r4":"B007R4", "powercut07r5":"B007R5"}.get(build,suffix)
     core_id = "alfatreze.CARDWRITE" + suffix
     source = ROOT / 'vendor/core-template'
     stage = ROOT / 'work/build' / build
@@ -79,7 +79,7 @@ def prepare_custom(pins, build="minimal01"):
                   'set_global_assignment -name SEARCH_PATH core',
                   'set_global_assignment -name NUM_PARALLEL_PROCESSORS 2',
                   'set_global_assignment -name SEED 1'])
-    if build in ('minimal02', 'batch03', 'batch03r1', 'batch03r2','stress04','stress04r1','stress04r2','recovery05','guarded06'):
+    if build in ('minimal02', 'batch03', 'batch03r1', 'batch03r2','stress04','stress04r1','stress04r2','recovery05','guarded06','powercut07','powercut07r1'):
         lines.append('set_global_assignment -name ALLOW_POWER_UP_DONT_CARE OFF')
     if build.startswith('batch03'):
         lines.extend(['set_global_assignment -name VERILOG_MACRO LAB_BATCH=1',
@@ -94,6 +94,14 @@ def prepare_custom(pins, build="minimal01"):
         lines.extend(['set_global_assignment -name VERILOG_MACRO LAB_RECOVERY=1', 'set_global_assignment -name SYSTEMVERILOG_FILE core/lab_recovery.sv'])
     if build=='guarded06':
         lines.extend(['set_global_assignment -name VERILOG_MACRO LAB_RECOVERY=1','set_global_assignment -name VERILOG_MACRO LAB_RECOVERY_GUARDED=1','set_global_assignment -name SYSTEMVERILOG_FILE core/lab_recovery_guarded.sv'])
+    if build.startswith('powercut07'):
+        lines.extend(['set_global_assignment -name VERILOG_MACRO LAB_POWERCUT=1',
+                      'set_global_assignment -name SYSTEMVERILOG_FILE core/lab_powercut.sv'])
+        if build=='powercut07r1':lines.append('set_global_assignment -name VERILOG_MACRO LAB_POWERCUT_REV=1')
+        if build=='powercut07r2':lines.append('set_global_assignment -name VERILOG_MACRO LAB_POWERCUT_REV=2')
+        if build=='powercut07r3':lines.append('set_global_assignment -name VERILOG_MACRO LAB_POWERCUT_REV=3')
+        if build=='powercut07r4':lines.append('set_global_assignment -name VERILOG_MACRO LAB_POWERCUT_REV=4')
+        if build=='powercut07r5':lines.append('set_global_assignment -name VERILOG_MACRO LAB_POWERCUT_REV=5')
     qsf.write_text('\n'.join(lines) + '\n')
     # Keep real related PLL outputs grouped together; no false cut between them.
     (core / 'core_constraints.sdc').write_text('''set_clock_groups -asynchronous \\
@@ -114,13 +122,18 @@ def prepare_custom(pins, build="minimal01"):
                 author='alfatreze', description='SD Write Research '+label+' - 32 case batch' if build.startswith('batch03') else 'Card write probe '+suffix+' - 64 byte BRAM FSM',
                 version={'batch03':'0.3.0','batch03r1':'0.3.1','batch03r2':'0.3.2','minimal02':'0.2.0'}.get(build,'0.1.0'), date_release='2026-10-05' if build in ('minimal02','batch03','batch03r1','batch03r2') else '2026-10-04',
                 url='https://github.com/alfatreze')
+            if build.startswith('powercut07'):
+                value['core']['metadata'].update(description='SD Write Research '+label+' - active-write interruption',
+                    version='0.7.5' if build=='powercut07r5' else '0.7.4' if build=='powercut07r4' else '0.7.3' if build=='powercut07r3' else '0.7.2' if build=='powercut07r2' else '0.7.1' if build=='powercut07r1' else '0.7.0',date_release='2026-10-06' if build in ('powercut07r4','powercut07r5') else '2026-10-05')
         elif name == 'data':
-            value['data']['data_slots'] = [dict(name='Batch B003' if build.startswith('batch03') else 'Probe output', id='0x23' if build.startswith('batch03') else '0x22', required=False,
+            value['data']['data_slots'] = [dict(name='B007 scratch' if build.startswith('powercut07') else 'Batch B003' if build.startswith('batch03') else 'Probe output', id='0x27' if build.startswith('powercut07') else '0x23' if build.startswith('batch03') else '0x22', required=False,
                 parameters=2, deferload=True, filename='batch-b003.bin' if build.startswith('batch03') else 'write64.bin')]
+            if build.startswith('powercut07'):
+                value['data']['data_slots']=[dict(name='B007 scratch',id='0x27',required=False,parameters=2,deferload=True,filename='powercut-b007.bin')]
         elif name == 'input':
             value['input']['controllers'] = [dict(type='default', mappings=[
-                dict(id=0,name='Run 32 write tests' if build.startswith('batch03') else 'Write generation',key='pad_btn_a'),
-                dict(id=1,name='Cold read 32 tests' if build.startswith('batch03') else 'Read and compare',key='pad_btn_b')])]
+                dict(id=0,name='Run 32 write tests' if build.startswith('batch03') else 'Start writes' if build.startswith('powercut07') else 'Write generation',key='pad_btn_a'),
+                dict(id=1,name='Cold read 32 tests' if build.startswith('batch03') else 'Stop / cold read' if build.startswith('powercut07') else 'Read and compare',key='pad_btn_b')])]
         if build.startswith('stress04'):
             if name=='core':value['core']['metadata'].update(description='SD Write Research '+label+' - 10000 pairs',version='0.4.'+build[-1] if build in ('stress04r1','stress04r2') else '0.4.0',date_release='2026-10-05')
             elif name=='data':value['data']['data_slots']=[dict(name='Stress B004',id='0x24',required=False,parameters=2,deferload=True,filename='stress-b004.bin')]
@@ -136,7 +149,7 @@ def prepare_custom(pins, build="minimal01"):
     (dest / 'info.txt').write_text('Card write research probe '+suffix+'\nA writes generation 1, then 2, etc.\nB reads and compares against expected.\nWRITE CMD OK is not a durability claim.\nVerify write64.bin on the host after Quit.\nDisposable test card only.\nTimeout: quit and relaunch the core.\n')
     if build.startswith('batch03'):
         (dest / 'info.txt').write_text('SD Write Research '+label+' - 32 cases\nA runs one write/read batch.\nB after fresh boot reads prior batch.\nWait for BATCH PASS or FAIL, screenshot.\nQuit, shutdown, verify on computer.\nRetained JTAG probe: SDW3.\nTimeout: reconfigure, never retry live.\n')
-    output = package / 'Assets/cardwrite' / core_id / ('batch-b003.bin' if build.startswith('batch03') else 'write64.bin')
+    output = package / 'Assets/cardwrite' / core_id / ('powercut-b007.bin' if build.startswith('powercut07') else 'batch-b003.bin' if build.startswith('batch03') else 'write64.bin')
     output.parent.mkdir(parents=True, exist_ok=True)
     # Existing-file baseline. First write must visibly replace zero bytes.
     output.write_bytes(bytes([0xa5])*262144 if build.startswith('batch03') else bytes(64))
@@ -152,6 +165,10 @@ def prepare_custom(pins, build="minimal01"):
     if build=='guarded06':
         output.unlink()
         (dest/'info.txt').write_text('SD Write Research B006 - whole-file guards\nReuse existing B005 files in slots 0x25/0x26.\nNever reset existing test output files.\nA: 64 saves, full 8 KiB guard/readback checks.\nB: recovery only, full-file validation.\nInitialize only an exactly blank pair.\nRetained endpoint SDW6; CRC is not authentication.\n')
+    if build.startswith('powercut07'):
+        from b007_oracle import image
+        (dest/'info.txt').write_text('SD Write Research '+label+' - active-write study\nB: cold read and validate before any write.\nA: start alternating writes; screen shows WRITE ACTIVE.\nPower off only while WRITE ACTIVE for a cut trial.\nB during writes stops after current command; B again cold reads.\nCold read mismatch locks writes until FPGA reconfigure.\nNever reset the scratch file or prior saves.\nVerify scratch and protected files on host after each cut.\nSDW7 JTAG is observe-only; timeout never retries.\n')
+        output.write_bytes(image(0))
     manifest(package, {'kind': build+'; not installable until audited bitstream exists',
                        'template_commit': pins['core-template']['commit'], 'seed': 1})
     print(f'Staged {stage}; prepared {package}')
@@ -159,7 +176,7 @@ def prepare_custom(pins, build="minimal01"):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--build", choices=["minimal01","minimal02","batch03","batch03r1","batch03r2","stress04","stress04r1","stress04r2","recovery05","guarded06"], default="minimal01")
+    parser.add_argument("--build", choices=["minimal01","minimal02","batch03","batch03r1","batch03r2","stress04","stress04r1","stress04r2","recovery05","guarded06","powercut07","powercut07r1","powercut07r2","powercut07r3","powercut07r4","powercut07r5"], default="minimal01")
     args = parser.parse_args()
     pins = validate_vendor()
     if args.build == "minimal01": prepare_reference(pins)

@@ -258,3 +258,11 @@ R5 uses a synchronous 65,536x1 `M10K` bitmap, with direct per-address set writes
 ## B007R5 FPGA fit success; hardware gate remains (2026-10-06)
 
 Quartus confirms the 65,536x1 coverage bitmap maps to M10K, and the full fit passes at 11% ALM utilization with positive reported timing (minimum +0.123 ns). All 161 warnings were reviewed; no latch or RAM-inference warning was found. The package is locally qualified. This does not authorize treating any physical write as proven: install/control/remount and interruption trials remain outstanding.
+
+## Publish a concise README and central Results page (2026-10-06)
+
+Keep the root README focused on the current B007R5 report and ordered test-suite roadmap. Put campaign outcome summaries and dedicated result reports under `Results/`, while retaining CURRENT_STATUS.md as the chronological engineering log and procedures beside their corresponding test suites. This keeps the GitHub landing page readable without discarding detailed history or evidence links.
+
+## Standardize result summaries (2026-10-06)
+
+Every test-suite summary in Results/ and the current README report uses the same order: goal, method, corrections made during the work, and result details. When a suite has no correction, state that explicitly rather than omitting the section. Retain detailed evidence and limitations after the summary.

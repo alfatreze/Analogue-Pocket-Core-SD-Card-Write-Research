@@ -1,5 +1,15 @@
 # B004R2 physical results — initial persistence baseline
 
+## Standard test summary
+
+**Goal:** Test sustained changing-data writes and repeatable fresh-launch readback against an independent whole-file oracle.
+
+**Method:** Run 10,000 changing-data pairs, retain all JTAG records, run ten fresh-launch read-only sessions, and verify the complete file and protected contents after host remounts.
+
+**Corrections:** Earlier R1/R2 development corrected a 511-bit probe-width limit and aligned read timing-history accounting to the DONE edge. The qualified R2 build and expanded simulation were used for the physical run; see [B004 hardware procedure](../B004_HARDWARE_RUN.md) and [chronological status](../CURRENT_STATUS.md).
+
+**Result details:** All 10,000 write/read pairs, 320 fresh-launch reads, and eleven host whole-file checks passed. See the detailed per-session data below. This was one card/setup; exact owner-confirmed full power-off actions were not established, so no power-cycle or interruption-safety claim is made.
+
 ## Result
 
 PASS for the tested scope: one 10,000-pair changing-data runtime session (20,000 commands), ten separate fresh-launch read-only sessions (320 reads), and all eleven subsequent host whole-file checks. No observed comparison failures or unexpected existing-file changes. Full 256 KiB final-file SHA-256: `0ef80e007254ccc6d63874e2aac6e0082e360de00843b82b36836807ff433e56`. Guard bytes and both prior qualified output files remain unchanged.

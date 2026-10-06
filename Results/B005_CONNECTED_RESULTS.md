@@ -1,5 +1,15 @@
 # B005 connected results — stopped by JTAG connection failure
 
+## Standard test summary
+
+**Goal:** Qualify two-file generation recovery through repeated writes, read-only recovery, and bounded between-command FPGA interruption points.
+
+**Method:** Execute connected B005 batches and recovery sessions, retain raw/decoded JTAG events, independently replay the record stream, and later verify both physical files and protected card contents by remount.
+
+**Corrections:** The console transport was replaced with a scoped client after the earlier client leaked remote processes. Replay verification was corrected to retain transport metadata. Neither correction changed the frozen FPGA source or rewrote the stopped campaign evidence.
+
+**Result details:** 647 saves, 17 read-only recoveries, and seven between-command FPGA interruption recoveries passed their immediate checks. The campaign stopped incomplete on JTAG chain failure. Subsequent read-only recovery and remount verified the preserved files. No active SD power-loss test was performed. Detailed evidence follows.
+
 2026-10-05, designated single CARDWRITE card, B005/0.5.0. The connected campaign stopped at 18:08 WEST when System Console could not open SDW5. The Blaster remained visible to the VM, but repeated chain reads reported “JTAG chain broken”. No automatic retry/reconfiguration or B006 loading followed this failure.
 
 ## Completed storage evidence

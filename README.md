@@ -6,6 +6,9 @@
 
 `██████░░░░ 60%`
 
+<img width="512" height="512" alt="image" src="https://github.com/user-attachments/assets/a922e965-d732-4f76-9cd2-e05bdb847033" />
+
+
 An Analogue Pocket core **can persist exact bounded updates to preallocated SD files** on the tested setup. The CPU-free writer passed a 10,000-pair stress campaign, repeated fresh-launch reads, and independent host file checks. Alternating-record saves recovered the last valid generation after the tested interruptions between commands. Recorded host comparisons found no unexpected changes to protected files.
 
 **Power loss during an active overwrite can leave mixed old/new bytes.** Three monitored trials demonstrated this. Selected cold-read tests rejected torn files and disabled writes. Robust recovery of the alternating-record save format during active SD power loss, physical Tau CPU integration, playback performance, and broader card/firmware coverage remain to be established.

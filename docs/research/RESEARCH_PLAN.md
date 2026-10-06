@@ -2,7 +2,7 @@
 
 Prepared 2026-10-04. Planning and source review only; no new hardware experiment has been run.
 
-Current outcomes are summarized in [Results](Results/) and recorded in CURRENT_STATUS.md, B006_DEVELOPMENT.md and TAU_CPU_INTEGRATION.md. The detailed B004 and B005 reports are under Results/. This dated plan retains the original experimental sequence; it is not the latest hardware-status report.
+Current outcomes are summarized in [Results](../results/) and recorded in [CURRENT_STATUS.md](../status/CURRENT_STATUS.md), the B006 development notes, and [TAU_CPU_INTEGRATION.md](TAU_CPU_INTEGRATION.md). The detailed B004 and B005 reports are under Results/. This dated plan retains the original experimental sequence; it is not the latest hardware-status report.
 
 ## Research question and possible outcomes
 

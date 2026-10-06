@@ -6,7 +6,7 @@
 
 **Method:** Run 10,000 changing-data pairs, retain all JTAG records, run ten fresh-launch read-only sessions, and verify the complete file and protected contents after host remounts.
 
-**Corrections:** Earlier R1/R2 development corrected a 511-bit probe-width limit and aligned read timing-history accounting to the DONE edge. The qualified R2 build and expanded simulation were used for the physical run; see [B004 hardware procedure](../B004_HARDWARE_RUN.md) and [chronological status](../CURRENT_STATUS.md).
+**Corrections:** Earlier R1/R2 development corrected a 511-bit probe-width limit and aligned read timing-history accounting to the DONE edge. The qualified R2 build and expanded simulation were used for the physical run; see [B004 hardware procedure](../procedures/B004_HARDWARE_RUN.md) and [chronological status](../status/CURRENT_STATUS.md).
 
 **Result details:** All 10,000 write/read pairs, 320 fresh-launch reads, and eleven host whole-file checks passed. See the detailed per-session data below. This was one card/setup; exact owner-confirmed full power-off actions were not established, so no power-cycle or interruption-safety claim is made.
 

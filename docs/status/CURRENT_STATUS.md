@@ -286,7 +286,7 @@ New screenshots `20261005_002904.png` and `20261005_002910.png` show CARD WRITIN
 
 - STRESS-004-COLD-REPEAT09 identity/whole-file/guards pass with exact expected SHA-256. Independent comparison against repeat08: all prior files unchanged; only new screenshot 20261005_152605.png. Inspected and copied/hash-verified screenshot: STRESS PASS, PASSED/FINISHED 0x20, ERROR 0, CYCLES 0x0001A207 (last retained read + 1).
 - All ten sessions and host snapshots independently rechecked as a chain: 320 reads, zero writes/failures; every prior file unchanged at each remount. Public final summary b004r2-physical-file-cold-repeat09.json and aggregate b004r2-physical-campaign-summary.json under work/evidence.
-- [Results/B004_RESULTS.md](Results/B004_RESULTS.md) records the completed initial single-card persistence baseline and its exact limits. Power actions not separately confirmed; no confirmed-cycle or interrupted-write safety claim. Next proposed experiment B005: two preallocated alternate files, independently validated generation/checksum/length format and controlled recovery tests before Tau CPU integration.
+- [Results/B004_RESULTS.md](../results/B004_RESULTS.md) records the completed initial single-card persistence baseline and its exact limits. Power actions not separately confirmed; no confirmed-cycle or interrupted-write safety claim. Next proposed experiment B005: two preallocated alternate files, independently validated generation/checksum/length format and controlled recovery tests before Tau CPU integration.
 
 ## B005 prepared — compilation and physical trials pending
 
@@ -345,7 +345,7 @@ Full compile passed 17:40:22 WEST, zero errors / 167 warnings, 39:10. Four inter
 
 At 18:08 WEST, JTAG status could not claim SDW5. The VM still sees the Blaster, but repeated chain reads report the FPGA chain broken. The campaign stops before another reload; B006 continuation stops without programming. Owner was asked to confirm Pocket power/JTAG seating when available, while offline development continues.
 
-Independent corrected replay confirms 647 completed saves (640 clean + seven controls), 17 read-only sessions, seven between-command FPGA interruption recoveries, 3,326 counted SD commands and 39 reverified programming journals. Forty completed events are preserved; the planned second point-3 control/cut and final repair were not run. Last read selects generation 647, mask 1. The model predicts intact A=647 and a deliberately torn B header=648 after a 256-byte prefix. Host-remount bytes/guards/protected content remain pending. Full bounded results/limits are in [Results/B005_CONNECTED_RESULTS.md](Results/B005_CONNECTED_RESULTS.md); stopped summary keeps campaign completion/pass false while confirming evidence replay.
+Independent corrected replay confirms 647 completed saves (640 clean + seven controls), 17 read-only sessions, seven between-command FPGA interruption recoveries, 3,326 counted SD commands and 39 reverified programming journals. Forty completed events are preserved; the planned second point-3 control/cut and final repair were not run. Last read selects generation 647, mask 1. The model predicts intact A=647 and a deliberately torn B header=648 after a 256-byte prefix. Host-remount bytes/guards/protected content remain pending. Full bounded results/limits are in [Results/B005_CONNECTED_RESULTS.md](../results/B005_CONNECTED_RESULTS.md); stopped summary keeps campaign completion/pass false while confirming evidence replay.
 
 ## Console lifetime fault and scoped cleanup
 
@@ -512,3 +512,7 @@ After reloading B007R5, the tag-0 cold read passed. A began writes; B was presse
 The GitHub README now presents the concise B007R5 report and the ordered test-suite roadmap. Campaign summaries are centralized in `Results/README.md`; the standalone B004R2 and B005 connected-result reports are in `Results/`. This is a documentation-only change; it does not change RTL, builds, card contents, or the test status.
 
 All suite summaries use a consistent order: goal, method, corrections made during the work, and result details. The README's current report and each result entry follow this structure; detailed chronological evidence remains here and in the linked run records.
+
+## Documentation moved under docs/ (2026-10-06)
+
+Project research, results, procedures, build audit, current status, and third-party notices are now grouped under `docs/` by purpose. `docs/README.md` indexes the structure; root `README.md`, `LICENSE`, and agent instructions remain at the root for GitHub discovery and repository operation. Markdown links were rewritten for the new locations and checked. No RTL, build, or card contents changed.

@@ -266,3 +266,7 @@ Keep the root README focused on the current B007R5 report and ordered test-suite
 ## Standardize result summaries (2026-10-06)
 
 Every test-suite summary in Results/ and the current README report uses the same order: goal, method, corrections made during the work, and result details. When a suite has no correction, state that explicitly rather than omitting the section. Retain detailed evidence and limitations after the summary.
+
+## Organize repository documentation under docs/ (2026-10-06)
+
+Group research/architecture, results, procedures, build audit, chronological status, and legal notices under `docs/` by function. Keep `README.md` and `LICENSE` at the repository root for GitHub discovery, and keep `AGENTS.md` at the root so repository working agreements load before edits. Add `docs/README.md` as the full navigation index and update Markdown links after moves. Vendor-owned documentation remains with vendor sources.

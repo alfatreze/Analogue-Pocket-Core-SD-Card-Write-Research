@@ -8,7 +8,7 @@ Hardware mutations use only the user-designated disposable volume, checked by mo
 
 Keep compilation sources frozen after launch. Check for existing Quartus compiles before launching another. Preserve logs, complete timing reports, resources, source hashes and both raw/reversed bitstream hashes. Never substitute the template's shipped bitstream for a failed custom compile.
 
-Append implementation decisions, failures and actual hardware outcomes to DECISIONS.md and CURRENT_STATUS.md. Distinguish code review, host tests, RTL simulation, Quartus verification and Pocket evidence. Keep missing firmware/card results pending.
+Append implementation decisions, failures and actual hardware outcomes to `docs/research/DECISIONS.md` and `docs/status/CURRENT_STATUS.md`. Distinguish code review, host tests, RTL simulation, Quartus verification and Pocket evidence. Keep missing firmware/card results pending.
 
 Screen readouts need named native RTL framebuffer captures under work/sim; inspect them before package delivery. Simulation models do not establish physical IP timing or persistence.
 

@@ -5,6 +5,7 @@ Project documentation is grouped by its role. The repository-root [README](../RE
 ## Research and architecture
 
 - [Research plan](research/RESEARCH_PLAN.md) — stages, methods, gates, and stop rules.
+- [Future tests](research/FUTURE_TESTS.md) — parked directory, library, cover-optimization, and playlist investigations.
 - [Experiment notes](research/EXPERIMENTS.md) — early test outline and run record template.
 - [Tau test catalogue](research/TAU_TEST_MATRIX.md) — protocol, security, recovery, CPU, workload, and endurance cases.
 - [Tau CPU integration](research/TAU_CPU_INTEGRATION.md) — B008 plan and modeled CPU results.

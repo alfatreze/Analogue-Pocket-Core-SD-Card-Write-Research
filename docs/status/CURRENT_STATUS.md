@@ -520,3 +520,7 @@ Project research, results, procedures, build audit, current status, and third-pa
 ## Overall feasibility reporting corrected (2026-10-06)
 
 README now starts with overall feasibility and a documented 60/100 discovery-milestone score. Ten individual executed-suite reports contain four ordered sections and repeat those fields for each recorded case. The index/roadmap links directly to each report; future stages explicitly have no result yet. B005 distinguishes the original stopped 647-save prefix from the separate resumed trial reaching 649. B007 distinguishes three host-confirmed monitored torn images from explicitly recorded cold-refusal cases (CUT1, CUT3, separate unmonitored shutdown). Original B004/B005 historical reports remain archived. This documentation work changes no RTL, build, or card data; it makes evidence scope explicit.
+
+## Optional generated-library backlog parked (2026-10-06)
+
+Four future investigations are documented in docs/research/FUTURE_TESTS.md: MP3 directory discovery, library-index generation/replacement, optimized cover-image outputs, and playlist creation. No investigation or hardware trial has started; all results are pending. The active CPU/save roadmap and 60/100 discovery score are unchanged.

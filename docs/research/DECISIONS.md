@@ -274,3 +274,7 @@ Group research/architecture, results, procedures, build audit, chronological sta
 ## Overall feasibility and individual suite reports (2026-10-06)
 
 Lead the README with the overall capability decision and a transparent 60/100 weighted discovery score. Credit the evidenced initial CPU-free milestones while leaving physical CPU integration, Tau workloads, and broader qualification unearned. Link every executed suite to an individual report; give each suite and each case Goal, Method, Corrections, and Result details in that order. Retain the original B004/B005 reports under docs/status/archive/. Correct the earlier generalized B007 refusal wording: selected cold-read refusal is recorded for CUT1, CUT3, and the separate unmonitored shutdown, while CUT2/CUT4 have host torn-image evidence without separately recorded refusal tests.
+
+## Park generated-library features for future tests (2026-10-06)
+
+At the owner’s request, record directory scanning, library updates, optimized cover generation, and new playlist creation as parked optional investigations in FUTURE_TESTS.md. Keep prerequisites and pending evidence explicit. Do not advance these features or change the B008 gate/progress score merely by adding them to the backlog.

@@ -159,3 +159,7 @@ Additional P0 CPU completeness and lifecycle tests, prompted by the observed gap
 These additional tests are planned hardware/full-SoC gates. The current isolated model catches missing boot/verify guard words, but does not implement production CDC, a compatible MMIO map or coordinated reset recovery. Private stopped histories remain locally reproducible; sanitized public outcomes are in work/evidence/b005-connected-public-summary.json. No B007 hardware image exists.
 
 Long CPU campaign follow-up: eight profiles × 64 saves pass (512 modeled saves / 2,576 commands), covering blank, damaged newest, one-valid, identical ties, counter wrap and high-generation carry. This expands isolated CPU-format evidence; C13–C17 production hardware/full-SoC gates remain pending.
+
+## Parked future expansion
+
+Directory discovery, library-index generation/replacement, derived cover images, and playlist creation are tracked in [FUTURE_TESTS.md](FUTURE_TESTS.md). These optional tests are not active qualification requirements or completed capabilities. Existing source-media protection remains in force until a specific generated-output experiment is selected.

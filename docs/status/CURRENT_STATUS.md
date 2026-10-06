@@ -516,3 +516,7 @@ All suite summaries use a consistent order: goal, method, corrections made durin
 ## Documentation moved under docs/ (2026-10-06)
 
 Project research, results, procedures, build audit, current status, and third-party notices are now grouped under `docs/` by purpose. `docs/README.md` indexes the structure; root `README.md`, `LICENSE`, and agent instructions remain at the root for GitHub discovery and repository operation. Markdown links were rewritten for the new locations and checked. No RTL, build, or card contents changed.
+
+## Overall feasibility reporting corrected (2026-10-06)
+
+README now starts with overall feasibility and a documented 60/100 discovery-milestone score. Ten individual executed-suite reports contain four ordered sections and repeat those fields for each recorded case. The index/roadmap links directly to each report; future stages explicitly have no result yet. B005 distinguishes the original stopped 647-save prefix from the separate resumed trial reaching 649. B007 distinguishes three host-confirmed monitored torn images from explicitly recorded cold-refusal cases (CUT1, CUT3, separate unmonitored shutdown). Original B004/B005 historical reports remain archived. This documentation work changes no RTL, build, or card data; it makes evidence scope explicit.

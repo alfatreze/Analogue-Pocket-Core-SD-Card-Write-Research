@@ -1,58 +1,51 @@
 # Analogue Pocket Core — SD Card Write Research
 
-An independent research project to determine whether an Analogue Pocket core can write its own SD-card data safely, repeatably, and without changing Tau's music or other protected files. All physical writes use a dedicated scratch file on the designated test card. Tau Alpha remains a read-only reference; its repository and build outputs are not modified.
+## Overall feasibility: demonstrated for bounded CPU-free writes; Tau qualification pending
 
-## Current report — B007R5
+**Progress: 60/100 · Discovery milestone score · Updated 2026-10-06**
 
-**Goal:** Determine whether the CPU-free writer detects incomplete data after power is removed during a live SD write.
+`██████░░░░ 60%`
 
-**Method:** Run the qualified B007R5 core with external JTAG observation; power off during active writes; remount and compare the complete scratch file; cold-read torn images; check unrelated files.
+An Analogue Pocket core **can persist exact bounded updates to preallocated SD files** on the tested setup. The CPU-free writer passed a 10,000-pair stress campaign, repeated fresh-launch reads, and independent host file checks. Alternating-record saves recovered the last valid generation after the tested interruptions between commands. Recorded host comparisons found no unexpected changes to protected files.
 
-**Corrections:** R3/R4's register-expanded coverage bitmap exceeded the FPGA's ALM capacity. R5 changed coverage tracking to an M10K-backed bitmap and passed full Quartus fit/timing review.
+**Power loss during an active overwrite can leave mixed old/new bytes.** Three monitored trials demonstrated this. Selected cold-read tests rejected torn files and disabled writes. Robust recovery of the alternating-record save format during active SD power loss, physical Tau CPU integration, playback performance, and broader card/firmware coverage remain to be established.
 
-**Result details:** Three monitored active cuts left stable, mountable mixed old/new files. Cold reads rejected each torn image and disabled further writes. Clean-write, stop, restart, and between-command power-cycle controls passed exact host-side checks; unrelated files remained unchanged. Fit used 1,991 / 18,480 ALMs (11%), with minimum reported slack +0.123 ns. Evidence is limited to one Pocket, one exFAT card, and one firmware setup; it does **not** establish atomic writes or general power-loss safety. Optional extra cuts are deferred. Next is B008 CPU integration using the pinned Tau VexRiscv path.
+The score credits five completed **discovery milestones**, weighted to 60 points. Physical CPU integration, Tau workloads, and broader qualification account for the remaining 40. It is a planning score, not a measured success probability or a declaration that 60% of every test has passed. See the [scoring rubric and capability status](docs/research/FEASIBILITY_STATUS.md).
 
-Full results, limits, and evidence links: [Results](docs/results/). The detailed dated log remains in [CURRENT_STATUS.md](docs/status/CURRENT_STATUS.md).
+## Roadmap, test suites, and individual results
 
-## Roadmap and test suites
+Every executed suite links to its own report. Each report and each recorded case follows **Goal → Method → Corrections → Result details**. A failed or inconclusive test remains visible in its report.
 
-The sequence progresses from isolated storage behavior to the real Tau CPU and workloads. Each stage keeps its own build and evidence; later stages reuse the same deterministic payloads and independent host oracle.
-
-| Stage | Test suite | What it tests | Status / gate |
+| Suite | What it investigates | Current outcome | Individual results |
 |---|---|---|---|
-| 0 | [Protocol, fixtures, and observability](docs/research/RESEARCH_PLAN.md#phase-0--freeze-the-protocol-fixtures-and-observability) | Freeze source/build/card identity, slot map, payload corpus, hashes, command traces, host oracle, and protected-file manifest before a hardware run. | Ongoing discipline for every stage. |
-| 1 | [Official reference control](docs/research/RESEARCH_PLAN.md#phase-1--establish-an-independent-reference-control) | Establish what the official target-data example does on the same Pocket/card, including post-Quit and cold-restart file contents. | Earlier control evidence; see [Results](docs/results/). |
-| 2 | [Minimal CPU-free writer](docs/research/RESEARCH_PLAN.md#phase-2--minimal-custom-core-no-cpu) | Compare documented APF write and nonvolatile paths with BRAM/FSM only; test create/update, readback, Quit, reopen, and cold persistence. | B003–B007 built this baseline. B007R5 passed the initial active-write study. |
-| 3 | [Recovery formats and write strategies](docs/research/RESEARCH_PLAN.md#phase-3--recoverable-formats-and-alternative-approaches) | Compare preallocated files, alternating records, journals, commit markers, chunking, and bounded/coalesced saves. Test torn/corrupt data and whether the last valid state is retained. | Initial A/B-record recovery methods tested; broader format and interruption qualification remains. |
-| 4 | [Exact Tau CPU and command path](docs/research/RESEARCH_PLAN.md#phase-4--the-same-cpu-and-command-path-as-tau) | Add the pinned VexRiscv and command crossing, then test MMIO ownership, CDC, BRAM publication, memory sources, busy/error/timeout/reset cases against the CPU-free baseline. | **B008 next.** Existing CPU prototypes pass modeled simulations but do not establish physical CPU-driven persistence. |
-| 5 | [Tau workloads and qualification](docs/research/RESEARCH_PLAN.md#phase-5--tau-workloads-and-qualification) | Test settings first, then resume/bookmarks and diagnostics; measure playback audio/FIFO impact, command latency, memory use, and protected-file integrity. | Not yet qualified. |
-| 6 | [Environment and endurance matrix](docs/research/TAU_TEST_MATRIX.md#environment-and-long-run-campaign) | Exercise declared firmware, card/filesystem, fragmentation, long-run, and repeatability conditions; state limits per environment. | Not yet qualified. |
+| Official reference control | Install the unchanged official example and establish a comparison baseline. | Installation verified; functional save/reload result pending. | [Control report](docs/results/CONTROL_RESULTS.md) |
+| FSM-001 — initial minimal writer | Persist one exact 64-byte record with a CPU-free APF writer. | Completed with incorrect stored bytes; retained failure. | [FSM-001 report](docs/results/FSM001_RESULTS.md) |
+| FSM-002 — corrected minimal writer | Repair serial timing/startup, then write, remount, and fresh-launch read. | Exact record and readback passed; wrong-build attempt retained. | [FSM-002 report](docs/results/FSM002_RESULTS.md) |
+| B003R2 — automatic batch | Check payload sizes/ranges, repeated and shrinking overwrites, guards, and cold reads. | 32 cases / 38 pairs and 32 cold reads passed host checks. | [B003 report](docs/results/B003_RESULTS.md) |
+| B004R2 — stress | Measure 10,000 changing-data pairs and ten fresh-launch cold sessions. | 20,000 warm commands, 320 cold reads, eleven host checks passed. | [B004 report](docs/results/B004_RESULTS.md) |
+| B005 — alternating records | Recover a valid generation after controlled interruptions between commands. | Stopped prefix preserved; separate resume reached 649 saves/eight FPGA recoveries. | [B005 report](docs/results/B005_CONNECTED_RESULTS.md) |
+| B006 — complete guards and recovery | Reject incomplete/damaged records; verify guarded saves and partial-prefix power cycling. | 707 RTL trials; 325 + 64 saves; four FPGA recoveries; one Pocket power-cycle check passed. | [B006 report](docs/results/B006_RESULTS.md) |
+| B007R3/R4/R5 — fit qualification | Fit exhaustive received-word coverage while preserving missing/duplicate rejection. | R3/R4 failed at 254% ALMs; RAM-backed R5 passed at 11%. | [B007 fit report](docs/results/B007_FIT_RESULTS.md) |
+| B007R5 — active-write power loss | Characterize torn writes, read-only refusal, protected content, and post-cut controls. | Three monitored cuts left mixed data; selected refusal checks and controls passed. | [B007 interruption report](docs/results/B007_RESULTS.md) |
+| Exact Tau CPU prototypes | Model command ownership, crossing, recovery formats, faults, and long save sequences. | Modeled profiles passed; reset and original missing-word limitations documented. Hardware pending. | [CPU simulation report](docs/results/CPU_SIM_RESULTS.md) |
+| **B008 — CPU/engine integration** | Join pinned 60 MHz VexRiscv to the proven storage engine; qualify ownership, CDC, reset, then hardware persistence. | **Next implementation gate.** | [Plan](docs/research/TAU_CPU_INTEGRATION.md#b008-first-implementation-gate); no result yet. |
+| Tau functional/workload qualification | Test settings, resume/diagnostics, memory sources, and idle/paused/playback save budgets. | Planned. | [Tau catalogue](docs/research/TAU_TEST_MATRIX.md); no result yet. |
+| Environment/endurance qualification | Repeat declared capabilities across cards, filesystems, firmware, fragmentation, and lifecycle conditions. | Planned. | [Qualification targets](docs/research/RESEARCH_PLAN.md#qualification-and-stop-rules); no result yet. |
 
-### Suite coverage
+The [research plan](docs/research/RESEARCH_PLAN.md) sets the method order and qualification gates. The [Tau test catalogue](docs/research/TAU_TEST_MATRIX.md) defines the detailed protocol, destination protection, invalid-input, CPU/memory, recovery, workload, and environment cases.
 
-The [Tau test catalogue](docs/research/TAU_TEST_MATRIX.md) defines detailed cases for protocol and persistence boundaries, destination security, invalid inputs, CPU/BRIDGE/memory correctness, recovery/interruption, functional playback and performance, and environment/endurance. “Exhaustive” means covering the declared invariants, boundaries, and risk combinations; it does not mean testing every possible byte string or card.
+## Project and documentation
 
-## Research documents
+This isolated research project uses synthetic fixtures on the designated CARDWRITE test card. Tau Alpha supplies pinned read-only references. Full results are indexed under [docs/results](docs/results/README.md); the [documentation map](docs/README.md) covers plans, procedures, build audits, and the [chronological evidence log](docs/status/CURRENT_STATUS.md).
 
-- [Results index](docs/results/) — concise outcomes by build/campaign and links to detailed records.
-- [Research plan](docs/research/RESEARCH_PLAN.md) — staged method, gates, and stop rules.
-- [Tau test catalogue](docs/research/TAU_TEST_MATRIX.md) — detailed functional, safety, recovery, and performance tests.
-- [Current status log](docs/status/CURRENT_STATUS.md) — chronological implementation, build, and hardware evidence.
-- [B007 active-write procedure](docs/procedures/B007_ACTIVE_WRITE.md) — design, controls, and interruption protocol.
-- [B008 CPU integration plan](docs/research/TAU_CPU_INTEGRATION.md) — next integration gate and existing simulation scope.
-- [Core and platform knowledge](docs/research/CORE_KNOWLEDGE.md) — selected Analogue Pocket development references.
-- [Local Tau repository research](docs/research/REPO_RESEARCH.md) — read-only findings from Tau Alpha.
-- [Decision log](docs/research/DECISIONS.md) — rationale, corrections, and scope decisions.
-- [Documentation map](docs/README.md) — complete index grouped by purpose.
-
-## Getting started
+## Clone and use
 
 ```sh
 git clone --recurse-submodules https://github.com/alfatreze/Analogue-Pocket-Core-SD-Card-Write-Research.git
 ```
 
-Simulation requires Python 3 and Icarus Verilog; see the [Makefile](Makefile) for targets. The pinned vendor sources are documented in `vendor/PINNED.json`. Hardware update tools are bound to the designated disposable card identity and require an audited plan, backups, and protected-content comparison. Do not use them on a production card.
+Simulation requires Python 3 and Icarus Verilog; see the [Makefile](Makefile) for targets. Upstream pins are in `vendor/PINNED.json`. Hardware update tools require the designated disposable card identity, reviewed changes, backups, and protected-file comparison.
 
 ## License
 
-Original project work is licensed under the [MIT License](LICENSE). Third-party framework code, IP, assets, and generated artifacts retain their applicable terms; see [NOTICE.md](docs/legal/NOTICE.md).
+Original project work is under the [MIT License](LICENSE). Third-party terms and provenance are in [NOTICE.md](docs/legal/NOTICE.md).

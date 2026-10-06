@@ -1,48 +1,133 @@
-# B004R2 physical results — initial persistence baseline
+# B004R2 — stress and repeated cold reads
 
-## Standard test summary
+[All suites](README.md) · [Overall feasibility](../research/FEASIBILITY_STATUS.md)
 
-**Goal:** Test sustained changing-data writes and repeatable fresh-launch readback against an independent whole-file oracle.
+## Goal
 
-**Method:** Run 10,000 changing-data pairs, retain all JTAG records, run ten fresh-launch read-only sessions, and verify the complete file and protected contents after host remounts.
+Test sustained bounded updates and repeatable fresh-launch recovery of the final region data.
 
-**Corrections:** Earlier R1/R2 development corrected a 511-bit probe-width limit and aligned read timing-history accounting to the DONE edge. The qualified R2 build and expanded simulation were used for the physical run; see [B004 hardware procedure](../procedures/B004_HARDWARE_RUN.md) and [chronological status](../status/CURRENT_STATUS.md).
+## Method
 
-**Result details:** All 10,000 write/read pairs, 320 fresh-launch reads, and eleven host whole-file checks passed. See the detailed per-session data below. This was one card/setup; exact owner-confirmed full power-off actions were not established, so no power-cycle or interruption-safety claim is made.
+Run 10,000 changing-data pairs; collect complete operation history; perform ten separate 32-read fresh launches with host whole-file checks after each session.
 
-## Result
+## Corrections
 
-PASS for the tested scope: one 10,000-pair changing-data runtime session (20,000 commands), ten separate fresh-launch read-only sessions (320 reads), and all eleven subsequent host whole-file checks. No observed comparison failures or unexpected existing-file changes. Full 256 KiB final-file SHA-256: `0ef80e007254ccc6d63874e2aac6e0082e360de00843b82b36836807ff433e56`. Guard bytes and both prior qualified output files remain unchanged.
+The initial 512-bit probe violated the 511-bit IP limit. R1 retained read timing one clock later than the global extrema; R2 captured the DONE-edge counter consistently. Failed/stopped builds and expanded simulation histories remain preserved.
 
-All 10,000 warm records are preserved losslessly in `work/evidence/b004r2-physical-jtag-write-records.json.gz`. Each cold session has its own full public retained history and post-remount summary. The aggregate with evidence hashes is `work/evidence/b004r2-physical-campaign-summary.json`; original card snapshots, output files, screenshots and raw JTAG captures remain private immutable evidence.
+## Result details
 
-## Fresh-launch checks
+**PASS within the initial single-card scope:** 10,000 pairs, 320 subsequent read-only comparisons, and eleven host checks. Final SHA-256 `0ef80e007254ccc6d63874e2aac6e0082e360de00843b82b36836807ff433e56`.
 
-| Check | Reads | Writes | Failures | Read range (ms) | Post-remount whole file and prior contents |
-|---|---:|---:|---:|---|---|
-| 1 | 32 | 0 | 0 | 0.787–8.042 | PASS |
-| 2 | 32 | 0 | 0 | 0.741–6.832 | PASS |
-| 3 | 32 | 0 | 0 | 0.775–6.909 | PASS |
-| 4 | 32 | 0 | 0 | 0.741–7.998 | PASS |
-| 5 | 32 | 0 | 0 | 0.741–6.866 | PASS |
-| 6 | 32 | 0 | 0 | 0.775–6.792 | PASS |
-| 7 | 32 | 0 | 0 | 0.780–10.963 | PASS |
-| 8 | 32 | 0 | 0 | 0.747–7.288 | PASS |
-| 9 | 32 | 0 | 0 | 0.754–9.270 | PASS |
-| 10 | 32 | 0 | 0 | 0.754–6.842 | PASS |
+### STRESS-004-WRITE — 10,000 pairs
 
-Warm write timings: 11.298–126.546 ms; warm read timings: 6.076–21.889 ms, measured at the 74.25 MHz core clock. Each cold launch starts from verified READY/zero counters. Screenshots agree with indexed retained history and the documented one-clock LCD timing convention.
+**Goal:** Detect missing, repeated, stale, or wrong-range operations during sustained changing-data updates.
 
-## Supported conclusion and limits
+**Method:** Retain every indexed write/read record, reconstruct timing extrema, then independently compare the entire file.
 
-The minimal serialized BRAM/FSM APF writer can persist bounded updates to the existing preallocated file on this card, and the data remains readable across the tested fresh launches/remounts. This supplies a working reference for further experiments.
+**Corrections:** Before hardware, reduce the unsupported 512-bit probe to 511 bits and align retained/read-extrema timing to the same DONE edge. No in-flight RTL correction.
 
-Ten fresh launches do not establish the research plan's 100/1,000 confirmed power-cycle goals. Full power-off was requested, but exact actions were not separately confirmed. The ten sessions are recorded as fresh launches. One exFAT card and firmware reported 2.7 were used. Earlier overwritten generations have immediate comparison history; only the final generation in each region has host durability evidence. No statistical reliability bound is claimed for correlated operations.
+**Result details:** 10,000 pairs / 20,000 commands; zero comparison failures. Writes 11.298–126.546 ms; reads 6.076–21.889 ms. Final 256 KiB file and protected content passed.
 
-Interrupted writes, atomicity, filesystem recovery, malicious/corrupt record rejection, allocation/create/resize, NV/flush alternatives, additional cards/firmware and Tau's VexRiscv/playback path remain unqualified.
+### STRESS-004-COLD-01 — fresh-launch read/remount
 
-## Next experiment
+**Goal:** Recover all 32 final regions read-only and confirm that the read causes no stored-data changes.
 
-Develop B005 using two separate preallocated files with generations, explicit length/version and checksum validation. On launch validate both independently and choose the newest valid generation; reject malformed or out-of-bounds records. Preserve B004's exact source/package/results as the differential reference.
+**Method:** Fresh READY/zero counters; 32 retained reads; host whole-file/guard/protected comparison.
 
-First simulate corrupt/truncated records, generation selection and all interrupted-transfer phases, then compile/qualify a separate numbered build. Establish clean physical alternating writes and cold recovery before controlled power interruption on the designated disposable card. Retain external/JTAG evidence, full-card sentinels and the untouched previous generation at every boundary; a write to the alternate file is not assumed atomic. Only after this recovery experiment should the same transport be introduced into the exact pinned Tau VexRiscv configuration, followed by idle/playback workload tests.
+**Corrections:** None recorded; any expected new screenshot was reviewed separately.
+
+**Result details:** PASS: 32 reads, zero writes/failures, read range 0.787–8.042 ms. Full file and all prior contents unchanged.
+
+### STRESS-004-COLD-02 — fresh-launch read/remount
+
+**Goal:** Recover all 32 final regions read-only and confirm that the read causes no stored-data changes.
+
+**Method:** Fresh READY/zero counters; 32 retained reads; host whole-file/guard/protected comparison.
+
+**Corrections:** None recorded; any expected new screenshot was reviewed separately.
+
+**Result details:** PASS: 32 reads, zero writes/failures, read range 0.741–6.832 ms. Full file and all prior contents unchanged.
+
+### STRESS-004-COLD-03 — fresh-launch read/remount
+
+**Goal:** Recover all 32 final regions read-only and confirm that the read causes no stored-data changes.
+
+**Method:** Fresh READY/zero counters; 32 retained reads; host whole-file/guard/protected comparison.
+
+**Corrections:** None recorded; any expected new screenshot was reviewed separately.
+
+**Result details:** PASS: 32 reads, zero writes/failures, read range 0.775–6.909 ms. Full file and all prior contents unchanged.
+
+### STRESS-004-COLD-04 — fresh-launch read/remount
+
+**Goal:** Recover all 32 final regions read-only and confirm that the read causes no stored-data changes.
+
+**Method:** Fresh READY/zero counters; 32 retained reads; host whole-file/guard/protected comparison.
+
+**Corrections:** None recorded; any expected new screenshot was reviewed separately.
+
+**Result details:** PASS: 32 reads, zero writes/failures, read range 0.741–7.998 ms. Full file and all prior contents unchanged.
+
+### STRESS-004-COLD-05 — fresh-launch read/remount
+
+**Goal:** Recover all 32 final regions read-only and confirm that the read causes no stored-data changes.
+
+**Method:** Fresh READY/zero counters; 32 retained reads; host whole-file/guard/protected comparison.
+
+**Corrections:** None recorded; any expected new screenshot was reviewed separately.
+
+**Result details:** PASS: 32 reads, zero writes/failures, read range 0.741–6.866 ms. Full file and all prior contents unchanged.
+
+### STRESS-004-COLD-06 — fresh-launch read/remount
+
+**Goal:** Recover all 32 final regions read-only and confirm that the read causes no stored-data changes.
+
+**Method:** Fresh READY/zero counters; 32 retained reads; host whole-file/guard/protected comparison.
+
+**Corrections:** None recorded; any expected new screenshot was reviewed separately.
+
+**Result details:** PASS: 32 reads, zero writes/failures, read range 0.775–6.792 ms. Full file and all prior contents unchanged.
+
+### STRESS-004-COLD-07 — fresh-launch read/remount
+
+**Goal:** Recover all 32 final regions read-only and confirm that the read causes no stored-data changes.
+
+**Method:** Fresh READY/zero counters; 32 retained reads; host whole-file/guard/protected comparison.
+
+**Corrections:** None recorded; any expected new screenshot was reviewed separately.
+
+**Result details:** PASS: 32 reads, zero writes/failures, read range 0.780–10.963 ms. Full file and all prior contents unchanged.
+
+### STRESS-004-COLD-08 — fresh-launch read/remount
+
+**Goal:** Recover all 32 final regions read-only and confirm that the read causes no stored-data changes.
+
+**Method:** Fresh READY/zero counters; 32 retained reads; host whole-file/guard/protected comparison.
+
+**Corrections:** None recorded; any expected new screenshot was reviewed separately.
+
+**Result details:** PASS: 32 reads, zero writes/failures, read range 0.747–7.288 ms. Full file and all prior contents unchanged.
+
+### STRESS-004-COLD-09 — fresh-launch read/remount
+
+**Goal:** Recover all 32 final regions read-only and confirm that the read causes no stored-data changes.
+
+**Method:** Fresh READY/zero counters; 32 retained reads; host whole-file/guard/protected comparison.
+
+**Corrections:** None recorded; any expected new screenshot was reviewed separately.
+
+**Result details:** PASS: 32 reads, zero writes/failures, read range 0.754–9.270 ms. Full file and all prior contents unchanged.
+
+### STRESS-004-COLD-10 — fresh-launch read/remount
+
+**Goal:** Recover all 32 final regions read-only and confirm that the read causes no stored-data changes.
+
+**Method:** Fresh READY/zero counters; 32 retained reads; host whole-file/guard/protected comparison.
+
+**Corrections:** None recorded; any expected new screenshot was reviewed separately.
+
+**Result details:** PASS: 32 reads, zero writes/failures, read range 0.754–6.842 ms. Full file and all prior contents unchanged.
+
+### Evidence and scope
+
+[Procedure](../procedures/B004_HARDWARE_RUN.md), [campaign summary](../../work/evidence/b004r2-physical-campaign-summary.json), [retained original report](../status/archive/B004_CAMPAIGN_RECORD.md). Ten fresh launches are not ten independently confirmed full power cycles; only final stored generations have host durability evidence. Other media, active interruption, and Tau workloads were outside this suite.

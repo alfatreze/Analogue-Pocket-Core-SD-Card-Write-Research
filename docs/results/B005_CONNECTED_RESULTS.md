@@ -1,66 +1,63 @@
-# B005 connected results — stopped by JTAG connection failure
+# B005 — alternating-file recovery
 
-## Standard test summary
+[All suites](README.md) · [Overall feasibility](../research/FEASIBILITY_STATUS.md)
 
-**Goal:** Qualify two-file generation recovery through repeated writes, read-only recovery, and bounded between-command FPGA interruption points.
+## Goal
 
-**Method:** Execute connected B005 batches and recovery sessions, retain raw/decoded JTAG events, independently replay the record stream, and later verify both physical files and protected card contents by remount.
+Keep a valid previous record while updating the alternate preallocated file, and recover deterministically after interruptions between SD commands.
 
-**Corrections:** The console transport was replaced with a scoped client after the earlier client leaked remote processes. Replay verification was corrected to retain transport metadata. Neither correction changed the frozen FPGA source or rewrote the stopped campaign evidence.
+## Method
 
-**Result details:** 647 saves, 17 read-only recoveries, and seven between-command FPGA interruption recoveries passed their immediate checks. The campaign stopped incomplete on JTAG chain failure. Subsequent read-only recovery and remount verified the preserved files. No active SD power-loss test was performed. Detailed evidence follows.
+Alternate generation/CRC-validated records; run bounded clean batches, pause/control/reload scenarios, independent replay, and later read-only recovery/remount. Preserve the stopped campaign separately from the resumed trial.
 
-2026-10-05, designated single CARDWRITE card, B005/0.5.0. The connected campaign stopped at 18:08 WEST when System Console could not open SDW5. The Blaster remained visible to the VM, but repeated chain reads reported “JTAG chain broken”. No automatic retry/reconfiguration or B006 loading followed this failure.
+## Corrections
 
-## Completed storage evidence
+Console clients leaked processes on SSH close; a scoped client now records its process identity and waits for completion markers before closing it. Replay fixtures were corrected to retain transport metadata. A faulty charging cable/low battery was resolved before restoring read-only Pocket access; the chain failure is retained without claiming a proven sole cause.
 
-The independent replay rechecked all 40 completed events against retained raw/decoded packets, record order/destinations/CRCs, counter/mask/generation fields and 39 programming journals. The first separately preserved 64-save batch is included in the save total.
+## Result details
 
-| Observed quantity | Result |
-| --- | --- |
-| Clean batches | Ten batches of 64: 640 verified commits |
-| Single-save resume controls | Seven verified commits |
-| Total committed saves | **647** |
-| Read-only recovery sessions | 17, each two reads and zero writes |
-| Between-command FPGA interruptions | Seven recoveries pass: all four points once, then points 0/1/2 again |
-| Counted SD commands, including partial-prefix sessions | 3,326 |
-| Newest selected generation | 647 |
-| Planned point 3 second repetition and final repair | Not run |
-| Entire planned campaign | **Incomplete; transport failure preserved** |
+**Recovery checks passed; original connected campaign stopped incomplete.** Its 647 saves/seven recoveries remain a stopped prefix. A separately completed trial added two commits and the eighth FPGA interruption recovery, reaching generation 649; these are separately identified evidence.
 
-Every completed storage session passes its declared immediate readback/recovery oracle. This is not zero-failure completion of the planned campaign: the JTAG transport failure is retained separately. No SD power cuts or full Pocket power cycles were confirmed in this connected campaign.
+### RECOVERY-005-CLEAN01 — first 64 saves
 
-Retained per-save cycle totals (four writes plus verification read; excludes boot/reloads/tooling): minimum 2,318,935, median 3,785,550, maximum 18,699,600 cycles. At nominal 74.25 MHz these are approximately 31.23 / 50.98 / 251.85 ms. These correlated single-card observations are not a universal timing bound or failure-rate estimate.
+**Goal:** Verify alternating records and genuine command completion.
 
-## Current model and preservation rule
+**Method:** Collect all 64 operation histories and matching-SOF reload recovery.
 
-The last completed read-only session selects A generation 647 with valid mask 1. The independent model predicts B's header generation 648 but an invalid CRC, because its first 256 bytes were replaced at the deliberate interruption point while the remaining record bytes stayed old. Both fixed-region guards are predicted intact; actual host-read sizes/bytes/guards and all protected content remain pending.
+**Corrections:** None recorded in this batch.
 
-Expected full-file SHA-256 values:
+**Result details:** 64 saves, 322 commands, zero failures; A63/B64 valid. Read-only reload selected generation 64 with two reads and zero writes.
 
-- A: 41b5b767f85a832b63f0888914382dfa824dc313c762ab9c6ebe58458fd7b51b
-- B: ff5c586c43076beb0d7893088147d1a15a3f73b5afac102564b9d50e096ba495
+### RECOVERY-005-CONNECTED — stopped campaign
 
-These are software-model hashes, not a host-remount result. Preserve both raw physical files before any repair when the card becomes available. `tools/read_connected_results.py --build B005 --allow-stopped --test-id STOPPED-005-FINAL --firmware 2.7` captures and compares the stopped prefix without qualifying the incomplete campaign. Firmware is explicitly owner-reported. Eleven temporary-card collector tests pass; a stopped forensic capture cannot satisfy the B006 installation gate.
+**Goal:** Repeat clean saves and recover at the four pause boundaries.
 
-If connection returns first, capture status with `tools/jtag_session.py --build B005 status`. Require the restored exact single cable/device and either a live terminal snapshot matching the preserved generation-647 result or a separately explained fresh load followed only by read-only recovery. Preserve the failed checkpoint/continuation; create new resume evidence instead of rewriting them. Do not start a new blanket campaign or initialize/reset the files.
+**Method:** Independent replay of 40 completed events and 39 programming journals.
 
-## Tooling findings
+**Corrections:** Console transport/replay fixes described above; original stopped checkpoint remains unchanged.
 
-The old client closed SSH while leaving remote console processes alive. The VM held 165 orphan consoles and had about 108 MiB available RAM with all 2 GiB swap occupied. Exact PID/start/command identities and uniquely paired B005 captures identified 131 research clients (capture lag 27.7–36.8 seconds). Scoped cleanup closed those 131 clients; a separate observation verified none remained. About 9 GiB RAM became available, but the FPGA chain still could not be read. Memory exhaustion and the unreadable chain are both observed; cleanup did not establish the chain failure's cause.
+**Result details:** 647 saves total (including CLEAN01), 17 read-only sessions, seven FPGA interruptions, 3,326 commands. Immediate oracles passed; planned second point-3 trial/final repair did not run before chain failure. Campaign verdict INCOMPLETE. Per-save retained cycle totals correspond to minimum/median/maximum 31.23 / 50.98 / 251.85 ms at nominal 74.25 MHz; these exclude boot/reload/tool overhead and are not universal timing bounds.
 
-A first shutdown trial established that this SDK rejects Tcl `exit`. The separate new console client records its remote PID/start ticks, waits for script completion markers and then closes only that verified process. Both harmless VM success/error trials pass; nine host signature/lifetime/error tests and twelve reload/load safety fixtures pass. These client tests issue no SD commands or FPGA programming. ISSP access through the new client remains pending connection restoration. Original qualified Tcl/decoder/tool sources and frozen FPGA stages remain unchanged.
+### BOOT-INCIDENT — read-only recovery/remount
 
-The independent replay initially omitted saved transport metadata when comparing public events. Its schema fixture was corrected to retain exit/script fields, and a missing-metadata refusal test was added; five verifier tests and the complete stopped-prefix replay now pass. The initial harness failure log is preserved. This was an audit-tool mismatch, not a newly observed storage mismatch.
+**Goal:** Check preservation after the boot/charging incident.
 
-## Evidence
+**Method:** Restore Pocket power, cold-read without saving, compare both full files and guards on host.
 
-work/evidence/b005-connected-campaign.json/.log retain the actual stopped campaign. b005-connected-stopped-summary.json and b005-stopped-verification.log record the independent replay and explicitly keep campaign completion false. Original raw console/programming/predicted-file evidence stays private under work/evidence/jtag. b006-continuation.json records failure before loading B006. research-console-cleanup.json and console-session/loader qualification records preserve the tooling recovery.
+**Corrections:** Switch faulty charging cable and charge; use the scoped console client.
 
-- Publication privacy: automatic approval review rejected publishing the broad raw diagnostic set because it exposed local/VM paths. Originals and their hashes remain unchanged in private local archives. Public b005-connected-public-summary.json and console-transport-public-tests.json retain outcomes/hashes with tracebacks and process identifiers omitted. Qualification and replay tools continue to use the exact private originals; a public clone alone does not contain the physical raw history.
+**Result details:** PASS: selected A647, rejected partial B648, two reads/zero commits; host bytes and protected files matched the preserved prediction. Active-write power-loss timing was not captured.
 
-## Power restored — preserved state and read-only recovery verified
+### RECOVERY-005-RESUMED — final point and repair
 
-Owner reports successful boot/core start after switching the faulty charging cable and charging. JTAG chain is readable again. B005 freshly started READY with zero operations; requested only read-only recovery, which passed with two SD reads / zero commits, selected generation 647, valid mask 1, raw generations A647/B648, matching CRC. Four real ISSP client sessions closed their exact owned console processes successfully. No FPGA programming or new save occurred.
+**Goal:** Complete the omitted recovery boundary without rewriting stopped evidence.
 
-The prior read-only physical remount matches both complete files exactly, including all guards, and every preexisting protected file matches the baseline. Five added System menu caches are preserved separately. This confirms recovery of the intentional two-chunk inactive-record interruption. The final pre-failure operation was already a completed read-only recovery; the next attempted action failed at status before reprogramming. Exact physical power-loss timing was not captured, so active-write power-loss durability remains unqualified. Failed campaign history stays immutable; no blanket resume or fixture reset. Sanitized outcome: work/evidence/b005-power-return-summary.json; private trial BOOT-INCIDENT-20261005-01 and full file-level backup retain original bytes.
+**Method:** Separate resumed proof, point-3 control/cut and inactive-record repair; B006 initially reads the resulting records.
+
+**Corrections:** Create separate resume evidence and verify the stopped-file backup rather than restarting the old blanket runner.
+
+**Result details:** Two more commits; generation 649; eight B005 FPGA interruption recoveries cumulatively; final A649/B648 both valid in the retained replay. This resumed B005 endpoint was not separately host-remounted before B006 advanced the files.
+
+### Evidence and scope
+
+[Procedure](../procedures/B005_HARDWARE_RUN.md), [stopped summary](../../work/evidence/b005-connected-public-summary.json), [power-return summary](../../work/evidence/b005-power-return-summary.json), [resumed proof](../../work/evidence/b005-resumed-summary.json), [retained original history](../status/archive/B005_CAMPAIGN_RECORD.md). FPGA reload between commands does not test loss of SD power during a live write. Raw local card/process captures remain private; published summaries retain outcomes/hashes.

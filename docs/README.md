@@ -12,12 +12,17 @@ Project documentation is grouped by its role. The repository-root [README](../RE
 - [Tau repository research](research/REPO_RESEARCH.md) — read-only findings from Tau Alpha.
 - [Decision log](research/DECISIONS.md) — architecture choices, corrections, and rationale.
 
-## Results
+## Results and feasibility
 
-- [Results index](results/README.md) — suite summaries in the standard Goal → Method → Corrections → Result details order.
-- [B004R2 physical results](results/B004_RESULTS.md) — stress and fresh-launch cold-read campaign.
-- [B005 connected results](results/B005_CONNECTED_RESULTS.md) — completed recovery evidence and stopped-campaign limitations.
-- [Chronological status](status/CURRENT_STATUS.md) — detailed build and hardware timeline.
+- [Overall feasibility and progress rubric](research/FEASIBILITY_STATUS.md) — current capability status and 60/100 discovery score.
+- [Results index](results/README.md) — every suite and its individual report.
+- [Official control](results/CONTROL_RESULTS.md), [FSM-001](results/FSM001_RESULTS.md), and [FSM-002](results/FSM002_RESULTS.md) — preparation, first failure, corrected minimal baseline.
+- [B003 batch](results/B003_RESULTS.md) and [B004 stress](results/B004_RESULTS.md) — bounded-write and sustained-repeatability evidence.
+- [B005 recovery](results/B005_CONNECTED_RESULTS.md) and [B006 guards](results/B006_RESULTS.md) — alternating records and interruption boundaries.
+- [B007 fit](results/B007_FIT_RESULTS.md) and [B007 active cuts](results/B007_RESULTS.md) — redesign, tearing, and selected cold-read refusal.
+- [CPU simulations](results/CPU_SIM_RESULTS.md) — exact generated CPU prototype findings.
+- [Result template](results/TEMPLATE.md) — required suite/case reporting order.
+- [Chronological status](status/CURRENT_STATUS.md) — dated engineering timeline; original B004/B005 reports are retained in `status/archive/`.
 
 ## Procedures and test plans
 

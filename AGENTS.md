@@ -26,3 +26,11 @@ B005 uses tools/update_recovery.py after full qualification. Require the entire 
 ## Model and reasoning recommendations (owner preference)
 
 At each new task or material phase, recommend the least expensive available model and lowest supported reasoning effort likely to complete it reliably, with a brief quality/speed/usage rationale. Routine established implementation, documentation and verified-script execution generally need GPT-5.6 Terra or Sol at Low; consider Luna for simple bounded tasks. Increase only when uncertainty, hardware risk or observed failures justify it. Recommendations do not imply the current chat model was switched.
+
+## Documentation and result reporting (owner preference)
+
+Start the root README with overall feasibility and a transparent research-progress score, followed by one ordered suite roadmap. Link every executed suite directly to its individual report under `docs/results/`; future suites must clearly state that no result exists yet. Keep the complete index in `docs/README.md`.
+
+Every current suite report must have the same ordered sections: Goal, Method, Corrections, Result details. Every recorded case within the report repeats those four fields, ending with its actual measurements/verdict, evidence, and limits. State “None recorded” for absent corrections. Preserve failed and inconclusive cases; do not infer unperformed checks from another trial. Keep dated historical records explicitly separate from current conclusions. Follow `docs/results/TEMPLATE.md`.
+
+The progress score is a weighted discovery-milestone tally whose weights and earned points are documented in `docs/research/FEASIBILITY_STATUS.md`. It is not a reliability percentage or a claim that the complete qualification catalogue has passed.
